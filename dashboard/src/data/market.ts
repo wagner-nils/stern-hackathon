@@ -3,32 +3,34 @@ import type { Figure } from "./types";
 /** Market figures that are not scenario levers. Money in USD as published; converted with `eurPerUsd`. */
 export const market = {
   launchRevenueUsd: {
-    value: 7.5e9,
-    label: "Global launch services revenue",
-    confidence: "medium",
-    sourceId: "siaSsir",
-    note: "2024, excludes SpaceX launches for its own Starlink",
+    value: 12.4e9,
+    label: "Global commercially procured launch revenue",
+    confidence: "high",
+    sourceId: "siaSsir2026",
+    note: "2025; SIA counts captive launches, so Starlink is included",
   },
   rideshareUsdPerKg: {
-    value: 7000,
+    value: 7500,
     label: "Rideshare price to SSO (SpaceX Transporter)",
-    confidence: "medium",
-    sourceId: "rideshare2026",
+    confidence: "high",
+    sourceId: "spacexRideshare",
+    note: "2027 list price, 50 kg minimum; about 10k USD/kg with separation system",
   },
   dedicatedUsdPerKg: {
-    value: 15000,
-    label: "Blended dedicated small-launch price",
-    confidence: "low",
-    sourceId: "teamEstimate",
-    note: "Between rideshare and Electron (about 25k USD/kg)",
+    value: 20000,
+    label: "Dedicated small-launch price",
+    confidence: "medium",
+    sourceId: "rocketLab10k",
+    note: "€12 M for 700 kg is about 19k USD/kg; Electron earns about 28k USD/kg",
   },
   eurPerUsd: {
-    value: 0.9,
+    value: 1 / 1.12,
     label: "EUR per USD",
-    confidence: "medium",
-    sourceId: "teamEstimate",
+    confidence: "high",
+    sourceId: "ecb",
+    note: "ECB reference rate, October 2026 average: 1.12 USD per EUR",
   },
 } satisfies Record<string, Figure>;
 
-/** Isar's launch plan by year: 2027–2028 from Isar, 2029–2030 team ramp modelled on Electron. */
-export const cadencePlan: Record<number, number> = { 2026: 1, 2027: 4, 2028: 8, 2029: 10, 2030: 15 };
+/** Isar's launch plan by year: 4 in 2027 and about double in 2028 per Isar, then a ramp modelled on Electron. */
+export const cadencePlan: Record<number, number> = { 2026: 1, 2027: 4, 2028: 7, 2029: 10, 2030: 12 };

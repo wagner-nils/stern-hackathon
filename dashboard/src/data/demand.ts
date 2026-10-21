@@ -1,22 +1,49 @@
-import type { DemandDataset, DemandSegment } from "./types";
+import raw2024 from "./generated/demand-2024.json";
+import raw2025 from "./generated/demand-2025.json";
+import type { CustomerType, DemandDataset, DemandSegment, OrbitClass } from "./types";
 
-type Row = Omit<DemandSegment, "id" | "label">;
+// Flown demand per year from McDowell's GCAT, built by pipeline/gcat_demand.py. Rerun the pipeline to refresh.
 
-// PLACEHOLDER until the GCAT pipeline writes generated/demand-2025.json: rough 2024 shape from the team draft.
-const rows: Row[] = [
-  { group: "Starlink", customer: "captive", orbit: "LEO", inclination: [43, 53], avgMassKg: 800, satsPerYear: 1950 },
-  { group: "China", customer: "captive", orbit: "LEO", inclination: [35, 98], avgMassKg: 770, satsPerYear: 260 },
-  { group: "Russia", customer: "captive", orbit: "LEO", inclination: [50, 98], avgMassKg: 780, satsPerYear: 90 },
-  { group: "US government", customer: "institutional-us", orbit: "LEO", inclination: [40, 98], avgMassKg: 800, satsPerYear: 100 },
-  { group: "Commercial (open)", customer: "open-commercial", orbit: "SSO", inclination: [95, 99], avgMassKg: 220, satsPerYear: 300 },
-  { group: "Commercial (open)", customer: "open-commercial", orbit: "LEO", inclination: [40, 60], avgMassKg: 220, satsPerYear: 130 },
-  { group: "Commercial (open)", customer: "open-commercial", orbit: "GTO/GEO", inclination: [0, 28], avgMassKg: 4000, satsPerYear: 50 },
-  { group: "European institutional", customer: "institutional-eu", orbit: "SSO", inclination: [96, 99], avgMassKg: 220, satsPerYear: 20 },
-];
+const orbits: OrbitClass[] = ["LEO", "SSO", "MEO", "GTO/GEO", "Beyond"];
+const customers: CustomerType[] = ["open-commercial", "institutional-eu", "institutional-us", "institutional-other", "captive"];
 
-export const demand2025: DemandDataset = {
-  year: 2024,
-  sourceId: "teamDraft",
-  confidence: "placeholder",
-  segments: rows.map((r, k) => ({ ...r, id: `seg-${k}`, label: `${r.group} · ${r.orbit}` })),
+interface RawDataset {
+  meta: { year: number; dataVintage?: string };
+  segments: {
+    id: string;
+    label: string;
+    group: string;
+    orbit: string;
+    inclination: number[];
+    avgMassKg: number;
+    customer: string;
+    satsPerYear: number;
+  }[];
+}
+
+/** Checks a generated file against the model's types, so a broken pipeline run fails loudly instead of skewing figures. */
+export function parseDemand(raw: RawDataset): DemandDataset & { vintage?: string } {
+  const segments = raw.segments.map((s): DemandSegment => {
+    const [lo, hi] = s.inclination;
+    const valid =
+      orbits.includes(s.orbit as OrbitClass) &&
+      customers.includes(s.customer as CustomerType) &&
+      s.inclination.length === 2 &&
+      lo >= 0 &&
+      hi <= 180 &&
+      lo <= hi &&
+      s.avgMassKg >= 0 &&
+      s.satsPerYear >= 0;
+    if (!valid) throw new Error(`Invalid demand segment ${s.id} in ${raw.meta.year}`);
+    return { ...s, orbit: s.orbit as OrbitClass, customer: s.customer as CustomerType, inclination: [lo, hi] };
+  });
+  return { year: raw.meta.year, sourceId: "gcat", confidence: "high", segments, vintage: raw.meta.dataVintage };
+}
+
+export const demandByYear = {
+  2024: parseDemand(raw2024),
+  2025: parseDemand(raw2025),
 };
+
+export type DemandYear = keyof typeof demandByYear;
+export const latestDemand = demandByYear[2025];

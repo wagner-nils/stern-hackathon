@@ -4,7 +4,7 @@ import { FunnelChart } from "../components/FunnelChart";
 import { GroupChart } from "../components/GroupChart";
 import { InclinationChart } from "../components/InclinationChart";
 import { type Metric, TamSamSom } from "../components/TamSamSom";
-import { demand2025 } from "../data/demand";
+import { type DemandYear, demandByYear } from "../data/demand";
 import { market } from "../data/market";
 import { sites } from "../data/sites";
 import { spectrum } from "../data/vehicles";
@@ -20,11 +20,14 @@ const metrics: { id: Metric; label: string }[] = [
   { id: "massKg", label: "Mass" },
   { id: "revenue", label: "Revenue" },
 ];
+const baseYears = Object.keys(demandByYear).map(Number) as DemandYear[];
 
 export function Q1Reach({ scenario }: { scenario: Scenario }) {
   const [metric, setMetric] = useState<Metric>("sats");
-  const demand = demand2025.segments;
-  const result = computeMarket(demand, andoya, spectrum, scenario.values, { baseYear: demand2025.year, ...market });
+  const [baseYear, setBaseYear] = useState<DemandYear>(2025);
+  const dataset = demandByYear[baseYear];
+  const demand = dataset.segments;
+  const result = computeMarket(demand, andoya, spectrum, scenario.values, { baseYear: dataset.year, ...market });
   const { TAM, SAM, SOM } = result.tiers;
   const year = scenario.values.planningYear;
   const dedicated = result.steps.find((s) => s.id === "premium")!;
@@ -37,21 +40,25 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
       </header>
 
       <p className="answer">
-        From Andøya, Isar can serve <strong>{fmtPct(share(SAM.sats, TAM.sats))}</strong> of global satellite demand (
-        {fmtPct(share(SAM.massKg, TAM.massKg))} by mass). In {year}, {fmtInt(SOM.launches)} launches capture{" "}
-        <strong>{fmtPct(share(SOM.sats, SAM.sats))}</strong> of that serviceable market:{" "}
+        From Andøya, Isar can serve <strong>{fmtPct(share(SAM.sats, TAM.sats))}</strong> of global satellite demand, but
+        only <strong>{fmtPct(share(SAM.massKg, TAM.massKg))}</strong> of its mass. In {year}, {fmtInt(SOM.launches)}{" "}
+        launches capture {fmtPct(share(SOM.sats, SAM.sats))} of that serviceable market:{" "}
         {result.bottleneck === "capacity" ? "capacity, not demand, is the constraint." : "demand, not capacity, is the constraint."}
       </p>
-
-      {demand2025.confidence === "placeholder" && (
-        <div className="notice">Demand shows the team draft until the GCAT satellite data is loaded.</div>
-      )}
 
       <div className="q1-layout">
         <div className="q1-main">
           <div className="toolbar">
-            <div className="overline">
-              Market sizing {year} · demand base {demand2025.year}
+            <div className="toolbar__group">
+              <span className="overline">Flown demand</span>
+              <div className="toggle" role="group" aria-label="Demand base year">
+                {baseYears.map((y) => (
+                  <button key={y} className={baseYear === y ? "is-active" : ""} onClick={() => setBaseYear(y)}>
+                    {y}
+                  </button>
+                ))}
+              </div>
+              <span className="overline">grown to {year}</span>
             </div>
             <div className="toggle" role="group" aria-label="Metric">
               {metrics.map((m) => (
@@ -69,6 +76,11 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
               <h3>From TAM to SOM, filter by filter</h3>
             </div>
             <FunnelChart steps={result.steps} metric={metric === "massKg" ? "massKg" : "sats"} />
+            <p className="caption">
+              Bottom-up from every payload launched in {dataset.year} (McDowell GCAT, {fmtInt(demand.reduce((n, s) => n + s.satsPerYear, 0))}{" "}
+              satellites), grown at {fmtPct(scenario.values.marketGrowth)} p.a. Captive: Starlink, China, Russia, Kuiper and
+              OneWeb.
+            </p>
           </div>
         </div>
 
@@ -89,8 +101,8 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
           </div>
           <InclinationChart demand={demand} reach={reach} />
           <p className="caption">
-            Satellites per year by inclination; red is reachable. Licensed headings 280–360° over the Norwegian Sea give{" "}
-            {reach.map(([lo, hi]) => `${lo.toFixed(0)}–${hi.toFixed(0)}°`).join(", ")}.
+            Satellites launched in {dataset.year} by inclination; red is reachable. Licensed headings 280–360° over the
+            Norwegian Sea give {reach.map(([lo, hi]) => `${lo.toFixed(0)}–${hi.toFixed(0)}°`).join(", ")}.
           </p>
         </div>
         <div className="card">
@@ -98,7 +110,9 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
             <h3>Most of the market is captive</h3>
           </div>
           <GroupChart demand={demand} />
-          <p className="caption">Satellites per year by customer group; grey groups fly on their own or contracted rockets.</p>
+          <p className="caption">
+            Satellites launched in {dataset.year} by customer group; grey groups fly on their own or pre-contracted rockets.
+          </p>
         </div>
       </div>
 
@@ -106,14 +120,18 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
         <article className="insight">
           <div className="insight__number">01</div>
           <h3>Orbit is the hard limit</h3>
-          <p>The ISS orbit, the 53° constellation shells, 37–45° radar orbits and GTO are out of reach from Andøya.</p>
+          <p>
+            The ISS orbit, the 53° constellation shells, 37–45° radar orbits and GTO are out of reach. What is left is
+            light: many small Earth-observation satellites, little mass.
+          </p>
         </article>
         <article className="insight">
           <div className="insight__number">02</div>
           <h3>Rideshare sets the price</h3>
           <p>
-            Most SSO satellites ride SpaceX Transporter at about $7k/kg. Only {fmtPct(scenario.values.premiumShare)} are
-            assumed to pay for a dedicated launch: {fmtInt(dedicated.sats)} satellites a year.
+            Most SSO satellites ride SpaceX Transporter at $7.5k/kg. {fmtPct(scenario.values.premiumShare)} pay for a
+            dedicated launch: {fmtInt(dedicated.sats)} satellites a year. SpaceX reportedly takes no new rideshare bookings
+            beyond 2028.
           </p>
         </article>
         <article className="insight">

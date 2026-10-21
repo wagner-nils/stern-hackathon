@@ -1,6 +1,6 @@
 import { ConfidenceBadge } from "../components/ConfidenceBadge";
 import { assumptions } from "../data/assumptions";
-import { demand2025 } from "../data/demand";
+import { latestDemand } from "../data/demand";
 import { cadencePlan, market } from "../data/market";
 import { sites } from "../data/sites";
 import { sources } from "../data/sources";
@@ -43,7 +43,7 @@ const rows: Row[] = [
   },
   ...(Object.values(market) as Figure[]).map((f) => ({
     item: f.note ? `${f.label} (${f.note})` : f.label,
-    value: f.label.startsWith("EUR") ? String(f.value) : usd(f.value),
+    value: f.label.startsWith("EUR") ? f.value.toFixed(3) : usd(f.value),
     confidence: f.confidence,
     sourceId: f.sourceId,
   })),
@@ -53,11 +53,11 @@ const rows: Row[] = [
     confidence: a.confidence,
     sourceId: a.sourceId,
   })),
-  ...demandByGroup(demand2025.segments).map((g) => ({
-    item: `Demand ${demand2025.year}: ${g.group}`,
+  ...demandByGroup(latestDemand.segments).map((g) => ({
+    item: `Demand ${latestDemand.year}: ${g.group}`,
     value: `${fmtInt(g.sats)} satellites, ${fmtTonnes(g.massKg)}`,
-    confidence: demand2025.confidence,
-    sourceId: demand2025.sourceId,
+    confidence: latestDemand.confidence,
+    sourceId: latestDemand.sourceId,
   })),
 ];
 

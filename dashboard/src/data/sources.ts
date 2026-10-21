@@ -31,15 +31,45 @@ export const sources: Record<string, Source> = {
     title: "J. McDowell – Space Activities in 2025",
     url: "https://planet4589.org/space/papers/space25.1.4.pdf",
   },
-  siaSsir: {
-    id: "siaSsir",
-    title: "SIA – State of the Satellite Industry Report",
-    url: "https://sia.org/news-resources/state-of-the-satellite-industry-report/",
+  siaSsir2026: {
+    id: "siaSsir2026",
+    title: "SIA – 29th State of the Satellite Industry Report (2025: 12.4 bn USD launch revenue, 325 launches)",
+    url: "https://sia.org/affordability-productivity-drive-historic-satellite-industry-growth-satellite-industry-association-releases-29th-annual-state-of-the-satellite-industry-report/",
   },
-  rideshare2026: {
-    id: "rideshare2026",
-    title: "NewSpace Economy – SpaceX rideshare pricing, Feb 2026 (350k USD per 50 kg to SSO)",
-    url: "https://newspaceeconomy.ca/2026/02/27/spacex-rideshare-pricing-as-of-february-2026-what-it-costs-whats-included-and-how-buyers-budget-a-mission/",
+  spacexRideshare: {
+    id: "spacexRideshare",
+    title: "SpaceX rideshare price list (6.5k / 7k / 7.5k USD per kg for 2025 / 2026 / 2027)",
+    url: "https://rideshare.spacex.com/",
+  },
+  rideshareFreeze: {
+    id: "rideshareFreeze",
+    title: "AIAA – SpaceX halts new rideshare reservations beyond 2028 (not confirmed by SpaceX)",
+    url: "https://aiaa.org/2026/07/21/spacex-halts-new-commercial-rideshare-reservations-beyond-2028-as-launch-schedule-fills/",
+  },
+  rocketLab10k: {
+    id: "rocketLab10k",
+    title: "Rocket Lab 10-K 2025 – Electron revenue 8.5 M USD per launch",
+    url: "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000013/rklb-20251231.htm",
+  },
+  brycetech2026: {
+    id: "brycetech2026",
+    title: "BryceTech – Smallsats by the Numbers 2026 (17–23% of non-broadband smallsats on small launchers)",
+    url: "https://brycetech.com/reports/report-documents/smallsats-2026/",
+  },
+  novaspace: {
+    id: "novaspace",
+    title: "Novaspace – satellite build and launch forecast 2025–2034 (>43,000 satellites)",
+    url: "https://nova.space/press-release/novaspace-projects-665b-in-satellite-build-and-launch-activity/",
+  },
+  spectrumPrice: {
+    id: "spectrumPrice",
+    title: "Spectrum price not published; industry estimates €10–15 M per launch",
+    url: "https://www.newspace.im/launchers/isar-aerospace",
+  },
+  ecb: {
+    id: "ecb",
+    title: "ECB euro reference rate USD/EUR",
+    url: "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A",
   },
   nspm17: {
     id: "nspm17",

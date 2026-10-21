@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { defaultValues } from "../data/assumptions";
-import { demand2025 } from "../data/demand";
+import { latestDemand } from "../data/demand";
 import { market } from "../data/market";
 import { sites } from "../data/sites";
 import type { DemandSegment } from "../data/types";
@@ -8,7 +8,7 @@ import { spectrum } from "../data/vehicles";
 import { computeMarket, demandByGroup, demandByInclination } from "./funnel";
 
 const inputs = { baseYear: 2025, ...market };
-const demand = demand2025.segments;
+const demand = latestDemand.segments;
 const base = { ...defaultValues, planningYear: 2025 };
 
 const segment = (over: Partial<DemandSegment>): DemandSegment => ({
@@ -45,7 +45,8 @@ describe("computeMarket", () => {
 
   it("is capacity-bound when demand exceeds Isar's launches", () => {
     const rows = [segment({ satsPerYear: 1000 })];
-    const result = computeMarket(rows, sites, spectrum, { ...base, premiumShare: 1, launchesPerYear: 2 }, inputs);
+    const p = { ...base, premiumShare: 1, launchesPerYear: 2, fillRate: 0.7 };
+    const result = computeMarket(rows, sites, spectrum, p, inputs);
     expect(result.bottleneck).toBe("capacity");
     expect(result.tiers.SOM.launches).toBe(2);
     // Two launches at 70% of 700 kg carry 980 kg, i.e. 9.8 satellites of 100 kg.

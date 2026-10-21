@@ -33,8 +33,8 @@ Alle Aussagen unten sind mündliche Aussagen aus dem Gespräch, nicht unabhängi
 | Thema | Aussage | Konsequenz |
 | --- | --- | --- |
 | Q1-Logik | Orbit ist Kriterium Nr. 1 | Bestätigt: Erreichbarkeit ist der harte Filter im SAM. |
-| Premium-Anteil (20 %) | Unerprobte Raketen bekommen nur Demo-Nutzlasten | Kurzfristig eher unter 20 %, solange Isar keine Serie erfolgreicher Flüge hat. Steigt erst mit nachgewiesener Zuverlässigkeit. Vorschlag: im Modell als Hochlauf von ca. 10–15 % (2027) auf 20–25 % (2030) zeigen. |
-| Zuverlässigkeit | Versicherung ca. 25 %, Branchenschnitt 5–8 % Fehlstarts | Bisher nicht im Modell. Vorschlag: Erfolgsquote als Annahme. Ein Fehlstart kostet zusätzlich ca. ein Jahr Kadenz auf dem Pad. |
+| Premium-Anteil | Unerprobte Raketen bekommen nur Demo-Nutzlasten | Umgesetzt: Hochlauf von 12,5 % (2027) auf 22,5 % (2030) statt fester 20 %. |
+| Zuverlässigkeit | Versicherung ca. 25 %, Branchenschnitt 5–8 % Fehlstarts | Umgesetzt: Erfolgsquote pro Start, 80 % (2027) bis 92 % (2030). Nicht modelliert ist, dass ein Fehlstart das Pad zusätzlich ca. ein Jahr blockiert. |
 | Preis (12 Mio. €) | Preis ist erst Kriterium Nr. 3, Markt wieder teuer | Spielraum für Preise über dem Rideshare-Niveau. Die 12 Mio. € bleiben plausibel. |
 | Kadenz | Ein Fehlstart blockiert das Pad über ein Jahr | Ein einzelnes Pad ist ein Klumpenrisiko. Spricht für einen zweiten Standort (Redundanz), nicht nur für neue Orbits. |
 | Orbit-Trend | Erdbeobachtung bleibt SSO, Kommunikation geht auf ±55° | Andøya bleibt für Erdbeobachtung relevant. Kommunikation braucht Nova Scotia (bis 45° hinunter) oder Kourou. |

@@ -1,7 +1,7 @@
 import { ConfidenceBadge } from "../components/ConfidenceBadge";
 import { assumptions } from "../data/assumptions";
 import { latestDemand } from "../data/demand";
-import { cadencePlan, market } from "../data/market";
+import { cadencePlan, market, premiumPlan, successPlan } from "../data/market";
 import { sites } from "../data/sites";
 import { sources } from "../data/sources";
 import type { Confidence, Figure } from "../data/types";
@@ -40,6 +40,22 @@ const rows: Row[] = [
       .join(", "),
     confidence: "medium",
     sourceId: "isarFlightPlan",
+  },
+  {
+    item: "Launch success rate by year",
+    value: Object.entries(successPlan)
+      .map(([year, r]) => `${year}: ${fmtPct(r)}`)
+      .join(", "),
+    confidence: "medium",
+    sourceId: "expertSchingler",
+  },
+  {
+    item: "Share paying for a dedicated launch, by year",
+    value: Object.entries(premiumPlan)
+      .map(([year, r]) => `${year}: ${fmtPct(r)}`)
+      .join(", "),
+    confidence: "medium",
+    sourceId: "brycetech2026",
   },
   ...(Object.values(market) as Figure[]).map((f) => ({
     item: f.note ? `${f.label} (${f.note})` : f.label,

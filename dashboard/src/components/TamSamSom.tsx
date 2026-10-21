@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { fmtEur, fmtEurRange, fmtInt, fmtPct, fmtTonnes, share } from "../lib/format";
+import { fmtEur, fmtEurRange, fmtInt, fmtOne, fmtPct, fmtTonnes, share } from "../lib/format";
 import type { MarketResult, Tier, TierId } from "../model/funnel";
 import { Tween } from "./Tween";
 
@@ -76,7 +76,11 @@ export function TamSamSom({ result, metric }: { result: MarketResult; metric: Me
             <div className="tier__meta">
               <div>{otherMetrics(t, metric)}</div>
               {t.id === "SAM" && <div>≈ {fmtInt(t.launches)} Spectrum loads</div>}
-              {t.id === "SOM" && <div>{fmtInt(t.launches)} Spectrum launches</div>}
+              {t.id === "SOM" && (
+                <div>
+                  {fmtOne(t.launches)} successful of {fmtInt(result.launches.planned)} planned launches
+                </div>
+              )}
             </div>
           </article>
         </Fragment>

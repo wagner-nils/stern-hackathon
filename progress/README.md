@@ -13,6 +13,7 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **21.10. 18:58**: Modell um Erfolgsquote pro Start (80 % 2027 bis 92 % 2030) und Premium-Hochlauf (12,5 % 2027 bis 22,5 % 2030) erweitert, beide an das Planungsjahr gekoppelt (nach Expertengespräch). Neuer Basisfall 2027: SOM 32 Satelliten, 1,3 t, 38 Mio. € (3,2 von 4 Starts erfolgreich); 2030: 109 Satelliten, 133 Mio. €. 23 Tests grün; Wiki nachgezogen.
 - **21.10. 18:36**: Expertengespräch Robbie Schingler (Planet) ins Wiki übernommen: Rohnotizen, Kernaussagen, Konsequenzen-Tabelle; Querverweise in Q1 (Validierung, Zuverlässigkeit fehlt im Modell), Q2 (Resilienz-Paket mit Planet, Arktis-Netze, Rechenzentren im All), Markt, Isar, Kadenz, Annahmen, Quellen.
 - **21.10. 17:46**: Q2: Betreuer-Hinweise (Startplatz → Orbits → Kunden, Zeithorizont 15–20 Jahre durch Pad-Verträge, 1-t-Klasse) und Kundenanalyse im Andøya-Band (GCAT 2025: 474 offene Satelliten, 51 t; Planet, Spire, ASI, OroraTech, ICEYE …) ins Wiki; Skript pipeline/gcat_customers.py.
 - **21.10. 17:23**: UI heller und ruhiger: helles Isar-Theme (Weiß/Hellgrau, Navy-Text, ein Blau-Akzent), keine Sterne, kein Leuchten, kein Einblenden, statische Orbit-Skizze in einer Karte, Charts ohne Animation. Behoben: Absturz beim Laden und Kapitelwechsel aus dem vorigen Commit bf049d4 (scrollTo gibt in neuem Chromium ein Promise zurück, das React als Cleanup aufrief).

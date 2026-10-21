@@ -3,8 +3,8 @@
 ## Antwort
 
 - Von Andøya aus kann Isar **9,3 %** der weltweit gestarteten Satelliten bedienen, aber nur **0,7 %** der Masse (Basis 2025, hochgerechnet auf 2027).
-- 2027 fliegt Isar mit 4 Starts ca. 40 Satelliten (1,7 t, ca. 48 Mio. €). Das sind 8 % des bedienbaren Markts. **Engpass ist Isars Kapazität.**
-- 2030 mit 12 Starts: 119 Satelliten und 144 Mio. €, das sind 92 % der dedizierten Nachfrage, die Andøya erreicht. **Danach wird Andøyas Orbit-Band selbst zum Engpass.** Wachstum braucht neue Orbits.
+- 2027 plant Isar 4 Starts, bei 80 % Erfolgsquote gelingen im Schnitt 3,2. Damit fliegt Isar ca. 32 Satelliten (1,3 t, ca. 38 Mio. €), das sind 6 % des bedienbaren Markts. **Engpass ist Isars Kapazität.**
+- 2030 mit 12 geplanten Starts (92 % Erfolgsquote, also 11 erfolgreiche): 109 Satelliten und 133 Mio. €. Das sind ca. 75 % der dedizierten Nachfrage, die Andøya erreicht (ca. 15 Ladungen pro Jahr). **Kurz nach 2030 wird Andøyas Orbit-Band selbst zum Engpass.** Wachstum braucht dann neue Orbits.
 
 ## TAM, SAM, SOM im Basisfall
 
@@ -12,7 +12,7 @@
 | --- | --- | --- | --- |
 | TAM | alle weltweit gestarteten Satelliten | 5.371 Satelliten, 3.200 t, 13,2 Mrd. € | 6.956 Satelliten, 4.144 t, 17,0 Mrd. € |
 | SAM | offen für einen europäischen Launcher, passt auf Spectrum, Orbit von Andøya erreichbar | 501 Satelliten, 21 t, 142–379 Mio. € | 649 Satelliten, 28 t, 184–491 Mio. € |
-| SOM | zahlt für einen dedizierten Start, innerhalb von Isars Kapazität | 40 Satelliten, 1,7 t, 48 Mio. € (4 Starts) | 119 Satelliten, 5 t, 144 Mio. € (12 Starts) |
+| SOM | zahlt für einen dedizierten Start, innerhalb von Isars erfolgreicher Kapazität | 32 Satelliten, 1,3 t, 38 Mio. € (3,2 von 4 Starts erfolgreich) | 109 Satelliten, 4,6 t, 133 Mio. € (11 von 12 Starts erfolgreich) |
 
 Alle Werte sind im Dashboard (Kapitel Q1) live nachrechenbar.
 
@@ -24,14 +24,14 @@ Filter in dieser Reihenfolge, jeweils je Nachfragesegment (Kundengruppe × Orbit
 2. **Offen für einen europäischen Launcher:** ohne Starlink, China, Russland, Kuiper/OneWeb und US-Regierung (NSPM-17); andere Regierungen zu 20 %.
 3. **Passt auf Spectrum:** Durchschnittsmasse des Segments höchstens 700 kg (SSO/polar) bzw. 1.000 kg (LEO).
 4. **Von Andøya erreichbar (= SAM):** Anteil des Inklinationsbands innerhalb von 90–110,6° ([Orbitphysik](../technology/orbital-mechanics.md)).
-5. **Zahlt für einen dedizierten Start:** 20 % des SAM, der Rest fliegt Rideshare.
-6. **Isar kann fliegen (= SOM):** begrenzt durch Starts × 700 kg × 60 % Füllgrad.
+5. **Zahlt für einen dedizierten Start:** Anteil steigt von 12,5 % (2027) auf 22,5 % (2030), der Rest fliegt Rideshare. Neue Raketen bekommen erst Demo-Nutzlasten (Planet).
+6. **Isar kann fliegen (= SOM):** begrenzt durch erfolgreiche Starts × 700 kg × 60 % Füllgrad. Erfolgreiche Starts = geplante Starts × Erfolgsquote (80 % 2027 bis 92 % 2030). Ein Fehlstart liefert nichts und bringt konservativ keinen Umsatz.
 
 Umsatz:
 
 - **TAM:** SIA-Launch-Umsatz (12,4 Mrd. USD 2025), gewachsen wie die Nachfrage.
 - **SAM:** SAM-Masse × Preis pro kg, als Spanne von Rideshare (7.500 USD/kg) bis dediziert (20.000 USD/kg).
-- **SOM:** Starts × 12 Mio. €.
+- **SOM:** erfolgreiche Starts × 12 Mio. €.
 
 Code: `dashboard/src/model/funnel.ts` (mit Tests).
 
@@ -43,7 +43,8 @@ Alle Annahmen mit Spanne und Quelle: [Annahmen-Register](../reference/assumption
 | --- | --- | --- | --- |
 | TAM-Umsatz | 7,5 Mrd. USD (2024, „ohne Starlink“) | 12,4 Mrd. USD (2025, Starlink enthalten) | SIA-Report 2026; 7,5 war veraltet und falsch abgegrenzt |
 | Anteil polar/SSO | 70 % (geschätzt) | gemessen je Segment (offener Markt 56 % 2024, 76 % 2025) | GCAT-Auswertung |
-| Premium-Anteil | 20–30 % | 20 % | heute 17–23 %, im Westen 10–14 % |
+| Premium-Anteil | 20–30 % | Hochlauf 12,5 % (2027) bis 22,5 % (2030) | heute 17–23 %, im Westen 10–14 %; laut Planet bekommen neue Raketen erst Demo-Nutzlasten |
+| Erfolgsquote | – | 80 % (2027) bis 92 % (2030) | Versicherung für Isars nächste Mission ca. 25 %; Branchenschnitt 5–8 % Fehlstarts |
 | Wachstum | 7 % | 9 % | Novaspace-implizit |
 | Kadenz 2027–30 | 3 / 6 / 10 / 15 | 4 / 7 / 10 / 12 | Isar: 4 in 2027, ca. doppelt 2028 |
 | Füllgrad | 70 % | 60 % | keine Daten; einzelne Kunden füllen weniger |
@@ -53,8 +54,9 @@ Alle Annahmen mit Spanne und Quelle: [Annahmen-Register](../reference/assumption
 ## Sensitivitäten
 
 - **Basisjahr:** Mit Nachfrage 2024 statt 2025 fällt der SAM deutlich (Andøya-Band im offenen Markt 56 % statt 76 %). Im Dashboard umschaltbar.
-- **Premium-Anteil und Kadenz** bestimmen den SOM. Bis 2029 wirkt nur die Kadenz, weil die Nachfrage die Kapazität übersteigt.
-- **Spectrum-Preis** skaliert den SOM-Umsatz linear (10–15 Mio. € ergeben 40–60 Mio. € 2027).
+- **Kadenz und Erfolgsquote** bestimmen den SOM bis 2030, weil die dedizierte Nachfrage die erfolgreichen Starts übersteigt. Jeder Prozentpunkt Erfolgsquote ist 2027 ca. 0,5 Mio. € Umsatz wert.
+- **Premium-Anteil** wirkt erst, wenn die Kapazität aufholt (nach 2030), oder bei mehr Starts.
+- **Spectrum-Preis** skaliert den SOM-Umsatz linear (10–15 Mio. € ergeben 32–48 Mio. € 2027).
 
 ## Challenge-Punkte
 
@@ -68,8 +70,8 @@ Alle Annahmen mit Spanne und Quelle: [Annahmen-Register](../reference/assumption
 Robbie Schingler (Planet), 21.10.2026, Details auf der [Expertenseite](../expert/robbie-schingler.md):
 
 - **Bestätigt:** Kunden wählen nach Orbit, Vorlaufzeit, Preis und Zuverlässigkeit, in dieser Reihenfolge. Die Erreichbarkeit als harter Filter im SAM ist richtig. Erdbeobachtung bleibt im SSO.
-- **Schärfer zu fassen:** Unerprobte Raketen bekommen nur Demo-Nutzlasten. Der Premium-Anteil von 20 % ist für 2027 eher hoch, plausibel ist ein Hochlauf von ca. 10–15 % auf 20–25 % bis 2030, mit wachsender Zuverlässigkeit.
-- **Fehlt bisher im Modell:** Zuverlässigkeit. Die Versicherung für Isars nächste Mission kostet ca. 25 %, der Branchenschnitt liegt bei 5–8 % Fehlstarts. Ein Fehlstart blockiert das Pad zudem für mehr als ein Jahr.
+- **Umgesetzt:** Unerprobte Raketen bekommen nur Demo-Nutzlasten. Der Premium-Anteil läuft deshalb von 12,5 % (2027) auf 22,5 % (2030) hoch.
+- **Jetzt im Modell:** Zuverlässigkeit als Erfolgsquote pro Start (80 % 2027 bis 92 % 2030). Die Versicherung für Isars nächste Mission kostet ca. 25 %, der Branchenschnitt liegt bei 5–8 % Fehlstarts. Nicht modelliert ist, dass ein Fehlstart das Pad zusätzlich für mehr als ein Jahr blockiert.
 - **Preis:** Er ist erst Kriterium Nr. 3, und der Markt ist wegen SpaceX' Fast-Monopol wieder teuer. Die 12 Mio. € pro Start bleiben plausibel.
 
 ## Offene Punkte

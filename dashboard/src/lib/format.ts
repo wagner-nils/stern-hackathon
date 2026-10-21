@@ -3,6 +3,8 @@ const oneDecimal = new Intl.NumberFormat("en-GB", { maximumFractionDigits: 1 });
 
 export const fmtInt = (n: number) => integer.format(n);
 
+export const fmtOne = (n: number) => oneDecimal.format(n);
+
 /** Per cent with one decimal, or two significant digits below 1%. */
 export const fmtPct = (fraction: number) => {
   const pct = fraction * 100;

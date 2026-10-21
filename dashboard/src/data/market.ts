@@ -34,3 +34,15 @@ export const market = {
 
 /** Isar's launch plan by year: 4 in 2027 and about double in 2028 per Isar, then a ramp modelled on Electron. */
 export const cadencePlan: Record<number, number> = { 2026: 1, 2027: 4, 2028: 7, 2029: 10, 2030: 12 };
+
+/**
+ * Share of reachable demand that pays for a dedicated launch, rising as Spectrum proves itself: unproven rockets
+ * get demo payloads first (Planet, 21 Oct 2026); today 17–23% of non-broadband smallsats fly small launchers.
+ */
+export const premiumPlan: Record<number, number> = { 2026: 0.1, 2027: 0.125, 2028: 0.15, 2029: 0.2, 2030: 0.225 };
+
+/**
+ * Probability that a Spectrum launch succeeds: from the ~25% insurance rate on Isar's next mission (Planet,
+ * 21 Oct 2026) towards the 92–95% of mature launchers (industry 5–8% failures).
+ */
+export const successPlan: Record<number, number> = { 2026: 0.75, 2027: 0.8, 2028: 0.85, 2029: 0.9, 2030: 0.92 };

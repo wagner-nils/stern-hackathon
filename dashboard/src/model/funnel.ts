@@ -37,6 +37,8 @@ export interface MarketResult {
   tiers: Record<TierId, Tier>;
   /** Demand multiplier from the base year to the planning year. */
   growth: number;
+  /** Planned launches and the share of them expected to succeed. */
+  launches: { planned: number; successful: number };
   bottleneck: "demand" | "capacity";
 }
 
@@ -85,7 +87,9 @@ export function computeMarket(
   const sam = sum(reachable);
   const winnable = sum(premium);
   const winnableLaunches = launchesFor(premium);
-  const somLaunches = Math.min(p.launchesPerYear, winnableLaunches);
+  // A failed launch delivers nothing and, conservatively, earns nothing (refund or free re-flight).
+  const successfulLaunches = p.launchesPerYear * p.launchSuccessRate;
+  const somLaunches = Math.min(successfulLaunches, winnableLaunches);
   const scale = winnableLaunches > 0 ? somLaunches / winnableLaunches : 0;
   const som = { sats: winnable.sats * scale, massKg: winnable.massKg * scale };
 
@@ -112,6 +116,7 @@ export function computeMarket(
       SOM: { id: "SOM", ...som, revenueEur: [somRevenue, somRevenue], launches: somLaunches },
     },
     growth,
+    launches: { planned: p.launchesPerYear, successful: successfulLaunches },
     bottleneck: somLaunches < winnableLaunches ? "capacity" : "demand",
   };
 }

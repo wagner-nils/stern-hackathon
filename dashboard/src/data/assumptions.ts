@@ -1,9 +1,10 @@
-import { cadencePlan } from "./market";
+import { cadencePlan, premiumPlan, successPlan } from "./market";
 import type { Assumption } from "./types";
 
 export type AssumptionId =
   | "planningYear"
   | "launchesPerYear"
+  | "launchSuccessRate"
   | "fillRate"
   | "pricePerLaunchEurM"
   | "marketGrowth"
@@ -25,7 +26,7 @@ export const assumptions: Assumption<AssumptionId>[] = [
     confidence: "high",
     owner: "Nils",
     sourceId: "teamEstimate",
-    note: "Moving the year resets launches to Isar's plan for that year.",
+    note: "Moving the year resets launches, success rate and dedicated share to their plan for that year.",
   },
   {
     id: "launchesPerYear",
@@ -40,6 +41,20 @@ export const assumptions: Assumption<AssumptionId>[] = [
     owner: "Luca",
     sourceId: "isarFlightPlan",
     note: "Isar: 4 in 2027, about double in 2028 (fully booked); ramp 7/10/12 to 2030. Slider stops at the site licence of 30/yr for all of Andøya.",
+  },
+  {
+    id: "launchSuccessRate",
+    label: "Launch success rate",
+    group: "isar",
+    value: successPlan[2027],
+    unit: "%",
+    min: 0.5,
+    max: 1,
+    step: 0.01,
+    confidence: "medium",
+    owner: "Nils",
+    sourceId: "expertSchingler",
+    note: "Ramp 75% (2026) to 92% (2030). Insurance for Isar's next mission costs about 25%; mature launchers fail 5–8% of the time. A failed launch is counted as delivering and earning nothing.",
   },
   {
     id: "fillRate",
@@ -87,15 +102,15 @@ export const assumptions: Assumption<AssumptionId>[] = [
     id: "premiumShare",
     label: "Share that pays for a dedicated launch",
     group: "market",
-    value: 0.2,
+    value: premiumPlan[2027],
     unit: "%",
     min: 0,
     max: 0.5,
-    step: 0.05,
+    step: 0.025,
     confidence: "medium",
     owner: "Benedikt",
     sourceId: "brycetech2026",
-    note: "Today 17–23% of non-broadband smallsats fly on small launchers (about 10–14% in the West). SpaceX reportedly stops new rideshare bookings beyond 2028, and defence demand pushes this up.",
+    note: "Ramp 10% (2026) to 22.5% (2030): new rockets get demo payloads first (Planet). Today 17–23% of non-broadband smallsats fly on small launchers; the reported SpaceX rideshare stop after 2028 and defence demand push this up.",
   },
   {
     id: "usInstitutionalOpen",

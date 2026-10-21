@@ -45,13 +45,22 @@ describe("computeMarket", () => {
 
   it("is capacity-bound when demand exceeds Isar's launches", () => {
     const rows = [segment({ satsPerYear: 1000 })];
-    const p = { ...base, premiumShare: 1, launchesPerYear: 2, fillRate: 0.7 };
+    const p = { ...base, premiumShare: 1, launchesPerYear: 2, fillRate: 0.7, launchSuccessRate: 1 };
     const result = computeMarket(rows, sites, spectrum, p, inputs);
     expect(result.bottleneck).toBe("capacity");
     expect(result.tiers.SOM.launches).toBe(2);
     // Two launches at 70% of 700 kg carry 980 kg, i.e. 9.8 satellites of 100 kg.
     expect(result.tiers.SOM.sats).toBeCloseTo(9.8);
     expect(result.tiers.SOM.revenueEur[0]).toBe(2 * base.pricePerLaunchEurM * 1e6);
+  });
+
+  it("only counts successful launches towards what Isar flies and earns", () => {
+    const rows = [segment({ satsPerYear: 1000 })];
+    const p = { ...base, premiumShare: 1, launchesPerYear: 4, fillRate: 0.7, launchSuccessRate: 0.75 };
+    const result = computeMarket(rows, sites, spectrum, p, inputs);
+    expect(result.launches).toEqual({ planned: 4, successful: 3 });
+    expect(result.tiers.SOM.launches).toBeCloseTo(3);
+    expect(result.tiers.SOM.revenueEur[0]).toBeCloseTo(3 * base.pricePerLaunchEurM * 1e6);
   });
 
   it("is demand-bound when Isar has spare launches", () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { type AssumptionId, type AssumptionValues, defaultValues } from "../data/assumptions";
-import { cadencePlan } from "../data/market";
+import { cadencePlan, premiumPlan, successPlan } from "../data/market";
 
 const ids = Object.keys(defaultValues) as AssumptionId[];
 
@@ -35,10 +35,17 @@ export function useScenario() {
 
   useEffect(() => writeHash(values), [values]);
 
+  // A new planning year brings that year's plan for cadence, success rate and dedicated share; each can still be moved.
   const set = (id: AssumptionId, value: number) =>
     setValues((prev) =>
       id === "planningYear"
-        ? { ...prev, planningYear: value, launchesPerYear: cadencePlan[value] ?? prev.launchesPerYear }
+        ? {
+            ...prev,
+            planningYear: value,
+            launchesPerYear: cadencePlan[value] ?? prev.launchesPerYear,
+            launchSuccessRate: successPlan[value] ?? prev.launchSuccessRate,
+            premiumShare: premiumPlan[value] ?? prev.premiumShare,
+          }
         : { ...prev, [id]: value },
     );
 

@@ -76,6 +76,10 @@ export const sources: Record<string, Source> = {
     title: "NSPM-17 (Federal Register, 20 Aug 2026): US government payloads generally fly on US-built launchers",
     url: "https://www.federalregister.gov/d/2026-17372",
   },
+  expertSchingler: {
+    id: "expertSchingler",
+    title: "Expert interview: Robbie Schingler (Planet), 21 Oct 2026 – insurance on Isar's next mission about 25%, new rockets get demo payloads first",
+  },
   orbitalMechanics: {
     id: "orbitalMechanics",
     title: "Launch azimuth and inclination: cos(i) = sin(Az) · cos(latitude)",

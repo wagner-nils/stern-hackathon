@@ -24,7 +24,16 @@ export function Tween({ value, format, ms = 300 }: { value: number; format: (n: 
       if (k < 1) frame = requestAnimationFrame(step);
     };
     frame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frame);
+    // Background tabs pause animation frames; this makes sure the final value always lands.
+    const land = setTimeout(() => {
+      cancelAnimationFrame(frame);
+      current.current = value;
+      setShown(value);
+    }, ms + 50);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(land);
+    };
   }, [value, ms]);
 
   return <>{format(shown)}</>;

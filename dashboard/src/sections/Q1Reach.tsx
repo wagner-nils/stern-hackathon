@@ -9,7 +9,7 @@ import { type DemandYear, demandByYear } from "../data/demand";
 import { market } from "../data/market";
 import { sites } from "../data/sites";
 import { spectrum } from "../data/vehicles";
-import { fmtInt, fmtPct, share } from "../lib/format";
+import { fmtInt, fmtOne, fmtPct, share } from "../lib/format";
 import { computeMarket } from "../model/funnel";
 import { reachableInclinations } from "../model/orbits";
 import type { Scenario } from "../state/useScenario";
@@ -48,8 +48,8 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
 
       <p className="answer">
         From Andøya, Isar can serve <strong>{fmtPct(share(SAM.sats, TAM.sats))}</strong> of global satellite demand, but
-        only <strong>{fmtPct(share(SAM.massKg, TAM.massKg))}</strong> of its mass. In {year}, {fmtInt(SOM.launches)}{" "}
-        launches capture {fmtPct(share(SOM.sats, SAM.sats))} of that serviceable market:{" "}
+        only <strong>{fmtPct(share(SAM.massKg, TAM.massKg))}</strong> of its mass. In {year}, {fmtInt(result.launches.planned)} launches ({fmtOne(result.launches.successful)} expected
+        to succeed) capture {fmtPct(share(SOM.sats, SAM.sats))} of that serviceable market:{" "}
         {result.bottleneck === "capacity" ? "capacity, not demand, is the constraint." : "demand, not capacity, is the constraint."}
       </p>
 
@@ -145,7 +145,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
           <div className="insight__number">03</div>
           <h3>{result.bottleneck === "capacity" ? "Capacity binds first" : "Demand binds first"}</h3>
           <p>
-            {fmtInt(SOM.launches)} launches in {year} fly {fmtPct(share(SOM.sats, dedicated.sats))} of the dedicated demand
+            {fmtOne(result.launches.successful)} successful launches in {year} fly {fmtPct(share(SOM.sats, dedicated.sats))} of the dedicated demand
             Isar can reach. Growth needs cadence and new orbits: the case for a second site.
           </p>
         </article>

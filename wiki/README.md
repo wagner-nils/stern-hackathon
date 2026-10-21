@@ -28,6 +28,11 @@ Das Wiki bündelt alles, was das Team zum Case weiß: Notion-Recherche (Insider,
 
 - **Q1:** Von Andøya aus kann Isar 9,3 % der weltweit gestarteten Satelliten bedienen, aber nur 0,7 % der Masse (Basis 2025, hochgerechnet auf 2027). Bis etwa 2030 begrenzt Isars Kapazität, danach Andøyas Orbit-Band. Details: [Q1](analysis/q1-andoya-reach.md).
 - **Q2:** Erste Hypothese: Verteidigung und schnell abrufbare Starts sowie Missionsservices verfolgen; eigene Konstellation, eigene Startplätze und Satellitenbau bewusst nicht. Details: [Q2](analysis/q2-business-areas.md).
+- **Expertengespräch (Planet):**
+  - Kunden wählen nach Orbit, Vorlaufzeit, Preis und Zuverlässigkeit.
+  - Neue Raketen bekommen erst Demo-Nutzlasten. Die Versicherung für Isars nächsten Flug kostet ca. 25 %.
+  - Planet und Isar bieten der Bundesregierung gemeinsam schnelle Wiederherstellung an.
+  - Details: [Robbie Schingler](expert/robbie-schingler.md).
 - **Größte Unsicherheiten:** Spectrum-Preis (nicht veröffentlicht), Anteil der Kunden, die für einen dedizierten Start zahlen, unabhängige Bestätigung von Flug 2.
 
 ## Konventionen

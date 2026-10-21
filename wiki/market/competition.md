@@ -5,6 +5,7 @@
 - Der eigentliche Wettbewerber ist **SpaceX-Rideshare**: billiger pro kg, aber ohne Wunschorbit und Wunschtermin. Neue Buchungen nach 2028 nimmt SpaceX angeblich nicht mehr an.
 - **Rocket Lab** ist der Benchmark für einen erfolgreichen Kleinträger: 199 Mio. USD Launch-Umsatz 2025, aber zwei Drittel des Gesamtumsatzes aus Raumfahrzeugen.
 - In Europa ist Isar vorn: RFA und PLD sind noch nicht geflogen, Orbex ist insolvent, MaiaSpace startet frühestens 2027.
+- **Laut Robbie Schingler (Planet, 21.10.2026)** ist der Markt wegen SpaceX' Fast-Monopol wieder so unzuverlässig und teuer wie um 1999. Die Branche hat 5–8 % Fehlstarts, bei Planet waren es 3 von 44 Starts. Kunden verteilen ihre Starts deshalb bewusst auf mehrere Anbieter, das ist eine Chance für Alternativen wie Isar.
 
 ## Überblick
 

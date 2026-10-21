@@ -15,6 +15,12 @@ Spiegel der Modellwerte in `dashboard/src/data/` (`assumptions.ts`, `market.ts`,
 | US-Regierungsnachfrage offen für Isar | 0 % | 0–100 % | mittel | Nils | NSPM-17 |
 | Nachfrage anderer Regierungen offen für Isar | 20 % | 0–100 % | niedrig | Benedikt | Japan, Indien, Korea fliegen meist mit eigenen Raketen |
 
+Prüfung durch den Experten (Robbie Schingler, 21.10.2026):
+
+- **Premium-Anteil:** Unerprobte Raketen bekommen nur Demo-Nutzlasten. Für 2027 sind 20 % eher hoch, der Wert sollte mit der Zuverlässigkeit steigen.
+- **Zuverlässigkeit:** Bisher nicht im Modell. Die Versicherung kostet ca. 25 %, der Branchenschnitt liegt bei 5–8 % Fehlstarts.
+- **Preis:** Er ist für Kunden erst Kriterium Nr. 3. Die 12 Mio. € bleiben plausibel.
+
 ## Feste Marktwerte
 
 | Wert | Basis | Konfidenz | Quelle |

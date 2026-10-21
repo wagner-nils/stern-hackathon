@@ -27,7 +27,7 @@
 - **Plan:** mindestens 4 Flüge 2027, 2028 etwa doppelt so viele und laut Isar „fully“ bzw. „nearly fully“ gebucht.
 - **Benannte Missionen** (ca. 12–15, eigene Zählung; manche teilen sich einen Flug):
   - Flug 3 (R-Space)
-  - Planet Pelican (Ende 2026 bis 2027, weitere geplant)
+  - Planet: hat laut Robbie Schingler (21.10.2026) Isars 4. Start gekauft und will den nächsten nach dem aktuellen Manifest. Die Mission ist eine Demo (erster in Deutschland gebauter Planet-Satellit, noch ohne zahlenden Kunden). Die Versicherung kostet ca. 25 %.
   - ESA ΣYNDEO-3, CASSINI, Tom & Jerry (ESA/EU Flight Ticket Initiative)
   - ElevationSpace AOBA (2027), Astroscale ADRAS-J2 (2027–28), ELSA-M (2028), NOSA AOS-D/P (2028)
   - SEOPS: 6 dedizierte Flüge (2028–2030, von Andøya und Nova Scotia)

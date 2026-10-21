@@ -67,3 +67,4 @@ Alle Quellen, die in Wiki und Dashboard verwendet werden, nach Thema. Abgerufen 
 ## Team-Quellen
 
 - Notion „Common Docs: Isar Aerospace“: Insider (Luca), Investor/Old (Benedikt), Techie (Nils), Synthese Q1, Expert Q&A
+- Expertengespräch mit Robbie Schingler (Co-Founder und CSO Planet), 21.10.2026, Notizen von Nils: [expert/robbie-schingler.md](../expert/robbie-schingler.md). Mündliche Aussagen, nicht unabhängig geprüft.

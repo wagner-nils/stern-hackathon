@@ -12,6 +12,21 @@
 - Deutschland: 35 Mrd. € für Weltraumsicherheit bis 2030, inklusive schnell abrufbarer Starts (Verteidigungsminister, 25.09.2025). Die Bundeswehr prüft einen eigenen Startplatz.
 - Novaspace: Verteidigung macht 48 % des Werts im Satellitenbau und -start bis 2034 aus.
 - Offene Frage: Welche Orbits braucht Verteidigung? Radar-Aufklärung fliegt oft auf 37–45°, das ist von Andøya nicht erreichbar.
+- Expertengespräch (Robbie Schingler, Planet, 21.10.2026):
+  - Planet und Isar bieten der Bundesregierung gemeinsam schnelle Wiederherstellung an: 10 Satelliten an einem Tag bauen, am nächsten starten, einen Verlust binnen 2 Tagen ersetzen.
+  - Seine Vision sind souveräne Netze statt US-Hegemonie, etwa baltische Staaten mit je 10 Satelliten über der Arktis.
+  - Planet hat dafür eine deutsche Fabrik mit unabhängigem deutschem Board aufgebaut.
+
+## Orbit-Trends und neue Segmente
+
+Laut Expertengespräch, 21.10.2026:
+
+- **Erdbeobachtung** bleibt im SSO bzw. polar: globale Abdeckung alle 90 Minuten.
+- **Kommunikations-Konstellationen** wandern in geneigte LEO-Bahnen um ±55°. Das ist nicht von Andøya erreichbar, aber von Nova Scotia.
+- **Rechenzentren im All:**
+  - Bahn: Dämmerungs-SSO auf ca. 1.500 km, wegen fast durchgehender Sonnenenergie. Das sind ca. 102°, also von Andøya erreichbar.
+  - Stand: Die erste TPU von Google ist im All, wirtschaftlich wird das in ca. 5 Jahren.
+  - Hindernis: der Kostenvorteil von SpaceX.
 
 ## Europäische Programme
 

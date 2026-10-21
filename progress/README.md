@@ -13,6 +13,7 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **21.10. 18:36**: Expertengespräch Robbie Schingler (Planet) ins Wiki übernommen: Rohnotizen, Kernaussagen, Konsequenzen-Tabelle; Querverweise in Q1 (Validierung, Zuverlässigkeit fehlt im Modell), Q2 (Resilienz-Paket mit Planet, Arktis-Netze, Rechenzentren im All), Markt, Isar, Kadenz, Annahmen, Quellen.
 - **21.10. 17:46**: Q2: Betreuer-Hinweise (Startplatz → Orbits → Kunden, Zeithorizont 15–20 Jahre durch Pad-Verträge, 1-t-Klasse) und Kundenanalyse im Andøya-Band (GCAT 2025: 474 offene Satelliten, 51 t; Planet, Spire, ASI, OroraTech, ICEYE …) ins Wiki; Skript pipeline/gcat_customers.py.
 - **21.10. 17:23**: UI heller und ruhiger: helles Isar-Theme (Weiß/Hellgrau, Navy-Text, ein Blau-Akzent), keine Sterne, kein Leuchten, kein Einblenden, statische Orbit-Skizze in einer Karte, Charts ohne Animation. Behoben: Absturz beim Laden und Kapitelwechsel aus dem vorigen Commit bf049d4 (scrollTo gibt in neuem Chromium ein Promise zurück, das React als Cleanup aufrief).
 - **21.10. 17:19**: Dashboard auf Isar-Aerospace-CI umgestellt (Navy/Schwarz, Isar-Blau, dünne Display-Schrift, Mono-Labels mit Kreis-Bullet; Manrope/Inter/DM Mono statt der lizenzierten Isar-Schriften). Neu: Orbit-Grafik im Q1-Kopf, Sternenhimmel, hochzählende Zahlen, gestaffeltes Einblenden, leuchtende SOM-Kachel; respektiert „Bewegung reduzieren“. Notion: „TAM / SAM / SOM: Synthese aller Recherchen“ oben unter Market Research (inkl. Benedikts neuer Tiefenrecherche).

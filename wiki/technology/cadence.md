@@ -6,6 +6,12 @@
 - Rocket Lab brauchte rund fünf Jahre nach dem ersten Orbit für 10 Starts pro Jahr. Isars Plan (4 / 7 / 10 / 12 Starts 2027–2030) ist ehrgeizig, aber nicht unrealistisch.
 - Beworbene Kapazitäten (Lizenzen, Werkskapazität) sind keine erreichte Leistung.
 
+## Risiko Fehlstart
+
+- Laut Robbie Schingler (Planet, 21.10.2026) verzögert ein Fehlstart die ganze Warteschlange auf dem Pad um mehr als ein Jahr, weil erst die Rückkehr zum Flugbetrieb (Return to Flight) abgeschlossen sein muss.
+- Branchenschnitt: 5–8 % Fehlstarts. Die Versicherung für Isars nächste Mission kostet ca. 25 %.
+- Bei einem einzigen Pad ist das ein Klumpenrisiko für Isars Kadenz. Ein zweiter Standort bringt deshalb auch Redundanz.
+
 ## Vier Zeiten getrennt halten
 
 1. **Vorlauf** vom Vertrag bis zum Start

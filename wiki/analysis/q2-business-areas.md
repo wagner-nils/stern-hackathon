@@ -67,11 +67,23 @@ Größte Betreiber 2025:
 - **Nicht von Andøya erreichbar:** Radar-Konstellationen auf 37–45° (iQPS, Synspective), ISS-nahe Missionen, Breitband-Konstellationen, GEO-Kommunikation und Navigation. Nova Scotia (45–98°) öffnet mittlere Inklinationen ab 45°, Kourou die niedrigen und GTO.
 - **Isars Verteidigungsnachfrage ist neu, nicht historisch:** Isar nennt 60 % Verteidigung. In den geflogenen Daten des offenen Markts ist Verteidigung kaum sichtbar (21 Funkaufklärungs-Satelliten, meist kommerziell). Die Nachfrage nach souveränem, schnell abrufbarem Zugang kommt also erst, sie lässt sich nicht aus den Startzahlen ableiten.
 
+## Aus dem Expertengespräch
+
+Robbie Schingler (Planet), 21.10.2026, Details auf der [Expertenseite](../expert/robbie-schingler.md):
+
+- **Verteidigung als Resilienz-Paket:** Planet und Isar bieten der Bundesregierung gemeinsam an, an einem Tag 10 Satelliten zu bauen, am nächsten zu starten und einen verlorenen Satelliten binnen 2 Tagen zu ersetzen. Schnell abrufbare Starts plus schneller Satellitenbau ergeben Abschreckung. Das stützt „Verteidigung verfolgen“, und zwar als Partnerschaft mit Satellitenbauern statt mit eigenen Satelliten.
+- **Souveräne Netze über der Arktis:** Seine Vision sind z. B. baltische Staaten mit je 10 Satelliten, vernetzt über die Arktis. Polare Bahnen sind genau Andøyas Stärke.
+- **Kommunikation wandert auf ±55°:** Das ist von Andøya nicht erreichbar, von Nova Scotia schon (ab 45°).
+- **Rechenzentren im All als neues Segment:** Dämmerungs-SSO auf ca. 1.500 km (ca. 102°, von Andøya erreichbar), wirtschaftlich in ca. 5 Jahren. Größtes Hindernis ist der Kostenvorteil von SpaceX. Beobachten, nicht darauf bauen.
+- **Zuverlässigkeit vor Expansion:** Neue Raketen bekommen erst Demo-Nutzlasten, und ein Fehlstart sperrt das Pad über ein Jahr. Ein zweiter Standort ist deshalb auch Redundanz.
+
 ## Long List mit erster Hypothese
 
 | Geschäftsfeld | Hypothese | Warum |
 | --- | --- | --- |
 | Verteidigung und schnell abrufbare Starts | verfolgen | größter Nachfragezug, hohe Zahlungsbereitschaft, Souveränität als Schutzgraben; Deutschland plant 35 Mrd. € für Weltraumsicherheit bis 2030 |
+| Schnelle Wiederherstellung von Konstellationen gemeinsam mit Satellitenbauern (z. B. Planet) | verfolgen | vom Experten selbst als gemeinsamer Pitch an die Bundesregierung beschrieben; nutzt Andøyas polare Bahnen |
+| Rechenzentren im All (Dämmerungs-SSO, ca. 1.500 km) | beobachten | von Andøya erreichbar, aber frühestens in ca. 5 Jahren wirtschaftlich; SpaceX-Kostenvorteil |
 | Missionsservices: Rideshare-Bündelung, Kick-Stage bzw. Orbit-Transfer, Integration | verfolgen | hebt Füllgrad und Umsatz pro Start bei wenig Kapital; große Inklinationsunterschiede überbrückt es aber nicht (ca. 130 m/s pro Grad) |
 | Suborbitale Hyperschall-Tests für Verteidigung (wie Rocket Labs HASTE) | prüfen | gleiche Rakete, orbitunabhängig, füllt die Kadenz; europäische Nachfrage offen |
 | Größere bzw. verbesserte Rakete (ELC-Komponente B bis 2028) | später, an Bedingungen geknüpft | öffnet schwerere Nutzlasten und Konstellationen; hoher Kapitalbedarf, Wettbewerb mit MaiaSpace und Ariane 6 |
@@ -105,4 +117,4 @@ Größte Betreiber 2025:
 
 ## Frage an den Experten
 
-„If you were Isar's CEO, which business next to launch would you build, and which would make Planet trust them less as a supplier?“ Siehe [Expertenseite](../expert/robbie-schingler.md).
+„If you were Isar's CEO, which business next to launch would you build, and which would make Planet trust them less as a supplier?“ Eine direkte Antwort gab es nicht. Seine Hinweise stehen oben unter „Aus dem Expertengespräch“, die Notizen auf der [Expertenseite](../expert/robbie-schingler.md).

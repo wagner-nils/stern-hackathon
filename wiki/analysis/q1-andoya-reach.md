@@ -63,6 +63,15 @@ Alle Annahmen mit Spanne und Quelle: [Annahmen-Register](../reference/assumption
 - **Rideshare-Stopp nach 2028** ist unbestätigt. Wenn er kommt, steigt der Premium-Anteil und die SOM-Grenze verschiebt sich.
 - **Ab ca. 2030 reicht Andøya nicht mehr.** Neue Standorte müssen neue Orbits bringen, nicht nur mehr Pads.
 
+## Validierung durch den Experten
+
+Robbie Schingler (Planet), 21.10.2026, Details auf der [Expertenseite](../expert/robbie-schingler.md):
+
+- **Bestätigt:** Kunden wählen nach Orbit, Vorlaufzeit, Preis und Zuverlässigkeit, in dieser Reihenfolge. Die Erreichbarkeit als harter Filter im SAM ist richtig. Erdbeobachtung bleibt im SSO.
+- **Schärfer zu fassen:** Unerprobte Raketen bekommen nur Demo-Nutzlasten. Der Premium-Anteil von 20 % ist für 2027 eher hoch, plausibel ist ein Hochlauf von ca. 10–15 % auf 20–25 % bis 2030, mit wachsender Zuverlässigkeit.
+- **Fehlt bisher im Modell:** Zuverlässigkeit. Die Versicherung für Isars nächste Mission kostet ca. 25 %, der Branchenschnitt liegt bei 5–8 % Fehlstarts. Ein Fehlstart blockiert das Pad zudem für mehr als ein Jahr.
+- **Preis:** Er ist erst Kriterium Nr. 3, und der Markt ist wegen SpaceX' Fast-Monopol wieder teuer. Die 12 Mio. € pro Start bleiben plausibel.
+
 ## Offene Punkte
 
 - Flug 2 unabhängig bestätigen ([Spectrum](../company/spectrum.md))

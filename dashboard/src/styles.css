@@ -1,0 +1,383 @@
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --ink: #12151c;
+  --muted: #5d6573;
+  --line: #e2e5ea;
+  --hover: rgba(18, 21, 28, 0.05);
+  --accent: #e8572a;
+  --accent-soft: #fdebe4;
+  --bar: #1f3a68;
+  --bar-muted: #c9ced8;
+  --good: #1f7a4d;
+  --warn: #a36b00;
+  --bad: #b3261e;
+  --radius: 10px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1218;
+    --surface: #171b23;
+    --ink: #eef0f4;
+    --muted: #9aa3b2;
+    --line: #2a303b;
+    --hover: rgba(255, 255, 255, 0.06);
+    --accent-soft: #3a2119;
+    --bar: #7d9cd6;
+    --bar-muted: #3a414e;
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.brand__mark {
+  color: var(--accent);
+  font-size: 22px;
+}
+
+.brand__title {
+  font-weight: 700;
+}
+
+.brand__sub {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tabs button {
+  border: 0;
+  background: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.tabs button:hover {
+  background: var(--hover);
+}
+
+.tabs button.is-active {
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+.chapter {
+  display: grid;
+  gap: 20px;
+}
+
+.chapter h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.muted,
+.caption {
+  color: var(--muted);
+}
+
+.caption {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+
+.answer {
+  padding: 16px 20px;
+  border-left: 4px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 17px;
+}
+
+.answer__tag {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.notice {
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  font-size: 14px;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.kpi {
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.kpi--emphasis {
+  border-color: var(--accent);
+}
+
+.kpi__label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.kpi__value {
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi__sub {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.card__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.toggle {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.toggle button {
+  border: 0;
+  background: none;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.toggle button.is-active {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.link-button {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.link-button:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.slider {
+  display: grid;
+  gap: 4px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.slider__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.slider__top strong {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.slider input {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.slider__meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge--high {
+  background: color-mix(in srgb, var(--good) 15%, transparent);
+  color: var(--good);
+}
+
+.badge--medium {
+  background: color-mix(in srgb, var(--warn) 15%, transparent);
+  color: var(--warn);
+}
+
+.badge--low,
+.badge--placeholder {
+  background: color-mix(in srgb, var(--bad) 12%, transparent);
+  color: var(--bad);
+}
+
+.chart-label {
+  fill: var(--ink);
+  font-size: 12px;
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+a {
+  color: var(--accent);
+}
+
+.footer {
+  padding: 16px 24px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .topbar,
+  .content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .chapter h2 {
+    font-size: 22px;
+  }
+}

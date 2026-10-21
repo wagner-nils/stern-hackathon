@@ -61,7 +61,7 @@ export function TamSamSom({ result, metric }: { result: MarketResult; metric: Me
               →
             </span>
           )}
-          <article className={`tier tier--${t.id.toLowerCase()} reveal`} style={{ ["--d" as string]: `${k * 120}ms` }}>
+          <article className={`tier tier--${t.id.toLowerCase()}`}>
             <div className="tier__overline">{t.id}</div>
             <h3 className="tier__title">{copy[t.id].title}</h3>
             <div className="tier__figure">

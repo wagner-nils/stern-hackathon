@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from "react";
 const reducedMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 
 /** Counts from the previous value to the new one, so the effect of a slider is easy to follow. */
-export function Tween({ value, format, ms = 700 }: { value: number; format: (n: number) => string; ms?: number }) {
-  const [shown, setShown] = useState(0);
-  const current = useRef(0);
+export function Tween({ value, format, ms = 300 }: { value: number; format: (n: number) => string; ms?: number }) {
+  const [shown, setShown] = useState(value);
+  const current = useRef(value);
 
   useEffect(() => {
     const from = current.current;

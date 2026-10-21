@@ -13,6 +13,7 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **21.10. 17:23**: UI heller und ruhiger: helles Isar-Theme (Weiß/Hellgrau, Navy-Text, ein Blau-Akzent), keine Sterne, kein Leuchten, kein Einblenden, statische Orbit-Skizze in einer Karte, Charts ohne Animation. Behoben: Absturz beim Laden und Kapitelwechsel aus dem vorigen Commit bf049d4 (scrollTo gibt in neuem Chromium ein Promise zurück, das React als Cleanup aufrief).
 - **21.10. 17:19**: Dashboard auf Isar-Aerospace-CI umgestellt (Navy/Schwarz, Isar-Blau, dünne Display-Schrift, Mono-Labels mit Kreis-Bullet; Manrope/Inter/DM Mono statt der lizenzierten Isar-Schriften). Neu: Orbit-Grafik im Q1-Kopf, Sternenhimmel, hochzählende Zahlen, gestaffeltes Einblenden, leuchtende SOM-Kachel; respektiert „Bewegung reduzieren“. Notion: „TAM / SAM / SOM: Synthese aller Recherchen“ oben unter Market Research (inkl. Benedikts neuer Tiefenrecherche).
 - **21.10. 17:12**: RQ1-Annahmen einfach erklärt in Notion (Investor: Market Research → Dashboard Prototyp → RQ1: Annahmen und Quellen). Alle 16 Kernquellen live geprüft und bestätigt; Präzisierungen (SpaceX-Preis-API, BryceTech-PDF S. 29, Novaspace „bis 2035“, NSPM-17 im Federal Register, SatNews als Primärquelle zum Rideshare-Stopp) in Dashboard und Wiki übernommen.
 - **21.10. 16:59**: Wissens-Wiki unter wiki/ angelegt (17 Seiten: Case, Unternehmen, Technik, Markt, Analyse Q1/Q2, Experte, Annahmen, Quellen, Glossar; alle internen Links geprüft). Q2-Frage in CLAUDE.md eingetragen.

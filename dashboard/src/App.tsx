@@ -19,7 +19,10 @@ export function App() {
   const scenario = useScenario();
 
   // A new chapter starts at the top, like the next slide.
-  useEffect(() => window.scrollTo({ top: 0 }), [chapter]);
+  // Block body on purpose: newer browsers return a Promise from scrollTo, which React would call as a cleanup.
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [chapter]);
 
   // Arrow keys page through the chapters when presenting.
   useEffect(() => {
@@ -35,7 +38,6 @@ export function App() {
 
   return (
     <div className="app">
-      <div className="stars" aria-hidden />
       <header className="topbar">
         <div className="brand">
           <svg className="brand__mark" viewBox="0 0 24 24" aria-hidden>

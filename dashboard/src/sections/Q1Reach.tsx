@@ -35,15 +35,18 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
 
   return (
     <section className="chapter">
-      <div className="hero reveal">
+      <div className="hero">
         <header className="chapter__head">
           <div className="overline">Question 1 · Starting position</div>
           <h2>What share of global launch demand can Isar serve from Andøya?</h2>
         </header>
-        <OrbitHero reach={reach} siteLabel={`Andøya ${andoya[0].lat}° N · reaches ${reach.map(([lo, hi]) => `${lo.toFixed(0)}–${hi.toFixed(0)}°`).join(", ")}`} />
+        <div className="card orbit-card">
+          <div className="overline">Orbits customers buy</div>
+          <OrbitHero reach={reach} siteLabel={`Andøya ${andoya[0].lat}° N · reaches ${reach.map(([lo, hi]) => `${lo.toFixed(0)}–${hi.toFixed(0)}°`).join(", ")}`} />
+        </div>
       </div>
 
-      <p className="answer reveal" style={{ ["--d" as string]: "120ms" }}>
+      <p className="answer">
         From Andøya, Isar can serve <strong>{fmtPct(share(SAM.sats, TAM.sats))}</strong> of global satellite demand, but
         only <strong>{fmtPct(share(SAM.massKg, TAM.massKg))}</strong> of its mass. In {year}, {fmtInt(SOM.launches)}{" "}
         launches capture {fmtPct(share(SOM.sats, SAM.sats))} of that serviceable market:{" "}
@@ -99,7 +102,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
       </div>
 
       <div className="grid-2">
-        <div className="card reveal" style={{ ["--d" as string]: "100ms" }}>
+        <div className="card">
           <div className="card__head">
             <h3>Andøya reaches polar and SSO orbits only</h3>
           </div>
@@ -109,7 +112,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
             Norwegian Sea give {reach.map(([lo, hi]) => `${lo.toFixed(0)}–${hi.toFixed(0)}°`).join(", ")}.
           </p>
         </div>
-        <div className="card reveal" style={{ ["--d" as string]: "200ms" }}>
+        <div className="card">
           <div className="card__head">
             <h3>Most of the market is captive</h3>
           </div>
@@ -121,7 +124,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
       </div>
 
       <div className="insights">
-        <article className="insight reveal" style={{ ["--d" as string]: "0ms" }}>
+        <article className="insight">
           <div className="insight__number">01</div>
           <h3>Orbit is the hard limit</h3>
           <p>
@@ -129,7 +132,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
             light: many small Earth-observation satellites, little mass.
           </p>
         </article>
-        <article className="insight reveal" style={{ ["--d" as string]: "120ms" }}>
+        <article className="insight">
           <div className="insight__number">02</div>
           <h3>Rideshare sets the price</h3>
           <p>
@@ -138,7 +141,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
             beyond 2028.
           </p>
         </article>
-        <article className="insight reveal" style={{ ["--d" as string]: "240ms" }}>
+        <article className="insight">
           <div className="insight__number">03</div>
           <h3>{result.bottleneck === "capacity" ? "Capacity binds first" : "Demand binds first"}</h3>
           <p>

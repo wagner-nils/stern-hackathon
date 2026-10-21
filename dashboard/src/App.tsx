@@ -18,6 +18,9 @@ export function App() {
   const [chapter, setChapter] = useState<ChapterId>("q1");
   const scenario = useScenario();
 
+  // A new chapter starts at the top, like the next slide.
+  useEffect(() => window.scrollTo({ top: 0 }), [chapter]);
+
   // Arrow keys page through the chapters when presenting.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -32,9 +35,13 @@ export function App() {
 
   return (
     <div className="app">
+      <div className="stars" aria-hidden />
       <header className="topbar">
         <div className="brand">
-          <span className="brand__mark" aria-hidden />
+          <svg className="brand__mark" viewBox="0 0 24 24" aria-hidden>
+            <path d="M4 20 L20 4" />
+            <circle cx="20" cy="4" r="2.2" />
+          </svg>
           <div>
             <div className="brand__title">Expansion Navigator</div>
             <div className="brand__sub">Isar Aerospace · prepared for SSVE</div>
@@ -49,7 +56,7 @@ export function App() {
         </nav>
       </header>
 
-      <main className="content">
+      <main className="content" key={chapter}>
         {chapter === "q1" && <Q1Reach scenario={scenario} />}
         {chapter === "q2" && <Upcoming question="Question 2" opens="21 Oct, 16:15" />}
         {chapter === "q3" && <Upcoming question="Question 3" opens="22 Oct, 09:30" />}

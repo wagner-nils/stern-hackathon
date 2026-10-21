@@ -1,4 +1,5 @@
 import { Bar, BarChart, Cell, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { animation, tooltipProps } from "../lib/chartTheme";
 import { fmtInt, fmtPct, fmtTonnes, share } from "../lib/format";
 import type { Step } from "../model/funnel";
 
@@ -19,12 +20,12 @@ export function FunnelChart({ steps, metric }: { steps: Step[]; metric: "sats" |
       <BarChart data={data} layout="vertical" margin={{ top: 4, right: 72, bottom: 4, left: 8 }}>
         <XAxis type="number" hide />
         <YAxis type="category" dataKey="label" width={250} tickLine={false} axisLine={false} />
-        <Tooltip formatter={(v: number) => [format(v), ""]} separator="" cursor={{ fill: "var(--hover)" }} />
-        <Bar dataKey="value" isAnimationActive={false} barSize={22}>
+        <Tooltip {...tooltipProps} formatter={(v: number) => [format(v), ""]} />
+        <Bar dataKey="value" barSize={20} radius={[0, 2, 2, 0]} {...animation}>
           {data.map((d) => (
             <Cell
               key={d.id}
-              fill={d.id === "som" ? "var(--primary)" : d.id === "reachable" ? "var(--ink)" : "var(--grey-300)"}
+              fill={d.id === "som" ? "var(--blue)" : d.id === "reachable" ? "var(--text)" : "var(--bar)"}
             />
           ))}
           <LabelList dataKey="pct" position="right" formatter={(v: number) => fmtPct(v)} className="chart-label" />

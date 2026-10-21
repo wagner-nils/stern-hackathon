@@ -3,6 +3,7 @@ import { AssumptionPanel } from "../components/AssumptionPanel";
 import { FunnelChart } from "../components/FunnelChart";
 import { GroupChart } from "../components/GroupChart";
 import { InclinationChart } from "../components/InclinationChart";
+import { OrbitHero } from "../components/OrbitHero";
 import { type Metric, TamSamSom } from "../components/TamSamSom";
 import { type DemandYear, demandByYear } from "../data/demand";
 import { market } from "../data/market";
@@ -34,12 +35,15 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
 
   return (
     <section className="chapter">
-      <header className="chapter__head">
-        <div className="overline overline--primary">Question 1 · Starting position</div>
-        <h2>What share of global launch demand can Isar serve from Andøya?</h2>
-      </header>
+      <div className="hero reveal">
+        <header className="chapter__head">
+          <div className="overline">Question 1 · Starting position</div>
+          <h2>What share of global launch demand can Isar serve from Andøya?</h2>
+        </header>
+        <OrbitHero reach={reach} siteLabel={`Andøya ${andoya[0].lat}° N · reaches ${reach.map(([lo, hi]) => `${lo.toFixed(0)}–${hi.toFixed(0)}°`).join(", ")}`} />
+      </div>
 
-      <p className="answer">
+      <p className="answer reveal" style={{ ["--d" as string]: "120ms" }}>
         From Andøya, Isar can serve <strong>{fmtPct(share(SAM.sats, TAM.sats))}</strong> of global satellite demand, but
         only <strong>{fmtPct(share(SAM.massKg, TAM.massKg))}</strong> of its mass. In {year}, {fmtInt(SOM.launches)}{" "}
         launches capture {fmtPct(share(SOM.sats, SAM.sats))} of that serviceable market:{" "}
@@ -95,17 +99,17 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
       </div>
 
       <div className="grid-2">
-        <div className="card">
+        <div className="card reveal" style={{ ["--d" as string]: "100ms" }}>
           <div className="card__head">
             <h3>Andøya reaches polar and SSO orbits only</h3>
           </div>
           <InclinationChart demand={demand} reach={reach} />
           <p className="caption">
-            Satellites launched in {dataset.year} by inclination; red is reachable. Licensed headings 280–360° over the
+            Satellites launched in {dataset.year} by inclination; blue is reachable. Licensed headings 280–360° over the
             Norwegian Sea give {reach.map(([lo, hi]) => `${lo.toFixed(0)}–${hi.toFixed(0)}°`).join(", ")}.
           </p>
         </div>
-        <div className="card">
+        <div className="card reveal" style={{ ["--d" as string]: "200ms" }}>
           <div className="card__head">
             <h3>Most of the market is captive</h3>
           </div>
@@ -117,7 +121,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
       </div>
 
       <div className="insights">
-        <article className="insight">
+        <article className="insight reveal" style={{ ["--d" as string]: "0ms" }}>
           <div className="insight__number">01</div>
           <h3>Orbit is the hard limit</h3>
           <p>
@@ -125,7 +129,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
             light: many small Earth-observation satellites, little mass.
           </p>
         </article>
-        <article className="insight">
+        <article className="insight reveal" style={{ ["--d" as string]: "120ms" }}>
           <div className="insight__number">02</div>
           <h3>Rideshare sets the price</h3>
           <p>
@@ -134,7 +138,7 @@ export function Q1Reach({ scenario }: { scenario: Scenario }) {
             beyond 2028.
           </p>
         </article>
-        <article className="insight">
+        <article className="insight reveal" style={{ ["--d" as string]: "240ms" }}>
           <div className="insight__number">03</div>
           <h3>{result.bottleneck === "capacity" ? "Capacity binds first" : "Demand binds first"}</h3>
           <p>

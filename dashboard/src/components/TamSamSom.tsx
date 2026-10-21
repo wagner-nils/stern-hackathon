@@ -1,6 +1,7 @@
 import { Fragment } from "react";
-import { fmtEurRange, fmtInt, fmtPct, fmtTonnes, share } from "../lib/format";
+import { fmtEur, fmtEurRange, fmtInt, fmtPct, fmtTonnes, share } from "../lib/format";
 import type { MarketResult, Tier, TierId } from "../model/funnel";
+import { Tween } from "./Tween";
 
 export type Metric = "sats" | "massKg" | "revenue";
 
@@ -10,10 +11,22 @@ const copy: Record<TierId, { title: string; scope: string }> = {
   SOM: { title: "Obtainable by Isar", scope: "Pays for a dedicated launch, within Isar's launch capacity" },
 };
 
-function headline(t: Tier, metric: Metric) {
-  if (metric === "sats") return { value: fmtInt(t.sats), unit: "satellites / yr" };
-  if (metric === "massKg") return { value: fmtTonnes(t.massKg), unit: "payload / yr" };
-  return { value: fmtEurRange(t.revenueEur), unit: "launch revenue / yr" };
+const units: Record<Metric, string> = {
+  sats: "satellites / yr",
+  massKg: "payload / yr",
+  revenue: "launch revenue / yr",
+};
+
+function Headline({ t, metric }: { t: Tier; metric: Metric }) {
+  if (metric === "sats") return <Tween value={t.sats} format={fmtInt} />;
+  if (metric === "massKg") return <Tween value={t.massKg} format={fmtTonnes} />;
+  const [low, high] = t.revenueEur;
+  if (Math.abs(high - low) < 1) return <Tween value={low} format={fmtEur} />;
+  return (
+    <>
+      <Tween value={low} format={fmtEur} />–<Tween value={high} format={(v) => fmtEur(v).replace("€", "")} />
+    </>
+  );
 }
 
 /** The two metrics not shown as the headline, so every tile carries all three. */
@@ -38,38 +51,36 @@ function shareOf(t: Tier, of: Tier, metric: Metric) {
 
 export function TamSamSom({ result, metric }: { result: MarketResult; metric: Metric }) {
   const { TAM, SAM, SOM } = result.tiers;
-  const tiers = [TAM, SAM, SOM];
 
   return (
     <div className="tiers">
-      {tiers.map((t, k) => {
-        const { value, unit } = headline(t, metric);
-        return (
-          <Fragment key={t.id}>
-            {k > 0 && (
-              <span className="tiers__operator" aria-hidden>
-                ›
-              </span>
-            )}
-            <article className={`tier tier--${t.id.toLowerCase()}`}>
-              <div className="tier__overline">{t.id}</div>
-              <h3 className="tier__title">{copy[t.id].title}</h3>
-              <div className="tier__figure">{value}</div>
-              <div className="tier__unit">{unit}</div>
-              <div className="tier__shares">
-                {t.id !== "TAM" && <span>{shareOf(t, TAM, metric)} of TAM</span>}
-                {t.id === "SOM" && <span>{shareOf(t, SAM, metric)} of SAM</span>}
-              </div>
-              <p className="tier__scope">{copy[t.id].scope}</p>
-              <div className="tier__meta">
-                <div>{otherMetrics(t, metric)}</div>
-                {t.id === "SAM" && <div>≈ {fmtInt(t.launches)} Spectrum loads</div>}
-                {t.id === "SOM" && <div>{fmtInt(t.launches)} Spectrum launches</div>}
-              </div>
-            </article>
-          </Fragment>
-        );
-      })}
+      {[TAM, SAM, SOM].map((t, k) => (
+        <Fragment key={t.id}>
+          {k > 0 && (
+            <span className="tiers__operator" aria-hidden>
+              →
+            </span>
+          )}
+          <article className={`tier tier--${t.id.toLowerCase()} reveal`} style={{ ["--d" as string]: `${k * 120}ms` }}>
+            <div className="tier__overline">{t.id}</div>
+            <h3 className="tier__title">{copy[t.id].title}</h3>
+            <div className="tier__figure">
+              <Headline t={t} metric={metric} />
+            </div>
+            <div className="tier__unit">{units[metric]}</div>
+            <div className="tier__shares">
+              {t.id !== "TAM" && <span>{shareOf(t, TAM, metric)} of TAM</span>}
+              {t.id === "SOM" && <span>{shareOf(t, SAM, metric)} of SAM</span>}
+            </div>
+            <p className="tier__scope">{copy[t.id].scope}</p>
+            <div className="tier__meta">
+              <div>{otherMetrics(t, metric)}</div>
+              {t.id === "SAM" && <div>≈ {fmtInt(t.launches)} Spectrum loads</div>}
+              {t.id === "SOM" && <div>{fmtInt(t.launches)} Spectrum launches</div>}
+            </div>
+          </article>
+        </Fragment>
+      ))}
     </div>
   );
 }

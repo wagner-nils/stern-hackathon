@@ -18,19 +18,20 @@ export function InclinationChart({ demand, reach }: Props) {
   }));
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height={260}>
       <BarChart data={data} margin={{ top: 8, right: 8, bottom: 4, left: 0 }}>
-        <CartesianGrid vertical={false} stroke="var(--line)" />
+        <CartesianGrid vertical={false} stroke="var(--grey-200)" />
         <XAxis dataKey="label" interval={2} tickLine={false} />
-        <YAxis tickFormatter={fmtInt} width={48} tickLine={false} axisLine={false} />
+        <YAxis tickFormatter={fmtInt} width={52} tickLine={false} axisLine={false} />
         <Tooltip
-          formatter={(v: number) => [`${fmtInt(v)} satellites / yr`, "Demand"]}
+          formatter={(v: number) => [`${fmtInt(v)} satellites / yr`, ""]}
+          separator=""
           labelFormatter={(l) => `Inclination ${l}`}
           cursor={{ fill: "var(--hover)" }}
         />
-        <Bar dataKey="sats" isAnimationActive={false} radius={[3, 3, 0, 0]}>
+        <Bar dataKey="sats" isAnimationActive={false}>
           {data.map((d, k) => (
-            <Cell key={k} fill={d.reachable ? "var(--accent)" : "var(--bar-muted)"} />
+            <Cell key={k} fill={d.reachable ? "var(--primary)" : "var(--grey-300)"} />
           ))}
         </Bar>
       </BarChart>

@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Q1Reach } from "./sections/Q1Reach";
 import { Sources } from "./sections/Sources";
 import { Upcoming } from "./sections/Upcoming";
 import { useScenario } from "./state/useScenario";
 
 const chapters = [
-  { id: "q1", label: "Q1 · Reach from Andøya" },
+  { id: "q1", label: "Q1 · Reach" },
   { id: "q2", label: "Q2" },
   { id: "q3", label: "Q3" },
   { id: "q4", label: "Q4" },
-  { id: "sources", label: "Assumptions & sources" },
+  { id: "sources", label: "Sources" },
 ] as const;
 
 type ChapterId = (typeof chapters)[number]["id"];
@@ -18,19 +18,29 @@ export function App() {
   const [chapter, setChapter] = useState<ChapterId>("q1");
   const scenario = useScenario();
 
+  // Arrow keys page through the chapters when presenting.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
+      const k = chapters.findIndex((c) => c.id === chapter);
+      const next = chapters[k + (e.key === "ArrowRight" ? 1 : -1)];
+      if (next) setChapter(next.id);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [chapter]);
+
   return (
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <span className="brand__mark" aria-hidden>
-            ▲
-          </span>
+          <span className="brand__mark" aria-hidden />
           <div>
-            <div className="brand__title">Isar Aerospace · Expansion Navigator</div>
-            <div className="brand__sub">Decision support for SSVE · 22 Oct 2026</div>
+            <div className="brand__title">Expansion Navigator</div>
+            <div className="brand__sub">Isar Aerospace · prepared for SSVE</div>
           </div>
         </div>
-        <nav className="tabs">
+        <nav className="nav">
           {chapters.map((c) => (
             <button key={c.id} className={chapter === c.id ? "is-active" : ""} onClick={() => setChapter(c.id)}>
               {c.label}
@@ -47,7 +57,10 @@ export function App() {
         {chapter === "sources" && <Sources />}
       </main>
 
-      <footer className="footer">Case built on publicly available information · SSCO AI Hackathon 2026</footer>
+      <footer className="footer">
+        <span>SSCO AI Hackathon 2026</span>
+        <span>Team Benedikt, Luca, Nils · built on public information</span>
+      </footer>
     </div>
   );
 }

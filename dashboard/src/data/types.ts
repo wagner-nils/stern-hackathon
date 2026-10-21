@@ -26,19 +26,31 @@ export interface LaunchSite {
 }
 
 export type OrbitClass = "LEO" | "SSO" | "MEO" | "GTO/GEO" | "Beyond";
-export type CustomerType = "open-commercial" | "institutional-eu" | "institutional-us" | "captive";
+export type CustomerType =
+  | "open-commercial"
+  | "institutional-eu"
+  | "institutional-us"
+  | "institutional-other"
+  | "captive";
 
 export interface DemandSegment {
   id: string;
   label: string;
+  /** Display group, e.g. "Starlink" or "Commercial (open)". */
+  group: string;
   orbit: OrbitClass;
   /** Inclination band in degrees; demand is assumed to be spread evenly across it. */
   inclination: [number, number];
   avgMassKg: number;
   customer: CustomerType;
   satsPerYear: number;
-  confidence: Confidence;
+}
+
+export interface DemandDataset {
+  year: number;
   sourceId: string;
+  confidence: Confidence;
+  segments: DemandSegment[];
 }
 
 export interface Vehicle {
@@ -50,17 +62,28 @@ export interface Vehicle {
   sourceId: string;
 }
 
+export type Unit = "%" | "launches/yr" | "year" | "€ M";
+
 export interface Assumption<Id extends string = string> {
   id: Id;
   label: string;
+  group: "market" | "isar";
   /** Shares are stored as fractions (0–1) and shown as per cent. */
   value: number;
-  unit: "%" | "launches/yr";
+  unit: Unit;
   min: number;
   max: number;
   step: number;
   confidence: Confidence;
   owner: Owner;
+  sourceId: string;
+  note?: string;
+}
+
+export interface Figure {
+  value: number;
+  label: string;
+  confidence: Confidence;
   sourceId: string;
   note?: string;
 }

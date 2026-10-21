@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { type AssumptionId, type AssumptionValues, defaultValues } from "../data/assumptions";
+import { cadencePlan } from "../data/market";
 
 const ids = Object.keys(defaultValues) as AssumptionId[];
 
@@ -34,10 +35,19 @@ export function useScenario() {
 
   useEffect(() => writeHash(values), [values]);
 
+  const set = (id: AssumptionId, value: number) =>
+    setValues((prev) =>
+      id === "planningYear"
+        ? { ...prev, planningYear: value, launchesPerYear: cadencePlan[value] ?? prev.launchesPerYear }
+        : { ...prev, [id]: value },
+    );
+
   return {
     values,
-    set: (id: AssumptionId, value: number) => setValues((prev) => ({ ...prev, [id]: value })),
+    set,
     reset: () => setValues(defaultValues),
     isDefault: ids.every((id) => values[id] === defaultValues[id]),
   };
 }
+
+export type Scenario = ReturnType<typeof useScenario>;

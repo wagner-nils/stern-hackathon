@@ -1,11 +1,13 @@
 import { ConfidenceBadge } from "../components/ConfidenceBadge";
 import { assumptions } from "../data/assumptions";
-import { demand } from "../data/demand";
+import { demand2025 } from "../data/demand";
+import { cadencePlan, market } from "../data/market";
 import { sites } from "../data/sites";
 import { sources } from "../data/sources";
-import type { Confidence } from "../data/types";
+import type { Confidence, Figure } from "../data/types";
 import { spectrum } from "../data/vehicles";
-import { fmtInt, fmtPct } from "../lib/format";
+import { fmtInt, fmtPct, fmtTonnes } from "../lib/format";
+import { demandByGroup } from "../model/funnel";
 
 interface Row {
   item: string;
@@ -14,10 +16,12 @@ interface Row {
   sourceId: string;
 }
 
+const usd = (v: number) => (v >= 1e9 ? `$${(v / 1e9).toFixed(1)} bn` : `$${fmtInt(v)}`);
+
 const rows: Row[] = [
   ...sites.map((s) => ({
     item: `${s.name}: latitude and launch corridor`,
-    value: `${s.lat}° N, azimuth ${s.azimuths.map((a) => `${a.from}°–${a.to}°`).join(", ")}`,
+    value: `${s.lat}° N, headings ${s.azimuths.map((a) => `${a.from}°–${a.to}°`).join(", ")}`,
     confidence: s.confidence,
     sourceId: s.sourceId,
   })),
@@ -29,25 +33,41 @@ const rows: Row[] = [
     confidence: spectrum.confidence,
     sourceId: spectrum.sourceId,
   },
+  {
+    item: "Isar launch plan",
+    value: Object.entries(cadencePlan)
+      .map(([year, n]) => `${year}: ${n}`)
+      .join(", "),
+    confidence: "medium",
+    sourceId: "isarFlightPlan",
+  },
+  ...(Object.values(market) as Figure[]).map((f) => ({
+    item: f.note ? `${f.label} (${f.note})` : f.label,
+    value: f.label.startsWith("EUR") ? String(f.value) : usd(f.value),
+    confidence: f.confidence,
+    sourceId: f.sourceId,
+  })),
   ...assumptions.map((a) => ({
     item: a.label,
-    value: a.unit === "%" ? fmtPct(a.value) : `${a.value} ${a.unit}`,
+    value: a.unit === "%" ? fmtPct(a.value) : a.unit === "€ M" ? `€${a.value} M` : `${a.value}`,
     confidence: a.confidence,
     sourceId: a.sourceId,
   })),
-  ...demand.map((d) => ({
-    item: `Demand: ${d.label}`,
-    value: `${fmtInt(d.satsPerYear)} sats/yr, ${fmtInt(d.avgMassKg)} kg, ${d.inclination[0]}–${d.inclination[1]}°`,
-    confidence: d.confidence,
-    sourceId: d.sourceId,
+  ...demandByGroup(demand2025.segments).map((g) => ({
+    item: `Demand ${demand2025.year}: ${g.group}`,
+    value: `${fmtInt(g.sats)} satellites, ${fmtTonnes(g.massKg)}`,
+    confidence: demand2025.confidence,
+    sourceId: demand2025.sourceId,
   })),
 ];
 
 export function Sources() {
   return (
     <section className="chapter">
-      <p className="eyebrow">Transparency</p>
-      <h2>Assumptions and sources</h2>
+      <header className="chapter__head">
+        <div className="overline overline--primary">Transparency</div>
+        <h2>Assumptions and sources</h2>
+      </header>
       <div className="card table-wrap">
         <table>
           <thead>
@@ -74,7 +94,7 @@ export function Sources() {
                         {source.title}
                       </a>
                     ) : (
-                      source?.title ?? r.sourceId
+                      (source?.title ?? r.sourceId)
                     )}
                   </td>
                 </tr>

@@ -75,9 +75,10 @@ export function Q1Reach({ scenario }: { scenario: ReturnType<typeof useScenario>
           </div>
           <InclinationChart demand={demand} reach={reach} />
           <p className="caption">
-            Andøya ({andoya[0].lat}° N) launches north over the sea and reaches{" "}
+            Andøya ({andoya[0].lat}° N) is licensed for headings of 280–360° over the Norwegian Sea and reaches{" "}
             {reach.map(([lo, hi]) => `${lo.toFixed(0)}–${hi.toFixed(0)}°`).join(", ")} inclination: polar and
-            sun-synchronous orbits.
+            sun-synchronous orbits only. ISS (51.6°), 53° constellation shells, 37–45° radar orbits and GTO are out
+            of reach.
           </p>
         </div>
       </div>

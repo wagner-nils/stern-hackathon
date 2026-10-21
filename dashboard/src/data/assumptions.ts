@@ -12,9 +12,10 @@ export const assumptions: Assumption<AssumptionId>[] = [
     min: 0,
     max: 30,
     step: 1,
-    confidence: "placeholder",
+    confidence: "medium",
     owner: "Luca",
-    sourceId: "placeholder",
+    sourceId: "isarFlightPlan",
+    note: "Isar plan for 2027 (about 8 in 2028). Slider stops at the site licence cap of 30/yr, max 4 at night.",
   },
   {
     id: "payloadUtilisation",

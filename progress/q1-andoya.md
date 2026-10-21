@@ -17,7 +17,7 @@ Ergebnis: Anteil nach Anzahl und nach Masse, plus welche Stufe der Engpass ist (
 
 | Input | Owner | Status |
 | --- | --- | --- |
-| Erreichbare Inklinationen Andøya, Spectrum-Nutzlast je Orbit | Nils | Recherche läuft |
+| Erreichbare Inklinationen Andøya, Spectrum-Nutzlast je Orbit | Nils | erledigt: 90–110,6°, 1.000/700 kg (Notion Techie) |
 | Startkadenz Andøya, Auslastung, Preis pro Start | Luca | offen |
 | Nachfrage nach Orbit, Masse, Kundentyp; Anteil dedicated vs. Rideshare | Benedikt | offen |
 

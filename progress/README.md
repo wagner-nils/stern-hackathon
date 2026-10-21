@@ -13,4 +13,5 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **21.10. 15:21**: Techie-Recherche in Notion (Orbitphysik, Andøya, Spectrum, Standort-Kriterien, Shortlist, Fragen an Schingler). Verifizierte Andøya-Werte (69,1° N, Azimut 280–360°, 90–110,6°) und Isars Startplan 2027 ins Dashboard übernommen.
 - **21.10. 15:10**: Repo aufgesetzt: Dashboard-Gerüst (Vite + React + TS, Single-File-Build), Orbit- und Funnel-Modell mit Tests, Platzhalter-Daten, Fortschrittsverzeichnis, Checkpoint-Skript, Phasen-Branches.

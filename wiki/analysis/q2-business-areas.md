@@ -13,6 +13,60 @@ Status: erste Denkanstöße, 21.10. 16:50. Zeitfenster 16:15–19:45, Expert Q&A
 - Andøyas Markt ist leicht (21 t pro Jahr, viele CubeSats). „Mehr vom Gleichen“ stößt um 2030 an die Grenze.
 - 60 % von Isars Nachfrage kommt aus Verteidigung, und SpaceX nimmt angeblich keine Rideshare-Buchungen nach 2028 an. Beides spricht für dedizierte und souveräne Starts.
 
+## Hinweise der Betreuer (21.10., Q2-Session)
+
+- **Kernlogik:** Der Startplatz bestimmt, welche Orbits erreichbar sind. Die Orbits bestimmen, welche Kunden und Segmente Isar bedienen kann. Q2 dreht das um: Welche Segmente wollen wir, und was braucht es dafür?
+- **Zeithorizont 15–20 Jahre:** Startplatz-Verträge sind die am wenigsten umkehrbare Entscheidung. Andøya läuft bis zu 20 Jahre ab 2021, Nova Scotia 10 Jahre plus 2 × 5 Jahre. So lange ist Isar an diese Orbits gebunden.
+- **Die Rakete legt die Klasse fest:** Spectrum trägt ca. 1 t, große Raketen 60 t. Spectrum hat rund 10 Jahre Entwicklung gebraucht. Für eine ganz andere Raketenklasse oder Mars-Ideen bleibt im Horizont wenig Spielraum.
+- **Nur mit Business-Begründung:** kein Geschäftsfeld, „weil es cool ist“. Softwarelizenzierung und Ähnliches ist eher zu früh.
+- **Bewusst entscheiden und verteidigen:** was ins Tool gehört und was nicht, welcher Markt der Fokus ist und welche Hebel es gibt.
+- **Planet ist ein potenzieller Andøya-Kunde:** die Experten-Session gezielt dafür nutzen.
+
+Ideen aus dem Team, noch unbewertet:
+
+- Kilo-Kontingente versteigern statt Festpreis
+- das Pad an Dritte untervermieten (aber: Isar mietet das Pad nur; Betreiber ist Andøya Space)
+- Marktplatz für Startplätze
+- Startsoftware lizenzieren
+
+## Wer die Kunden sind
+
+Geflogene Nachfrage 2025 im Andøya-Band (90–110,6°), nur offener Markt (ohne Starlink, China, Russland, Kuiper/OneWeb): **474 Satelliten, 51 t**. Auswertung: `pipeline/gcat_customers.py` (GCAT, Missionskategorie aus `psatcat`).
+
+| Mission | Satelliten | Masse |
+| --- | --- | --- |
+| Erdbeobachtung optisch | 154 | 13,6 t |
+| Technologie-Demos | 108 | 4,2 t |
+| Kommunikation / IoT | 85 | 2,0 t |
+| Wissenschaft | 43 | 7,3 t |
+| Wetter / Radio-Okkultation | 28 | 4,3 t |
+| Erdbeobachtung Radar (SAR) | 26 | 7,2 t |
+| Funk-/Signalaufklärung | 21 | 0,9 t |
+
+Größte Betreiber 2025:
+
+| Betreiber | Satelliten | Mission | Isar-Bezug |
+| --- | --- | --- | --- |
+| Planet (Flock) | 77 | optische Erdbeobachtung | Kunde (Pelican) |
+| Spire | 26 | Wetter, Schiffsverkehr | – |
+| ASI / IRIDE (Italien) | 22 | nationale Erdbeobachtung | – |
+| OroraTech | 10 | Waldbrand-Erkennung | Kunde (ältere Vereinbarung) |
+| Kinéis | 10 | IoT | – |
+| ICEYE | 13 | Radar-Erdbeobachtung | – |
+| Plan-S, Tevel, ArkEdge | 7–9 | IoT, Funk | – |
+| D-Orbit | 7 | Orbit-Transfer | Kunde (ältere Vereinbarung) |
+| Pixxel | 6 | hyperspektrale Erdbeobachtung | – |
+| Norwegian Space Agency | 4 | Schiffsüberwachung (NORSAT) | Kunde (AOS) |
+
+- **Fast alles ist klein:** 74 % wiegen höchstens 50 kg und fliegen heute per Rideshare. Nur 112 Satelliten (17,5 t) liegen zwischen 50 und 700 kg. Dort lohnt sich ein eigener Start am ehesten.
+- **Vier Kundensegmente**, die Andøya bedienen kann:
+  1. **Kommerzielle Erdbeobachtung** (optisch, Radar, hyperspektral, Waldbrand): Planet, ICEYE, OroraTech, Pixxel.
+  2. **Daten-Konstellationen, die globale Abdeckung brauchen** (IoT, Funkaufklärung, Wetter): Spire, Kinéis, Unseenlabs, HawkEye 360.
+  3. **Staatlich und Verteidigung in Europa:** ASI, CNES, Norwegian Space Agency, ESA.
+  4. **In-Orbit-Services und Technologie-Demos:** D-Orbit, Varda, Universitäten. Isar-Kunden in diesem Segment sind Astroscale, ELSA-M und ElevationSpace, dazu die Bündler SEOPS und Spaceflight.
+- **Nicht von Andøya erreichbar:** Radar-Konstellationen auf 37–45° (iQPS, Synspective), ISS-nahe Missionen, Breitband-Konstellationen, GEO-Kommunikation und Navigation. Nova Scotia (45–98°) öffnet mittlere Inklinationen ab 45°, Kourou die niedrigen und GTO.
+- **Isars Verteidigungsnachfrage ist neu, nicht historisch:** Isar nennt 60 % Verteidigung. In den geflogenen Daten des offenen Markts ist Verteidigung kaum sichtbar (21 Funkaufklärungs-Satelliten, meist kommerziell). Die Nachfrage nach souveränem, schnell abrufbarem Zugang kommt also erst, sie lässt sich nicht aus den Startzahlen ableiten.
+
 ## Long List mit erster Hypothese
 
 | Geschäftsfeld | Hypothese | Warum |

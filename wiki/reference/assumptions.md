@@ -20,7 +20,7 @@ Spiegel der Modellwerte in `dashboard/src/data/` (`assumptions.ts`, `market.ts`,
 | Wert | Basis | Konfidenz | Quelle |
 | --- | --- | --- | --- |
 | Launch-Umsatz weltweit | 12,4 Mrd. USD (2025) | hoch | SIA 2026 |
-| Rideshare-Preis SSO | 7.500 USD/kg (Liste 2027) | hoch | SpaceX |
+| Rideshare-Listenpreis | 7.500 USD/kg (Liste 2027) | hoch | SpaceX-Preis-API |
 | Dedizierter Preis | 20.000 USD/kg (15.000–28.000) | mittel | abgeleitet; Rocket Lab 10-K |
 | Wechselkurs | 1,12 USD/EUR | hoch | EZB |
 

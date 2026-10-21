@@ -23,7 +23,7 @@ Benedikts Entwurf hatte 7,5 Mrd. USD „ohne Starlink“. Das war der Wert von 2
 
 ## Prognosen
 
-- **Novaspace:** über 43.000 Satelliten 2025–2034, 66 % davon aus fünf Megakonstellationen, ca. 8 t pro Tag; Verteidigung 48 % des Werts.
+- **Novaspace:** über 43.000 Satelliten bis 2035; 66 % der Starts 2025–2034 entfallen auf fünf Megakonstellationen; ca. 8 t pro Tag; Verteidigung 48 % des Werts.
 - **Abgeleitet (eigene Rechnung):** Ohne Megakonstellationen ergibt das ca. 1.460 Satelliten pro Jahr im Schnitt gegenüber 943 im Jahr 2025, also ca. 9 % Wachstum p.a.
 - **Novaspace Smallsats:** 16.900 Satelliten unter 500 kg 2026–2035, ca. 230 t pro Jahr; 33 % der Satelliten, 6 % der Masse.
 - **BryceTech-Historie:** 13 % (2023–25) bzw. 17 % (2021–25) Wachstum.
@@ -33,7 +33,7 @@ Benedikts Entwurf hatte 7,5 Mrd. USD „ohne Starlink“. Das war der Wert von 2
 
 | Anbieter | Preis | Konfidenz | Quelle |
 | --- | --- | --- | --- |
-| SpaceX Rideshare (Transporter, SSO) | 6.500 / 7.000 / 7.500 USD/kg (2025 / 2026 / 2027), mind. 50 kg | hoch | SpaceX-Preis-API |
+| SpaceX Rideshare (Listenpreis; die API nennt keinen Orbit) | 6.500 / 7.000 / 7.500 USD/kg (2025 / 2026 / 2027); kleinste Platte 50 kg, größere 100 / 200 / 300 kg | hoch | [SpaceX-Preis-API](https://api-rideshare.spacex.com/api/v2/price) |
 | SpaceX Separationssystem | 8″: 336.800 USD, 15″: 410.000 USD, 24″: 629.600 USD; damit gesamt ca. 9.700–13.700 USD/kg | hoch | SpaceX-Preis-API, eigene Rechnung |
 | Rocket Lab Electron | Ø 7,1 / 7,8 / 8,5 Mio. USD Umsatz pro Start (2023–25), ca. 28.000 USD/kg bei ca. 300 kg | hoch | 10-K |
 | Firefly Alpha | ca. 15 Mio. USD (Liste 15–17,6 Mio.); 1.030 kg LEO / 630 kg SSO | niedrig–mittel | Wikipedia, Firefly |
@@ -57,7 +57,7 @@ Benedikts Entwurf hatte 7,5 Mrd. USD „ohne Starlink“. Das war der Wert von 2
 - [SIA 2025 (28. Report)](https://sia.org/historic-number-of-launches-powers-commercial-satellite-industry-growth-satellite-industry-association-releases-the-28th-annual-state-of-the-satellite-industry-report/)
 - [SIA: Methodik (2021)](https://sia.memberclicks.net/assets/2021_SSIR_Final%20Full%20copy.pdf)
 - [McDowell: Space Activities 2024](https://planet4589.org/space/papers/space24.pdf) und [2025](https://planet4589.org/space/papers/space25.pdf)
-- [BryceTech: Smallsats by the Numbers 2026](https://brycetech.com/reports/report-documents/smallsats-2026/)
+- [BryceTech: Smallsats by the Numbers 2026, PDF](https://brycetech.com/reports/report-documents/smallsats-2026/BryceTech_Smallsats-by-the-Numbers-2026.pdf)
 - [Novaspace: Prognose](https://nova.space/press-release/novaspace-projects-665b-in-satellite-build-and-launch-activity/)
 - [Satellite Markets: 16.900 Smallsats bis 2035](https://satellitemarkets.com/market-trends/global-smallsat-deployment-accelerates-16900-satellites-projected-through-2035)
 - [SpaceX Rideshare](https://rideshare.spacex.com/)

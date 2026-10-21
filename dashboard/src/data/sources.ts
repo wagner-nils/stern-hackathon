@@ -38,13 +38,13 @@ export const sources: Record<string, Source> = {
   },
   spacexRideshare: {
     id: "spacexRideshare",
-    title: "SpaceX rideshare price list (6.5k / 7k / 7.5k USD per kg for 2025 / 2026 / 2027)",
-    url: "https://rideshare.spacex.com/",
+    title: "SpaceX rideshare price API (6.5k / 7k / 7.5k USD per kg for 2025 / 2026 / 2027, 50 kg minimum plate)",
+    url: "https://api-rideshare.spacex.com/api/v2/price",
   },
   rideshareFreeze: {
     id: "rideshareFreeze",
-    title: "AIAA – SpaceX halts new rideshare reservations beyond 2028 (not confirmed by SpaceX)",
-    url: "https://aiaa.org/2026/07/21/spacex-halts-new-commercial-rideshare-reservations-beyond-2028-as-launch-schedule-fills/",
+    title: "SatNews – SpaceX limits rideshare bookings past 2028 (reported, not confirmed by SpaceX)",
+    url: "https://satnews.com/2026/07/20/spacex-limits-future-commercial-rideshare-bookings-past-2028-amid-severe-manifest-saturation/",
   },
   rocketLab10k: {
     id: "rocketLab10k",
@@ -53,12 +53,12 @@ export const sources: Record<string, Source> = {
   },
   brycetech2026: {
     id: "brycetech2026",
-    title: "BryceTech – Smallsats by the Numbers 2026 (17–23% of non-broadband smallsats on small launchers)",
-    url: "https://brycetech.com/reports/report-documents/smallsats-2026/",
+    title: "BryceTech – Smallsats by the Numbers 2026, p. 29 (17–23% of non-broadband smallsats on small launchers)",
+    url: "https://brycetech.com/reports/report-documents/smallsats-2026/BryceTech_Smallsats-by-the-Numbers-2026.pdf",
   },
   novaspace: {
     id: "novaspace",
-    title: "Novaspace – satellite build and launch forecast 2025–2034 (>43,000 satellites)",
+    title: "Novaspace – more than 43,000 satellites to launch by 2035; 66% of 2025–2034 launches from five megaconstellations",
     url: "https://nova.space/press-release/novaspace-projects-665b-in-satellite-build-and-launch-activity/",
   },
   spectrumPrice: {
@@ -73,7 +73,8 @@ export const sources: Record<string, Source> = {
   },
   nspm17: {
     id: "nspm17",
-    title: "US policy NSPM-17: US government payloads fly on US-built launchers",
+    title: "NSPM-17 (Federal Register, 20 Aug 2026): US government payloads generally fly on US-built launchers",
+    url: "https://www.federalregister.gov/d/2026-17372",
   },
   orbitalMechanics: {
     id: "orbitalMechanics",

@@ -25,13 +25,13 @@
 
 ## US-Politik
 
-- **NSPM-17 (2026):** US-Regierungsnutzlasten fliegen grundsätzlich mit US-Raketen. Im Modell ist der für Isar offene Anteil der US-Regierungsnachfrage deshalb 0 %.
+- **[NSPM-17](https://www.federalregister.gov/d/2026-17372) (20.08.2026):** US-Regierungsnutzlasten fliegen grundsätzlich mit in den USA gebauten Raketen (Abschnitt 6(a)). Ausnahmen: Programme ohne Geldfluss bzw. zwischen Regierungen, Technologie- und Wissenschaftsnutzlasten ohne US-Angebot, Gastnutzlasten auf Satelliten, die nicht der US-Regierung gehören. Im Modell ist der für Isar offene Anteil der US-Regierungsnachfrage deshalb 0 %.
 - **TSA:** US-gebaute kommerzielle Satelliten dürfen nur aus Ländern mit Technologieschutzabkommen starten. Norwegen hat eines seit Januar 2025.
 
 ## SpaceX-Rideshare
 
 - Nur noch zwei SSO-Flüge zur Buchung offen (Juni und Oktober 2027).
-- Berichtet: keine neuen Buchungen über Ende 2028 hinaus (SatNews, Payload, SpaceQ, AIAA). SpaceX hat das nicht bestätigt.
+- Berichtet: keine neuen Buchungen über Ende 2028 hinaus ([SatNews, 20.07.2026](https://satnews.com/2026/07/20/spacex-limits-future-commercial-rideshare-bookings-past-2028-amid-severe-manifest-saturation/), dazu Payload, SpaceQ, AIAA). SpaceX hat das nicht bestätigt.
 - Wirkung im Modell: Der Anteil der Kunden, die für einen dedizierten Start zahlen, könnte von heute ca. 17–23 % auf 25–30 % steigen (Regler „Share that pays for a dedicated launch“).
 
 ## Quellen

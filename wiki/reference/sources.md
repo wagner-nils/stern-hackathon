@@ -1,6 +1,6 @@
 # Quellen
 
-Alle Quellen, die in Wiki und Dashboard verwendet werden, nach Thema. Abgerufen am 21.10.2026, sofern nicht anders angegeben.
+Alle Quellen, die in Wiki und Dashboard verwendet werden, nach Thema. Abgerufen am 21.10.2026, sofern nicht anders angegeben. Die Kernquellen für RQ1 (SIA, SpaceX, Rocket Lab, BryceTech, Novaspace, Payload, CAA Norway, Andøya Space, Isar, EZB, McDowell, NewSpace Index, NSPM-17, SatNews) wurden am 21.10.2026 live gegen die verwendeten Zahlen geprüft.
 
 ## Case
 
@@ -13,18 +13,18 @@ Alle Quellen, die in Wiki und Dashboard verwendet werden, nach Thema. Abgerufen 
 - [SIA: 29. State of the Satellite Industry Report (2026)](https://sia.org/affordability-productivity-drive-historic-satellite-industry-growth-satellite-industry-association-releases-29th-annual-state-of-the-satellite-industry-report/)
 - [SIA: 28. Report (2025)](https://sia.org/historic-number-of-launches-powers-commercial-satellite-industry-growth-satellite-industry-association-releases-the-28th-annual-state-of-the-satellite-industry-report/)
 - [SIA: Methodik (2021)](https://sia.memberclicks.net/assets/2021_SSIR_Final%20Full%20copy.pdf)
-- [BryceTech: Smallsats by the Numbers 2026](https://brycetech.com/reports/report-documents/smallsats-2026/) und [2025](https://brycetech.com/reports/report-documents/smallsats-2025/BryceTech_Smallsats-by-the-Numbers-2025.pdf)
-- [Novaspace: Satellitenbau und -start bis 2034](https://nova.space/press-release/novaspace-projects-665b-in-satellite-build-and-launch-activity/)
+- [BryceTech: Smallsats by the Numbers 2026, PDF](https://brycetech.com/reports/report-documents/smallsats-2026/BryceTech_Smallsats-by-the-Numbers-2026.pdf) (S. 7 und 29; die Webseite nennt 4 % für alle Smallsats inkl. Breitband) und [2025](https://brycetech.com/reports/report-documents/smallsats-2025/BryceTech_Smallsats-by-the-Numbers-2025.pdf)
+- [Novaspace: über 43.000 Satelliten bis 2035](https://nova.space/press-release/novaspace-projects-665b-in-satellite-build-and-launch-activity/)
 - [Satellite Markets: 16.900 Smallsats bis 2035](https://satellitemarkets.com/market-trends/global-smallsat-deployment-accelerates-16900-satellites-projected-through-2035)
 
 ## Preise und Wettbewerb
 
-- [SpaceX Rideshare](https://rideshare.spacex.com/) (Preis-API am 21.10.2026 gelesen)
+- [SpaceX Rideshare, Preis-API](https://api-rideshare.spacex.com/api/v2/price) (am 21.10.2026 gelesen; Werte in US-Cent; 50 kg = kleinste Platte)
 - [Rocket Lab 10-K 2025](https://www.sec.gov/Archives/edgar/data/1819994/000181999426000013/rklb-20251231.htm), [10-Q Q2 2026](https://www.sec.gov/Archives/edgar/data/0001819994/000181999426000062/rklb-20260630.htm)
 - [Rocket Lab Q2 2026 Earnings Call](https://www.fool.com/earnings/call-transcripts/2026/08/17/rocket-lab-rklb-q2-2026-earnings-call-transcript/)
 - [Firefly Alpha](https://fireflyspace.com/alpha/), [Wikipedia: Firefly Alpha](https://en.wikipedia.org/wiki/Firefly_Alpha)
 - [SpaceQ: Rideshare-Stopp und Smallsat-Markt](https://spaceq.ca/spacexs-rideshare-freeze-what-it-means-for-the-smallsat-market-and-canada/)
-- [AIAA: Rideshare-Stopp nach 2028](https://aiaa.org/2026/07/21/spacex-halts-new-commercial-rideshare-reservations-beyond-2028-as-launch-schedule-fills/)
+- [SatNews: Rideshare-Stopp nach 2028](https://satnews.com/2026/07/20/spacex-limits-future-commercial-rideshare-bookings-past-2028-amid-severe-manifest-saturation/) (Primärbericht, von SpaceX nicht bestätigt) und [AIAA](https://aiaa.org/2026/07/21/spacex-halts-new-commercial-rideshare-reservations-beyond-2028-as-launch-schedule-fills/)
 - [NewSpace Index: Isar Aerospace](https://www.newspace.im/launchers/isar-aerospace)
 - [Wikipedia: Vega C](https://en.wikipedia.org/wiki/Vega_C), [SSLV](https://en.wikipedia.org/wiki/Small_Satellite_Launch_Vehicle), [RFA One](https://en.wikipedia.org/wiki/RFA_One)
 - [European Spaceflight: ELC-Verträge](https://europeanspaceflight.com/esa-awards-e544-million-in-european-launcher-challenge-contracts/)
@@ -49,6 +49,7 @@ Alle Quellen, die in Wiki und Dashboard verwendet werden, nach Thema. Abgerufen 
 - [CNES: ELM-Diamant](https://cnes.fr/en/news/elm-diamant-launch-complex-space-history-making)
 - [Portugal Space: Santa Maria](https://ptspace.pt/portugal-awards-first-licence-to-operate-spaceport/)
 - [UK CAA: SaxaVord](https://www.caa.co.uk/newsroom/news/saxavord-granted-spaceport-licence-by-uk-civil-aviation-authority/)
+- [NSPM-17, Federal Register 20.08.2026](https://www.federalregister.gov/d/2026-17372) (Abschnitt 6(a), drei Ausnahmen)
 - [FAA: International Affairs](https://www.faa.gov/space/additional_information/international_affairs)
 
 ## Physik

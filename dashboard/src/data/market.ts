@@ -11,7 +11,7 @@ export const market = {
   },
   rideshareUsdPerKg: {
     value: 7500,
-    label: "Rideshare price to SSO (SpaceX Transporter)",
+    label: "Rideshare list price (SpaceX)",
     confidence: "high",
     sourceId: "spacexRideshare",
     note: "2027 list price, 50 kg minimum; about 10k USD/kg with separation system",

@@ -1,0 +1,40 @@
+# Wissens-Wiki: Case Isar Aerospace
+
+Das Wiki bündelt alles, was das Team zum Case weiß: Notion-Recherche (Insider, Investor, Techie), Marktrecherche, die GCAT-Auswertung und die bisherigen Antworten. Stand: 21.10.2026, 17:00.
+
+## Aufbau
+
+| Bereich | Seite | Inhalt |
+| --- | --- | --- |
+| Case | [Überblick](case/overview.md) | Auftrag, Stakeholder, Regeln, Bewertung, Agenda, Team |
+| | [Fragen](case/questions.md) | RQ1–RQ4 mit Status und Links zu den Antworten |
+| Unternehmen | [Isar Aerospace](company/isar-aerospace.md) | Geschäftsmodell, Finanzierung, Kunden, Auftragsbuch, Standorte |
+| | [Spectrum](company/spectrum.md) | Rakete, Nutzlast, Flüge, Preis, Fertigung |
+| Technik | [Orbitphysik](technology/orbital-mechanics.md) | Warum der Standort die erreichbaren Orbits bestimmt |
+| | [Startplätze](technology/launch-sites.md) | Anforderungen, Andøya im Detail, Standort-Shortlist |
+| | [Kadenz](technology/cadence.md) | Starts pro Jahr, Turnaround, Vorlaufzeiten |
+| Markt | [Nachfrage](market/demand.md) | Geflogene Satelliten 2024/2025 (GCAT), Andøya-Band |
+| | [Marktgröße und Preise](market/size-and-pricing.md) | Umsatz, Upmass, Prognosen, Preise je Anbieter |
+| | [Wettbewerb](market/competition.md) | Rocket Lab, Firefly, SpaceX-Rideshare, Europas Neulinge |
+| | [Nachfragetreiber](market/demand-drivers.md) | Verteidigung, ESA, EU, US-Politik, Rideshare-Stopp |
+| Analyse | [Q1: Reichweite Andøya](analysis/q1-andoya-reach.md) | TAM/SAM/SOM, Annahmen, Challenge-Punkte |
+| | [Q2: Geschäftsfelder](analysis/q2-business-areas.md) | Long List, Bewertungsrahmen, offene Recherche |
+| Experte | [Robbie Schingler (Planet)](expert/robbie-schingler.md) | Fragen und Notizen zur Expert Q&A |
+| Referenz | [Annahmen-Register](reference/assumptions.md) | Alle Modellannahmen mit Spanne und Quelle |
+| | [Quellen](reference/sources.md) | Alle Quellen nach Thema |
+| | [Glossar](reference/glossary.md) | Begriffe von Azimut bis TSA |
+
+## Das Wichtigste in Kürze
+
+- **Q1:** Von Andøya aus kann Isar 9,3 % der weltweit gestarteten Satelliten bedienen, aber nur 0,7 % der Masse (Basis 2025, hochgerechnet auf 2027). Bis etwa 2030 begrenzt Isars Kapazität, danach Andøyas Orbit-Band. Details: [Q1](analysis/q1-andoya-reach.md).
+- **Q2:** Erste Hypothese: Verteidigung und schnell abrufbare Starts sowie Missionsservices verfolgen; eigene Konstellation, eigene Startplätze und Satellitenbau bewusst nicht. Details: [Q2](analysis/q2-business-areas.md).
+- **Größte Unsicherheiten:** Spectrum-Preis (nicht veröffentlicht), Anteil der Kunden, die für einen dedizierten Start zahlen, unabhängige Bestätigung von Flug 2.
+
+## Konventionen
+
+- **Sprache:** Wiki auf Deutsch, Fachbegriffe auf Englisch. Das Tool selbst ist auf Englisch.
+- **Belege:** Jede Zahl hat eine Quelle (Link auf der Seite oder in [Quellen](reference/sources.md)). Eigene Rechnungen sind als solche markiert.
+- **Konfidenz:** hoch / mittel / niedrig, wie im Dashboard.
+- **Single Source of Truth für Modellwerte** ist `dashboard/src/data/`. Das Wiki erklärt und belegt die Werte. Wer eine Annahme ändert, ändert sie dort und im [Annahmen-Register](reference/assumptions.md).
+- **Neue Erkenntnisse** kommen auf die passende Themenseite, nicht in ein neues Sammeldokument. Jede Seite beginnt mit ihren Kernaussagen.
+- **Fortschritt** steht nicht hier, sondern in [progress/](../progress/README.md).

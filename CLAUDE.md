@@ -15,7 +15,7 @@ Team-Repo für den Stern Stewart & Co. AI Hackathon, 21.–22.10.2026 (Parsdorf)
 | Frage | Zeitfenster | Inhalt |
 | --- | --- | --- |
 | Q1 | 21.10. 13:45–15:45 | Welcher Anteil der globalen Launch-Nachfrage ist von Andøya aus bedienbar? |
-| Q2 | 21.10. 16:15–19:45 | wird vor Ort ausgegeben (18:00 Expert Q&A Robbie Schingler, Planet) |
+| Q2 | 21.10. 16:15–19:45 | Welche Geschäftsfelder soll Isar verfolgen, welche bewusst nicht? (18:00 Expert Q&A Robbie Schingler, Planet) |
 | Q3 | 22.10. 09:30–12:00 | wird vor Ort ausgegeben |
 | Q4 | 22.10. 12:45–14:45 | wird vor Ort ausgegeben |
 | Final | 22.10. 15:00 | Präsentation mit dem Tool |
@@ -26,7 +26,7 @@ Team-Repo für den Stern Stewart & Co. AI Hackathon, 21.–22.10.2026 (Parsdorf)
 - **Luca**: Isar-Aerospace-Insider (Unternehmen, Kapazität, Kunden)
 - **Benedikt**: Investor/Markt (globale Nachfrage, Wettbewerb)
 
-Wissensbasis: Notion „Common Docs: Isar Aerospace“ (Unterseiten Insider, Investor, Techie).
+Wissensbasis: [wiki/](wiki/README.md) im Repo (konsolidiert, mit Quellen). Notion „Common Docs: Isar Aerospace“ ist der Entwurfsraum des Teams (Insider, Investor, Techie, Synthese Q1, Expert Q&A).
 
 ## Repo-Konventionen
 
@@ -35,5 +35,7 @@ Wissensbasis: Notion „Common Docs: Isar Aerospace“ (Unterseiten Insider, Inv
   - `src/model/`: reine Funktionen (Orbit-Erreichbarkeit, Funnel) mit Vitest-Tests. Keine UI-Logik.
   - `src/sections/`: ein Kapitel pro Frage (Tool = Präsentation).
 - Standorte, Rakete und Nachfrage sind Daten, nicht hart codiert: Q2 (neue Standorte) = Standort in `sites.ts` ergänzen.
+- `wiki/`: Wissens-Wiki in Markdown (Case, Unternehmen, Technik, Markt, Analyse je Frage, Experte, Referenz). Neue Erkenntnisse kommen auf die passende Themenseite, jede Zahl mit Quelle. Modellwerte bleiben in `dashboard/src/data/`, das Wiki erklärt und belegt sie (`wiki/reference/assumptions.md` synchron halten).
+- `pipeline/`: reproduzierbare Datenaufbereitung (GCAT → `dashboard/src/data/generated/`).
 - `progress/`: Fortschrittsverzeichnis, bei jedem Checkpoint aktualisieren.
 - Branches: eine pro Phase (`phase/q1-andoya`, `phase/q2`, `phase/q3`, `phase/q4`, `phase/final`). `scripts/checkpoint.sh` committet, wechselt bei Phasenwechsel automatisch auf den neuen Branch und pusht Phasen-Branch und `main` (fast-forward).

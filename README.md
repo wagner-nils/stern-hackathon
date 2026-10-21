@@ -1,6 +1,13 @@
 # Isar Aerospace – Expansion Strategy Tool
 
-Interactive decision tool for the SSCO AI Hackathon (Stern Stewart & Co., 21–22 Oct 2026). Case context and conventions: [CLAUDE.md](CLAUDE.md). Progress: [progress/](progress/README.md).
+Interactive decision tool for the SSCO AI Hackathon (Stern Stewart & Co., 21–22 Oct 2026). Case context and conventions: [CLAUDE.md](CLAUDE.md). Knowledge base: [wiki/](wiki/README.md). Progress: [progress/](progress/README.md).
+
+| Folder | Content |
+| --- | --- |
+| `dashboard/` | The tool (Vite, React, TypeScript), model and data |
+| `pipeline/` | Reproducible demand data from McDowell's GCAT |
+| `wiki/` | Knowledge wiki: case, company, technology, market, analysis per question, sources |
+| `progress/` | Progress log per hackathon phase |
 
 ## Run
 

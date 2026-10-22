@@ -203,7 +203,7 @@ Accepted (numbers refer to Codex's findings in the review log):
 - **(17) Pipeline:** done (seed header, `load.py` arrays, `export.py` table + view, typed access next).
 - **(18) Supabase:** this session owns the `scenarios` objects. After merging with the Q4 branch, run **one** export to regenerate the snapshot.
 - **(19) Shared state:** scenario settings live in one App-level state shared by story and Explore; an edited scenario shows "edited · back to base".
-- **(20) Map:** one static footprint step (North Atlantic crop of the same projection) after the world view. `site_nodes` gains sourced `latitude`/`longitude`; no zoom animation and no orbital overlay. Shortcuts are ignored while focus is in an input/select/button.
+- **(20) Map:** one static footprint step (North Atlantic crop of the same projection) after the world view. `site_nodes` gains sourced `latitude`/`longitude`; no zoom animation and no orbital overlay. Shortcuts are ignored while focus is in an input, select or text area; Space is also ignored on a focused button (it would press it).
 - **(21) Order:** model → story beats 1, 2, 4, 5 → Scenarios chapter → map → docs. The Notion page is written by a subagent from the frozen numbers in parallel. The last 20 minutes are reserved for merge, export, tests and a 1280×720 rehearsal.
 
 Rejected:

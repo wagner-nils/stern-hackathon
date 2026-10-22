@@ -4,9 +4,9 @@ Stand: 22.10.2026. Erklärseite fürs Team in einfacher Sprache: Notion „Commo
 
 ## Antwort
 
-**Unsere Strategie ASCENT trägt, aber spät: dauerhaft positives EBIT ab 2038, vorher bis zu 383 Mio. € kumulierter operativer Verlust.** Der Hebel sind Rahmenverträge, nicht Raketen. Deshalb investiert SSVE in Stufen und gibt jede Tranche nur an einem datierten Meilenstein frei.
+**Unsere Strategie ASCENT trägt, aber spät: dauerhaft positives EBIT ab 2038, vorher bis zu 392 Mio. € kumulierter operativer Verlust.** Der Hebel sind Rahmenverträge, nicht Raketen. Deshalb investiert SSVE in Stufen und gibt jede Tranche nur an einem datierten Meilenstein frei.
 
-- **ASCENT (Basis):** Umsatz 152 Mio. € (2030), 171 Mio. € (2035), 241 Mio. € (2040). EBIT −35 / −22 / +24 Mio. €. Dauerhafter Break-even 2038, tiefster kumulierter Verlust −383 Mio. € (2037).
+- **ASCENT (Basis):** Umsatz 152 Mio. € (2030), 171 Mio. € (2035), 241 Mio. € (2040). EBIT −35 / −22 / +24 Mio. €. Dauerhafter Break-even 2038, tiefster kumulierter Verlust −392 Mio. € (2037).
 - **Vertragshebel:** Mit ca. 5 statt 2 Rahmenvertrags-Starts pro Jahr (genau 4,9) erreicht ASCENT den Break-even schon 2035.
 - **Nova Scotia:** Die Gebühr von 13,4 Mio. € pro Jahr verdient sich erst ab ca. 4,8 Anker-Starts pro Jahr (Kostenniveau ASCENT 2030). RQ3 hatte mit fester Bruttomarge von 41 % ca. 2,7 geschätzt. Drei Anker, wie in ASCENT angenommen, bringen nur ca. 8 Mio. € Deckungsbeitrag. Meilenstein 3 verlangt deshalb ca. 5 Anker-Starts.
 - **Bear:** Umsatz 56 Mio. € (2030), 25 Mio. € (2035). Kein Break-even bis 2040; kumulierter Verlust −1,15 Mrd. €. Bei ca. 6 Flügen pro Jahr kostet ein Flug mehr als der Preis eines Starts.
@@ -21,7 +21,7 @@ Ein Modell für alle drei Szenarien, Jahr für Jahr 2027–2040, in **realen Eur
 3. **Kosten pro Flug:** Rocket Labs gemessene 4,8 Mio. USD pro Electron-Start (2025, 21 Starts) × Größenfaktor 1,5 ÷ 1,12 USD/€ = **6,43 Mio. €** bei 21 oder mehr Flügen pro Jahr. Darunter steigen die Kosten um den Faktor 1/0,7 je Halbierung der Kadenz (`q3_learning_rate`); darüber bleiben sie flach, weil niemand eine Lernkurve jenseits dieser Menge gemessen hat. Beispiele 2030: Bull (20 Flüge) 6,5 Mio. €, ASCENT (12) 8,5 Mio. €, Bear (6) 12,2 Mio. €.
 4. **Fehlstarts:** Geflogene Starts = verkaufte Starts ÷ Erfolgsquote. Ein Fehlstart wird auf Isars Kosten im selben Jahr nachgeflogen. Die Erfolgsquote steigt linear von 2027 bis 2030 und bleibt dann flach.
 5. **Bruttogewinn** = Startumsatz (inkl. geflogener Bereitschaft) − geflogene Starts × Kosten pro Flug + Bereitschaftsgebühr × 70 % + Zusatzleistungen × 60 %.
-6. **EBIT** = Bruttogewinn − 60 Mio. € Fixkosten − 5 Mio. € Bereitschaft (wenn genutzt, ab 2028) − 13,4 Mio. € Nova-Scotia-Gebühr (wenn genutzt, ab 2030).
+6. **EBIT** = Bruttogewinn − 60 Mio. € Fixkosten − 5 Mio. € Bereitschaft (wenn genutzt, ab 2028) − 13,4 Mio. € Nova-Scotia-Gebühr (wenn genutzt, ab Mai 2029; 2029 anteilig zwei Drittel).
 
 **Kostenbrücke:** Die Kosten pro Flug entsprechen Rocket Labs Herstellungskosten pro Start (inkl. zugeordneter Produktionsgemeinkosten). Die Fixkosten sind Entwicklung und Verwaltung (R&D, SG&A). **Abschreibungen auf Werk und Pads sind nicht gerechnet**; das EBIT ist ein Proxy davor. Keine Bewertung, kein Finanzierungsbedarf.
 
@@ -54,12 +54,12 @@ Gleich in allen Szenarien: Preis 12 Mio. € pro Start, Fixkosten 60 Mio. €, K
 | Bear | 2030 | 4,5 | 6,0 | 12,2 Mio. € | 56 Mio. € | −78 Mio. € | −317 Mio. € |
 | Bear | 2035 | 1,9 | 2,5 | 19,1 Mio. € | 25 Mio. € | −84 Mio. € | −737 Mio. € |
 | Bear | 2040 | 2,9 | 3,9 | 15,3 Mio. € | 39 Mio. € | −82 Mio. € | −1.154 Mio. € |
-| ASCENT | 2030 | 11,3 | 12,3 | 8,5 Mio. € | 152 Mio. € | −35 Mio. € | −192 Mio. € |
-| ASCENT | 2035 | 11,5 | 12,5 | 8,4 Mio. € | 171 Mio. € | −22 Mio. € | −360 Mio. € |
-| ASCENT | 2040 | 14,7 | 15,9 | 7,4 Mio. € | 241 Mio. € | +24 Mio. € | −344 Mio. € |
-| Bull | 2030 | 19,3 | 20,3 | 6,5 Mio. € | 256 Mio. € | +37 Mio. € | −18 Mio. € |
-| Bull | 2035 | 22,7 | 23,9 | 6,4 Mio. € | 345 Mio. € | +91 Mio. € | +313 Mio. € |
-| Bull | 2040 | 30,6 | 32,2 | 6,4 Mio. € | 584 Mio. € | +233 Mio. € | +1.136 Mio. € |
+| ASCENT | 2030 | 11,3 | 12,3 | 8,5 Mio. € | 152 Mio. € | −35 Mio. € | −201 Mio. € |
+| ASCENT | 2035 | 11,5 | 12,5 | 8,4 Mio. € | 171 Mio. € | −22 Mio. € | −369 Mio. € |
+| ASCENT | 2040 | 14,7 | 15,9 | 7,4 Mio. € | 241 Mio. € | +24 Mio. € | −353 Mio. € |
+| Bull | 2030 | 19,3 | 20,3 | 6,5 Mio. € | 256 Mio. € | +37 Mio. € | −27 Mio. € |
+| Bull | 2035 | 22,7 | 23,9 | 6,4 Mio. € | 345 Mio. € | +91 Mio. € | +304 Mio. € |
+| Bull | 2040 | 30,6 | 32,2 | 6,4 Mio. € | 584 Mio. € | +233 Mio. € | +1.127 Mio. € |
 
 Was dahinter steckt:
 
@@ -72,7 +72,7 @@ Was dahinter steckt:
 | KPI | Bear | ASCENT | Bull |
 | --- | --- | --- | --- |
 | Dauerhafter Break-even (EBIT ≥ 0 bis 2040) | nicht bis 2040 | 2038 | 2029 |
-| Tiefster kumulierter operativer Verlust | −1.154 Mio. € (2040) | −383 Mio. € (2037) | −97 Mio. € (2028) |
+| Tiefster kumulierter operativer Verlust | −1.154 Mio. € (2040) | −392 Mio. € (2037) | −97 Mio. € (2028) |
 | Flüge 2030 gegen 12 (unsere Lesart des Isar-Plans) | 6,0 | 12,3 | 20,3 |
 | Kapazität (ca. 30 Starts: Andøya 18 + Nova Scotia 12) | weit darunter | darunter (2040: 15,9) | 2040 überschritten (32,2); Andøya allein ab 2036 über 18 |
 
@@ -108,7 +108,7 @@ Investieren in Stufen: ASCENT mittragen, jede Tranche nur an einem datierten Mei
 
 - **Reale Euro von 2026,** keine Inflation. Kein Capex: Integrationshalle und Raketenlager für die Bereitschaft (ca. 20 Mio. €) und die suborbitale Spectrum-Variante für Bull (ca. 10 Mio. €) sind nicht gerechnet.
 - **Nachflüge im selben Jahr,** ohne Versicherungsleistung, ohne Pad-Sperre nach einem Fehlstart und ohne verlorene Kunden.
-- **Nova-Scotia-Gebühr ab 2030,** dem ersten vollen Jahr. Die Gebühr läuft ab Mai 2029; die Monate bis Dezember 2029 fehlen im Modell.
+- **Nova-Scotia-Gebühr ab Mai 2029** (30 Monate nach Übergabe), 2029 anteilig, ab 2030 voll (nach Codex-Runde 3).
 - **Bear** nimmt an, dass Isar den Komplex in Nova Scotia nicht übernimmt. Ist die Gebühr bindend, verliert Bear zusätzlich 13,4 Mio. € pro Jahr.
 - **Rahmenverträge und Anker** sind Annahmen über künftige Verträge, kein Auftragsbestand.
 - **Tiefster kumulierter Verlust** ist kein Finanzierungsbedarf: Capex, Working Capital, Anzahlungen und die vorhandene Kasse fehlen.
@@ -140,3 +140,8 @@ Investieren in Stufen: ASCENT mittragen, jede Tranche nur an einem datierten Mei
 - McDowell, Space Activities in 2025 (Rocket Labs 21 Starts): https://planet4589.org/space/papers/space25.pdf
 - Expertengespräch: [Robbie Schingler](../expert/robbie-schingler.md)
 - Herleitung der Felder: [Q2](q2-business-areas.md), Standortlast: [Q3](q3-site-portfolio.md)
+
+## Nachtrag Codex-Prüfung (13:50)
+
+- Runde 3: Gebühr ab Mai 2029 anteilig; Hinweis im Tool, dass Bull ab 2036 mehr Pads in Andøya braucht (Kosten nicht im P&L); Nova-Scotia-Lücke im Basisfall als Zahl (bei 3 Ankern kostet der Standort ca. 6 Mio. € pro Jahr).
+- Offen für das Team: ASCENT rechnet wie RQ3 mit 3 Anker-Starts, Meilenstein 3 verlangt bei vollen Kosten ca. 5. Entweder RQ3-Auslöser auf 5 anheben oder den Standort bewusst als souveräne Option mit Zuschuss führen.

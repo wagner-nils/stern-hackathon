@@ -55,7 +55,7 @@ function Dive({ to, label, dive }: { to: DeepDive; label: string; dive: (to: Dee
   );
 }
 
-function Recommendation({ settings, dive }: BeatProps) {
+function Recommendation({ settings, setSettings, dive }: BeatProps) {
   const a = run("ascent", settings);
   const by2035 = a.contractsFor(2035);
   return (
@@ -65,7 +65,7 @@ function Recommendation({ settings, dive }: BeatProps) {
         Invest in Isar, in stages: back the <em>ASCENT</em> strategy and release each tranche at a dated gate.
       </h1>
       <div className="kpis">
-        <Kpi value={eurM(a.at(2030).revenueEur)} label="revenue 2030" note="ASCENT base case" />
+        <Kpi value={eurM(a.at(2030).revenueEur)} label="revenue 2030" note={isEdited(settings) ? "ASCENT with edited settings" : "ASCENT base case"} />
         <Kpi value={a.kpi.sustainedBreakEven ? String(a.kpi.sustainedBreakEven) : "not by 2040"} label="operating profit from" note="and positive every year after" />
         <Kpi value={eurM(-a.kpi.peakCumulativeLossEur)} label="peak cumulative operating loss" note={`deepest in ${a.kpi.peakLossYear}; not a funding plan`} />
       </div>
@@ -73,14 +73,21 @@ function Recommendation({ settings, dive }: BeatProps) {
         Why staged: today's flown demand fills only <strong>{fmtOne(gap2028?.launches_filled ?? 0)}</strong> of the{" "}
         <strong>{gap2028?.planned}</strong> launches Isar plans for 2028, and about <strong>{fmtOne(gap2028?.launches_filled_isar_share ?? 0)}</strong> of
         them are Isar's. Profit comes from contracts:
-        {by2035 !== null && (
+        {by2035 !== null ? (
           <>
             {" "}
             about <strong>{Math.ceil(by2035)}</strong> frame-contract launches a year (base: {a.scenario.contract_launches}) bring break-even forward to 2035.
           </>
+        ) : (
+          " with these settings, no number of frame contracts that fits Andøya's capacity brings break-even forward to 2035."
         )}
       </p>
       <div className="dives">
+        {isEdited(settings) && (
+          <button className="text-button" onClick={() => setSettings(BASE_SETTINGS)}>
+            edited · back to base
+          </button>
+        )}
         <Dive to="q2" label="the launch gap" dive={dive} />
         <Dive to="scenarios" label="the scenarios" dive={dive} />
       </div>
@@ -221,7 +228,15 @@ function Numbers({ settings, setSettings, dive }: BeatProps) {
         <div className="kpis kpis--column">
           <Kpi value={eurM(r.at(2030).revenueEur)} label="revenue 2030" note={`${eurM(r.at(2035).revenueEur)} in 2035`} />
           <Kpi value={signedM(r.at(2035).ebitEur)} label="operating profit 2035" note={`${signedM(r.at(2040).ebitEur)} in 2040`} />
-          <Kpi value={r.kpi.sustainedBreakEven ? String(r.kpi.sustainedBreakEven) : "never"} label="profitable from" note={`peak loss ${eurM(-r.kpi.peakCumulativeLossEur)}`} />
+          <Kpi
+            value={r.kpi.sustainedBreakEven ? String(r.kpi.sustainedBreakEven) : "not by 2040"}
+            label="profitable from"
+            note={
+              r.overCapacityFrom
+                ? `needs more pads at Andøya from ${r.overCapacityFrom}; their cost is not in the P&L`
+                : `peak loss ${eurM(-r.kpi.peakCumulativeLossEur)}`
+            }
+          />
         </div>
       </div>
       <p className="caption">
@@ -254,16 +269,20 @@ function Gates({ settings, dive }: BeatProps) {
       miss: `We are in Bear: ${bear.kpi.sustainedBreakEven ? `profit only from ${bear.kpi.sustainedBreakEven}` : "no profit by 2040"}`,
     },
     {
-      when: "before the fee starts in 2030",
+      when: "before the fee starts in May 2029",
       what: "Nova Scotia",
-      metric: `A signed anchor covering the fee: about ${ns ? Math.ceil(ns) : "–"} launches a year at ASCENT's cost`,
+      metric: `A signed anchor covering the fee: about ${ns ? Math.ceil(ns) : "–"} launches a year at full cost (RQ3 assumed ${a.scenario.ns_anchor_launches})`,
       miss: "Do not open the site",
     },
   ];
   const risks = [
     { risk: "One pad", number: "1 pad", note: "Andøya pad A carries every launch until pad 2; a failure blocks it for months" },
     { risk: "ESA programme ends 2030", number: eurM(elc2030), note: "revenue a year without a successor programme" },
-    { risk: "Canada anchor open", number: ns ? `${Math.ceil(ns)} vs ${a.scenario.ns_anchor_launches}` : "–", note: "anchor launches needed to cover the fee vs assumed in ASCENT" },
+    {
+      risk: "Canada anchor open",
+      number: ns ? `${Math.ceil(ns)} vs ${a.scenario.ns_anchor_launches}` : "–",
+      note: `anchor launches needed vs assumed in ASCENT (RQ3); at ${a.scenario.ns_anchor_launches} the site costs ${eurM(-(a.nsNet(2031) ?? 0))} a year`,
+    },
     { risk: "Reliability", number: fmtPct(insurance.value), note: "insurance premium for Isar's next flight" },
   ];
   return (
@@ -357,7 +376,7 @@ export function Story({
     <section className="story" key={`${at.beat}-${at.step}`}>
       {beat.render({ settings, setSettings, step: at.step, dive })}
       <nav className="story__nav" aria-label="Story">
-        <button className="text-button" disabled={at.beat === 0 && at.step === 0} onClick={() => setAt(at.step > 0 ? { ...at, step: at.step - 1 } : { beat: at.beat - 1, step: 0 })}>
+        <button className="text-button" disabled={at.beat === 0 && at.step === 0} onClick={() => setAt(at.step > 0 ? { ...at, step: at.step - 1 } : { beat: at.beat - 1, step: BEATS[at.beat - 1].steps - 1 })}>
           ← Back
         </button>
         <span className="story__hint">← → to move · Esc to explore</span>

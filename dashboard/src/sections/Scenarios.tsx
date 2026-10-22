@@ -1,11 +1,12 @@
 import { ConfidenceBadge } from "../components/ConfidenceBadge";
 import { ScenarioChart } from "../components/ScenarioChart";
 import { SourceChips } from "../components/SourceChip";
-import { assumptions, scenarios } from "../data/warehouse";
+import { assumptions, expansionFields, scenarios } from "../data/warehouse";
 import { fmtInt, fmtOne, fmtPct } from "../lib/format";
 import { type ScenarioSettings, BASE_COST, BASE_SETTINGS, isEdited, run } from "../state/scenario";
 
 const m = (v: number) => fmtInt(Math.round(v / 1e6));
+const NS_FEE = expansionFields.find((f) => f.id === "site_nova_scotia")?.fixed_cost_eur ?? 0;
 const COST_IDS = [
   "scen_fixed_opex_eur",
   "scen_size_factor",
@@ -65,7 +66,7 @@ export function Scenarios({ settings, setSettings }: { settings: ScenarioSetting
             Frame-contract launches a year from {r.scenario.contract_start_year} <strong>{fmtOne(contracts)}</strong>
           </span>
           <input type="range" min={0} max={8} step={1} value={contracts} onChange={(e) => setSettings({ ...settings, contractLaunches: Number(e.target.value) })} />
-          <small>The A in ASCENT: launches sold beyond today's visible demand. Base: {r.scenario.contract_launches}.</small>
+          <small>The A in ASCENT: launches sold beyond today's visible demand. Base: {scenarios.find((s) => s.id === settings.scenarioId)?.contract_launches}.</small>
         </label>
         <label>
           <span>
@@ -187,7 +188,7 @@ export function Scenarios({ settings, setSettings }: { settings: ScenarioSetting
         <p className="caption">
           Red flights: more flights from Andøya than its proposed capacity (pad A plus half of pad 2, RQ3). Launch cost = Rocket Lab's cost of revenue per launch
           (incl. allocated production overhead) × size factor, rising by 1 ÷ {fmtPct(BASE_COST.learningRate)} for every halving of cadence below{" "}
-          {BASE_COST.refCadence}, flat above. Fixed cost = R&D and overhead plus site fees (Nova Scotia from {BASE_COST.nsFeeStartYear}). Depreciation of plant and
+          {BASE_COST.refCadence}, flat above. Fixed cost = R&D and overhead plus site fees (Nova Scotia from May 2029, pro rata). Depreciation of plant and
           pads is not modelled. RQ3's site load converts all field revenue into launches; here readiness is mostly a fee and failed launches are re-flown, so the
           launch counts differ. SQL: v_scenarios.
         </p>
@@ -211,7 +212,11 @@ export function Scenarios({ settings, setSettings }: { settings: ScenarioSetting
                   {s.contract_launches} a year from {s.contract_start_year}
                 </dd>
                 <dt>Nova Scotia anchor</dt>
-                <dd>{s.fields.includes("site_nova_scotia") ? `${s.ns_anchor_launches} launches a year` : "site not taken up"}</dd>
+                <dd>
+                  {s.fields.includes("site_nova_scotia")
+                    ? `${s.ns_anchor_launches} launches a year`
+                    : `site not taken up; if the fee is binding, another −€${m(NS_FEE)} M a year`}
+                </dd>
                 <dt>ESA level after 2030</dt>
                 <dd>{fmtPct(s.institutional_after_end)}</dd>
                 <dt>Success 2027 → 2030</dt>

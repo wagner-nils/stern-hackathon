@@ -715,10 +715,12 @@ fy as (
              then sc.institutional_after_end * e.market_2025_eur * power(1 + e.growth, e.end_year - 2025) * e.isar_share
            else 0 end as revenue_eur,
          (y.year between e.start_year and coalesce(e.end_year, 9999)) as active,
-         -- The Nova Scotia fee starts when the waiver ends, not with the first launch.
+         -- The Nova Scotia fee starts when the waiver ends (pro rata in that year), not with the first launch.
          case when y.year between e.start_year and coalesce(e.end_year, 9999)
-                   and (e.id <> 'site_nova_scotia' or y.year >= (select value from assumptions where id = 'scen_ns_fee_start_year'))
-              then e.fixed_cost_eur else 0 end as fixed_cost_due_eur
+              then e.fixed_cost_eur * case when e.id = 'site_nova_scotia'
+                                           then least(greatest(y.year + 1 - (select value from assumptions where id = 'scen_ns_fee_start_year'), 0), 1)
+                                           else 1 end
+              else 0 end as fixed_cost_due_eur
   from scenarios sc cross join y
   join expansion_fields e on e.id = any (sc.fields)
 ),

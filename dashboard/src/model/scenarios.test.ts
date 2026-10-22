@@ -45,7 +45,10 @@ describe("P&L scenarios", () => {
     expect(b.find((y) => y.year === 2031)!.launchRevenueEur).toBeLessThan(b.find((y) => y.year === 2030)!.launchRevenueEur * 0.6);
     const a = scenarioYears(ascent, expansionFields, BASE_COST);
     const fee = expansionFields.find((f) => f.id === "site_nova_scotia")!.fixed_cost_eur;
-    expect(a.find((y) => y.year === BASE_COST.nsFeeStartYear)!.fixedCostEur - a.find((y) => y.year === BASE_COST.nsFeeStartYear - 1)!.fixedCostEur).toBeCloseTo(fee, 0);
+    const fixed = (year: number) => a.find((y) => y.year === year)!.fixedCostEur;
+    const firstYear = Math.floor(BASE_COST.nsFeeStartYear);
+    expect(fixed(firstYear) - fixed(firstYear - 1)).toBeCloseTo(fee * (firstYear + 1 - BASE_COST.nsFeeStartYear), 0);
+    expect(fixed(firstYear + 1) - fixed(firstYear - 1)).toBeCloseTo(fee, 0);
   });
 
   it("orders the scenarios: Bear never breaks even, Bull before ASCENT", () => {

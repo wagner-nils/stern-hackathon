@@ -55,6 +55,18 @@ function fieldRevenue(f: ExpansionField, year: number, sc: Scenario): number {
   return 0;
 }
 
+/** Share of a year's fee due when payments start at a fractional year (2029.33 = 1 May 2029). */
+export const feeShare = (year: number, start: number) => Math.min(Math.max(year + 1 - start, 0), 1);
+
+/** Net yearly contribution of Nova Scotia at the scenario's cost level: its launches' margin minus the fee. */
+export function nsNet(sc: Scenario, fields: ExpansionField[], c: CostBase, year: number): number | null {
+  const ns = fields.find((f) => f.id === NOVA_SCOTIA);
+  if (!ns || !sc.fields.includes(NOVA_SCOTIA)) return null;
+  const y = scenarioYears(sc, fields, c).find((r) => r.year === year)!;
+  const launches = sc.ns_anchor_launches + fieldRevenue(ns, year, sc) / c.pricePerLaunchEur;
+  return launches * (c.pricePerLaunchEur - y.unitCostEur / y.successRate) - ns.fixed_cost_eur * feeShare(year, c.nsFeeStartYear);
+}
+
 export function successRate(sc: Scenario, year: number): number {
   if (year <= 2027) return sc.success_2027;
   if (year >= 2030) return sc.success_2030;
@@ -93,10 +105,10 @@ export function scenarioYears(sc: Scenario, fields: ExpansionField[], c: CostBas
       launchesFlown * unitCostEur +
       readinessRevenueEur * (1 - c.readinessLaunchShare) * c.readinessFeeMargin +
       extrasRevenueEur * (extras?.gross_margin ?? 0);
-    // Field fixed costs (e.g. a site fee) run while the field is active; Nova Scotia's fee only after the waiver.
+    // Field fixed costs (e.g. a site fee) run while the field is active; Nova Scotia's fee only after the waiver, pro rata in its first year.
     const fieldFixed = used
-      .filter((f) => active(f, year) && (f.id !== NOVA_SCOTIA || year >= c.nsFeeStartYear))
-      .reduce((n, f) => n + f.fixed_cost_eur, 0);
+      .filter((f) => active(f, year))
+      .reduce((n, f) => n + f.fixed_cost_eur * (f.id === NOVA_SCOTIA ? feeShare(year, c.nsFeeStartYear) : 1), 0);
     const fixedCostEur = c.fixedOpexEur + fieldFixed;
     const ebitEur = grossProfitEur - fixedCostEur;
     cumulative += ebitEur;

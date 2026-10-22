@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 13:50** (Branch `feature/present-mode`): Präsentationsmodus „▶ Present“ in der Topbar: fünf Beats (Recommendation → ASCENT → Geografie Welt → Isars Standorte → Zahlen → Gates & Risiken), je Beat Deep Dive ins Explore-Kapitel und „Back to story“. Drei P&L-Szenarien Bear / ASCENT / Bull 2027–2040 im Warehouse (`scenarios`, `v_scenarios`, Kostenanker mit Quellen: Rocket Lab 10-K 2021/2025, Firefly S-1, OHB) und neues Explore-Kapitel „Scenarios“. ASCENT: Umsatz 152 Mio. € 2030, EBIT dauerhaft positiv ab 2038, mit ca. 5 Rahmenvertrags-Starts pro Jahr schon 2035; Nova Scotia braucht ca. 5 Anker-Starts. Plan in drei Runden mit Codex geprüft (`progress/present-*.md`), Notion-Seite „Szenarien: Umsatz und Gewinn bis 2040 (einfach erklärt)“, Wiki `analysis/scenarios.md`. 28 Tests grün.
+
 - **22.10. 13:03**: RQ4 aufgenommen (Schock: Andøya gesperrt, Nova Scotia nur für kanadische Nutzlasten): Wiki-Seite Q4 mit Szenario, Ausweichstandorten aus dem Register und erster Einordnung; Fragenübersicht; Notion Common Docs.
 
 - **22.10. 11:57**: Annahmen-Prüfung: Starts pro Jahr nennt jetzt Werk (40/Jahr), Andøya-Lizenz (30/Jahr Standort) und Pad (ca. 12/Jahr, neue Obergrenze); Erfolgsquote auf 75 % (Versicherungsprämie 25 %, Bilanz 1 von 2 als Untergrenze). SOM unverändert (Nachfrage begrenzt). 22 Tests grün.

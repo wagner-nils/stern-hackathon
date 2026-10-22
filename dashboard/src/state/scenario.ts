@@ -1,5 +1,5 @@
 import { assumption, expansionFields, preferred, scenarios, siteNodes } from "../data/warehouse";
-import { type CostBase, contractsToBreakEven, kpis, nsBreakEvenLaunches, scenarioYears } from "../model/scenarios";
+import { type CostBase, contractsToBreakEven, kpis, nsBreakEvenLaunches, nsNet, scenarioYears } from "../model/scenarios";
 import { siteLoad } from "../model/q3";
 
 /** The cost base of all scenarios, every value from the warehouse. */
@@ -56,6 +56,9 @@ export function run(id: string, s: ScenarioSettings) {
     at: (year: number) => years.find((y) => y.year === year)!,
     contractsFor: (year: number) => contractsToBreakEven(sc, expansionFields, cost, year, andoyaCapacity(year)),
     nsBreakEven: (year: number) => nsBreakEvenLaunches(sc, expansionFields, cost, year),
+    nsNet: (year: number) => nsNet(sc, expansionFields, cost, year),
+    /** First year Andøya would need more flights than its proposed pads carry; the cost of more pads is not in the P&L. */
+    overCapacityFrom: years.find((y) => y.andoyaFlown > andoyaCapacity(y.year) + 1e-9)?.year ?? null,
     andoyaCapacity,
   };
 }

@@ -117,3 +117,63 @@ VERDICT: REVISE
 - P0-4 (gates overclaim): accepted. Fixed opex now sourced (Isar >400 staff × OHB 85 k EUR, Rocket Lab 10-K 2021, Firefly S-1) with range 40–90 M EUR, slider in Explore. The Nova Scotia gate now uses the scenario's own fee coverage (≈ 5 anchor launches at ASCENT cost, vs 3 assumed) and the "cost base cut" claim is gone (missed gate 2 → "we are in Bear").
 - P1-5 (rebuild lifecycle): accepted; `scenarios` and `v_scenarios` added to the drop lists of schema.sql; no full reload during Q4.
 - P1-6 (Q3 vs scenarios): accepted as a visible reconciliation note in the Scenarios chapter (Q3 converts all field revenue into launches; scenarios split readiness into fee and flights and add re-flights). The story's footprint caption uses the scenario-derived Andøya flights.
+
+## Round 3 — Codex
+
+Most prior P0 fixes are now implemented: Bear excludes readiness and the dedicated shift; service revenue is counted correctly; costs flatten above 21 flights; ASCENT starts at 0.81; the contract solver accounts for Andøya’s existing traffic; opex has a disclosed basis and range.
+
+Three material issues remain:
+
+1. **P0 — Bull’s headline profit exceeds the proposed capacity.** The snapshot shows **32.22 attempts in 2040**, exceeding even the combined 30-slot capacity. `kpis()` still presents unconstrained profitability; only Explore flags Andøya overload.  
+   **Fix:** Put an explicit “requires additional capacity; expansion costs excluded” warning beside affected story profits and break-even KPIs, or suppress those results.
+
+2. **P0 — Nova Scotia’s gate contradicts the base scenario.** The gate requires approximately five anchor launches and says “do not open” if missed, but ASCENT opens with three. Thus “our strategy executed” models a strategy that fails its own gate.  
+   **Fix:** Either make ASCENT satisfy the gate and regenerate results, or explicitly present it as a three-anchor case with an unresolved site subsidy.
+
+3. **P1 — Fee timing contradicts its own warehouse rationale.** `scen_ns_fee_start_year` says payments begin **May 2029**, but SQL/TS charge nothing in 2029 and the story says the fee starts in 2030.  
+   **Fix:** Include the partial first-year fee using the agreed contractual timing, and distinguish “fee commencement” from “first full fee year.”
+
+These are targeted corrections, not reasons to rebuild the presentation.
+
+VERDICT: REVISE
+
+### Claude's response (round 3)
+- P0-1 (Bull beyond capacity): accepted. The story's "profitable from" KPI now reads "needs more pads at Andøya from 2036; their cost is not in the P&L" whenever a scenario exceeds Andøya's proposed capacity; Explore flags the years in red.
+- P0-2 (Nova Scotia gate vs base): partly accepted. The gate stays at full-cost fee coverage (≈ 5 anchor launches), because that is the economically correct trigger; the base keeps RQ3's 3 anchors and the story now shows the gap as a number ("5 vs 3 … at 3 the site costs €6 M a year"). Whether RQ3's trigger moves to 5 or the site stays a subsidised sovereign option is a team decision, flagged to Nils.
+- P1-3 (fee timing): accepted. `scen_ns_fee_start_year` = 2029.33 (1 May 2029), pro rata in 2029, full from 2030; SQL, TS and test updated. ASCENT's peak cumulative loss moves from €383 M to €392 M.
+
+## Resolution
+MAX_ROUNDS = 3 reached with VERDICT: REVISE. The three round-3 points were targeted fixes and are applied (see above); no fourth round was run because of the 15:00 deadline. Open, by design: Nova Scotia anchor 3 (RQ3) vs ≈ 5 (full-cost gate) — decision for the team.
+
+## Post-build inspection (fresh Codex session, read-only, 1 round)
+
+- **[P2] Edited results are presented as the base case — `dashboard/src/story/Story.tsx:68`.** Recommendation uses shared slider settings but always labels revenue “ASCENT base case,” without an edited indicator or reset. Returning from a Scenarios deep dive can therefore present modified results as the frozen recommendation. **Fix:** show “edited · back to base” wherever shared edits affect story numbers.
+
+- **[P2] Unreachable break-even disappears instead of being reported — `dashboard/src/story/Story.tsx:76`.** Setting fixed opex to €90 M and size factor to 2 makes `contractsFor(2035)` null; the recommendation then ends at “Profit comes from contracts:” and hides that break-even cannot be reached within capacity. Revision 1 explicitly requires “not reached.” **Fix:** render an explicit capacity-constrained “not reached” fallback.
+
+- **[P2] Story profit projections omit capacity warnings — `dashboard/src/story/Story.tsx:221`.** Base Bull reaches approximately 32.2 flights in 2040, including 25.0 from Andøya against its proposed 18. Numbers displays the resulting profit without any warning; the capacity flag exists only in the Explore table. **Fix:** flag capacity-exceeding scenario results beside the story chart and KPIs.
+
+- **[P2] Nova Scotia gate contradicts the locked gate and base scenario — `dashboard/src/story/Story.tsx:259`.** Revision 1 specifies a signed anchor for ≥3 launches annually, but this renders approximately **5** at base settings while ASCENT assumes only 3 and opens the site. Thus the recommended base case fails its own displayed investment gate. **Fix:** retain the agreed ≥3 contractual gate and show the economic fee-coverage shortfall separately.
+
+- **[P2] Bear omits the required binding-fee downside — `dashboard/src/sections/Scenarios.tsx:214`.** “Site not taken up” is displayed without Revision 1’s qualification that a binding Nova Scotia fee would worsen Bear by €13.4 M annually. The presented downside consequently hides a material exclusion. **Fix:** display the binding-fee caveat alongside Bear’s site assumption and results.
+
+- **[P2] Slider edits overwrite the displayed baseline — `dashboard/src/sections/Scenarios.tsx:68`.** After changing ASCENT contracts from 2 to 8, the helper text says “Base: 8” because `r.scenario` already contains the override. **Fix:** read the baseline from the warehouse scenario rather than the edited run.
+
+- **[P2] Story shortcuts still fire on focused buttons — `dashboard/src/story/Story.tsx:339`.** Buttons are excluded only for Space; ArrowLeft/Right and PageUp/Down still change beats while a scenario toggle or ASCENT tile has focus, contrary to Revision 1’s explicit button exclusion. **Fix:** include buttons in the navigation-shortcut focus guard.
+
+- **[P2] Back button skips the footprint step — `dashboard/src/story/Story.tsx:360`.** Clicking Back from Numbers goes to Geography step 0 (world), whereas ArrowLeft correctly returns to step 1 (footprint). **Fix:** use `BEATS[at.beat - 1].steps - 1` when moving into the preceding beat.
+
+- **[P2] Horizon-limited break-even is labelled “never” — `dashboard/src/story/Story.tsx:224`.** A null KPI establishes only that sustained profitability is not reached through 2040; the story claims it will never occur. **Fix:** display “not by 2040,” consistent with Recommendation.
+
+### Claude's dispositions
+1. Edited results shown as base on the recommendation — accepted: KPI note says "ASCENT with edited settings" and an "edited · back to base" button appears.
+2. Unreachable break-even disappears — accepted: explicit sentence that no number of contracts that fits Andøya brings break-even to 2035.
+3. Story capacity warnings — already fixed with round 3 P0-1.
+4. Nova Scotia gate vs base — rejected as stated (see round 3 P0-2): the gate keeps full-cost coverage, the gap is shown as a number and handed to the team.
+5. Bear binding-fee caveat — accepted: Bear's card says "site not taken up; if the fee is binding, another −€13 M a year".
+6. Slider baseline shows the edited value — accepted (bug): baseline read from the warehouse scenario.
+7. Shortcuts fire on focused buttons — rejected: arrow and page keys have no native function on a button, and blocking them would stop the presenter after every click on a toggle or tile; Space stays excluded because it activates buttons. Plan wording adjusted to "inputs, selects, text areas".
+8. Back skips the footprint step — accepted (bug): Back into a beat lands on its last step, like ←.
+9. "never" for a horizon-limited KPI — accepted: "not by 2040".
+Rounds used: 1 of MAX_INSPECTION_ROUNDS = 2 (no re-inspection: deadline).
+

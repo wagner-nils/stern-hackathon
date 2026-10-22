@@ -19,6 +19,7 @@ Das Wiki bündelt alles, was das Team zum Case weiß: Notion-Recherche (Insider,
 | | [Nachfragetreiber](market/demand-drivers.md) | Verteidigung, ESA, EU, US-Politik, Rideshare-Stopp |
 | Analyse | [Q1: Reichweite Andøya](analysis/q1-andoya-reach.md) | TAM/SAM/SOM, Annahmen, Challenge-Punkte |
 | | [Q2: Geschäftsfelder](analysis/q2-business-areas.md) | Long List, Bewertungsrahmen, offene Recherche |
+| | [Szenarien: Umsatz und EBIT](analysis/scenarios.md) | Bear, ASCENT, Bull 2027–2040; Break-even, Meilensteine; Präsentationsmodus |
 | Experte | [Robbie Schingler (Planet)](expert/robbie-schingler.md) | Fragen und Notizen zur Expert Q&A |
 | Referenz | [Annahmen-Register](reference/assumptions.md) | Alle Modellannahmen mit Spanne und Quelle |
 | | [Quellen](reference/sources.md) | Alle Quellen nach Thema |

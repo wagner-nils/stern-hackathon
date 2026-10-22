@@ -15,9 +15,6 @@ Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
 - **22.10. 13:43**: Vorschau-Konfiguration um einen Präsentations-Server ergänzt (`dashboard-present`, Port 5176, separater Checkout `stern-hackathon-present`). 22 Tests grün.
 
-- **22.10. 13:43**: Checkpoint: neue Vorschau-Konfiguration „dashboard-present“ (Port 5176, separates Präsentations-Checkout) in .claude/launch.json.
-- **22.10. 13:43**: Nur Entwicklungs-Konfiguration: zweiter Vorschau-Server „dashboard-present“ (Port 5176) für den Präsentationsstand im Ordner `stern-hackathon-present`. 22 Tests grün.
-
 - **22.10. 13:43**: Nur Entwicklungs-Konfiguration: zusätzlicher Vorschau-Server „dashboard-present“ (Port 5176) für die Präsentationsfassung in `.claude/launch.json`.
 
 - **22.10. 13:03**: RQ4 aufgenommen (Schock: Andøya gesperrt, Nova Scotia nur für kanadische Nutzlasten): Wiki-Seite Q4 mit Szenario, Ausweichstandorten aus dem Register und erster Einordnung; Fragenübersicht; Notion Common Docs.

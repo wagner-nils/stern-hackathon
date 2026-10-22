@@ -1,4 +1,4 @@
-import { factsFor, metrics, preferred, satellites } from "../data/warehouse";
+import { factsFor, metrics, penetrationEvidence, preferred, satellites } from "../data/warehouse";
 import { fmtPct, fmtTonnes, fmtUnit, share } from "../lib/format";
 import { type Q1Fixed, type Q1Levers, type Q1Result, groupBy, samWeight } from "../model/q1";
 import { BarList, type BarItem } from "./BarList";
@@ -124,6 +124,10 @@ export function SomEvidence({ levers, fixed, result }: Props) {
   const top = launchers[0];
   const bryce = preferred("smallsat_small_launcher_share", { year: 2025, scope: "non-broadband smallsats" });
   const insurance = preferred("launch_insurance_rate", { year: 2026, scope: "company", entity: "Isar Aerospace" });
+  // Revealed preference from GCAT (view v_penetration_evidence): the base for the 7 % penetration lever.
+  const evidence = (segment: string, period: string) => penetrationEvidence.find((e) => e.segment.startsWith(segment) && e.period === period);
+  const band = { pooled: evidence("Andøya band", "2024–2025"), y2024: evidence("Andøya band", "2024"), y2025: evidence("Andøya band", "2025") };
+  const west = evidence("Western open market", "2024–2025");
   const maxBar = Math.max(result.wantKg, result.capacityKg, 1);
 
   return (
@@ -153,18 +157,27 @@ export function SomEvidence({ levers, fixed, result }: Props) {
           that ({fmtPct(share(result.launchesNeeded, levers.launchesPerYear))}).
         </p>
 
-        <h4>Penetration in three points</h4>
+        <h4>Why 7 %: penetration in three points</h4>
         <ol className="points">
           <li>
-            Today {fmtPct(share(top?.sats ?? 0, sam.sats))} of the SAM flies on {top?.name ?? "rideshare"}; only{" "}
-            {fmtPct(share(small.sats, sam.sats))} of satellites ({fmtPct(share(small.massKg, sam.massKg))} of mass) take a small
-            launcher.
+            <b>Measured:</b> in {levers.baseYear} {fmtPct(share(top?.sats ?? 0, sam.sats))} of the SAM flew on {top?.name ?? "rideshare"} and{" "}
+            {fmtPct(share(small.sats, sam.sats))} of satellites ({fmtPct(share(small.massKg, sam.massKg))} of mass) on a small launcher.
+            {band.pooled && band.y2024 && band.y2025 && (
+              <>
+                {" "}
+                The year swings, so we take 2024 and 2025 together: {fmtPct(band.pooled.dedicated_share_mass)} of the band's mass (
+                {fmtPct(band.y2024.dedicated_share_mass)} in 2024, {fmtPct(band.y2025.dedicated_share_mass)} in 2025) bought a dedicated launch.
+              </>
+            )}{" "}
+            <SourceChip id="gcat" />
           </li>
           <li>
-            Worldwide {fmtPct(bryce.value)} of non-broadband smallsats flew small launchers in 2025, about 10–14% in the West <SourceChip id={bryce.source_id} />
+            <b>Benchmarks:</b> {west ? `${fmtPct(west.dedicated_share_sats)} in the Western open market across all orbits; ` : ""}
+            {fmtPct(bryce.value)} of non-broadband smallsats worldwide in 2025, but that includes Chinese small launchers{" "}
+            <SourceChip id={bryce.source_id} />
           </li>
           <li>
-            New rockets get demo payloads first: insurance on Isar's next mission is about {fmtPct(insurance.value)} <SourceChip id={insurance.source_id} />.
+            <b>Caution:</b> new rockets get demo payloads first: insurance on Isar's next mission is about {fmtPct(insurance.value)} <SourceChip id={insurance.source_id} />.
             Upside: SpaceX rideshare stop after 2028, defence demand.
           </li>
         </ol>

@@ -5,7 +5,7 @@
 -- so tables are recreated from this file rather than migrated. Other tables in the database are not touched.
 
 drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity,
-  v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap;
+  v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap, v_penetration_evidence;
 drop table if exists launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
   assumptions, facts, metrics, sources cascade;
 
@@ -411,6 +411,41 @@ select provider_country as country_code, launch_year as year,
        string_agg(distinct provider, ', ' order by provider) as provider_names
 from v_launches
 group by provider_country, launch_year;
+
+-- Evidence for the SOM penetration assumption: the share of the serviceable market that actually bought a
+-- dedicated small-launcher ride instead of rideshare (revealed preference), by year and pooled, by count and mass.
+-- "Andøya band" uses the Q1 SAM filters; "Western open market" drops only the orbit filter. Not on Falcon 9 is an
+-- upper bound: it also counts national rockets and primary rides on larger vehicles.
+create or replace view v_penetration_evidence as
+with p as (select max(value) filter (where id = 'sam_other_gov_open') as other_gov from assumptions),
+spec as (select payload_sso_kg, payload_leo_kg from vehicles where id = 'spectrum'),
+site as (select inclination_min, inclination_max from launch_sites where id = 'andoya'),
+s as (
+  select sat.launch_year::text as period, sat.mass_kg, sat.launcher_class, coalesce(sat.launch_vehicle, '') as vehicle,
+         sat.inclination between site.inclination_min and site.inclination_max as in_band,
+         case sat.customer_type
+           when 'open-commercial' then 1 when 'institutional-eu' then 1
+           when 'institutional-other' then p.other_gov else 0 end as w
+  from satellites sat, p, spec, site
+  where sat.mass_kg <= case when sat.orbit_class = 'SSO' then spec.payload_sso_kg else spec.payload_leo_kg end
+),
+periods as (select * from s union all select '2024–2025', mass_kg, launcher_class, vehicle, in_band, w from s),
+segments as (
+  select 'Andøya band (Q1 SAM)' as segment, * from periods where in_band
+  union all
+  select 'Western open market, all orbits', * from periods
+)
+select segment, period,
+       round(sum(w), 1) as satellites,
+       round(sum(w * mass_kg) / 1000, 1) as mass_t,
+       round(sum(w) filter (where launcher_class = 'small') / sum(w), 3) as dedicated_share_sats,
+       round(sum(w * mass_kg) filter (where launcher_class = 'small') / sum(w * mass_kg), 3) as dedicated_share_mass,
+       round(sum(w) filter (where vehicle not like 'Falcon 9%') / sum(w), 3) as not_falcon9_share_sats,
+       round(sum(w * mass_kg) filter (where vehicle not like 'Falcon 9%') / sum(w * mass_kg), 3) as not_falcon9_share_mass
+from segments
+where w > 0
+group by segment, period
+order by segment, period;
 
 -- RQ2: how many of Isar's planned launches the demand visible in flight data fills. The 2028 plan is a sourced
 -- fact, the 2030 plan a team assumption; everything else comes from the Q1 funnel and the Q2 assumptions.

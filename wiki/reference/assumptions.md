@@ -11,7 +11,7 @@ Höchstens drei pro Stufe, konservativ gewählt.
 | TAM | Basisjahr der geflogenen Nachfrage | 2025 | 2024–2025 | hoch | Nils | GCAT; jüngstes vollständiges Jahr |
 | SAM | Startplätze | Andøya | Andøya, + Nova Scotia, + Kourou | hoch | Nils | CAA Norway (90–110,6°), Isar/Maritime Launch, CNES |
 | SAM | Nachfrage anderer Regierungen offen für Isar | 20 % | 0–100 % | niedrig | Benedikt | Teamschätzung: Japan, Indien, Korea fliegen meist mit eigenen Raketen |
-| SOM | Anteil des SAM, der einen dedizierten Start kauft | 7 % | 4–15 % | mittel | Benedikt | GCAT: 6,7 % des SAM flogen 2025 auf Kleinträgern; BryceTech 17 % weltweit, 10–14 % im Westen; Schingler: neue Raketen erst Demo |
+| SOM | Anteil des SAM, der einen dedizierten Start kauft | 7 % | 4–15 % | mittel | Benedikt | GCAT, View `v_penetration_evidence`: 2024 + 2025 kauften 6,9 % der Masse im Andøya-Band einen eigenen Start (2024: 12,5 %, 2025: 4,2 %); westlicher Gesamtmarkt 8,5 %; BryceTech weltweit 17–23 % (mit China); Schingler: neue Raketen erst Demo |
 | SOM | Spectrum-Starts pro Jahr | 4 | 1–8 | mittel | Luca | Payload: 4 Flüge 2027 |
 | SOM | Erfolgsquote pro Start | 80 % | 75–92 % | mittel | Nils | Versicherung für Isars nächste Mission ca. 25 % (Schingler); Branchenschnitt 5–8 % Fehlstarts |
 

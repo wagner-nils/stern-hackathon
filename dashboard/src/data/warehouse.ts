@@ -174,6 +174,18 @@ export interface CountryLaunches {
   provider_names: string | null;
 }
 
+/** One row of v_penetration_evidence: who bought a dedicated launch, by market segment and period (GCAT). */
+export interface PenetrationEvidence {
+  segment: string;
+  period: string;
+  satellites: number;
+  mass_t: number;
+  dedicated_share_sats: number;
+  dedicated_share_mass: number;
+  not_falcon9_share_sats: number;
+  not_falcon9_share_mass: number;
+}
+
 export interface VehicleActivity {
   vehicle_id: string;
   year: number;
@@ -241,6 +253,7 @@ interface RawSnapshot {
   vehicleActivity: VehicleActivity[];
   launchesByProvider: ProviderLaunches[];
   launchesByCountry: CountryLaunches[];
+  penetrationEvidence: PenetrationEvidence[];
 }
 
 const snapshot = raw as unknown as RawSnapshot;
@@ -259,6 +272,7 @@ export const siteActivity = snapshot.siteActivity ?? [];
 export const vehicleActivity = snapshot.vehicleActivity ?? [];
 export const launchesByProvider = snapshot.launchesByProvider ?? [];
 export const launchesByCountry = snapshot.launchesByCountry ?? [];
+export const penetrationEvidence = snapshot.penetrationEvidence ?? [];
 export const manifest = snapshot.manifest;
 export const sqlFunnel = snapshot.q1Funnel;
 export const sqlSamLaunchers = snapshot.samLaunchers;

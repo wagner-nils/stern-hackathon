@@ -27,6 +27,8 @@ Views:
 - `v_vehicle_activity`: Starts, Erfolge und Nutzlast pro Rakete und Jahr.
 - `v_launches`: jeder Start mit Startplatz, Rakete, Anbieter und Anbieterland aufgelöst (GCAT nennt Agenturen auf Unterebene, z. B. CALT statt CASC; Anbieter und Land kommen deshalb aus `vehicles`).
 - `v_launches_by_provider`, `v_launches_by_country`: Starts, Erfolge und Nutzlast pro Anbieter bzw. Anbieterland und Jahr.
+- `v_penetration_evidence`: Begründung der 7 % Penetration. Anteil, der einen eigenen Kleinträger-Start statt Rideshare kaufte, nach Jahr und zusammengefasst, nach Anzahl und Masse, im Andøya-Band und im westlichen Gesamtmarkt, dazu die Obergrenze „nicht mit Falcon 9“.
+- `v_q2_launch_gap`: RQ2-Leitzahl, wie viele geplante Starts die sichtbare Nachfrage füllt.
 
 ## Arbeitsablauf
 

@@ -39,9 +39,22 @@ Wer im SAM steckt: Erdbeobachtung optisch 144, Tech-Demos 92, Kommunikation/IoT 
 
 ## Penetration in drei Punkten (warum 7 %)
 
-1. **Gemessen:** Heute fliegen ca. 87 % des SAM auf Falcon 9 (Rideshare). Nur 6,7 % der Satelliten (4,2 % der Masse) nehmen einen Kleinträger, fast alle Electron (GCAT).
-2. **Vergleich:** Weltweit flogen 2025 17 % der Nicht-Breitband-Kleinsatelliten mit Kleinträgern, im Westen ca. 10–14 % (BryceTech 2026).
-3. **Neue Raketen bekommen erst Demo-Nutzlasten:** Versicherung für Isars nächste Mission ca. 25 % (Schingler). Aufwärts wirken der Rideshare-Stopp nach 2028 (unbestätigt) und Verteidigung.
+So kommt man als Berater auf die 7 %: Man misst, wer heute tatsächlich für einen eigenen Start zahlt (revealed preference), glättet über mehrere Jahre und prüft das Ergebnis gegen Vergleichswerte. Nachrechenbar in Supabase in der View `v_penetration_evidence`.
+
+| Blickwinkel | Satelliten | Masse | Quelle |
+| --- | --- | --- | --- |
+| Andøya-Band (Q1-SAM) 2025 | 6,7 % | 4,2 % | GCAT |
+| Andøya-Band 2024 | 12,4 % | 12,5 % | GCAT |
+| **Andøya-Band 2024 + 2025 zusammen** | 8,4 % | **6,9 %** | GCAT |
+| Westlicher Gesamtmarkt, alle Bahnen, 2024 + 2025 | 8,5 % | 8,3 % | GCAT |
+| Weltweit, Nicht-Breitband-Kleinsatelliten 2023–2025 | 17–23 % | – | BryceTech 2026 (inkl. chinesischer Kleinraketen) |
+| Obergrenze: nicht mit Falcon 9 geflogen (Band 2024 + 2025) | 14,7 % | 17,3 % | GCAT |
+
+1. **Gemessen:** 2025 flogen ca. 87 % des SAM auf Falcon 9 (Rideshare), 6,7 % der Satelliten mit einem Kleinträger, alle mit Electron. Ein einzelnes Jahr schwankt stark, deshalb gilt der Zweijahreswert: 6,9 % der Masse.
+2. **Vergleich:** Der westliche Gesamtmarkt liegt bei 8,5 %, weltweit sind es 17–23 % (mit China). Die 7 % liegen am vorsichtigen Ende. Die Spanne 4–15 % reicht vom schwachen Jahr 2025 bis zum Jahr 2024 bzw. zur Obergrenze „nicht Falcon 9“.
+3. **Vorsicht:** Neue Raketen bekommen erst Demo-Nutzlasten (Versicherung für Isars nächste Mission ca. 25 %, Schingler). Die 7 % setzen außerdem voraus, dass Isar diese Nachfrage gewinnt; 2025 flog sie komplett mit Rocket Lab. Aufwärts wirken der Rideshare-Stopp nach 2028 (unbestätigt) und Verteidigung.
+
+Wer heute einen eigenen Start kauft: Konstellationsbetreiber, die eigene Bahnebenen brauchen (2025 Kinéis, OroraTech, E-Space, HawkEye 360; 2024 Kinéis, Spire, Synspective). Das sind meist 10–50 kg schwere Satelliten im Paket, nicht einzelne schwere Satelliten.
 
 ## Hebel und feste Parameter
 

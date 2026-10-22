@@ -6,12 +6,14 @@
 | Q1 – Reichweite Andøya | `phase/q1-andoya` | 21.10. 13:45–16:15 | erledigt | SAM 9,3 % der Satelliten / 0,7 % der Masse; [q1-andoya.md](q1-andoya.md) |
 | Q2 | `phase/q2` | 21.10. 16:15–19:45 | erledigt | Strategie ASCENT: erst der Vertrag, dann die Rakete; [Q2](../wiki/analysis/q2-business-areas.md) |
 | Q3 | `phase/q3` | 22.10. 09:30–12:00 | erledigt | Ein Werk, ein Kernstandort, eine souveräne Option; [Q3](../wiki/analysis/q3-site-portfolio.md) |
-| Q4 | `phase/q4` | 22.10. 12:45–14:45 | offen | – |
+| Q4 | `phase/q4` | 22.10. 12:45–14:45 | läuft | – |
 | Final | `phase/final` | 22.10. ab 15:00 | offen | Präsentation |
 
 ## Log
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
+
+- **22.10. 13:03**: RQ4 aufgenommen (Schock: Andøya gesperrt, Nova Scotia nur für kanadische Nutzlasten): Wiki-Seite Q4 mit Szenario, Ausweichstandorten aus dem Register und erster Einordnung; Fragenübersicht; Notion Common Docs.
 
 - **22.10. 11:57**: Annahmen-Prüfung: Starts pro Jahr nennt jetzt Werk (40/Jahr), Andøya-Lizenz (30/Jahr Standort) und Pad (ca. 12/Jahr, neue Obergrenze); Erfolgsquote auf 75 % (Versicherungsprämie 25 %, Bilanz 1 von 2 als Untergrenze). SOM unverändert (Nachfrage begrenzt). 22 Tests grün.
 

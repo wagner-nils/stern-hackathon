@@ -211,3 +211,16 @@ Rejected:
 - **(4, part) Unit cost from launches sold instead of flown:** rejected. Failed rockets are built too and teach the line; production volume is the right driver.
 - **(15, part) Footprint only:** rejected. Nils explicitly wants to start from the geographic overview and go macro → micro. We keep world → footprint, but as two steps only and without the orbital band.
 - **(21, part) Deferring the Notion page:** rejected, because Nils asked for it explicitly. It is delegated instead, so it costs no build time.
+
+## Revision 2 (Nils, 14:00): one presentation page instead of five beats
+
+Nils stopped the five-beat story. "▶ Present" now opens **one page** (`dashboard/src/present/Present.tsx`, fits 1280×720):
+- the recommendation
+- three scenario cards with revenue 2030/2035, EBIT 2035 and the profitable-from year; the selected card drives the chart
+- revenue and EBIT chart
+- **five sliders at most**: frame-contract launches, paid-readiness growth, success rate from 2030, fixed cost base, Q4 months Andøya closed
+- "How ASCENT makes money"
+- Q2 growth fields as bullets with Isar revenue 2030
+- the Q4 shock
+
+Q4 model: `dashboard/src/model/q4.ts` (test). The story components (`story/Story.tsx`, `FootprintMap`) are removed; the Scenarios chapter stays as the deep dive.

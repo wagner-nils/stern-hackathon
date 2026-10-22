@@ -7,7 +7,7 @@ import { Rockets } from "./sections/Rockets";
 import { Scenarios } from "./sections/Scenarios";
 import { Spaceports } from "./sections/Spaceports";
 import { Upcoming } from "./sections/Upcoming";
-import { BEATS, type DeepDive, Story, type StoryPosition } from "./story/Story";
+import { Present } from "./present/Present";
 import { useLevers } from "./state/useLevers";
 import { BASE_SETTINGS, type ScenarioSettings } from "./state/scenario";
 
@@ -27,10 +27,7 @@ type ChapterId = (typeof chapters)[number]["id"];
 export function App() {
   const [chapter, setChapter] = useState<ChapterId>("q1");
   const [presenting, setPresenting] = useState(false);
-  const [at, setAt] = useState<StoryPosition>({ beat: 0, step: 0 });
-  // Set when a deep dive leaves the story, so "Back to story" returns to the same beat.
-  const [returnTo, setReturnTo] = useState<StoryPosition | null>(null);
-  // One owner for the scenario settings, so story and Explore show the same numbers.
+  // One owner for the scenario settings, so the presentation and Explore show the same numbers.
   const [scenario, setScenario] = useState<ScenarioSettings>(BASE_SETTINGS);
   const levers = useLevers();
 
@@ -38,11 +35,15 @@ export function App() {
   // Block body on purpose: newer browsers return a Promise from scrollTo, which React would call as a cleanup.
   useEffect(() => {
     window.scrollTo({ top: 0 });
-  }, [chapter, presenting, at]);
+  }, [chapter, presenting]);
 
-  // Arrow keys page through the chapters in Explore; the story has its own keys.
+  // Arrow keys page through the chapters in Explore; Esc leaves the presentation.
   useEffect(() => {
-    if (presenting) return;
+    if (presenting) {
+      const onEsc = (e: KeyboardEvent) => e.key === "Escape" && setPresenting(false);
+      window.addEventListener("keydown", onEsc);
+      return () => window.removeEventListener("keydown", onEsc);
+    }
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
       const k = chapters.findIndex((c) => c.id === chapter);
@@ -52,17 +53,6 @@ export function App() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [chapter, presenting]);
-
-  const dive = (to: DeepDive) => {
-    setReturnTo(at);
-    setChapter(to);
-    setPresenting(false);
-  };
-  const present = (from: StoryPosition) => {
-    setAt(from);
-    setReturnTo(null);
-    setPresenting(true);
-  };
 
   return (
     <div className={`app${presenting ? " app--present" : ""}`}>
@@ -77,35 +67,21 @@ export function App() {
             <div className="brand__sub">Isar Aerospace · prepared for SSVE</div>
           </div>
         </div>
-        {presenting ? (
-          <nav className="nav nav--story" aria-label="Storyline">
-            {BEATS.map((b, k) => (
-              <button key={b.id} className={k === at.beat ? "is-active" : k < at.beat ? "is-done" : ""} onClick={() => setAt({ beat: k, step: 0 })}>
-                <span className="nav__num">{k + 1}</span>
-                {b.label}
-              </button>
-            ))}
-            <button className="present-button present-button--exit" onClick={() => setPresenting(false)}>
-              Exit
+        <nav className="nav">
+          {chapters.map((c) => (
+            <button key={c.id} className={!presenting && chapter === c.id ? "is-active" : ""} onClick={() => (setChapter(c.id), setPresenting(false))}>
+              {c.label}
             </button>
-          </nav>
-        ) : (
-          <nav className="nav">
-            {chapters.map((c) => (
-              <button key={c.id} className={chapter === c.id ? "is-active" : ""} onClick={() => setChapter(c.id)}>
-                {c.label}
-              </button>
-            ))}
-            <button className="present-button" onClick={() => present(returnTo ?? { beat: 0, step: 0 })}>
-              ▶ Present
-            </button>
-          </nav>
-        )}
+          ))}
+          <button className={`present-button${presenting ? " present-button--exit" : ""}`} onClick={() => setPresenting(!presenting)}>
+            {presenting ? "Exit" : "▶ Present"}
+          </button>
+        </nav>
       </header>
 
       {presenting ? (
-        <main className="content content--story">
-          <Story at={at} setAt={setAt} settings={scenario} setSettings={setScenario} dive={dive} exit={() => setPresenting(false)} />
+        <main className="content content--present">
+          <Present settings={scenario} setSettings={setScenario} />
         </main>
       ) : (
         <main className="content" key={chapter}>
@@ -118,12 +94,6 @@ export function App() {
           {chapter === "rockets" && <Rockets />}
           {chapter === "facts" && <FactBase />}
         </main>
-      )}
-
-      {!presenting && returnTo && (
-        <button className="back-to-story" onClick={() => present(returnTo)}>
-          ← Back to story · {BEATS[returnTo.beat].label}
-        </button>
       )}
 
       <footer className="footer">

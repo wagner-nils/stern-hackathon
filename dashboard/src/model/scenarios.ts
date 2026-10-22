@@ -43,6 +43,8 @@ export interface ScenarioYear {
   cumulativeEbitEur: number;
   /** Launches flown from Andøya (fields that fly from there, flown readiness and frame contracts). */
   andoyaFlown: number;
+  /** Commercial launches sold at Nova Scotia (its field), without the anchor customer's launches. */
+  nsCommercialSold: number;
 }
 
 const active = (f: ExpansionField, year: number) => year >= f.start_year && year <= (f.end_year ?? 9999);
@@ -131,6 +133,7 @@ export function scenarioYears(sc: Scenario, fields: ExpansionField[], c: CostBas
       ebitEur,
       cumulativeEbitEur: cumulative,
       andoyaFlown,
+      nsCommercialSold: hasNs ? launchFields.filter((f) => f.id === NOVA_SCOTIA).reduce((n, f) => n + fieldRevenue(f, year, sc), 0) / c.pricePerLaunchEur : 0,
     };
   });
 }

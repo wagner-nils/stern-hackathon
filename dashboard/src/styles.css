@@ -2161,9 +2161,15 @@ td.num {
   gap: 16px;
 }
 
+.present__revisit {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .present__head h1 {
   margin-top: 4px;
-  font-size: clamp(24px, 2.4vw, 32px);
+  font-size: clamp(20px, 2vw, 28px);
   font-weight: 400;
 }
 

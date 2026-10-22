@@ -79,8 +79,11 @@ export function Present({ settings, setSettings }: { settings: ScenarioSettings;
         <div>
           <div className="overline">Our recommendation to SSVE</div>
           <h1>
-            Invest in Isar, in stages, on the <em>ASCENT</em> path.
+            <em>Do not invest now:</em> even if ASCENT works, Isar makes losses until {a.kpi.sustainedBreakEven ? a.kpi.sustainedBreakEven - 1 : 2040}.
           </h1>
+          <small className="present__revisit">
+            Revisit when 3 of 4 flights reach orbit in 2027, a European state pays for readiness and frame contracts are signed.
+          </small>
         </div>
         {isEdited(settings) && (
           <button className="text-button" onClick={() => setSettings({ ...BASE_SETTINGS, scenarioId: settings.scenarioId })}>
@@ -190,7 +193,7 @@ export function Present({ settings, setSettings }: { settings: ScenarioSettings;
 
       <div className="present__bottom">
         <div className="card present__list">
-          <h4>How ASCENT makes money</h4>
+          <h4>What it would take to make money</h4>
           <ul>
             <li>
               <strong>Contracts first:</strong>{" "}

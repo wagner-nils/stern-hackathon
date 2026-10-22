@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 13:43**: Nur Entwicklungs-Konfiguration: zusätzlicher Vorschau-Server „dashboard-present“ (Port 5176) für die Präsentationsfassung in `.claude/launch.json`.
+
 - **22.10. 13:03**: RQ4 aufgenommen (Schock: Andøya gesperrt, Nova Scotia nur für kanadische Nutzlasten): Wiki-Seite Q4 mit Szenario, Ausweichstandorten aus dem Register und erster Einordnung; Fragenübersicht; Notion Common Docs.
 
 - **22.10. 11:57**: Annahmen-Prüfung: Starts pro Jahr nennt jetzt Werk (40/Jahr), Andøya-Lizenz (30/Jahr Standort) und Pad (ca. 12/Jahr, neue Obergrenze); Erfolgsquote auf 75 % (Versicherungsprämie 25 %, Bilanz 1 von 2 als Untergrenze). SOM unverändert (Nachfrage begrenzt). 22 Tests grün.

@@ -28,7 +28,8 @@ Views:
 - `v_launches`: jeder Start mit Startplatz, Rakete, Anbieter und Anbieterland aufgelöst (GCAT nennt Agenturen auf Unterebene, z. B. CALT statt CASC; Anbieter und Land kommen deshalb aus `vehicles`).
 - `v_launches_by_provider`, `v_launches_by_country`: Starts, Erfolge und Nutzlast pro Anbieter bzw. Anbieterland und Jahr.
 - `v_penetration_evidence`: Begründung der 7 % Penetration. Anteil, der einen eigenen Kleinträger-Start statt Rideshare kaufte, nach Jahr und zusammengefasst, nach Anzahl und Masse, im Andøya-Band und im westlichen Gesamtmarkt, dazu die Obergrenze „nicht mit Falcon 9“.
-- `v_q2_launch_gap`: RQ2-Leitzahl, wie viele geplante Starts die sichtbare Nachfrage füllt.
+- `v_win_share_evidence`: Begründung für Isars Anteil (45 %). Wer kaufte 2024/25 im Andøya-Band eigene Starts: europäische Betreiber gegen den Rest, mit Raketen.
+- `v_q2_launch_gap`: RQ2-Leitzahl, wie viele geplante Starts die sichtbare Nachfrage füllt, gesamt und mit Isars Anteil.
 
 ## Arbeitsablauf
 
@@ -75,4 +76,4 @@ join vehicles v on v.id = l.vehicle_id where l.site_id = 'kourou';
 - Erst die Quelle in `sources` anlegen (mit `short`, z. B. „SIA 2026“), dann den Fakt.
 - Widersprechen sich Quellen, alle eintragen und eine als `is_preferred` markieren; die Notiz sagt, warum sie abweicht.
 - Was niemand gemessen hat, ist eine Annahme, kein Fakt: mit Spanne, Begründung und Owner. Reine Teamschätzung: Quelle `team`, Konfidenz `low`.
-- Hebel im Tool sind höchstens drei pro Stufe (TAM, SAM, SOM); alles andere ist fest und steht mit Begründung im Tool.
+- Hebel im Tool sind drei pro Stufe (TAM, SAM; beim SOM vier); alles andere ist fest und steht mit Begründung im Tool.

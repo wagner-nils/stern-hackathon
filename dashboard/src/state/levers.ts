@@ -2,7 +2,8 @@ import { type Tier, assumption, preferred, vehicles } from "../data/warehouse";
 import { fmtPct } from "../lib/format";
 import type { Q1Fixed, Q1Levers } from "../model/q1";
 
-// The Q1 levers: at most three per tier, each backed by an assumption row in the warehouse.
+// The Q1 levers, each backed by an assumption row in the warehouse: three per tier, four for the SOM since
+// penetration is split into the dedicated share and Isar's share of it.
 
 export interface LeverDef {
   key: keyof Q1Levers;
@@ -39,6 +40,7 @@ export const LEVERS: LeverDef[] = [
   },
   { key: "otherGovOpen", assumptionId: "sam_other_gov_open", tier: "SAM", step: 0.05, format: fmtPct },
   { key: "penetration", assumptionId: "som_penetration", tier: "SOM", step: 0.01, format: fmtPct },
+  { key: "winShare", assumptionId: "som_win_share", tier: "SOM", step: 0.05, format: fmtPct },
   { key: "launchesPerYear", assumptionId: "som_launches_per_year", tier: "SOM", step: 1, format: (v) => `${v} / yr` },
   { key: "successRate", assumptionId: "som_success_rate", tier: "SOM", step: 0.01, format: fmtPct },
 ];

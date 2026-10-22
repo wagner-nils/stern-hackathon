@@ -9,7 +9,7 @@ export type Metric = "sats" | "massKg" | "revenue";
 const copy = (from: string): Record<Tier, { title: string; scope: string }> => ({
   TAM: { title: "Global launch demand", scope: "Every satellite that reached orbit" },
   SAM: { title: `Serviceable from ${from}`, scope: "Open to Isar, fits on Spectrum, orbit reachable" },
-  SOM: { title: "Obtainable by Isar", scope: "Buys a dedicated launch, within Isar's capacity" },
+  SOM: { title: "Obtainable by Isar", scope: "Buys a dedicated launch, chooses Isar, within its capacity" },
 });
 
 const units: Record<Metric, string> = { sats: "satellites / yr", massKg: "payload / yr", revenue: "launch revenue / yr" };

@@ -21,7 +21,7 @@ const metrics: { id: Metric; label: string }[] = [
 const tierIntro: Record<Tier, string> = {
   TAM: "Global launch demand is measured, not estimated: every satellite that reached orbit in the base year.",
   SAM: "Three narrowing factors turn global demand into what Isar can serve from its launch sites.",
-  SOM: "Two steps decide what Isar wins: who pays for a dedicated launch, and how much Spectrum can fly.",
+  SOM: "Three steps decide what Isar wins: who pays for a dedicated launch, how much of it chooses Isar over Rocket Lab, and how much Spectrum can fly.",
 };
 
 const place: Record<string, string> = { andoya: "Andøya", "nova-scotia": "Nova Scotia", kourou: "Kourou" };
@@ -34,7 +34,7 @@ export function Q1Reach({ state }: { state: LeverState }) {
   const l = state.levers;
   const f = baseFixed;
   const r = computeQ1(satellites, launchSites, l, f, tamRevenueUsd(l.baseYear));
-  const [tamStep, access, payload, orbit, penetration, capacity] = r.steps;
+  const [tamStep, access, payload, orbit, penetration, win, capacity] = r.steps;
   const { TAM, SAM, SOM } = r.tiers;
   const sites = sitesInScope(l.siteScope, launchSites);
   const reachText = r.reach.map(([lo, hi]) => `${lo}–${hi}°`).join(" and ");
@@ -80,10 +80,18 @@ export function Q1Reach({ state }: { state: LeverState }) {
         sources: assumption("som_penetration").source_ids,
       },
       {
+        id: "win",
+        factor: "Win share: chooses Isar",
+        rule: `${fmtPct(l.winShare)} of that dedicated demand flies Spectrum instead of Rocket Lab's Electron or a later entrant`,
+        from: penetration,
+        to: win,
+        sources: assumption("som_win_share").source_ids,
+      },
+      {
         id: "capacity",
         factor: "Capacity: Isar can fly it",
         rule: `${l.launchesPerYear} launches × ${fmtPct(l.successRate)} success × ${fmtInt(f.payloadSsoKg)} kg × ${fmtPct(f.fillRate)} fill = ${fmtTonnes(r.capacityKg)}`,
-        from: penetration,
+        from: win,
         to: capacity,
         sources: [
           ...assumption("som_launches_per_year").source_ids,

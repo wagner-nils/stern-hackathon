@@ -1,4 +1,4 @@
-import { factsFor, metrics, penetrationEvidence, preferred, satellites } from "../data/warehouse";
+import { factsFor, metrics, penetrationEvidence, preferred, satellites, winShareEvidence } from "../data/warehouse";
 import { fmtPct, fmtTonnes, fmtUnit, share } from "../lib/format";
 import { type Q1Fixed, type Q1Levers, type Q1Result, groupBy, samWeight } from "../model/q1";
 import { BarList, type BarItem } from "./BarList";
@@ -128,7 +128,9 @@ export function SomEvidence({ levers, fixed, result }: Props) {
   const evidence = (segment: string, period: string) => penetrationEvidence.find((e) => e.segment.startsWith(segment) && e.period === period);
   const band = { pooled: evidence("Andøya band", "2024–2025"), y2024: evidence("Andøya band", "2024"), y2025: evidence("Andøya band", "2025") };
   const west = evidence("Western open market", "2024–2025");
-  const maxBar = Math.max(result.wantKg, result.capacityKg, 1);
+  const europe = winShareEvidence.find((e) => e.buyer.startsWith("European"));
+  const electron = preferred("orbital_launches_company", { year: 2025, scope: "company", entity: "Rocket Lab" });
+  const maxBar = Math.max(result.dedicatedKg, result.capacityKg, 1);
 
   return (
     <div className="evidence">
@@ -137,6 +139,13 @@ export function SomEvidence({ levers, fixed, result }: Props) {
         <div className="balance">
           <div className="balance__row">
             <span>Buys a dedicated launch</span>
+            <span className="balance__track">
+              <span className="balance__bar balance__bar--market" style={{ width: `${(result.dedicatedKg / maxBar) * 100}%` }} />
+            </span>
+            <strong>{fmtTonnes(result.dedicatedKg)}</strong>
+          </div>
+          <div className="balance__row">
+            <span>… of which chooses Isar</span>
             <span className="balance__track">
               <span className="balance__bar balance__bar--want" style={{ width: `${(result.wantKg / maxBar) * 100}%` }} />
             </span>
@@ -151,7 +160,7 @@ export function SomEvidence({ levers, fixed, result }: Props) {
           </div>
         </div>
         <p className="caption">
-          The SOM is the smaller of the two: {fmtTonnes(Math.min(result.wantKg, result.capacityKg))}, about{" "}
+          The SOM is the smaller of what chooses Isar and what Isar can fly: {fmtTonnes(Math.min(result.wantKg, result.capacityKg))}, about{" "}
           {result.somLaunches.toFixed(1)} Spectrum loads. Today {result.bottleneck === "demand" ? "demand" : "capacity"} sets the limit. With{" "}
           {fmtPct(levers.successRate)} success Isar needs {result.launchesNeeded.toFixed(1)} of its {levers.launchesPerYear} launches for
           that ({fmtPct(share(result.launchesNeeded, levers.launchesPerYear))}).
@@ -177,8 +186,26 @@ export function SomEvidence({ levers, fixed, result }: Props) {
             <SourceChip id={bryce.source_id} />
           </li>
           <li>
-            <b>Caution:</b> new rockets get demo payloads first: insurance on Isar's next mission is about {fmtPct(insurance.value)} <SourceChip id={insurance.source_id} />.
-            Upside: SpaceX rideshare stop after 2028, defence demand.
+            <b>Upside:</b> SpaceX rideshare stop after 2028, defence demand.
+          </li>
+        </ol>
+
+        <h4>Why {fmtPct(levers.winShare)}: Isar's share of it</h4>
+        <ol className="points">
+          {europe && (
+            <li>
+              <b>Natural share:</b> in 2024 and 2025, European operators ({europe.operators}) bought {fmtPct(europe.share_mass)} of the band's
+              dedicated mass ({fmtPct(europe.share_sats)} of satellites), all on {europe.launchers} because no European small launcher flew yet.{" "}
+              <SourceChip id="gcat" />
+            </li>
+          )}
+          <li>
+            <b>Beyond Europe:</b> Isar also signs non-European customers (Planet, Astroscale, ElevationSpace, SEOPS), but Rocket Lab is
+            proven and has capacity: {fmtUnit(electron.value, metrics[electron.metric_id].unit)} in 2025 <SourceChip id={electron.source_id} />.
+          </li>
+          <li>
+            <b>Caution:</b> new rockets get demo payloads first: insurance on Isar's next mission is about {fmtPct(insurance.value)}{" "}
+            <SourceChip id={insurance.source_id} />. Range 20–100 %: from demo phase to Rocket Lab not being an option.
           </li>
         </ol>
       </div>

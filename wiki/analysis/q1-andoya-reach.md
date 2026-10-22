@@ -5,8 +5,8 @@ Stand: 22.10.2026, Basis geflogene Nachfrage 2025. Alle Zahlen im [Fact-Warehous
 ## Antwort
 
 - Von Andøya aus kann Isar **422 von 4.521** im Jahr 2025 gestarteten Satelliten bedienen (**9,3 %**), aber nur **0,66 %** der Masse (17,9 t von 2.694 t). Bedienbar sind kleine Satelliten in polare und sonnensynchrone Bahnen; die Masse steckt in Starlink und anderen gebundenen Konstellationen.
-- Davon gewinnt Isar heute ca. **30 Satelliten pro Jahr (1,25 t, ca. 21 Mio. €)**, das sind ca. 1,8 volle Spectrum-Ladungen.
-- **Engpass ist heute die Nachfrage nach dedizierten Starts, nicht Isars Kapazität:** 4 Starts × 80 % Erfolg × 700 kg × 100 % Füllgrad = 2,24 t Kapazität, gewollt sind 1,25 t. Dafür braucht Isar 2,2 seiner 4 Starts. Isars voller Manifest kommt also aus Nachfrage, die in den Flugdaten 2025 noch nicht sichtbar ist (Verteidigung, ESA-Programme, Demo-Flüge).
+- 7 % davon kaufen einen eigenen Start (30 Satelliten, 1,25 t). Isar gewinnt davon realistisch 45 %: **ca. 13 Satelliten pro Jahr (0,56 t, ca. 10 Mio. €)**, knapp eine volle Spectrum-Ladung.
+- **Engpass ist heute die Nachfrage nach dedizierten Starts, nicht Isars Kapazität:** 4 Starts × 80 % Erfolg × 700 kg × 100 % Füllgrad = 2,24 t Kapazität; Isar gewinnt 0,56 t. Dafür braucht Isar 1,0 seiner 4 Starts. Isars voller Manifest kommt also aus Nachfrage, die in den Flugdaten 2025 noch nicht sichtbar ist (Verteidigung, ESA-Programme, Demo-Flüge).
 
 ## TAM, SAM, SOM
 
@@ -14,7 +14,7 @@ Stand: 22.10.2026, Basis geflogene Nachfrage 2025. Alle Zahlen im [Fact-Warehous
 | --- | --- | --- | --- | --- |
 | TAM | alle Satelliten, die 2025 den Orbit erreicht haben | 4.521 | 2.694 t | 11,1 Mrd. € (12,4 Mrd. USD, SIA) |
 | SAM | offen für Isar, passt auf Spectrum, Orbit von Andøya erreichbar | 422 | 17,9 t | 120–319 Mio. € |
-| SOM | zahlt für einen dedizierten Start, innerhalb von Isars Kapazität | 30 | 1,25 t | 21 Mio. € |
+| SOM | zahlt für einen dedizierten Start, wählt Isar, innerhalb von Isars Kapazität | 13 | 0,56 t | 10 Mio. € |
 
 ## Rechenweg: drei Eindämmungsfaktoren zum SAM, zwei zum SOM
 
@@ -27,7 +27,8 @@ Satellit für Satellit über die GCAT-Tabelle (`satellites`), identisch in SQL (
 | 2 Nutzlast | Satellit höchstens 700 kg (SSO-Grenze von Spectrum) | 483 / 24 t | Isar, European Spaceflight |
 | 3 Orbit (= SAM) | Inklination 90–110,6° (Andøya, Flugrichtungen 280–360°) | 422 / 17,9 t | CAA Norway, Andøya Space |
 | 4 Penetration | 7 % des SAM zahlen für einen eigenen Start statt Rideshare | 29,5 / 1,25 t | GCAT, BryceTech 2026, Schingler |
-| 5 Kapazität (= SOM) | 4 Starts × 80 % Erfolg × 700 kg × 100 % Füllgrad = 2,24 t; greift heute nicht | 29,5 / 1,25 t | Payload, Schingler, Team |
+| 5 Isars Anteil | 45 % dieser Nachfrage wählen Isar statt Rocket Labs Electron | 13,3 / 0,56 t | GCAT (`v_win_share_evidence`), Schingler |
+| 6 Kapazität (= SOM) | 4 Starts × 80 % Erfolg × 700 kg × 100 % Füllgrad = 2,24 t; greift heute nicht | 13,3 / 0,56 t | Payload, Schingler, Team |
 
 Umsatz:
 
@@ -44,15 +45,25 @@ So kommt man als Berater auf die 7 %: Man misst, wer heute tatsächlich für ein
 | Blickwinkel | Satelliten | Masse | Quelle |
 | --- | --- | --- | --- |
 | Andøya-Band (Q1-SAM) 2025 | 6,7 % | 4,2 % | GCAT |
-| Andøya-Band 2024 | 12,4 % | 12,5 % | GCAT |
-| **Andøya-Band 2024 + 2025 zusammen** | 8,4 % | **6,9 %** | GCAT |
-| Westlicher Gesamtmarkt, alle Bahnen, 2024 + 2025 | 8,5 % | 8,3 % | GCAT |
+| Andøya-Band 2024 | 15,1 % | 12,8 % | GCAT |
+| **Andøya-Band 2024 + 2025 zusammen** | 9,3 % | **7,0 %** | GCAT |
+| Westlicher Gesamtmarkt, alle Bahnen, 2024 + 2025 | 9,1 % | 8,4 % | GCAT |
 | Weltweit, Nicht-Breitband-Kleinsatelliten 2023–2025 | 17–23 % | – | BryceTech 2026 (inkl. chinesischer Kleinraketen) |
 | Obergrenze: nicht mit Falcon 9 geflogen (Band 2024 + 2025) | 14,7 % | 17,3 % | GCAT |
 
-1. **Gemessen:** 2025 flogen ca. 87 % des SAM auf Falcon 9 (Rideshare), 6,7 % der Satelliten mit einem Kleinträger, alle mit Electron. Ein einzelnes Jahr schwankt stark, deshalb gilt der Zweijahreswert: 6,9 % der Masse.
-2. **Vergleich:** Der westliche Gesamtmarkt liegt bei 8,5 %, weltweit sind es 17–23 % (mit China). Die 7 % liegen am vorsichtigen Ende. Die Spanne 4–15 % reicht vom schwachen Jahr 2025 bis zum Jahr 2024 bzw. zur Obergrenze „nicht Falcon 9“.
-3. **Vorsicht:** Neue Raketen bekommen erst Demo-Nutzlasten (Versicherung für Isars nächste Mission ca. 25 %, Schingler). Die 7 % setzen außerdem voraus, dass Isar diese Nachfrage gewinnt; 2025 flog sie komplett mit Rocket Lab. Aufwärts wirken der Rideshare-Stopp nach 2028 (unbestätigt) und Verteidigung.
+1. **Gemessen:** 2025 flogen ca. 87 % des SAM auf Falcon 9 (Rideshare), 6,7 % der Satelliten mit einem Kleinträger, alle mit Electron. Ein einzelnes Jahr schwankt stark, deshalb gilt der Zweijahreswert: 7,0 % der Masse.
+2. **Vergleich:** Der westliche Gesamtmarkt liegt bei 8,4 % der Masse, weltweit sind es 17–23 % (mit China). Die 7 % liegen am vorsichtigen Ende. Die Spanne 4–15 % reicht vom schwachen Jahr 2025 bis zum Jahr 2024 bzw. zur Obergrenze „nicht Falcon 9“.
+3. **Aufwärts** wirken der Rideshare-Stopp nach 2028 (unbestätigt) und Verteidigung.
+
+Hinweis: Firefly Alpha war im Datenaufbau bis 22.10. fälschlich nicht als Kleinträger eingestuft (8 Satelliten). Seit der Korrektur liegen die Werte für 2024 leicht höher.
+
+## Isars Anteil an der Nachfrage nach eigenen Starts (warum 45 %)
+
+Die 7 % sind die Nachfrage nach eigenen Starts, egal mit welcher Rakete. 2025 flog sie komplett mit Rocket Labs Electron. Wie viel davon Isar gewinnt, ist ein eigener Hebel. Nachrechenbar in Supabase, View `v_win_share_evidence`.
+
+1. **Natürlicher Anteil:** 2024 und 2025 kauften europäische Betreiber (Kinéis, OroraTech) 44 % der Masse dieser Nachfrage im Band (58 % der Satelliten), alle per Electron, weil noch kein europäischer Kleinträger flog. Das ist der Basiswert von 45 %.
+2. **Über Europa hinaus:** Isar gewinnt auch nichteuropäische Kunden (Planet, Astroscale, ElevationSpace, SEOPS), aber Rocket Lab ist erprobt und hat Kapazität (18 Electron-Starts 2025).
+3. **Spanne 20–100 %:** 20 % in der Demo-Phase (der zweite Anbieter Firefly Alpha bekam 2024 etwa ein Sechstel der Satelliten mit eigenem Start); 100 %, wenn Rocket Lab für einen Kunden keine Option ist (die frühere stillschweigende Annahme).
 
 Wer heute einen eigenen Start kauft: Konstellationsbetreiber, die eigene Bahnebenen brauchen (2025 Kinéis, OroraTech, E-Space, HawkEye 360; 2024 Kinéis, Spire, Synspective). Das sind meist 10–50 kg schwere Satelliten im Paket, nicht einzelne schwere Satelliten.
 
@@ -62,24 +73,26 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 
 - **TAM:** Basisjahr (2024 / 2025)
 - **SAM:** Startplätze (Andøya, + Nova Scotia, + Kourou), Anteil anderer Regierungen (0–100 %)
-- **SOM:** Penetration (4–15 %), Starts pro Jahr (1–8), Erfolgsquote (75–92 %)
+- **SOM:** Penetration (4–15 %), Isars Anteil (20–100 %), Starts pro Jahr (1–8), Erfolgsquote (75–92 %)
 - **Fest:** Spectrum-Nutzlast 700 kg SSO / 1.000 kg LEO (Fahrzeugfakt von Isar), Füllgrad 100 %, Preis 12 Mio. € pro Start, Rideshare 7.500 USD/kg, dediziert 20.000 USD/kg, 1,12 USD/€, US-Regierung 0 %
 
 ## Sensitivitäten
 
 | Szenario | SAM | SOM | Engpass |
 | --- | --- | --- | --- |
-| Basis | 422 Sat. / 17,9 t | 30 Sat. / 1,25 t / 21 Mio. € | Nachfrage (2,2 von 4 Starts nötig) |
-| Basisjahr 2024 | 187 / 8,7 t | 13 / 0,61 t / 10 Mio. € | Nachfrage |
-| + Nova Scotia | 468 / 21,6 t | 33 / 1,51 t / 26 Mio. € | Nachfrage |
-| + Nova Scotia + Kourou | 483 / 24,2 t | 34 / 1,69 t / 29 Mio. € | Nachfrage |
-| Penetration 4 % | 422 / 17,9 t | 17 / 0,72 t / 12 Mio. € | Nachfrage |
-| Penetration 15 % | 422 / 17,9 t | 53 / 2,24 t / 38 Mio. € | Kapazität (4 von 4 Starts) |
-| 15 % Penetration, 8 Starts, 92 % Erfolg | 422 / 17,9 t | 63 / 2,68 t / 46 Mio. € | Nachfrage |
-| Erfolgsquote 75 % | 422 / 17,9 t | 30 / 1,25 t / 21 Mio. € | Nachfrage (2,4 von 4 Starts nötig) |
+| Basis | 422 Sat. / 17,9 t | 13 Sat. / 0,56 t / 10 Mio. € | Nachfrage (1,0 von 4 Starts nötig) |
+| Isars Anteil 20 % | 422 / 17,9 t | 6 / 0,25 t / 4 Mio. € | Nachfrage |
+| Isars Anteil 100 % | 422 / 17,9 t | 30 / 1,25 t / 21 Mio. € | Nachfrage (2,2 von 4 Starts) |
+| Basisjahr 2024 | 187 / 8,7 t | 6 / 0,27 t / 5 Mio. € | Nachfrage |
+| + Nova Scotia | 468 / 21,6 t | 15 / 0,68 t / 12 Mio. € | Nachfrage |
+| + Nova Scotia + Kourou | 483 / 24,2 t | 15 / 0,76 t / 13 Mio. € | Nachfrage |
+| Penetration 4 % | 422 / 17,9 t | 8 / 0,32 t / 6 Mio. € | Nachfrage |
+| Penetration 15 % | 422 / 17,9 t | 29 / 1,21 t / 21 Mio. € | Nachfrage |
+| Penetration 15 %, Anteil 100 % | 422 / 17,9 t | 53 / 2,24 t / 38 Mio. € | Kapazität (4 von 4 Starts) |
+| 15 %, Anteil 100 %, 8 Starts, 92 % Erfolg | 422 / 17,9 t | 63 / 2,68 t / 46 Mio. € | Nachfrage |
 
 - Das Basisjahr wirkt am stärksten: 2024 war der offene Markt im Andøya-Band nur halb so groß. Die Nachfrage schwankt stark von Jahr zu Jahr.
-- **Erfolgsquote und Startzahl bewegen den SOM heute nicht,** weil die Nachfrage begrenzt und nicht die Kapazität. Sie ändern, wie viele Starts Isar für die Nachfrage braucht (bei 80 %: 2,2 von 4, bei 75 %: 2,4). Das Tool zeigt das unter den SOM-Hebeln. Wirksam werden beide erst, wenn die Penetration über ca. 12,5 % steigt (2,24 t Kapazität ÷ 17,9 t SAM).
+- **Erfolgsquote und Startzahl bewegen den SOM heute nicht,** weil die Nachfrage begrenzt und nicht die Kapazität. Sie ändern, wie viele Starts Isar für die Nachfrage braucht (bei 80 %: 1,0 von 4, bei 75 %: 1,1). Das Tool zeigt das unter den SOM-Hebeln. Wirksam werden beide erst, wenn Penetration × Isars Anteil über ca. 12,5 % steigt (2,24 t Kapazität ÷ 17,9 t SAM).
 - Mehr Starts allein bringen nichts, solange die Penetration bei 7 % liegt. Wachstum kommt über Penetration (Zuverlässigkeit, Rideshare-Stopp, Verteidigung) und neue Orbits.
 - Die Nutzlast ist bewusst kein Regler: 1.000 statt 700 kg in SSO vergrößerte den SAM kaum (+0,1 t), und weil Preis (12 Mio. €) und Kilopreis auf 700 kg kalibriert sind, sänke der SOM-Umsatz rechnerisch. Eine stärkere Spectrum-Version gehört in ein späteres Szenario mit eigenem Preis.
 
@@ -93,7 +106,7 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 
 - **„Nachfrage für ca. 200 Fahrzeuge 2028“ (Isars CCO)** passt nicht zu den Flugdaten: Der ganze Andøya-SAM 2025 füllt ca. 26 volle Spectrum-Ladungen, davon ca. 1,8 dediziert. Wie definiert Isar Nachfrage?
 - **60 % Verteidigung:** Laut Isar (Juli 2026) sind das Anfragen, kein Umsatz. Welche Orbits braucht dieser Kunde? Europäische Verteidigungs-Radarsatelliten flogen 2025 in Andøyas Band (alle per Rideshare); 37–45° nutzen vor allem asiatische Betreiber. Offen ist die Kommunikationsschicht (SATCOMBw 4, IRIS²).
-- **Woher kommt der volle Manifest,** wenn die geflogene dedizierte Nachfrage im Band nur ca. 1,8 Ladungen pro Jahr trägt? Welcher Anteil ist Demo, ESA-Förderung, Verteidigung?
+- **Woher kommt der volle Manifest,** wenn die geflogene dedizierte Nachfrage im Band nur ca. 1,8 Ladungen pro Jahr trägt, von denen Isar realistisch knapp eine gewinnt? Welcher Anteil ist Demo, ESA-Förderung, Verteidigung?
 - **Rideshare-Stopp nach 2028** ist unbestätigt. Wenn er kommt, steigt die Penetration und Kapazität wird zum Engpass.
 
 ## Validierung durch den Experten

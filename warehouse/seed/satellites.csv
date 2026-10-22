@@ -1366,13 +1366,13 @@ S60199,Starlink 32049,2024,2024-07-03,2024-124,Falcon 9,rideshare or large,SPXS,
 S60200,Starlink 32002,2024,2024-07-03,2024-124,Falcon 9,rideshare or large,SPXS,SpaceX/Seattle,US,Starlink,captive,Comms / IoT,LEO,53.16,730.0,false
 S60201,Starlink 32020,2024,2024-07-03,2024-124,Falcon 9,rideshare or large,SPXS,SpaceX/Seattle,US,Starlink,captive,Comms / IoT,LEO,53.16,730.0,false
 S60202,Starlink 32041,2024,2024-07-03,2024-124,Falcon 9,rideshare or large,SPXS,SpaceX/Seattle,US,Starlink,captive,Comms / IoT,LEO,53.16,730.0,false
-S60203,SOC-i,2024,2024-07-04,2024-125,Firefly Alpha,rideshare or large,UWA,UWash,US,Commercial (open),open-commercial,Tech demo,SSO,97.32,2.0,false
-S60204,KUbesat-1,2024,2024-07-04,2024-125,Firefly Alpha,rideshare or large,UKS,U. Kansas,US,Commercial (open),open-commercial,Science,SSO,97.32,3.0,false
-S60205,Serenity,2024,2024-07-04,2024-125,Firefly Alpha,rideshare or large,TIS,Teachers in Space,US,Commercial (open),open-commercial,Comms / IoT,SSO,97.32,3.0,false
-S60206,R5-S4,2024,2024-07-04,2024-125,Firefly Alpha,rideshare or large,JSC,NASA JSC,US,US government,institutional-us,Tech demo,SSO,97.32,7.4,false
-S60207,R5-S2,2024,2024-07-04,2024-125,Firefly Alpha,rideshare or large,JSC,NASA JSC,US,US government,institutional-us,Tech demo,SSO,97.32,7.3,false
-S60208,TechEdSat-11,2024,2024-07-04,2024-125,Firefly Alpha,rideshare or large,ARC,ARC,US,US government,institutional-us,Tech demo,SSO,97.32,10.0,true
-S60209,MESAT-1,2024,2024-07-04,2024-125,Firefly Alpha,rideshare or large,UME,U Maine,US,Commercial (open),open-commercial,Science,SSO,97.32,3.0,false
+S60203,SOC-i,2024,2024-07-04,2024-125,Firefly Alpha,small,UWA,UWash,US,Commercial (open),open-commercial,Tech demo,SSO,97.32,2.0,false
+S60204,KUbesat-1,2024,2024-07-04,2024-125,Firefly Alpha,small,UKS,U. Kansas,US,Commercial (open),open-commercial,Science,SSO,97.32,3.0,false
+S60205,Serenity,2024,2024-07-04,2024-125,Firefly Alpha,small,TIS,Teachers in Space,US,Commercial (open),open-commercial,Comms / IoT,SSO,97.32,3.0,false
+S60206,R5-S4,2024,2024-07-04,2024-125,Firefly Alpha,small,JSC,NASA JSC,US,US government,institutional-us,Tech demo,SSO,97.32,7.4,false
+S60207,R5-S2,2024,2024-07-04,2024-125,Firefly Alpha,small,JSC,NASA JSC,US,US government,institutional-us,Tech demo,SSO,97.32,7.3,false
+S60208,TechEdSat-11,2024,2024-07-04,2024-125,Firefly Alpha,small,ARC,ARC,US,US government,institutional-us,Tech demo,SSO,97.32,10.0,true
+S60209,MESAT-1,2024,2024-07-04,2024-125,Firefly Alpha,small,UME,U Maine,US,Commercial (open),open-commercial,Science,SSO,97.32,3.0,false
 S60211,Tianhui-5 2-01,2024,2024-07-04,2024-126,Chang Zheng 6A,rideshare or large,GCDX,G. Cehui dili,CN,China,captive,EO radar (SAR),SSO,97.82,1000.0,true
 S60212,Tianhui-5 2-02,2024,2024-07-04,2024-126,Chang Zheng 6A,rideshare or large,GCDX,G. Cehui dili,CN,China,captive,EO radar (SAR),SSO,97.83,1000.0,true
 S60233,Turksat 6A,2024,2024-07-08,2024-127,Falcon 9,rideshare or large,TURKS,Turksat,TR,Commercial (open),open-commercial,Comms / IoT,GTO/GEO,24.1,4250.0,false
@@ -1385,7 +1385,7 @@ S60240,TUBSAT-30,2024,2024-07-09,2024-128,Ariane 62,rideshare or large,TUB,TUB,D
 S60241,Replicator,2024,2024-07-09,2024-128,Ariane 62,rideshare or large,ORBMAT,Orbital Matter,PL,Commercial (open),open-commercial,Tech demo,LEO,62.01,5.0,false
 S60242,Curium One,2024,2024-07-09,2024-128,Ariane 62,rideshare or large,PTS,Plan. Tr. Sys,D,Commercial (open),open-commercial,Tech demo,LEO,62.0,24.0,false
 S60243,Robusta-3A,2024,2024-07-09,2024-128,Ariane 62,rideshare or large,MONTP,Montpellier,F,Commercial (open),open-commercial,Tech demo,LEO,62.0,5.0,false
-S60246,CATSAT,2024,2024-07-04,2024-125,Firefly Alpha,rideshare or large,UAZ,U. Arizona,US,Commercial (open),open-commercial,Tech demo,SSO,97.32,12.0,true
+S60246,CATSAT,2024,2024-07-04,2024-125,Firefly Alpha,small,UAZ,U. Arizona,US,Commercial (open),open-commercial,Tech demo,SSO,97.32,12.0,true
 S60249,Gao Fen 11-05,2024,2024-07-19,2024-130,Chang Zheng 4B,rideshare or large,YWZB,Yaogan Zongti,CN,China,captive,EO optical,SSO,97.48,3000.0,true
 S60255,Starlink 32138,2024,2024-07-27,2024-131,Falcon 9,rideshare or large,SPXS,SpaceX/Seattle,US,Starlink,captive,Comms / IoT,LEO,53.16,730.0,false
 S60256,Starlink 32212,2024,2024-07-27,2024-131,Falcon 9,rideshare or large,SPXS,SpaceX/Seattle,US,Starlink,captive,Comms / IoT,LEO,53.16,730.0,false

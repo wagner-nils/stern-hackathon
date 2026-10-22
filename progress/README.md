@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 10:38**: Penetration aufgeteilt in Nachfrage nach eigenen Starts (7 %) × Isars Anteil gegen Rocket Lab (45 %, neuer Hebel, belegt mit `v_win_share_evidence`: europäische Betreiber kauften 44 % dieser Nachfrage, alle per Electron). SOM jetzt 13 Satelliten / 0,56 t / 10 Mio. €; RQ2: realistisch für Isar 1,2 von 8 Starts 2028. Firefly Alpha als Kleinträger korrigiert. 17 Tests grün.
+
 - **22.10. 10:31**: 7 % Penetration neu begründet und nachrechenbar: View `v_penetration_evidence` (2024 + 2025 kauften 6,9 % der Masse im Andøya-Band einen eigenen Start; westlicher Gesamtmarkt 8,5 %, BryceTech weltweit 17–23 % mit China), unbelegte „10–14 % im Westen“ entfernt; Tool, Notion und Wiki nachgezogen. Drei Team-Kommentare auf der RQ1-Notion-Seite beantwortet. 16 Tests grün.
 
 - **22.10. 10:20**: Füllgrad auf 100 % (mehrere Kunden pro Start): SOM jetzt 30 Satelliten / 1,25 t / 21 Mio. € (vorher 36), RQ2-Leitzahl 2028: sichtbare Nachfrage füllt 2,7 von 8 Starts (34 %). Erfolgsquoten-Regler zeigt jetzt die nötigen Starts (2,2 von 4), weil er den SOM bei Nachfragegrenze nicht bewegt. Supabase-Verbindung fällt bei fehlendem IPv6 auf den Session-Pooler zurück. 16 Tests grün.

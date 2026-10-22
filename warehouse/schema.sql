@@ -5,7 +5,7 @@
 -- so tables are recreated from this file rather than migrated. Other tables in the database are not touched.
 
 drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity,
-  v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap, v_penetration_evidence;
+  v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap, v_penetration_evidence, v_win_share_evidence;
 drop table if exists launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
   assumptions, facts, metrics, sources cascade;
 
@@ -219,6 +219,7 @@ with p as (
     (select payload_leo_kg from vehicles where id = 'spectrum') as payload_leo,
     max(value) filter (where id = 'sam_other_gov_open') as other_gov,
     max(value) filter (where id = 'som_penetration') as penetration,
+    max(value) filter (where id = 'som_win_share') as win_share,
     max(value) filter (where id = 'som_launches_per_year') as launches,
     max(value) filter (where id = 'som_success_rate') as success,
     max(value) filter (where id = 'fixed_fill_rate') as fill,
@@ -257,8 +258,10 @@ steps as (
 ),
 sam as (select satellites, mass_kg from steps where step = 4),
 som as (
-  select sam.satellites * p.penetration as want_sats,
-         sam.mass_kg * p.penetration as want_kg,
+  select sam.satellites * p.penetration as dedicated_sats,
+         sam.mass_kg * p.penetration as dedicated_kg,
+         sam.satellites * p.penetration * p.win_share as want_sats,
+         sam.mass_kg * p.penetration * p.win_share as want_kg,
          p.launches * p.success * p.payload_sso * p.fill as can_kg,
          p.payload_sso * p.fill as per_launch_kg,
          p.price_eur
@@ -275,9 +278,11 @@ select step, tier, label, satellites, mass_kg,
        end as revenue_eur_high
 from steps, p
 union all
-select 5, 'SOM', 'Wants a dedicated launch (penetration)', want_sats, want_kg, null, null from som
+select 5, 'SOM', 'Wants a dedicated launch (penetration)', dedicated_sats, dedicated_kg, null, null from som
 union all
-select 6, 'SOM', 'Isar can fly (capacity × success)',
+select 6, 'SOM', 'Chooses Isar (win share against Rocket Lab and others)', want_sats, want_kg, null, null from som
+union all
+select 7, 'SOM', 'Isar can fly (capacity × success)',
        want_sats * least(1, can_kg / nullif(want_kg, 0)), least(want_kg, can_kg),
        least(want_kg, can_kg) / per_launch_kg * price_eur,
        least(want_kg, can_kg) / per_launch_kg * price_eur
@@ -447,6 +452,37 @@ where w > 0
 group by segment, period
 order by segment, period;
 
+-- Evidence for the win-share assumption: who bought the dedicated launches in Isar's band in 2024 and 2025,
+-- split into European operators (Isar's natural customers) and the rest, with the launchers they flew on.
+create or replace view v_win_share_evidence as
+with p as (select max(value) filter (where id = 'sam_other_gov_open') as other_gov from assumptions),
+spec as (select payload_sso_kg, payload_leo_kg from vehicles where id = 'spectrum'),
+site as (select inclination_min, inclination_max from launch_sites where id = 'andoya'),
+s as (
+  select sat.*,
+         case sat.customer_type
+           when 'open-commercial' then 1 when 'institutional-eu' then 1
+           when 'institutional-other' then p.other_gov else 0 end as w,
+         sat.country in ('F', 'D', 'UK', 'I', 'E', 'FI', 'L', 'LU', 'I-ESA', 'I-EU', 'PL', 'NL', 'N', 'S', 'DK', 'CH',
+                         'B', 'A', 'P', 'IRL', 'GR', 'CZ', 'EE', 'LT', 'LV', 'HU', 'RO', 'BG', 'SK', 'SI', 'HR', 'IS') as european
+  from satellites sat, p, spec, site
+  where sat.launch_year in (2024, 2025)
+    and sat.launcher_class = 'small'
+    and sat.mass_kg <= case when sat.orbit_class = 'SSO' then spec.payload_sso_kg else spec.payload_leo_kg end
+    and sat.inclination between site.inclination_min and site.inclination_max
+)
+select case when european then 'European operators' else 'Other operators' end as buyer,
+       round(sum(w), 1) as satellites,
+       round(sum(w * mass_kg)) as mass_kg,
+       round(sum(w) / sum(sum(w)) over (), 3) as share_sats,
+       round(sum(w * mass_kg) / sum(sum(w * mass_kg)) over (), 3) as share_mass,
+       string_agg(distinct operator, ', ' order by operator) as operators,
+       string_agg(distinct launch_vehicle, ', ' order by launch_vehicle) as launchers
+from s
+where w > 0
+group by 1
+order by 1;
+
 -- RQ2: how many of Isar's planned launches the demand visible in flight data fills. The 2028 plan is a sourced
 -- fact, the 2030 plan a team assumption; everything else comes from the Q1 funnel and the Q2 assumptions.
 create or replace view v_q2_launch_gap as
@@ -454,6 +490,7 @@ with p as (
   select
     max(value) filter (where id = 'tam_base_year') as base_year,
     max(value) filter (where id = 'som_penetration') as penetration,
+    max(value) filter (where id = 'som_win_share') as win_share,
     max(value) filter (where id = 'outlook_market_growth') as growth,
     max(value) filter (where id = 'q2_load_kg') as load_kg,
     max(value) filter (where id = 'q2_success_rate_2028') as success_2028,
@@ -474,6 +511,7 @@ plan as (
 ),
 calc as (
   select plan.*, sam.mass_kg * power(1 + p.growth, plan.year - p.base_year) * p.penetration / p.load_kg as loads,
+         p.win_share,
          sam.mass_kg * power(1 + p.growth, plan.year - p.base_year) as market_kg
   from plan, p, sam
 )
@@ -482,7 +520,9 @@ select year, planned, planned_basis,
        round(loads, 2) as loads,
        round(loads / success, 1) as launches_filled,
        round(loads / success / planned, 2) as share_filled,
-       round(planned - loads / success, 1) as launches_without_visible_demand
+       round(planned - loads / success, 1) as launches_without_visible_demand,
+       round(loads * win_share / success, 1) as launches_filled_isar_share,
+       round(loads * win_share / success / planned, 2) as share_filled_isar
 from calc
 order by year;
 

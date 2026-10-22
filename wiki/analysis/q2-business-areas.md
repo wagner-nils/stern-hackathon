@@ -24,6 +24,7 @@ Stand: 22.10.2026. Antwortseite fürs Team: Notion „Common Docs → RQ2 → An
 | Geplante Starts | 8 (Isar, laut Payload) | 12 (Team-Annahme) |
 | Davon füllt die heute sichtbare Nachfrage | ca. 2,7 (34 %) | ca. 3 (25 %) |
 | Lücke, die nur Verträge schließen | ca. 5,3 Starts | ca. 9 Starts |
+| Davon realistisch für Isar (45 % Anteil gegen Rocket Lab) | ca. 1,2 (15 %) | ca. 1,3 (11 %) |
 
 - **Rechenweg:** bedienbarer Markt aus Q1 (17,9 t) × 9 % Wachstum pro Jahr × 7 % Anteil mit eigenem Start ÷ 700 kg pro voller Ladung ÷ Erfolgsquote (85 % 2028, 92 % 2030). Nachrechenbar in `v_q2_launch_gap`.
 - **So what:** Zwei Drittel (2028) bis drei Viertel (2030) der geplanten Starts haben heute keinen sichtbaren Käufer. Isars „2028 ausgebucht“ ist der wichtigste Prüfpunkt fürs Management.

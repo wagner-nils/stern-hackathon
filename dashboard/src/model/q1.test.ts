@@ -8,7 +8,8 @@ const base = () => computeQ1(satellites, launchSites, baseLevers, baseFixed, tam
 describe("Q1 model", () => {
   it("gives exactly the numbers of the SQL view v_q1_funnel", () => {
     const r = base();
-    const byStep = [r.steps[0], r.steps[1], r.steps[2], r.steps[3], r.steps[4], r.steps[5]];
+    const byStep = r.steps;
+    expect(sqlFunnel).toHaveLength(byStep.length);
     sqlFunnel.forEach((row, k) => {
       expect(byStep[k].sats).toBeCloseTo(row.satellites, 6);
       expect(byStep[k].massKg).toBeCloseTo(row.mass_kg, 3);
@@ -16,7 +17,7 @@ describe("Q1 model", () => {
     expect(r.tiers.TAM.revenueEur[0]).toBeCloseTo(sqlFunnel[0].revenue_eur!, 0);
     expect(r.tiers.SAM.revenueEur[0]).toBeCloseTo(sqlFunnel[3].revenue_eur!, 0);
     expect(r.tiers.SAM.revenueEur[1]).toBeCloseTo(sqlFunnel[3].revenue_eur_high!, 0);
-    expect(r.tiers.SOM.revenueEur[0]).toBeCloseTo(sqlFunnel[5].revenue_eur!, 0);
+    expect(r.tiers.SOM.revenueEur[0]).toBeCloseTo(sqlFunnel[6].revenue_eur!, 0);
   });
 
   it("never grows from one filter to the next", () => {
@@ -43,8 +44,15 @@ describe("Q1 model", () => {
     expect(low.launchesNeeded).toBeCloseTo(low.somLaunches / 0.75);
   });
 
+  it("passes only Isar's win share of the dedicated demand on to the SOM", () => {
+    const all = computeQ1(satellites, launchSites, { ...baseLevers, winShare: 1 }, baseFixed, tamRevenueUsd(2025));
+    const r = base();
+    expect(r.dedicatedKg).toBeCloseTo(all.dedicatedKg);
+    expect(r.wantKg).toBeCloseTo(all.wantKg * baseLevers.winShare);
+  });
+
   it("is capacity-bound when demand exceeds successful launches", () => {
-    const r = computeQ1(satellites, launchSites, { ...baseLevers, penetration: 0.15, launchesPerYear: 1 }, baseFixed, tamRevenueUsd(2025));
+    const r = computeQ1(satellites, launchSites, { ...baseLevers, penetration: 0.15, winShare: 1, launchesPerYear: 1 }, baseFixed, tamRevenueUsd(2025));
     expect(r.bottleneck).toBe("capacity");
     expect(r.somLaunches).toBeCloseTo(baseLevers.successRate);
     expect(r.tiers.SOM.revenueEur[0]).toBeCloseTo(baseLevers.successRate * baseFixed.pricePerLaunchEur);

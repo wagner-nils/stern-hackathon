@@ -8,7 +8,10 @@ export interface Q1Levers {
   /** 0 = Andøya, 1 = plus Nova Scotia, 2 = plus Kourou. */
   siteScope: number;
   otherGovOpen: number;
+  /** Share of the SAM that buys a dedicated launch instead of rideshare. */
   penetration: number;
+  /** Isar's share of that dedicated demand against Rocket Lab and later entrants. */
+  winShare: number;
   launchesPerYear: number;
   successRate: number;
 }
@@ -30,7 +33,7 @@ export interface Flow {
   massKg: number;
 }
 
-export type StepId = "tam" | "access" | "payload" | "orbit" | "penetration" | "capacity";
+export type StepId = "tam" | "access" | "payload" | "orbit" | "penetration" | "win" | "capacity";
 
 export interface Step extends Flow {
   id: StepId;
@@ -46,6 +49,9 @@ export interface Q1Result {
   steps: Step[];
   tiers: { TAM: TierFlow; SAM: TierFlow; SOM: TierFlow };
   reach: Interval[];
+  /** Dedicated demand in the SAM, whoever flies it. */
+  dedicatedKg: number;
+  /** The part of it that chooses Isar. */
   wantKg: number;
   capacityKg: number;
   /** Spectrum launches the SOM fills: the smaller of demand and successful launches. */
@@ -108,7 +114,8 @@ export function computeQ1(
   }
 
   const sam = flows.orbit;
-  const want: Flow = { sats: sam.sats * l.penetration, massKg: sam.massKg * l.penetration };
+  const dedicated: Flow = { sats: sam.sats * l.penetration, massKg: sam.massKg * l.penetration };
+  const want: Flow = { sats: dedicated.sats * l.winShare, massKg: dedicated.massKg * l.winShare };
   // Andøya flies polar and SSO, so a load is priced and sized on the SSO figure.
   const perLaunchKg = f.payloadSsoKg * f.fillRate;
   const capacityKg = l.launchesPerYear * l.successRate * perLaunchKg;
@@ -124,7 +131,8 @@ export function computeQ1(
       { id: "access", label: "Open to a European launcher", ...flows.access },
       { id: "payload", label: "Fits on Spectrum", ...flows.payload },
       { id: "orbit", label: "Orbit reachable", ...sam },
-      { id: "penetration", label: "Buys a dedicated launch", ...want },
+      { id: "penetration", label: "Buys a dedicated launch", ...dedicated },
+      { id: "win", label: "Chooses Isar", ...want },
       { id: "capacity", label: "Isar can fly", ...som },
     ],
     tiers: {
@@ -136,6 +144,7 @@ export function computeQ1(
       SOM: { ...som, revenueEur: [somRevenue, somRevenue] },
     },
     reach,
+    dedicatedKg: dedicated.massKg,
     wantKg: want.massKg,
     capacityKg,
     somLaunches,

@@ -16,8 +16,10 @@ sys.path.insert(0, os.path.join(ROOT, "pipeline"))
 import gcat_customers as gc  # noqa: E402
 import gcat_demand as g  # noqa: E402
 
-# Dedicated small launchers; everything else carries small satellites as rideshare or is a large single launch.
-SMALL_LAUNCHERS = ("Electron", "Alpha", "Kairos", "Spectrum", "SSLV", "LauncherOne", "Eris", "RFA One", "Miura")
+# Dedicated small launchers by GCAT LV_Type prefix; everything else carries small satellites as rideshare or is a
+# large single launch. GCAT writes "Firefly Alpha" and "HANBIT-NANO", so those need their full prefixes.
+SMALL_LAUNCHERS = ("Electron", "Firefly Alpha", "Alpha", "Kairos", "Spectrum", "SSLV", "LauncherOne", "Eris", "RFA One",
+                   "Miura", "HANBIT", "Vikram")
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 

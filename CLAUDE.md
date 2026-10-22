@@ -34,7 +34,7 @@ Wissensbasis: [wiki/](wiki/README.md) im Repo (konsolidiert, mit Quellen). Notio
 - `dashboard/`: das Tool (Vite + React + TypeScript, Build zu einer einzigen `index.html`, die offline läuft und als Claude-Artifact veröffentlicht werden kann).
   - `src/data/warehouse.json` + `warehouse.ts`: Snapshot des Warehouse und typisierter Zugriff (`assumption()`, `preferred()`, `factsFor()`). Nicht von Hand editieren.
   - `src/model/`: reine Funktionen (Orbit-Erreichbarkeit, Q1-Funnel) mit Vitest-Tests. Keine UI-Logik. `q1.ts` muss mit der SQL-View `v_q1_funnel` übereinstimmen (Test).
-  - `src/state/levers.ts`: die Hebel, höchstens drei pro Stufe, jeder an eine Zeile in `assumptions` gebunden.
+  - `src/state/levers.ts`: die Hebel, drei pro Stufe (SOM vier: Penetration, Isars Anteil, Starts, Erfolgsquote), jeder an eine Zeile in `assumptions` gebunden.
   - `src/sections/`: ein Kapitel pro Frage (Tool = Präsentation), dazu „Fact base“ zum Durchsuchen des Warehouse.
 - Standorte, Rakete und Nachfrage sind Daten, nicht hart codiert: neue Standorte = Zeile in `launch_sites`. Für spätere Fragen merken: Andøyas Lizenz (30 Starts/Jahr) gilt für den ganzen Standort, weitere Betreiber wollen ab 2027/28 kommen; Kapazitätsgrenzen dort simulieren.
 - `wiki/`: Wissens-Wiki in Markdown (Case, Unternehmen, Technik, Markt, Analyse je Frage, Experte, Referenz). Neue Erkenntnisse kommen auf die passende Themenseite, jede Zahl mit Quelle. Modellwerte stehen im Warehouse, das Wiki erklärt sie (`wiki/reference/assumptions.md` synchron halten).

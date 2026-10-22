@@ -186,6 +186,17 @@ export interface PenetrationEvidence {
   not_falcon9_share_mass: number;
 }
 
+/** One row of v_win_share_evidence: who bought the dedicated launches in Isar's band in 2024 and 2025. */
+export interface WinShareEvidence {
+  buyer: string;
+  satellites: number;
+  mass_kg: number;
+  share_sats: number;
+  share_mass: number;
+  operators: string;
+  launchers: string;
+}
+
 export interface VehicleActivity {
   vehicle_id: string;
   year: number;
@@ -254,6 +265,7 @@ interface RawSnapshot {
   launchesByProvider: ProviderLaunches[];
   launchesByCountry: CountryLaunches[];
   penetrationEvidence: PenetrationEvidence[];
+  winShareEvidence: WinShareEvidence[];
 }
 
 const snapshot = raw as unknown as RawSnapshot;
@@ -273,6 +285,7 @@ export const vehicleActivity = snapshot.vehicleActivity ?? [];
 export const launchesByProvider = snapshot.launchesByProvider ?? [];
 export const launchesByCountry = snapshot.launchesByCountry ?? [];
 export const penetrationEvidence = snapshot.penetrationEvidence ?? [];
+export const winShareEvidence = snapshot.winShareEvidence ?? [];
 export const manifest = snapshot.manifest;
 export const sqlFunnel = snapshot.q1Funnel;
 export const sqlSamLaunchers = snapshot.samLaunchers;

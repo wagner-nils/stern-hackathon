@@ -5,13 +5,15 @@
 | Setup | `main` | 21.10. bis 13:45 | erledigt | Team, Rollen, Notion-Wissensbasis |
 | Q1 – Reichweite Andøya | `phase/q1-andoya` | 21.10. 13:45–16:15 | erledigt | SAM 9,3 % der Satelliten / 0,7 % der Masse; [q1-andoya.md](q1-andoya.md) |
 | Q2 | `phase/q2` | 21.10. 16:15–19:45 | erledigt | Strategie ASCENT: erst der Vertrag, dann die Rakete; [Q2](../wiki/analysis/q2-business-areas.md) |
-| Q3 | `phase/q3` | 22.10. 09:30–12:00 | offen | – |
+| Q3 | `phase/q3` | 22.10. 09:30–12:00 | läuft | – |
 | Q4 | `phase/q4` | 22.10. 12:45–14:45 | offen | – |
 | Final | `phase/final` | 22.10. ab 15:00 | offen | Präsentation |
 
 ## Log
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
+
+- **22.10. 10:20**: Füllgrad auf 100 % (mehrere Kunden pro Start): SOM jetzt 30 Satelliten / 1,25 t / 21 Mio. € (vorher 36), RQ2-Leitzahl 2028: sichtbare Nachfrage füllt 2,7 von 8 Starts (34 %). Erfolgsquoten-Regler zeigt jetzt die nötigen Starts (2,2 von 4), weil er den SOM bei Nachfragegrenze nicht bewegt. Supabase-Verbindung fällt bei fehlendem IPv6 auf den Session-Pooler zurück. 16 Tests grün.
 
 - **22.10. 08:42**: RQ2 beantwortet mit der Strategie **ASCENT** (Anchor contracts first, Sovereign readiness, Core polar launches, Extras on every launch, No-go list, Triggers for expansion; EVA als wirtschaftliche Logik). Notion-Antwortseite unter RQ2, Wiki Q2 neu geschrieben, Q2-Annahmen und Auslöser plus vier neue belegte Fakten im Warehouse, Leitzahl als SQL-View `v_q2_launch_gap` (2028: sichtbare Nachfrage füllt 4,5 von 8 Starts). Veraltete Radar-Aussage (37–45°) im Wiki korrigiert. 15 Tests grün.
 

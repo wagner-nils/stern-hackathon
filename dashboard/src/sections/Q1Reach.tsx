@@ -210,7 +210,18 @@ export function Q1Reach({ state }: { state: LeverState }) {
         </div>
 
         <aside className="q1-side">
-          <LeverPanel state={state} selected={tier} />
+          <LeverPanel
+            state={state}
+            selected={tier}
+            notes={{
+              SOM:
+                `Effect now: Isar needs ${r.launchesNeeded.toFixed(1)} of its ${l.launchesPerYear} launches for the SOM ` +
+                `(${fmtPct(share(r.launchesNeeded, l.launchesPerYear))}). ` +
+                (r.bottleneck === "demand"
+                  ? "Demand sets the limit, so success rate and launches change the launches needed, not the SOM."
+                  : "Capacity sets the limit, so every extra launch or success point adds SOM."),
+            }}
+          />
         </aside>
       </div>
     </section>

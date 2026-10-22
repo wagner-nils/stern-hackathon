@@ -50,6 +50,8 @@ export interface Q1Result {
   capacityKg: number;
   /** Spectrum launches the SOM fills: the smaller of demand and successful launches. */
   somLaunches: number;
+  /** Launch attempts the SOM takes: loads ÷ success rate, since a failed launch delivers nothing. */
+  launchesNeeded: number;
   bottleneck: "demand" | "capacity";
 }
 
@@ -137,6 +139,7 @@ export function computeQ1(
     wantKg: want.massKg,
     capacityKg,
     somLaunches,
+    launchesNeeded: l.successRate > 0 ? somLaunches / l.successRate : 0,
     bottleneck: capacityKg < want.massKg ? "capacity" : "demand",
   };
 }

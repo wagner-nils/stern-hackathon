@@ -22,11 +22,11 @@ Stand: 22.10.2026. Antwortseite fürs Team: Notion „Common Docs → RQ2 → An
 | | 2028 | 2030 |
 | --- | --- | --- |
 | Geplante Starts | 8 (Isar, laut Payload) | 12 (Team-Annahme) |
-| Davon füllt die heute sichtbare Nachfrage | ca. 4,5 (57 %) | ca. 5 (42 %) |
-| Lücke, die nur Verträge schließen | ca. 3,5 Starts | ca. 7 Starts |
+| Davon füllt die heute sichtbare Nachfrage | ca. 2,7 (34 %) | ca. 3 (25 %) |
+| Lücke, die nur Verträge schließen | ca. 5,3 Starts | ca. 9 Starts |
 
-- **Rechenweg:** bedienbarer Markt aus Q1 (17,9 t) × 9 % Wachstum pro Jahr × 7 % Anteil mit eigenem Start ÷ 420 kg pro Ladung ÷ Erfolgsquote (85 % 2028, 92 % 2030). Nachrechenbar in `v_q2_launch_gap`.
-- **So what:** Rund die Hälfte der geplanten Starts hat heute keinen sichtbaren Käufer. Isars „2028 ausgebucht“ ist der wichtigste Prüfpunkt fürs Management.
+- **Rechenweg:** bedienbarer Markt aus Q1 (17,9 t) × 9 % Wachstum pro Jahr × 7 % Anteil mit eigenem Start ÷ 700 kg pro voller Ladung ÷ Erfolgsquote (85 % 2028, 92 % 2030). Nachrechenbar in `v_q2_launch_gap`.
+- **So what:** Zwei Drittel (2028) bis drei Viertel (2030) der geplanten Starts haben heute keinen sichtbaren Käufer. Isars „2028 ausgebucht“ ist der wichtigste Prüfpunkt fürs Management.
 - **Leitplanke:** Die Startzahl folgt den Verträgen, nicht der Werkskapazität.
 
 **Brücke aus Q1:** Der Engpass ist die Nachfrage nach eigenen Starts, nicht Isars Kapazität. Nur 7 % des bedienbaren Markts kaufen heute einen eigenen Start, 87 % fliegen Rideshare auf Falcon 9. Mehr Raketen allein bringen deshalb nichts.
@@ -89,7 +89,7 @@ Die Auslöser stehen als Annahmen mit Stufe `trigger` im Warehouse.
 | Startplätze vermieten, Triebwerke an Dritte | stärkt Wettbewerber; Isar pachtet selbst nur |
 | Software, Marktplatz, kg-Auktionen | kein eigener Markt |
 | Schwerlast, bemannt, Mond | keine Business-Begründung für eine 1-t-Rakete |
-| Preiskampf gegen Rideshare | ca. 28.600 €/kg mit Spectrum gegen ca. 6.700 €/kg Rideshare |
+| Preiskampf gegen Rideshare | ca. 17.100 €/kg mit einer vollen Spectrum gegen ca. 6.700 €/kg Rideshare |
 
 ## Warum die Logik trägt
 
@@ -121,7 +121,7 @@ Die Auslöser stehen als Annahmen mit Stufe `trigger` im Warehouse.
 | Spectrum-Starts 2030 | 12 | 8–15 | outlook | Team (früherer Kadenzplan 4/7/10/12); Isar veröffentlicht nur 4 (2027) und ca. 8 (2028) |
 | Erfolgsquote 2028 | 85 % | 80–92 % | outlook | Schingler, Team |
 | Erfolgsquote 2030 | 92 % | 85–95 % | outlook | Schingler |
-| Nutzlast pro Ladung | 420 kg | 280–560 kg | fixed | 700 kg SSO × 60 % Füllgrad; `load.py` prüft die Übereinstimmung |
+| Nutzlast pro Ladung | 700 kg | 420–700 kg | fixed | 700 kg SSO × 100 % Füllgrad; `load.py` prüft die Übereinstimmung |
 | Starts pro Jahr vor einer Mittelklasse-Rakete | 10 | 8–12 | trigger | Team |
 | Erfolgsquote vor einer Mittelklasse-Rakete | 90 % | 85–95 % | trigger | Team, Schingler |
 | Jährliche Gebühr Nova Scotia, die Ankerkunden decken müssen | 13,4 Mio. € | 12,8–13,9 Mio. € | trigger | Isar (3,75 Mio. USD pro Quartal), EZB |
@@ -182,6 +182,7 @@ Die 55 Geschäftsmodell-Muster der Universität St. Gallen (Gassmann, Frankenber
 
 - Claude hat den Entwurf geschrieben und Codex ihn in drei Runden geprüft (freigegeben). Danach wurde er gegen das Warehouse nachgerechnet und auf eine Seite gekürzt.
 - Die Leitzahl steht auf 2028, weil die 8 Starts belegt sind; die 12 Starts für 2030 sind eine Team-Annahme.
+- Seit 22.10. rechnet das Modell mit 100 % Füllgrad (mehrere Kunden pro Start). Damit sinkt die sichtbare Auslastung 2028 von 57 % (bei 60 % Füllgrad) auf 34 %. Die Empfehlung wird dadurch noch klarer.
 - **Strittig 1:** Codex hält den Kundenkonflikt beim Satellitenbau nicht für einen dauerhaften Ausschlussgrund. Wir schließen ihn deshalb „mindestens bis 2030“ aus.
 - **Strittig 2:** Wie viel des Potenzials aus Staatsprogrammen schon in den 9 % Marktwachstum steckt, lässt sich ohne Missionsliste nicht trennen.
 

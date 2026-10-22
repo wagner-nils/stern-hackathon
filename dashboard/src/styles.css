@@ -1626,3 +1626,13 @@ td.num {
 .barlist--wide .barlist__row {
   grid-template-columns: minmax(150px, 1.8fr) minmax(50px, 1.4fr) 104px 54px;
 }
+
+/* Live readout under a lever group: what the levers do right now. */
+.lever-group__note {
+  margin: 4px 0 0;
+  padding: 6px 10px;
+  border-left: 3px solid var(--blue);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 12px;
+}

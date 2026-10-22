@@ -1,6 +1,6 @@
 id,name,question,tier,value,low,high,unit,is_lever,rationale,source_ids,owner,confidence
 fixed_dedicated_usd_per_kg,Dedicated small-launch price per kg,Q1,fixed,20000,15000,28000,USD per kg,false,12 M EUR for 700 kg is about 19000 USD/kg; Electron earns about 28000 USD/kg,rocketlab-10k-2025,Benedikt,medium
-fixed_fill_rate,Payload fill rate per launch,Q1,fixed,0.6,0.4,0.8,share,false,No public data; a single 200 kg customer fills only about 30% of a launch,team,Benedikt,low
+fixed_fill_rate,Payload fill rate per launch,Q1,fixed,1,0.6,1,share,false,Spectrum flies full: several customers share a launch like a rideshare on Spectrum (bundlers such as SEOPS fill the rest). Team decision 22.10.2026; 60 % was the earlier single-customer view,team,Benedikt,medium
 fixed_price_per_launch_eur,Price per Spectrum launch,Q1,fixed,12000000,10000000,15000000,EUR,false,Not published; estimates 10–15 M EUR; NewSpace Index about 10 M USD; Electron earns 8.5 M USD for a third of the capacity,newspace-index-isar;rocketlab-10k-2025,Luca,low
 fixed_rideshare_usd_per_kg,Rideshare price per kg,Q1,fixed,7500,7000,10000,USD per kg,false,SpaceX list price 2027; about 10000 USD/kg with separation system,spacex-rideshare-api,Benedikt,high
 fixed_usd_per_eur,Exchange rate,Q1,fixed,1.12,1.08,1.17,USD per EUR,false,ECB October 2026 average,ecb-fx,Nils,high
@@ -11,7 +11,7 @@ som_launches_per_year,Spectrum launches per year,Q1,SOM,4,1,8,launches,true,Isar
 som_penetration,Share of the serviceable market that buys a dedicated launch,Q1,SOM,0.07,0.04,0.15,share,true,"Measured 2025: 6.7% of SAM satellites (4.2% of mass) flew on a small launcher, all on Rocket Lab's Electron; the rest rode SpaceX rideshare. BryceTech: 10–14% in the West. Planet: new rockets get demo payloads first",gcat;brycetech-2026;expert-schingler,Benedikt,medium
 som_success_rate,Launch success rate,Q1,SOM,0.8,0.75,0.92,share,true,Insurance of about 25% on Isar's next mission implies 75%; mature launchers reach 92–95%,expert-schingler,Nils,medium
 tam_base_year,Base year of flown demand,Q1,TAM,2025,2024,2025,year,true,Latest full year; 2024 as comparison shows how much a single year swings,gcat,Nils,high
-q2_load_kg,Payload per Spectrum load,Q2,fixed,420,280,560,kg,false,Spectrum's 700 kg to SSO × 60 % fill rate (range from the 40–80 % fill range); load.py checks it against both,isar-spectrum;team,Nils,low
+q2_load_kg,Payload per Spectrum load,Q2,fixed,700,420,700,kg,false,Spectrum's 700 kg to SSO × 100 % fill rate (lower bound 60 % fill); load.py checks it against both,isar-spectrum;team,Nils,low
 q2_launches_planned_2030,Spectrum launches planned in 2030,Q2,outlook,12,8,15,launches per year,false,Team base case from the earlier cadence plan 4/7/10/12 for 2027–2030. Isar publishes only 4 (2027) and about 8 (2028); a 2030 figure is not public,payload-seops;team,Luca,low
 q2_success_rate_2028,Launch success rate 2028,Q2,outlook,0.85,0.8,0.92,share,false,Ramp between 80 % today (insurance for Isar's next mission about 25 %) and about 92 % for mature small launchers,expert-schingler;team,Nils,medium
 q2_success_rate_2030,Launch success rate 2030,Q2,outlook,0.92,0.85,0.95,share,false,Industry 5–8 % failures; Planet saw 3 failures in 44 launches,expert-schingler,Nils,medium

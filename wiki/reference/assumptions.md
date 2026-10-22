@@ -20,7 +20,7 @@ Höchstens drei pro Stufe, konservativ gewählt.
 | Annahme | Wert | Spanne | Konfidenz | Owner | Quelle |
 | --- | --- | --- | --- | --- | --- |
 | Spectrum-Nutzlast | 700 kg SSO, 1.000 kg LEO | – | hoch | Nils | Fahrzeugfakt in `vehicles` (Isar); keine Bahnhöhe angegeben. Kein Regler mehr: 1.000 kg in SSO brächte nur +0,1 t SAM, und bei festem Preis pro Start sänke der SOM-Umsatz rechnerisch |
-| Füllgrad pro Start | 60 % | 40–80 % | niedrig | Benedikt | Teamschätzung; ein einzelner 200-kg-Kunde füllt nur ca. 30 % |
+| Füllgrad pro Start | 100 % | 60–100 % | mittel | Benedikt | Team-Entscheidung 22.10.: mehrere Kunden teilen sich einen Start wie beim Rideshare (Bündler wie SEOPS füllen auf); vorher 60 % |
 | Preis pro Spectrum-Start | 12 Mio. € | 10–15 Mio. € | niedrig | Luca | NewSpace Index (FT); Electron 8,5 Mio. USD (Rocket Lab 10-K) |
 | Rideshare-Preis | 7.500 USD/kg | 7.000–10.000 | hoch | Benedikt | SpaceX-Preisliste 2027 |
 | Dedizierter Preis | 20.000 USD/kg | 15.000–28.000 | mittel | Benedikt | abgeleitet aus Rocket Lab 10-K |
@@ -34,7 +34,7 @@ Höchstens drei pro Stufe, konservativ gewählt.
 | Marktwachstum p.a. | 9 % | 5–14 % | mittel | Benedikt | Novaspace 2025, BryceTech 2026 |
 | Spectrum-Starts 2030 (Q2) | 12 | 8–15 | niedrig | Luca | Team; Isar veröffentlicht nur 4 (2027) und ca. 8 (2028) |
 | Erfolgsquote 2028 / 2030 (Q2) | 85 % / 92 % | 80–92 % / 85–95 % | mittel | Nils | Schingler, Team |
-| Nutzlast pro Ladung (Q2) | 420 kg | 280–560 kg | niedrig | Nils | 700 kg SSO × 60 % Füllgrad, von `load.py` geprüft |
+| Nutzlast pro Ladung (Q2) | 700 kg | 420–700 kg | niedrig | Nils | 700 kg SSO × 100 % Füllgrad, von `load.py` geprüft |
 
 ## Auslöser (Q2, Strategie ASCENT)
 

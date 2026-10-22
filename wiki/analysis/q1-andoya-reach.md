@@ -5,8 +5,8 @@ Stand: 22.10.2026, Basis geflogene Nachfrage 2025. Alle Zahlen im [Fact-Warehous
 ## Antwort
 
 - Von Andøya aus kann Isar **422 von 4.521** im Jahr 2025 gestarteten Satelliten bedienen (**9,3 %**), aber nur **0,66 %** der Masse (17,9 t von 2.694 t). Bedienbar sind kleine Satelliten in polare und sonnensynchrone Bahnen; die Masse steckt in Starlink und anderen gebundenen Konstellationen.
-- Davon gewinnt Isar heute ca. **30 Satelliten pro Jahr (1,25 t, ca. 36 Mio. €)**, das sind ca. 3 Spectrum-Ladungen.
-- **Engpass ist heute die Nachfrage nach dedizierten Starts, nicht Isars Kapazität:** 4 Starts × 80 % Erfolg × 700 kg × 60 % Füllgrad = 1,34 t Kapazität, gewollt sind 1,25 t. Isars voller Manifest kommt also aus Nachfrage, die in den Flugdaten 2025 noch nicht sichtbar ist (Verteidigung, ESA-Programme, Demo-Flüge).
+- Davon gewinnt Isar heute ca. **30 Satelliten pro Jahr (1,25 t, ca. 21 Mio. €)**, das sind ca. 1,8 volle Spectrum-Ladungen.
+- **Engpass ist heute die Nachfrage nach dedizierten Starts, nicht Isars Kapazität:** 4 Starts × 80 % Erfolg × 700 kg × 100 % Füllgrad = 2,24 t Kapazität, gewollt sind 1,25 t. Dafür braucht Isar 2,2 seiner 4 Starts. Isars voller Manifest kommt also aus Nachfrage, die in den Flugdaten 2025 noch nicht sichtbar ist (Verteidigung, ESA-Programme, Demo-Flüge).
 
 ## TAM, SAM, SOM
 
@@ -14,7 +14,7 @@ Stand: 22.10.2026, Basis geflogene Nachfrage 2025. Alle Zahlen im [Fact-Warehous
 | --- | --- | --- | --- | --- |
 | TAM | alle Satelliten, die 2025 den Orbit erreicht haben | 4.521 | 2.694 t | 11,1 Mrd. € (12,4 Mrd. USD, SIA) |
 | SAM | offen für Isar, passt auf Spectrum, Orbit von Andøya erreichbar | 422 | 17,9 t | 120–319 Mio. € |
-| SOM | zahlt für einen dedizierten Start, innerhalb von Isars Kapazität | 30 | 1,25 t | 36 Mio. € |
+| SOM | zahlt für einen dedizierten Start, innerhalb von Isars Kapazität | 30 | 1,25 t | 21 Mio. € |
 
 ## Rechenweg: drei Eindämmungsfaktoren zum SAM, zwei zum SOM
 
@@ -27,13 +27,13 @@ Satellit für Satellit über die GCAT-Tabelle (`satellites`), identisch in SQL (
 | 2 Nutzlast | Satellit höchstens 700 kg (SSO-Grenze von Spectrum) | 483 / 24 t | Isar, European Spaceflight |
 | 3 Orbit (= SAM) | Inklination 90–110,6° (Andøya, Flugrichtungen 280–360°) | 422 / 17,9 t | CAA Norway, Andøya Space |
 | 4 Penetration | 7 % des SAM zahlen für einen eigenen Start statt Rideshare | 29,5 / 1,25 t | GCAT, BryceTech 2026, Schingler |
-| 5 Kapazität (= SOM) | 4 Starts × 80 % Erfolg × 700 kg × 60 % Füllgrad = 1,34 t; greift heute nicht | 29,5 / 1,25 t | Payload, Schingler, Team |
+| 5 Kapazität (= SOM) | 4 Starts × 80 % Erfolg × 700 kg × 100 % Füllgrad = 2,24 t; greift heute nicht | 29,5 / 1,25 t | Payload, Schingler, Team |
 
 Umsatz:
 
 - **TAM:** SIA-Launch-Umsatz 2025, umgerechnet mit 1,12 USD/€.
 - **SAM:** SAM-Masse × Preis pro kg, als Spanne von Rideshare (7.500 USD/kg, SpaceX-Liste) bis dediziert (20.000 USD/kg).
-- **SOM:** Spectrum-Ladungen (SOM-Masse ÷ 700 kg × 60 %) × 12 Mio. €.
+- **SOM:** volle Spectrum-Ladungen (SOM-Masse ÷ 700 kg) × 12 Mio. €. Seit 22.10. gilt Füllgrad 100 %: Mehrere Kunden teilen sich einen Start wie bei einem Rideshare auf Spectrum. Mit dem früheren Füllgrad von 60 % waren es 3 Ladungen und 36 Mio. €.
 
 Wer im SAM steckt: Erdbeobachtung optisch 144, Tech-Demos 92, Kommunikation/IoT 80, Wissenschaft 28, Wetter 27, Radar 23. Größte Betreiber Planet 77, Spire 26, ASI 22, OroraTech und Kinéis je 10.
 
@@ -50,21 +50,23 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 - **TAM:** Basisjahr (2024 / 2025)
 - **SAM:** Startplätze (Andøya, + Nova Scotia, + Kourou), Anteil anderer Regierungen (0–100 %)
 - **SOM:** Penetration (4–15 %), Starts pro Jahr (1–8), Erfolgsquote (75–92 %)
-- **Fest:** Spectrum-Nutzlast 700 kg SSO / 1.000 kg LEO (Fahrzeugfakt von Isar), Füllgrad 60 %, Preis 12 Mio. € pro Start, Rideshare 7.500 USD/kg, dediziert 20.000 USD/kg, 1,12 USD/€, US-Regierung 0 %
+- **Fest:** Spectrum-Nutzlast 700 kg SSO / 1.000 kg LEO (Fahrzeugfakt von Isar), Füllgrad 100 %, Preis 12 Mio. € pro Start, Rideshare 7.500 USD/kg, dediziert 20.000 USD/kg, 1,12 USD/€, US-Regierung 0 %
 
 ## Sensitivitäten
 
 | Szenario | SAM | SOM | Engpass |
 | --- | --- | --- | --- |
-| Basis | 422 Sat. / 17,9 t | 30 Sat. / 1,25 t / 36 Mio. € | Nachfrage |
-| Basisjahr 2024 | 187 / 8,7 t | 13 / 0,61 t / 17 Mio. € | Nachfrage |
-| + Nova Scotia | 468 / 21,6 t | 29 / 1,34 t / 38 Mio. € | Kapazität |
-| + Nova Scotia + Kourou | 483 / 24,2 t | 27 / 1,34 t / 38 Mio. € | Kapazität |
-| Penetration 4 % | 422 / 17,9 t | 17 / 0,72 t / 20 Mio. € | Nachfrage |
-| Penetration 15 % | 422 / 17,9 t | 32 / 1,34 t / 38 Mio. € | Kapazität |
-| 15 % Penetration, 8 Starts, 92 % Erfolg | 422 / 17,9 t | 63 / 2,68 t / 77 Mio. € | Nachfrage |
+| Basis | 422 Sat. / 17,9 t | 30 Sat. / 1,25 t / 21 Mio. € | Nachfrage (2,2 von 4 Starts nötig) |
+| Basisjahr 2024 | 187 / 8,7 t | 13 / 0,61 t / 10 Mio. € | Nachfrage |
+| + Nova Scotia | 468 / 21,6 t | 33 / 1,51 t / 26 Mio. € | Nachfrage |
+| + Nova Scotia + Kourou | 483 / 24,2 t | 34 / 1,69 t / 29 Mio. € | Nachfrage |
+| Penetration 4 % | 422 / 17,9 t | 17 / 0,72 t / 12 Mio. € | Nachfrage |
+| Penetration 15 % | 422 / 17,9 t | 53 / 2,24 t / 38 Mio. € | Kapazität (4 von 4 Starts) |
+| 15 % Penetration, 8 Starts, 92 % Erfolg | 422 / 17,9 t | 63 / 2,68 t / 46 Mio. € | Nachfrage |
+| Erfolgsquote 75 % | 422 / 17,9 t | 30 / 1,25 t / 21 Mio. € | Nachfrage (2,4 von 4 Starts nötig) |
 
 - Das Basisjahr wirkt am stärksten: 2024 war der offene Markt im Andøya-Band nur halb so groß. Die Nachfrage schwankt stark von Jahr zu Jahr.
+- **Erfolgsquote und Startzahl bewegen den SOM heute nicht,** weil die Nachfrage begrenzt und nicht die Kapazität. Sie ändern, wie viele Starts Isar für die Nachfrage braucht (bei 80 %: 2,2 von 4, bei 75 %: 2,4). Das Tool zeigt das unter den SOM-Hebeln. Wirksam werden beide erst, wenn die Penetration über ca. 12,5 % steigt (2,24 t Kapazität ÷ 17,9 t SAM).
 - Mehr Starts allein bringen nichts, solange die Penetration bei 7 % liegt. Wachstum kommt über Penetration (Zuverlässigkeit, Rideshare-Stopp, Verteidigung) und neue Orbits.
 - Die Nutzlast ist bewusst kein Regler: 1.000 statt 700 kg in SSO vergrößerte den SAM kaum (+0,1 t), und weil Preis (12 Mio. €) und Kilopreis auf 700 kg kalibriert sind, sänke der SOM-Umsatz rechnerisch. Eine stärkere Spectrum-Version gehört in ein späteres Szenario mit eigenem Preis.
 
@@ -76,9 +78,9 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 
 ## Challenge-Punkte fürs Management
 
-- **„Nachfrage für ca. 200 Fahrzeuge 2028“ (Isars CCO)** passt nicht zu den Flugdaten: Der ganze Andøya-SAM 2025 füllt ca. 43 Spectrum-Ladungen, davon ca. 3 dediziert. Wie definiert Isar Nachfrage?
+- **„Nachfrage für ca. 200 Fahrzeuge 2028“ (Isars CCO)** passt nicht zu den Flugdaten: Der ganze Andøya-SAM 2025 füllt ca. 26 volle Spectrum-Ladungen, davon ca. 1,8 dediziert. Wie definiert Isar Nachfrage?
 - **60 % Verteidigung:** Laut Isar (Juli 2026) sind das Anfragen, kein Umsatz. Welche Orbits braucht dieser Kunde? Europäische Verteidigungs-Radarsatelliten flogen 2025 in Andøyas Band (alle per Rideshare); 37–45° nutzen vor allem asiatische Betreiber. Offen ist die Kommunikationsschicht (SATCOMBw 4, IRIS²).
-- **Woher kommt der volle Manifest,** wenn die geflogene dedizierte Nachfrage im Band nur ca. 3 Ladungen pro Jahr trägt? Welcher Anteil ist Demo, ESA-Förderung, Verteidigung?
+- **Woher kommt der volle Manifest,** wenn die geflogene dedizierte Nachfrage im Band nur ca. 1,8 Ladungen pro Jahr trägt? Welcher Anteil ist Demo, ESA-Förderung, Verteidigung?
 - **Rideshare-Stopp nach 2028** ist unbestätigt. Wenn er kommt, steigt die Penetration und Kapazität wird zum Engpass.
 
 ## Validierung durch den Experten

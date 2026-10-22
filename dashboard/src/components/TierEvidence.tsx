@@ -148,7 +148,9 @@ export function SomEvidence({ levers, fixed, result }: Props) {
         </div>
         <p className="caption">
           The SOM is the smaller of the two: {fmtTonnes(Math.min(result.wantKg, result.capacityKg))}, about{" "}
-          {result.somLaunches.toFixed(1)} Spectrum loads. Today {result.bottleneck === "demand" ? "demand" : "capacity"} sets the limit.
+          {result.somLaunches.toFixed(1)} Spectrum loads. Today {result.bottleneck === "demand" ? "demand" : "capacity"} sets the limit. With{" "}
+          {fmtPct(levers.successRate)} success Isar needs {result.launchesNeeded.toFixed(1)} of its {levers.launchesPerYear} launches for
+          that ({fmtPct(share(result.launchesNeeded, levers.launchesPerYear))}).
         </p>
 
         <h4>Penetration in three points</h4>

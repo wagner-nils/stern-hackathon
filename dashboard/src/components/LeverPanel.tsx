@@ -12,7 +12,7 @@ const groupTitle: Record<Tier, string> = {
 };
 
 /** All judgement calls of Q1: at most three levers per tier, then the fixed parameters with their reasons. */
-export function LeverPanel({ state, selected }: { state: LeverState; selected: Tier }) {
+export function LeverPanel({ state, selected, notes = {} }: { state: LeverState; selected: Tier; notes?: Partial<Record<Tier, string>> }) {
   return (
     <div className="panel">
       <div className="panel__head">
@@ -80,6 +80,7 @@ export function LeverPanel({ state, selected }: { state: LeverState; selected: T
               </div>
             );
           })}
+          {notes[tier] && <p className="lever-group__note">{notes[tier]}</p>}
         </section>
       ))}
 

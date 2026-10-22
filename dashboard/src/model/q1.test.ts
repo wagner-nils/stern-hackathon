@@ -33,6 +33,16 @@ describe("Q1 model", () => {
     expect(plusNovaScotia.tiers.SAM.sats).toBeGreaterThan(andoya);
   });
 
+  it("needs more launches at a lower success rate while demand sets the SOM", () => {
+    const at = (successRate: number) =>
+      computeQ1(satellites, launchSites, { ...baseLevers, successRate }, baseFixed, tamRevenueUsd(2025));
+    const [low, high] = [at(0.75), at(0.92)];
+    expect(low.bottleneck).toBe("demand");
+    expect(low.tiers.SOM.massKg).toBeCloseTo(high.tiers.SOM.massKg);
+    expect(low.launchesNeeded).toBeGreaterThan(high.launchesNeeded);
+    expect(low.launchesNeeded).toBeCloseTo(low.somLaunches / 0.75);
+  });
+
   it("is capacity-bound when demand exceeds successful launches", () => {
     const r = computeQ1(satellites, launchSites, { ...baseLevers, penetration: 0.15, launchesPerYear: 1 }, baseFixed, tamRevenueUsd(2025));
     expect(r.bottleneck).toBe("capacity");

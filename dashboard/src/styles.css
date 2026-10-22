@@ -1595,3 +1595,34 @@ td.num {
   stroke: #dde2e9;
   stroke-width: 0.6;
 }
+
+.sitemap__site.is-dim {
+  opacity: 0.18;
+}
+
+.sitemap__site.is-match:not(.is-selected) circle {
+  stroke: var(--blue);
+  stroke-width: 3;
+}
+
+.sitemap__match {
+  margin-top: -16px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--blue);
+  background: var(--blue-tint);
+  color: var(--muted);
+}
+
+.seg button:disabled {
+  color: var(--dim);
+  cursor: default;
+}
+
+.rockets-table td small {
+  display: block;
+}
+
+/* Launch statistics: longer company names, shorter bars. */
+.barlist--wide .barlist__row {
+  grid-template-columns: minmax(150px, 1.8fr) minmax(50px, 1.4fr) 104px 54px;
+}

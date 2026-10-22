@@ -58,6 +58,7 @@ kennedy-space-center,falcon-9,active,LEO;GTO;lunar,LC-39A,2017,No Falcon 9 from 
 kennedy-space-center,falcon-heavy,active,LEO;GTO;GEO;escape,LC-39A,2018,,wiki-falcon-heavy
 kennedy-space-center,sls,active,lunar,LC-39B,2022,Artemis II launched 1 Apr 2026.,wiki-sls
 kennedy-space-center,starship,planned,LEO;lunar,LC-39A,2026,FAA ROD Jan 2026: up to 44 launches/yr; first Florida flight NET late 2026.,gulfnews-39a-starship
+kourou,ariane-5,retired,GTO;LEO;escape,ELA-3,1996,Last flight July 2023,wiki-ariane-5
 kourou,ariane-6,active,LEO;SSO;MEO;GTO,ELA-4,2024,"A62 since Jul 2024, A64 since Feb 2026 (Amazon Leo); Galileo (MEO), MTG-I2 (GTO) 2025–26.",wiki-ariane-6
 kourou,maia,contracted,LEO;SSO,ELS / ELM2 (ex-Soyuz),2027,CNES selected MaiaSpace for ex-Soyuz pad Sep 2024; first attempt H2 2027.,esf-maia-2027
 kourou,miura-5,contracted,LEO;SSO,ELM-Diamant,2026,Diamant laureate; civil works under way; 2026 debut not yet flown (likely slips).,esf-sirius-diamant
@@ -67,6 +68,7 @@ kourou,soyuz-st,retired,LEO;SSO;MEO;GTO,ELS,2011,Last launch 10 Feb 2022; pad ha
 kourou,spectrum,planned,LEO;SSO,ELM-Diamant,,Isar is a Diamant laureate (term sheet 2022); no build or first-launch date announced.,esf-sirius-diamant
 kourou,vega,retired,SSO;LEO,ELV,2012,"Final flight VV24, 5 Sep 2024.",wiki-vega
 kourou,vega-c,active,SSO;LEO;HEO,ELV,2022,"Return to flight Dec 2024; 2026: SMILE (May), Sentinel-3C/FLEX (Sep).",wiki-vega-c
+kourou,vega-e,planned,SSO;LEO,ELV,2027,Maiden flight anticipated 2027,wiki-vega-c
 kourou,zephyr,contracted,LEO;SSO,ELM-Diamant,2026,Latitude committed €8m to its Diamant section (Jun 2025); first-flight site may change (unverified).,esf-latitude-diamant
 kulasekarapattinam,sslv,planned,SSO;polar,SSLV Launch Pad,2027,First launch targeted Dec 2026; since=2027 is our estimate given FY2026-27 commissioning.,swarajya-kulasekarapattinam-fy27
 kwajalein,pegasus-xl,retired,LEO,Bucholz Army Airfield (air launch),,Final Pegasus flew 3 Jul 2026 (LINK to 20.6°); vehicle retired.,spacepolicyonline-link-pegasus

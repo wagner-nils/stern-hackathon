@@ -57,3 +57,21 @@ Lehren für Isar:
 - [European Spaceflight: MaiaSpace 2027](https://europeanspaceflight.com/maiaspace-pushes-inaugural-launch-of-maia-rocket-to-2027/)
 - [SpaceNews: ELC-Mittel](https://spacenews.com/some-european-launcher-challenge-funding-remains-in-limbo/)
 - [European Spaceflight: ELC-Verträge](https://europeanspaceflight.com/esa-awards-e544-million-in-european-launcher-challenge-contracts/)
+
+## Starts 2025 nach Land und Anbieter
+
+Aus dem [Fact-Warehouse](../../warehouse/README.md) (`v_launches_by_provider`, `v_launches_by_country`, GCAT), im Tool im Kapitel „Rockets“ mit Raketenkatalog (107 Raketen mit Nutzlast, Status, Startplätzen).
+
+- 330 Orbitalstarts 2025: USA 198, China 93, Russland 17, Indien 5, Frankreich 4, Japan 4, Italien 3, Südkorea 2, Australien, Deutschland (Spectrum), Israel und Iran je 1.
+- Europa zusammen: 8 Starts (Arianespace 4, Avio 3, Isar 1), 15,7 t in den Orbit.
+
+| Anbieter | Land | Starts | erfolgreich | Nutzlast im Orbit |
+| --- | --- | --- | --- | --- |
+| SpaceX | US | 170 | 168 | 2689.5 t |
+| CASC | CN | 73 | 73 | 319.3 t |
+| Rocket Lab | US | 18 | 18 | 2.1 t |
+| Roscosmos | RU | 13 | 13 | 58.5 t |
+| Galactic Energy | CN | 6 | 5 | 1.2 t |
+| United Launch Alliance | US | 6 | 6 | 76.4 t |
+| CAS Space | CN | 5 | 5 | 4.3 t |
+| ISRO | IN | 5 | 4 | 14.8 t |

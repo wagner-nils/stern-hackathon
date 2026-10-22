@@ -6,6 +6,7 @@ import { generatedAt, launchSites, siteActivity, siteOverview, siteVehicles, veh
 import { fmtInt, fmtTonnes } from "../lib/format";
 
 type StatusFilter = "all" | "operational" | "coming";
+type Highlight = "none" | "rockets" | "class";
 
 const accessLabel: Record<string, string> = {
   international: "Open to foreign launchers",
@@ -26,6 +27,24 @@ const rows: MapSite[] = launchSites
   .map((s) => ({ ...s, activity: siteOverview.find((o) => o.id === s.id) }))
   .sort((a, b) => (b.activity?.launches_2025 ?? 0) - (a.activity?.launches_2025 ?? 0) || a.name.localeCompare(b.name));
 const byId = Object.fromEntries(vehicles.map((v) => [v.id, v]));
+
+/**
+ * Spaceports that host the same rockets as the given site (or rockets of the same class), with the shared
+ * vehicles per site. Retired links do not count.
+ */
+function sharing(siteId: string, mode: Highlight): Map<string, string[]> | null {
+  if (mode === "none") return null;
+  const own = siteVehicles.filter((l) => l.site_id === siteId && l.status !== "retired");
+  const ids = new Set(own.map((l) => l.vehicle_id));
+  const classes = new Set(own.map((l) => byId[l.vehicle_id]?.class));
+  const hits = new Map<string, string[]>();
+  for (const l of siteVehicles) {
+    const v = byId[l.vehicle_id];
+    if (l.status === "retired" || !v || !(mode === "rockets" ? ids.has(v.id) : classes.has(v.class))) continue;
+    hits.set(l.site_id, [...(hits.get(l.site_id) ?? []), mode === "rockets" && ids.size === 1 ? l.status : `${v.name} (${l.status})`]);
+  }
+  return hits;
+}
 
 function SiteDetail({ site }: { site: MapSite }) {
   const a = site.activity;
@@ -207,6 +226,7 @@ export function Spaceports() {
   const [status, setStatus] = useState<StatusFilter>("all");
   const [openOnly, setOpenOnly] = useState(false);
   const [selected, setSelected] = useState("andoya");
+  const [highlight, setHighlight] = useState<Highlight>("rockets");
 
   const q = query.trim().toLowerCase();
   const shown = rows.filter(
@@ -216,6 +236,12 @@ export function Spaceports() {
       (!q || [s.name, s.country, s.operator, s.activity?.providers, s.expansion].some((t) => (t ?? "").toLowerCase().includes(q))),
   );
   const site = rows.find((s) => s.id === selected) ?? rows[0];
+  const hits = sharing(site.id, highlight);
+  const ownRockets = siteVehicles
+    .filter((l) => l.site_id === site.id && l.status !== "retired")
+    .map((l) => byId[l.vehicle_id]);
+  const ownClasses = [...new Set(ownRockets.map((v) => v.class))];
+  const others = hits ? rows.filter((s) => s.id !== site.id && hits.has(s.id)) : [];
   const total2025 = rows.reduce((n, s) => n + (s.activity?.launches_2025 ?? 0), 0);
   const operational = rows.filter((s) => s.status === "operational").length;
 
@@ -236,7 +262,37 @@ export function Spaceports() {
         </p>
       </header>
 
-      <SiteMap sites={shown} selected={site.id} onSelect={select} />
+      <div className="toolbar">
+        <div className="overline">Highlight on the map</div>
+        <div className="seg" role="group" aria-label="Highlight">
+          <button className={highlight === "none" ? "is-active" : ""} onClick={() => setHighlight("none")}>
+            Nothing
+          </button>
+          <button className={highlight === "rockets" ? "is-active" : ""} onClick={() => setHighlight("rockets")} disabled={!ownRockets.length}>
+            Same rockets as {site.name.replace(/ \(.*\)$/, "")}
+          </button>
+          <button className={highlight === "class" ? "is-active" : ""} onClick={() => setHighlight("class")} disabled={!ownRockets.length}>
+            Same rocket class{ownClasses.length ? ` (${ownClasses.join(", ")})` : ""}
+          </button>
+        </div>
+      </div>
+
+      <SiteMap sites={shown} selected={site.id} onSelect={select} highlight={hits ? new Set([site.id, ...hits.keys()]) : null} />
+
+      {hits && (
+        <p className="caption sitemap__match">
+          {highlight === "rockets"
+            ? `${ownRockets.map((v) => v.name).join(", ") || "No rocket"} also flies, or is planned, from ${others.length} other spaceport${others.length === 1 ? "" : "s"}: `
+            : `${others.length} other spaceports host ${ownClasses.join(" or ")} rockets: `}
+          {others.length
+            ? others
+                .slice(0, highlight === "rockets" ? others.length : 14)
+                .map((s) => (highlight === "rockets" ? `${s.name.replace(/ \(.*\)$/, "")} (${hits.get(s.id)!.join(", ")})` : s.name.replace(/ \(.*\)$/, "")))
+                .join("; ")
+            : "none."}
+          {highlight === "class" && others.length > 14 ? ` and ${others.length - 14} more.` : ""}
+        </p>
+      )}
 
       <SiteDetail site={site} />
 

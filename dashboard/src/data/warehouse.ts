@@ -152,6 +152,28 @@ export interface SiteActivity {
   agencies: string;
 }
 
+/** Launches per launch provider (company or agency) and year, from v_launches_by_provider. */
+export interface ProviderLaunches {
+  provider: string;
+  provider_country: string | null;
+  year: number;
+  launches: number;
+  successes: number;
+  payload_t: number | null;
+  vehicles: string | null;
+}
+
+/** Launches per country of the launch provider and year, from v_launches_by_country. */
+export interface CountryLaunches {
+  country_code: string | null;
+  year: number;
+  launches: number;
+  successes: number;
+  payload_t: number | null;
+  providers: number;
+  provider_names: string | null;
+}
+
 export interface VehicleActivity {
   vehicle_id: string;
   year: number;
@@ -217,6 +239,8 @@ interface RawSnapshot {
   siteOverview: SiteOverview[];
   siteActivity: SiteActivity[];
   vehicleActivity: VehicleActivity[];
+  launchesByProvider: ProviderLaunches[];
+  launchesByCountry: CountryLaunches[];
 }
 
 const snapshot = raw as unknown as RawSnapshot;
@@ -233,6 +257,8 @@ export const siteVehicles = snapshot.launch_site_vehicles ?? [];
 export const siteOverview = snapshot.siteOverview ?? [];
 export const siteActivity = snapshot.siteActivity ?? [];
 export const vehicleActivity = snapshot.vehicleActivity ?? [];
+export const launchesByProvider = snapshot.launchesByProvider ?? [];
+export const launchesByCountry = snapshot.launchesByCountry ?? [];
 export const manifest = snapshot.manifest;
 export const sqlFunnel = snapshot.q1Funnel;
 export const sqlSamLaunchers = snapshot.samLaunchers;

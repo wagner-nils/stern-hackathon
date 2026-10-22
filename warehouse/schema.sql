@@ -4,7 +4,8 @@
 -- load.py rebuilds the warehouse from warehouse/seed on every run (export first if you edited in Supabase),
 -- so tables are recreated from this file rather than migrated. Other tables in the database are not touched.
 
-drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity;
+drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity,
+  v_launches_by_provider, v_launches_by_country, v_launches;
 drop table if exists launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
   assumptions, facts, metrics, sources cascade;
 
@@ -379,6 +380,37 @@ select v.id as vehicle_id, v.name, v.operator, l.launch_year as year,
 from vehicles v
 join launches l on l.vehicle = any (v.gcat_names)
 group by v.id, v.name, v.operator, l.launch_year;
+
+-- Every launch with spaceport, vehicle and launch provider resolved. GCAT names the launching agency at
+-- sub-unit level (CALT, SAST, Rocket Lab NZ), so the provider and its country come from the vehicle.
+create or replace view v_launches as
+select l.*, s.id as site_id, s.name as site, s.country_code as site_country,
+       v.id as vehicle_id, v.name as vehicle_name, v.class as vehicle_class,
+       coalesce(v.operator, l.agency) as provider, v.country_code as provider_country
+from launches l
+left join launch_sites s on l.site_code = any (s.gcat_codes)
+left join vehicles v on l.vehicle = any (v.gcat_names);
+
+-- Launches per launch provider and year: who flies how often, how reliably, how much mass.
+create or replace view v_launches_by_provider as
+select provider, provider_country, launch_year as year,
+       count(*) as launches,
+       count(*) filter (where success) as successes,
+       round(sum(payload_t) filter (where success), 1) as payload_t,
+       string_agg(distinct vehicle_name, ', ' order by vehicle_name) as vehicles
+from v_launches
+group by provider, provider_country, launch_year;
+
+-- Launches per country of the launch provider and year.
+create or replace view v_launches_by_country as
+select provider_country as country_code, launch_year as year,
+       count(*) as launches,
+       count(*) filter (where success) as successes,
+       round(sum(payload_t) filter (where success), 1) as payload_t,
+       count(distinct provider) as providers,
+       string_agg(distinct provider, ', ' order by provider) as provider_names
+from v_launches
+group by provider_country, launch_year;
 
 -- Read-only access for a future anon key; the service role and the database owner bypass RLS.
 do $$

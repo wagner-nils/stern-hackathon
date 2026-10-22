@@ -31,14 +31,31 @@ export type MapSite = LaunchSite & { activity: SiteOverview | undefined };
  * Spaceports on a latitude × longitude grid. Latitude is what matters for a launcher: it sets the lowest
  * inclination a site reaches directly. Dot area follows launches in 2025; hollow dots are not operational yet.
  */
-export function SiteMap({ sites, selected, onSelect }: { sites: MapSite[]; selected: string; onSelect: (id: string) => void }) {
+export function SiteMap({
+  sites,
+  selected,
+  onSelect,
+  highlight = null,
+}: {
+  sites: MapSite[];
+  selected: string;
+  onSelect: (id: string) => void;
+  /** Sites to emphasise; all others are dimmed. Null shows every site normally. */
+  highlight?: Set<string> | null;
+}) {
   const placed = sites.filter((s) => s.longitude != null && s.latitude != null);
   const radius = (s: MapSite) => 4 + Math.sqrt(s.activity?.launches_2025 ?? 0) * 1.7;
   const launches = (s: MapSite) => s.activity?.launches_2025 ?? 0;
   // Busy sites get a name, unless a busier one sits within a few degrees (Cape Canaveral and Kennedy share a coast).
   const near = (a: MapSite, b: MapSite) => Math.abs(a.latitude! - b.latitude!) < 4 && Math.abs(a.longitude! - b.longitude!) < 4;
-  const labelled = (s: MapSite) =>
-    s.id === selected || (launches(s) >= 15 && !placed.some((o) => o !== s && near(o, s) && launches(o) > launches(s) && o.id !== selected));
+  const busy = (s: MapSite) =>
+    launches(s) >= 15 && !placed.some((o) => o !== s && near(o, s) && launches(o) > launches(s) && o.id !== selected);
+  // With a highlight, name the highlighted sites (all of them while there are few); otherwise the busy ones.
+  const labelled = (s: MapSite) => {
+    if (s.id === selected) return true;
+    if (highlight) return highlight.has(s.id) && (highlight.size <= 12 || busy(s));
+    return busy(s);
+  };
   // Draw the busiest first so small sites stay clickable on top.
   const order = [...placed].sort((a, b) => radius(b) - radius(a));
 
@@ -62,7 +79,7 @@ export function SiteMap({ sites, selected, onSelect }: { sites: MapSite[]; selec
             key={s.id}
             className={`sitemap__site sitemap__site--${s.access ?? "unknown"}${s.status === "operational" ? "" : " is-coming"}${
               s.id === selected ? " is-selected" : ""
-            }`}
+            }${highlight ? (highlight.has(s.id) ? " is-match" : " is-dim") : ""}`}
             transform={`translate(${x(s.longitude!)} ${y(s.latitude!)})`}
             onClick={() => onSelect(s.id)}
           >

@@ -25,6 +25,8 @@ Views:
 - `v_launch_site_overview`: **eine Zeile pro Startplatz** zum Nachschlagen: Register, aktive und geplante Raketen mit Anbietern und deren Ländern, bediente Orbits, maximale Nutzlast LEO/SSO/GTO, Starts 2024/2025/2026, Nutzlast 2025, Auslastung der Startgrenze.
 - `v_launch_site_activity`: Starts, Fehlstarts, Nutzlast und Zielorbits pro Startplatz und Jahr (GCAT).
 - `v_vehicle_activity`: Starts, Erfolge und Nutzlast pro Rakete und Jahr.
+- `v_launches`: jeder Start mit Startplatz, Rakete, Anbieter und Anbieterland aufgelöst (GCAT nennt Agenturen auf Unterebene, z. B. CALT statt CASC; Anbieter und Land kommen deshalb aus `vehicles`).
+- `v_launches_by_provider`, `v_launches_by_country`: Starts, Erfolge und Nutzlast pro Anbieter bzw. Anbieterland und Jahr.
 
 ## Arbeitsablauf
 

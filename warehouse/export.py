@@ -92,7 +92,9 @@ def main():
         _, snapshot["siteOverview"] = fetch(conn, "select * from v_launch_site_overview")
         _, snapshot["siteActivity"] = fetch(conn, "select * from v_launch_site_activity order by site_id, year")
         _, snapshot["vehicleActivity"] = fetch(conn, "select * from v_vehicle_activity order by vehicle_id, year")
-        print("views         v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity -> snapshot")
+        _, snapshot["launchesByProvider"] = fetch(conn, "select * from v_launches_by_provider order by year, launches desc")
+        _, snapshot["launchesByCountry"] = fetch(conn, "select * from v_launches_by_country order by year, launches desc")
+        print("views         Q1 funnel, SAM launchers, site overview and activity, vehicle activity, launches by provider and country -> snapshot")
 
     SNAPSHOT.write_text(json.dumps(snapshot, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"snapshot -> {SNAPSHOT.relative_to(HERE.parent)} ({SNAPSHOT.stat().st_size // 1024} kB)")

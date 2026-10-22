@@ -239,6 +239,56 @@ export interface FunnelRow {
   revenue_eur_high: number | null;
 }
 
+/** An RQ2 expansion field: a small model with its inputs and the basis for each (table expansion_fields). */
+export interface ExpansionField {
+  id: string;
+  name: string;
+  category: "core" | "site" | "product" | "adjacent";
+  recommendation: "pursue" | "conditional" | "not";
+  sites: string | null;
+  start_year: number;
+  end_year: number | null;
+  market_2025_eur: number;
+  market_basis: string;
+  growth: number;
+  growth_basis: string;
+  isar_share: number;
+  share_basis: string;
+  gross_margin: number;
+  margin_basis: string;
+  fixed_cost_eur: number;
+  capex_eur: number;
+  cost_basis: string | null;
+  source_ids: string[];
+  confidence: Confidence;
+  note: string | null;
+}
+
+/** One row of v_q2_expansion_fields: a field in one year. */
+export interface ExpansionYear {
+  id: string;
+  year: number;
+  market_eur: number;
+  isar_revenue_eur: number;
+  gross_profit_eur: number;
+  fixed_cost_eur: number;
+  capital_charge_eur: number;
+  eva_proxy_eur: number;
+}
+
+/** One row of v_q2_launch_gap: planned launches against the demand visible in flight data. */
+export interface LaunchGap {
+  year: number;
+  planned: number;
+  planned_basis: string;
+  market_t: number;
+  launches_filled: number;
+  share_filled: number;
+  launches_without_visible_demand: number;
+  launches_filled_isar_share: number;
+  share_filled_isar: number;
+}
+
 interface RawSnapshot {
   generatedAt: string;
   sources: Source[];
@@ -266,6 +316,9 @@ interface RawSnapshot {
   launchesByCountry: CountryLaunches[];
   penetrationEvidence: PenetrationEvidence[];
   winShareEvidence: WinShareEvidence[];
+  expansion_fields: ExpansionField[];
+  q2Expansion: ExpansionYear[];
+  q2LaunchGap: LaunchGap[];
 }
 
 const snapshot = raw as unknown as RawSnapshot;
@@ -287,6 +340,9 @@ export const launchesByCountry = snapshot.launchesByCountry ?? [];
 export const penetrationEvidence = snapshot.penetrationEvidence ?? [];
 export const winShareEvidence = snapshot.winShareEvidence ?? [];
 export const manifest = snapshot.manifest;
+export const expansionFields = snapshot.expansion_fields ?? [];
+export const sqlExpansion = snapshot.q2Expansion ?? [];
+export const launchGap = snapshot.q2LaunchGap ?? [];
 export const sqlFunnel = snapshot.q1Funnel;
 export const sqlSamLaunchers = snapshot.samLaunchers;
 

@@ -77,7 +77,7 @@ Was RQ3 daraus mitnimmt:
 
 ## Expansionsfelder in Zahlen
 
-Die Betreuer wollen pro Markt Größe, Wachstum, Marge und den Ausblick auf 5, 10 und 15 Jahre. Deshalb ist jedes Feld als kleines Modell im Warehouse hinterlegt: Tabelle `expansion_fields`, nachrechenbar in der View `v_q2_expansion_fields`.
+Die Betreuer wollen pro Markt Größe, Wachstum, Marge und den Ausblick auf 5, 10 und 15 Jahre. Deshalb ist jedes Feld als kleines Modell im Warehouse hinterlegt: Tabelle `expansion_fields`, nachrechenbar in der View `v_q2_expansion_fields`. Im Tool: Kapitel „Q2 · Growth“ mit Startlücke, ASCENT-Zügen, Jahresumschalter 2030/2035/2040, Was-wäre-wenn-Reglern (Wachstum der Startbereitschaft 10–25 %, Kapitalkosten 10–15 %) und Rechenweg pro Feld; `src/model/q2.ts` rechnet die View nach (Test).
 
 **Rechenregel pro Feld und Jahr:**
 - Umsatz Isar = Markt 2025 × (1 + Wachstum)^(Jahr − 2025) × Isar-Anteil

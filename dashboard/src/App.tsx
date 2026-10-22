@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Q1Reach } from "./sections/Q1Reach";
 import { FactBase } from "./sections/FactBase";
+import { Q2Growth } from "./sections/Q2Growth";
 import { Rockets } from "./sections/Rockets";
 import { Spaceports } from "./sections/Spaceports";
 import { Upcoming } from "./sections/Upcoming";
@@ -8,7 +9,7 @@ import { useLevers } from "./state/useLevers";
 
 const chapters = [
   { id: "q1", label: "Q1 · Reach" },
-  { id: "q2", label: "Q2" },
+  { id: "q2", label: "Q2 · Growth" },
   { id: "q3", label: "Q3" },
   { id: "q4", label: "Q4" },
   { id: "sites", label: "Spaceports" },
@@ -64,7 +65,7 @@ export function App() {
 
       <main className="content" key={chapter}>
         {chapter === "q1" && <Q1Reach state={levers} />}
-        {chapter === "q2" && <Upcoming question="Question 2" opens="21 Oct, 16:15" />}
+        {chapter === "q2" && <Q2Growth />}
         {chapter === "q3" && <Upcoming question="Question 3" opens="22 Oct, 09:30" />}
         {chapter === "q4" && <Upcoming question="Question 4" opens="22 Oct, 12:45" />}
         {chapter === "sites" && <Spaceports />}

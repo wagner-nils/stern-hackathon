@@ -20,7 +20,7 @@ function readHash(): Partial<Q1Levers> {
 }
 
 function writeHash(levers: Q1Levers) {
-  const changed = keys.filter((k) => levers[k] !== baseLevers[k]).map((k) => [k, String(levers[k])]);
+  const changed = keys.filter((k) => Number.isFinite(levers[k]) && levers[k] !== baseLevers[k]).map((k) => [k, String(levers[k])]);
   try {
     window.history.replaceState(null, "", `${window.location.pathname}${changed.length ? `#${new URLSearchParams(changed)}` : ""}`);
   } catch {
@@ -29,11 +29,13 @@ function writeHash(levers: Q1Levers) {
 }
 
 export function useLevers() {
-  const [levers, setLevers] = useState<Q1Levers>(() => ({ ...baseLevers, ...readHash() }));
+  const [state, setLevers] = useState<Q1Levers>(() => ({ ...baseLevers, ...readHash() }));
+  // A lever added after the state was created (hot reload during development) falls back to its base value.
+  const levers: Q1Levers = { ...baseLevers, ...state };
 
   useEffect(() => {
-    writeHash(levers);
-  }, [levers]);
+    writeHash({ ...baseLevers, ...state });
+  }, [state]);
 
   return {
     levers,

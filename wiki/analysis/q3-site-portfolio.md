@@ -33,7 +33,8 @@ Details: [Q2](q2-business-areas.md), Abschnitt „Commitment und Brücke zu RQ3�
 
 | Größe | Wert | Quelle |
 | --- | --- | --- |
-| Sichtbare Nachfrage nach eigenen Starts 2028 / 2030 | ca. 2,7 / 3 Starts (volle Ladung) | `v_q2_launch_gap` |
+| Sichtbare Nachfrage nach eigenen Starts 2028 / 2030 (ganzer Markt) | ca. 2,7 / 3 Starts (volle Ladung) | `v_q2_launch_gap` |
+| Davon für Isar realistisch (45 % Anteil gegen Rocket Lab) | ca. 1,2 / 1,3 Starts | `v_q2_launch_gap`, Annahme `som_win_share` |
 | Isars geplante Starts | 4 (2027), ca. 8 (2028), 12 (2030, Team-Annahme) | Payload, Team |
 | Werk Parsdorf | ausgelegt auf bis zu 40 Raketen pro Jahr, Ziel ab ca. 2030; heute im Hochlauf | Isar |
 | Andøya | Lizenz 30 Starts pro Jahr für den ganzen Standort; Isar hat 1 exklusives Pad bis 2041; 2. Pad im norwegischen Haushaltsentwurf 2027 (Mieter offen) | CAA Norway, Isar, Norwegens Haushalt |
@@ -44,7 +45,7 @@ Details: [Q2](q2-business-areas.md), Abschnitt „Commitment und Brücke zu RQ3�
 
 ## Erste Hypothesen (zur Diskussion im Team)
 
-1. **Die Produktion ist nicht der Engpass.** Parsdorf ist auf 40 Raketen pro Jahr ausgelegt. Sichtbar sind 3 Starts, geplant 12. Ein zweites Werk lohnt erst, wenn Verträge deutlich über ca. 20 Starts pro Jahr liegen. **Ein Werk, viele Pads.**
+1. **Die Produktion ist nicht der Engpass.** Parsdorf ist auf 40 Raketen pro Jahr ausgelegt. Sichtbar sind 2030 ca. 3 Starts im ganzen Markt, davon für Isar realistisch ca. 1,3; geplant sind 12. Ein zweites Werk lohnt erst, wenn Verträge deutlich über ca. 20 Starts pro Jahr liegen. **Ein Werk, viele Pads.**
 2. **Neue Startstandorte begründen sich über Bahnen und Redundanz, nicht über Volumen.** Andøya reicht vom Volumen her (30 Starts pro Jahr für den Standort). Es braucht aber ein **zweites Pad** gegen das Fehlstart-Risiko und für bezahlte Bereitschaft.
 3. **Nova Scotia als Option, nicht als Ausbau.** Es öffnet 45–55° für Kommunikation. Ausbau nur, wenn bis ca. 2030 Ankerkunden die ca. 13,4 Mio. € Gebühr pro Jahr decken. Produktion in Kanada nur, wenn ein kanadischer Ankerkunde lokale Wertschöpfung verlangt. Sonst Transport plus Endmontage vor Ort.
 4. **Kourou nur mit europäischem Anker.** Der Diamant-Komplex wird mit vier Wettbewerbern geteilt; für eine 1-t-Rakete ist GTO kaum relevant.

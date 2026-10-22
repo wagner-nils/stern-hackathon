@@ -49,11 +49,31 @@ EVA = Betriebsgewinn nach Steuern − Kapitalkosten × eingesetztes Kapital. Isa
 | **C** | Core polar launches | eigene Starts in polare und sonnensynchrone Bahnen von Andøya | Aikido (Gegenteil von Rideshare: eigener Termin, eigene Bahn, europäisch) | Gewinn ↑ |
 | **E** | Extras on every launch | Integration, Versicherung vermitteln, mehrere Absetzbahnen, Restplätze verkaufen | Add-on | Gewinn ↑ |
 | **N** | No-go list | kein Satellitenbau, keine eigene Konstellation, kein Preiskampf | bewusst nicht: Integrator, License, Two-sided Market, No Frills, Long Tail | Kapital ↓ |
-| **T** | Triggers for expansion | Nova Scotia, Kourou, Hyperschall-Tests, stärkere Spectrum, Mittelklasse nur mit Auslöser | EVA-Disziplin | Kapital ↓ |
+| **T** | Triggers for expansion | Nova Scotia, Kourou, Hyperschall-Tests, stärkere Spectrum, Mittelklasse nur mit Auslöser; welche Standorte und Werke daraus folgen, beantwortet [RQ3](q3-site-portfolio.md) | EVA-Disziplin | Kapital ↓ |
 
 Merksatz: „ASCENT: Erst der Vertrag, dann die Rakete.“
 
 Verworfene Namen: Mission EVA mit TETHER (Doppelsinn Weltraumspaziergang und Economic Value Added), ORBIT. „Max-Q“ eignet sich als Kapitelname für die aktuelle Phase höchster Belastung.
+
+## Commitment und Brücke zu RQ3
+
+Die Betreuer haben in der Q3-Session betont: Ohne klares Geschäftsfeld gibt es keine Standortantwort, denn der Startplatz legt den Orbit fest und der Orbit die Kunden. Deshalb steht hier das Commitment, aus dem RQ3 die Standorte und die Produktion ableitet.
+
+> **Commitment:** Isar wird der souveräne europäische Startanbieter für **polare und sonnensynchrone Bahnen bis ca. 1 t**: Erdbeobachtung, Datenkonstellationen und Verteidigungsaufklärung, dazu **bezahlte Startbereitschaft** für europäische Staaten. Mittlere Bahnen (45–55°, Kommunikation) nur mit Vertrag. Niedrige Bahnen und GTO nicht.
+
+| Geschäftsfeld | Bahn | Standort | Folge für die Produktion | Status |
+| --- | --- | --- | --- | --- |
+| Konstellationen, Einzelmissionen, Institutionen, Verteidigungsaufklärung | polar und SSO (90–110°) | Andøya, Pad A exklusiv | Serienrakete aus Parsdorf, Transport nach Norwegen | jetzt |
+| Bezahlte Bereitschaft für Staaten | meist polar/SSO | Andøya plus zweites Pad oder garantierte Slots; Redundanz in Europa | Raketen auf Lager nahe am Pad, Integrationshalle | Vertrag jetzt, Ausbau mit Vertrag |
+| Kommunikation (Verteidigung, Konstellationen) | 45–55° | Nova Scotia | Transport über den Atlantik oder Endmontage vor Ort; eigenes Werk nur bei kanadischer Local-Content-Pflicht | nur mit Auslöser |
+| Niedrige Bahnen, GTO | < 45° / GTO | Kourou (geteilt) | nur Transport | nur mit EU- oder ESA-Anker |
+| Hyperschall-Tests | suborbital | Andøya | gleiche Rakete, kostet Slots | nur mit Blockkauf |
+
+Was RQ3 daraus mitnimmt:
+
+- **Die Produktion ist nicht der Engpass:** Parsdorf ist auf 40 Raketen pro Jahr ausgelegt. Sichtbar sind 2030 ca. 3 Starts im ganzen Markt, davon für Isar realistisch ca. 1,3; geplant sind 12.
+- **Startstandorte begründen sich über Bahnen und Redundanz, nicht über Volumen:** Ein Fehlstart sperrt ein Pad über ein Jahr; bezahlte Bereitschaft braucht ein zweites Pad oder garantierte Slots.
+- **Weiter in [Q3: Standortportfolio](q3-site-portfolio.md).**
 
 ## Portfolio
 

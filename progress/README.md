@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 10:43**: RQ3 im Wiki gestartet (Session „Repo-Refinement mit Team“): neue Seite `q3-site-portfolio.md`, RQ3 in der Fragenübersicht, Brücke von RQ2 zu RQ3 mit Isars realistischem Anteil (2030 ca. 1,3 Starts). 17 Tests grün.
+
 - **22.10. 10:38**: Penetration aufgeteilt in Nachfrage nach eigenen Starts (7 %) × Isars Anteil gegen Rocket Lab (45 %, neuer Hebel, belegt mit `v_win_share_evidence`: europäische Betreiber kauften 44 % dieser Nachfrage, alle per Electron). SOM jetzt 13 Satelliten / 0,56 t / 10 Mio. €; RQ2: realistisch für Isar 1,2 von 8 Starts 2028. Firefly Alpha als Kleinträger korrigiert. 17 Tests grün.
 
 - **22.10. 10:31**: 7 % Penetration neu begründet und nachrechenbar: View `v_penetration_evidence` (2024 + 2025 kauften 6,9 % der Masse im Andøya-Band einen eigenen Start; westlicher Gesamtmarkt 8,5 %, BryceTech weltweit 17–23 % mit China), unbelegte „10–14 % im Westen“ entfernt; Tool, Notion und Wiki nachgezogen. Drei Team-Kommentare auf der RQ1-Notion-Seite beantwortet. 16 Tests grün.

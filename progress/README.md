@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 14:15** (Branch `feature/present-mode`): „▶ Present“ ist jetzt eine Seite statt fünf Schritten (passt auf 1280×720). Sie zeigt drei Szenario-Karten (Umsatz 2030/2035, EBIT 2035, profitabel ab), das Chart, fünf Regler (Rahmenvertrags-Starts, Wachstum Bereitschaft, Erfolgsquote, Fixkosten, Q4: Monate Andøya gesperrt), wie ASCENT Geld verdient, Q2-Felder mit Umsatz 2030 und den Q4-Schock. Q4-Strategie „Second ocean“: Isar behält bei einem Jahr Sperre 25 % des Umsatzes 2030, mit Pad-Anteil in Kourou als Versicherung 47 %; Modell `q4.ts` mit Test, Wiki Q4 ergänzt. Notion: „Abschlusspräsentation: 5-Minuten-Story (Q1–Q4)“ mit Sprecheraufteilung. 31 Tests grün.
+
 - **22.10. 13:50** (Branch `feature/present-mode`): Präsentationsmodus „▶ Present“ in der Topbar: fünf Beats (Recommendation → ASCENT → Geografie Welt → Isars Standorte → Zahlen → Gates & Risiken), je Beat Deep Dive ins Explore-Kapitel und „Back to story“. Drei P&L-Szenarien Bear / ASCENT / Bull 2027–2040 im Warehouse (`scenarios`, `v_scenarios`, Kostenanker mit Quellen: Rocket Lab 10-K 2021/2025, Firefly S-1, OHB) und neues Explore-Kapitel „Scenarios“. ASCENT: Umsatz 152 Mio. € 2030, EBIT dauerhaft positiv ab 2038, mit ca. 5 Rahmenvertrags-Starts pro Jahr schon 2035; Nova Scotia braucht ca. 5 Anker-Starts. Plan in drei Runden mit Codex geprüft (`progress/present-*.md`), Notion-Seite „Szenarien: Umsatz und Gewinn bis 2040 (einfach erklärt)“, Wiki `analysis/scenarios.md`. 28 Tests grün.
 
 - **22.10. 13:43**: Vorschau-Konfiguration um einen Präsentations-Server ergänzt (`dashboard-present`, Port 5176, separater Checkout `stern-hackathon-present`). 22 Tests grün.

@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 11:12**: RQ2-Expansionsfelder quantitativ im Warehouse: Tabelle `expansion_fields` (13 Felder mit Markt, Wachstum, Isar-Anteil, Marge, Kosten, Quellen) und View `v_q2_expansion_fields` (Umsatz, Bruttogewinn, EVA-Näherung 2030/2035/2040). Ergebnis: Verfolgen-Portfolio 2030 ca. 88 Mio. € Umsatz, Nova Scotia ohne Ankerkunden −12 Mio. € pro Jahr, Mittelklasse-Rakete bis 2032 −48 Mio. € pro Jahr. 17 Tests grün.
+
 - **22.10. 10:43**: RQ3 aufgenommen (Wiki-Seite Q3 mit Betreuer-Hinweisen, Zahlen, Hypothesen, Recherche-Liste; Fragenübersicht; Notion Common Docs). RQ2 um das Commitment und die Brücke Geschäftsfeld → Bahn → Standort → Produktion ergänzt, inkl. Isars realistischem Anteil (2030 ca. 1,3 von 3 sichtbaren Starts).
 
 - **22.10. 10:43**: RQ3 im Wiki gestartet (Session „Repo-Refinement mit Team“): neue Seite `q3-site-portfolio.md`, RQ3 in der Fragenübersicht, Brücke von RQ2 zu RQ3 mit Isars realistischem Anteil (2030 ca. 1,3 Starts). 17 Tests grün.

@@ -5,8 +5,9 @@
 -- so tables are recreated from this file rather than migrated. Other tables in the database are not touched.
 
 drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity,
-  v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap, v_penetration_evidence, v_win_share_evidence;
-drop table if exists launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
+  v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap, v_penetration_evidence, v_win_share_evidence,
+  v_q2_expansion_fields;
+drop table if exists expansion_fields, launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
   assumptions, facts, metrics, sources cascade;
 
 create table if not exists sources (
@@ -196,6 +197,34 @@ create table if not exists launches (
 comment on table launches is 'Every orbital and deep-space launch attempt since 2024 (McDowell GCAT), built by warehouse/build_launches.py.';
 comment on column launches.orbit is 'Target orbit: LEO (incl. space stations), SSO, GTO, MEO, GEO, HEO, escape.';
 comment on column launches.payload_t is 'Payload mass placed in orbit, tonnes (GCAT OrbPay).';
+
+create table if not exists expansion_fields (
+  id text primary key,
+  name text not null,
+  category text not null check (category in ('core', 'site', 'product', 'adjacent')),
+  recommendation text not null check (recommendation in ('pursue', 'conditional', 'not')),
+  sites text,
+  start_year int not null,
+  end_year int,
+  market_2025_eur numeric not null,
+  market_basis text not null,
+  growth numeric not null,
+  growth_basis text not null,
+  isar_share numeric not null,
+  share_basis text not null,
+  gross_margin numeric not null,
+  margin_basis text not null,
+  fixed_cost_eur numeric not null default 0,
+  capex_eur numeric not null default 0,
+  cost_basis text,
+  source_ids text[] not null default '{}',
+  confidence text not null check (confidence in ('high', 'medium', 'low')),
+  note text
+);
+comment on table expansion_fields is 'RQ2 expansion fields as a small model: market today, growth, Isar''s share, margin and the cost of entering. Every number has a basis text and sources; v_q2_expansion_fields rolls it forward.';
+comment on column expansion_fields.isar_share is 'Share of the field''s market Isar can win: reachable part × win share, explained in share_basis.';
+comment on column expansion_fields.fixed_cost_eur is 'Yearly fixed cost the field adds (e.g. a site fee), charged from start_year.';
+comment on column expansion_fields.capex_eur is 'Capital the field ties up; charged at the WACC assumption from 2027 on.';
 
 -- Views are recreated on every load, so their columns can change.
 
@@ -526,12 +555,35 @@ select year, planned, planned_basis,
 from calc
 order by year;
 
+-- RQ2 expansion fields rolled forward to 2030, 2035 and 2040: market, Isar revenue, gross profit and a simplified
+-- EVA proxy (gross profit − yearly fixed cost − WACC × capital tied up). Gross profit stands in for NOPAT, so the
+-- proxy ranks fields; it is not a valuation.
+create or replace view v_q2_expansion_fields as
+with p as (select max(value) filter (where id = 'q2_wacc') as wacc from assumptions),
+y as (select unnest(array[2025, 2030, 2035, 2040]) as year),
+f as (
+  select e.*, y.year, e.market_2025_eur * power(1 + e.growth, y.year - 2025) as market_eur,
+         (y.year >= e.start_year and y.year <= coalesce(e.end_year, 9999)) as active
+  from expansion_fields e, y
+)
+select f.id, f.name, f.category, f.recommendation, f.sites, f.year,
+       round(f.market_eur) as market_eur,
+       round(case when f.active then f.market_eur * f.isar_share else 0 end) as isar_revenue_eur,
+       round(case when f.active then f.market_eur * f.isar_share * f.gross_margin else 0 end) as gross_profit_eur,
+       round(case when f.active then f.fixed_cost_eur else 0 end) as fixed_cost_eur,
+       round(case when f.year >= 2027 then f.capex_eur * p.wacc else 0 end) as capital_charge_eur,
+       round(case when f.active then f.market_eur * f.isar_share * f.gross_margin - f.fixed_cost_eur else 0 end
+             - case when f.year >= 2027 then f.capex_eur * p.wacc else 0 end) as eva_proxy_eur,
+       f.confidence
+from f, p
+order by f.year, eva_proxy_eur desc;
+
 -- Read-only access for a future anon key; the service role and the database owner bypass RLS.
 do $$
 declare t text;
 begin
   foreach t in array array['sources', 'metrics', 'facts', 'assumptions', 'launch_sites', 'vehicles', 'launch_site_vehicles',
-                            'manifest', 'satellites', 'launches'] loop
+                            'manifest', 'satellites', 'launches', 'expansion_fields'] loop
     execute format('alter table %I enable row level security', t);
     if not exists (select 1 from pg_policies where tablename = t and policyname = 'read_all') then
       execute format('create policy read_all on %I for select using (true)', t);

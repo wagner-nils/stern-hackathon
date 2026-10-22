@@ -6,7 +6,7 @@ Stand: 22.10.2026, Basis geflogene Nachfrage 2025. Alle Zahlen im [Fact-Warehous
 
 - Von Andøya aus kann Isar **422 von 4.521** im Jahr 2025 gestarteten Satelliten bedienen (**9,3 %**), aber nur **0,66 %** der Masse (17,9 t von 2.694 t). Bedienbar sind kleine Satelliten in polare und sonnensynchrone Bahnen; die Masse steckt in Starlink und anderen gebundenen Konstellationen.
 - 7 % davon kaufen einen eigenen Start (30 Satelliten, 1,25 t). Isar gewinnt davon realistisch 45 %: **ca. 13 Satelliten pro Jahr (0,56 t, ca. 10 Mio. €)**, knapp eine volle Spectrum-Ladung.
-- **Engpass ist heute die Nachfrage nach dedizierten Starts, nicht Isars Kapazität:** 4 Starts × 80 % Erfolg × 700 kg × 100 % Füllgrad = 2,24 t Kapazität; Isar gewinnt 0,56 t. Dafür braucht Isar 1,0 seiner 4 Starts. Isars voller Manifest kommt also aus Nachfrage, die in den Flugdaten 2025 noch nicht sichtbar ist (Verteidigung, ESA-Programme, Demo-Flüge).
+- **Engpass ist heute die Nachfrage nach dedizierten Starts, nicht Isars Kapazität:** 4 Starts × 75 % Erfolg × 700 kg × 100 % Füllgrad = 2,1 t Kapazität; Isar gewinnt 0,56 t. Dafür braucht Isar 1,1 seiner 4 Starts. Auch die Produktion begrenzt nicht: Das Werk Parsdorf ist auf 40 Raketen pro Jahr ausgelegt. Isars voller Manifest kommt also aus Nachfrage, die in den Flugdaten 2025 noch nicht sichtbar ist (Verteidigung, ESA-Programme, Demo-Flüge).
 
 ## TAM, SAM, SOM
 
@@ -28,7 +28,7 @@ Satellit für Satellit über die GCAT-Tabelle (`satellites`), identisch in SQL (
 | 3 Orbit (= SAM) | Inklination 90–110,6° (Andøya, Flugrichtungen 280–360°) | 422 / 17,9 t | CAA Norway, Andøya Space |
 | 4 Penetration | 7 % des SAM zahlen für einen eigenen Start statt Rideshare | 29,5 / 1,25 t | GCAT, BryceTech 2026, Schingler |
 | 5 Isars Anteil | 45 % dieser Nachfrage wählen Isar statt Rocket Labs Electron | 13,3 / 0,56 t | GCAT (`v_win_share_evidence`), Schingler |
-| 6 Kapazität (= SOM) | 4 Starts × 80 % Erfolg × 700 kg × 100 % Füllgrad = 2,24 t; greift heute nicht | 13,3 / 0,56 t | Payload, Schingler, Team |
+| 6 Kapazität (= SOM) | 4 Starts × 75 % Erfolg × 700 kg × 100 % Füllgrad = 2,1 t; greift heute nicht | 13,3 / 0,56 t | Payload, Schingler, Team |
 
 Umsatz:
 
@@ -73,14 +73,14 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 
 - **TAM:** Basisjahr (2024 / 2025)
 - **SAM:** Startplätze (Andøya, + Nova Scotia, + Kourou), Anteil anderer Regierungen (0–100 %)
-- **SOM:** Penetration (4–15 %), Isars Anteil (20–100 %), Starts pro Jahr (1–8), Erfolgsquote (75–92 %)
+- **SOM:** Penetration (4–15 %), Isars Anteil (20–100 %), Starts pro Jahr (1–12), Erfolgsquote (50–92 %)
 - **Fest:** Spectrum-Nutzlast 700 kg SSO / 1.000 kg LEO (Fahrzeugfakt von Isar), Füllgrad 100 %, Preis 12 Mio. € pro Start, Rideshare 7.500 USD/kg, dediziert 20.000 USD/kg, 1,12 USD/€, US-Regierung 0 %
 
 ## Sensitivitäten
 
 | Szenario | SAM | SOM | Engpass |
 | --- | --- | --- | --- |
-| Basis | 422 Sat. / 17,9 t | 13 Sat. / 0,56 t / 10 Mio. € | Nachfrage (1,0 von 4 Starts nötig) |
+| Basis | 422 Sat. / 17,9 t | 13 Sat. / 0,56 t / 10 Mio. € | Nachfrage (1,1 von 4 Starts nötig) |
 | Isars Anteil 20 % | 422 / 17,9 t | 6 / 0,25 t / 4 Mio. € | Nachfrage |
 | Isars Anteil 100 % | 422 / 17,9 t | 30 / 1,25 t / 21 Mio. € | Nachfrage (2,2 von 4 Starts) |
 | Basisjahr 2024 | 187 / 8,7 t | 6 / 0,27 t / 5 Mio. € | Nachfrage |
@@ -88,11 +88,11 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 | + Nova Scotia + Kourou | 483 / 24,2 t | 15 / 0,76 t / 13 Mio. € | Nachfrage |
 | Penetration 4 % | 422 / 17,9 t | 8 / 0,32 t / 6 Mio. € | Nachfrage |
 | Penetration 15 % | 422 / 17,9 t | 29 / 1,21 t / 21 Mio. € | Nachfrage |
-| Penetration 15 %, Anteil 100 % | 422 / 17,9 t | 53 / 2,24 t / 38 Mio. € | Kapazität (4 von 4 Starts) |
+| Penetration 15 %, Anteil 100 % | 422 / 17,9 t | 50 / 2,1 t / 36 Mio. € | Kapazität (4 von 4 Starts) |
 | 15 %, Anteil 100 %, 8 Starts, 92 % Erfolg | 422 / 17,9 t | 63 / 2,68 t / 46 Mio. € | Nachfrage |
 
 - Das Basisjahr wirkt am stärksten: 2024 war der offene Markt im Andøya-Band nur halb so groß. Die Nachfrage schwankt stark von Jahr zu Jahr.
-- **Erfolgsquote und Startzahl bewegen den SOM heute nicht,** weil die Nachfrage begrenzt und nicht die Kapazität. Sie ändern, wie viele Starts Isar für die Nachfrage braucht (bei 80 %: 1,0 von 4, bei 75 %: 1,1). Das Tool zeigt das unter den SOM-Hebeln. Wirksam werden beide erst, wenn Penetration × Isars Anteil über ca. 12,5 % steigt (2,24 t Kapazität ÷ 17,9 t SAM).
+- **Erfolgsquote und Startzahl bewegen den SOM heute nicht,** weil die Nachfrage begrenzt und nicht die Kapazität. Sie ändern, wie viele Starts Isar für die Nachfrage braucht (bei 75 %: 1,1 von 4, bei 92 %: 0,9). Das Tool zeigt das unter den SOM-Hebeln. Wirksam werden beide erst, wenn Penetration × Isars Anteil über ca. 12 % steigt (2,1 t Kapazität ÷ 17,9 t SAM). Kapazität heißt dabei der Startplan, nicht das Werk: Parsdorf ist auf 40 Raketen pro Jahr ausgelegt, Andøya erlaubt 30 Starts für den ganzen Standort, ein Pad schafft ca. 12.
 - Mehr Starts allein bringen nichts, solange die Penetration bei 7 % liegt. Wachstum kommt über Penetration (Zuverlässigkeit, Rideshare-Stopp, Verteidigung) und neue Orbits.
 - Die Nutzlast ist bewusst kein Regler: 1.000 statt 700 kg in SSO vergrößerte den SAM kaum (+0,1 t), und weil Preis (12 Mio. €) und Kilopreis auf 700 kg kalibriert sind, sänke der SOM-Umsatz rechnerisch. Eine stärkere Spectrum-Version gehört in ein späteres Szenario mit eigenem Preis.
 
@@ -114,7 +114,7 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 Robbie Schingler (Planet), 21.10.2026, Details auf der [Expertenseite](../expert/robbie-schingler.md):
 
 - **Bestätigt:** Kunden wählen nach Orbit, Vorlaufzeit, Preis und Zuverlässigkeit, in dieser Reihenfolge. Die Erreichbarkeit als harter Filter im SAM ist richtig. Erdbeobachtung bleibt im SSO.
-- **Umgesetzt:** Unerprobte Raketen bekommen nur Demo-Nutzlasten (Penetration konservativ 7 %); Zuverlässigkeit als Erfolgsquote pro Start (80 %).
+- **Umgesetzt:** Unerprobte Raketen bekommen nur Demo-Nutzlasten (Penetration konservativ 7 %); Zuverlässigkeit als Erfolgsquote pro Start (75 %, aus der Versicherungsprämie von 25 %).
 - **Preis:** erst Kriterium Nr. 3, Markt wegen SpaceX' Fast-Monopol wieder teuer. 12 Mio. € pro Start bleiben plausibel.
 
 ## Offene Punkte

@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 11:57**: Annahmen-Prüfung: Starts pro Jahr nennt jetzt Werk (40/Jahr), Andøya-Lizenz (30/Jahr Standort) und Pad (ca. 12/Jahr, neue Obergrenze); Erfolgsquote auf 75 % (Versicherungsprämie 25 %, Bilanz 1 von 2 als Untergrenze). SOM unverändert (Nachfrage begrenzt). 22 Tests grün.
+
 - **22.10. 11:47**: RQ3 beantwortet: „Ein Werk, ein Kernstandort, eine souveräne Option“. Notion-Antwortseite unter RQ3 (Ist-Zustand, Auslastung, Zielbild, Begründung, Finanzen, Managementfragen, Storyline für die Abschlusspräsentation), Wiki Q3 neu, Dashboard-Kapitel „Q3 · Sites“ mit Managementfragen. 15 neue belegte Fakten (u. a. Kanada–USA-Abkommen nicht unterschrieben, ITB 100 %, Verteidigungsanteil am zweiten Andøya-Pad). 22 Tests grün.
 
 - **22.10. 11:32**: Hebel-URL robuster: ein neu hinzugekommener Hebel (z. B. Isars Anteil) fällt nach einem Hot-Reload auf seinen Basiswert zurück, ungültige Werte landen nicht mehr als `winShare=undefined` im Link (Hinweis aus der RQ3-Session). 20 Tests grün.

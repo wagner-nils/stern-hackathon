@@ -13,8 +13,8 @@ Drei pro Stufe, beim SOM vier (die Penetration ist in Nachfrage nach eigenen Sta
 | SAM | Nachfrage anderer Regierungen offen für Isar | 20 % | 0–100 % | niedrig | Benedikt | Teamschätzung: Japan, Indien, Korea fliegen meist mit eigenen Raketen |
 | SOM | Anteil des SAM, der einen dedizierten Start kauft | 7 % | 4–15 % | mittel | Benedikt | GCAT, View `v_penetration_evidence`: 2024 + 2025 kauften 7,0 % der Masse im Andøya-Band einen eigenen Start (2024: 12,8 %, 2025: 4,2 %); westlicher Gesamtmarkt 8,4 %; BryceTech weltweit 17–23 % (mit China); Schingler: neue Raketen erst Demo |
 | SOM | Isars Anteil an der Nachfrage nach eigenen Starts | 45 % | 20–100 % | niedrig | Benedikt | GCAT, View `v_win_share_evidence`: europäische Betreiber (Kinéis, OroraTech) kauften 2024 + 2025 44 % der Masse dieser Nachfrage im Band, alle per Electron; 20 % = Demo-Phase (Firefly bekam 2024 ein Sechstel der Satelliten), 100 % = Rocket Lab keine Option |
-| SOM | Spectrum-Starts pro Jahr | 4 | 1–8 | mittel | Luca | Payload: 4 Flüge 2027 |
-| SOM | Erfolgsquote pro Start | 80 % | 75–92 % | mittel | Nils | Versicherung für Isars nächste Mission ca. 25 % (Schingler); Branchenschnitt 5–8 % Fehlstarts |
+| SOM | Spectrum-Starts pro Jahr | 4 | 1–12 | mittel | Luca | Isars Plan: 4 Flüge 2027 (Payload), ca. 8 2028. Darüber liegen drei Grenzen: Werk Parsdorf 40 Raketen pro Jahr (ausgelegt, noch nicht erreicht), Andøya-Lizenz 30 Starts pro Jahr für den ganzen Standort, ein Pad ca. 12 pro Jahr (Obergrenze der Spanne). Heute bindet keine davon |
+| SOM | Erfolgsquote pro Start | 75 % | 50–92 % | mittel | Nils | Versicherung für Isars nächste Mission ca. 25 % (Schingler), also 1 zu 4 Fehlstart-Risiko; bisherige Bilanz 1 von 2 Flügen (50 %); reife Kleinträger ca. 92 % |
 
 ## Feste Parameter (kein Regler, im Tool mit Begründung)
 
@@ -54,5 +54,5 @@ Schwellen, ab denen ein „später“-Feld in Frage kommt. Details: [Q2](../anal
 Robbie Schingler (Planet), 21.10.2026:
 
 - **Penetration:** Unerprobte Raketen bekommen nur Demo-Nutzlasten. Darum 7 % (gemessen) statt der 20–30 % aus dem ersten Entwurf.
-- **Zuverlässigkeit:** Als Erfolgsquote pro Start (80 %) im Modell.
+- **Zuverlässigkeit:** Als Erfolgsquote pro Start (75 %) im Modell.
 - **Preis:** Für Kunden erst Kriterium Nr. 3. Die 12 Mio. € bleiben plausibel.

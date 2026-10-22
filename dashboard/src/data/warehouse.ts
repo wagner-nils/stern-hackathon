@@ -246,6 +246,8 @@ export interface ExpansionField {
   category: "core" | "site" | "product" | "adjacent";
   recommendation: "pursue" | "conditional" | "not";
   sites: string | null;
+  /** Where the field's Spectrum launches fly from; null for services or a different rocket. */
+  launch_site_id: string | null;
   start_year: number;
   end_year: number | null;
   market_2025_eur: number;
@@ -274,6 +276,47 @@ export interface ExpansionYear {
   fixed_cost_eur: number;
   capital_charge_eur: number;
   eva_proxy_eur: number;
+}
+
+/** RQ3: a production, test or launch site today and as proposed (table site_nodes). */
+export interface SiteNode {
+  id: string;
+  name: string;
+  kind: "hq" | "production" | "test" | "launch";
+  location: string;
+  country_code: string;
+  launch_site_id: string | null;
+  status_today: string;
+  role_today: string;
+  role_proposed: string;
+  decision: "keep" | "expand" | "option" | "hold";
+  pads_today: number | null;
+  pads_proposed: number | null;
+  pad_share: number | null;
+  capacity_today: number | null;
+  capacity_proposed: number | null;
+  capacity_unit: string | null;
+  capacity_basis: string | null;
+  fixed_cost_eur: number;
+  isar_capex_eur: number;
+  funded_by: string | null;
+  trigger: string | null;
+  transport: string | null;
+  source_ids: string[];
+  confidence: Confidence;
+  note: string | null;
+}
+
+/** One row of v_q3_site_load: launches a site (or the factory) carries in a year against its capacity. */
+export interface SiteLoad {
+  year: number;
+  site_id: string;
+  pursue_launches: number;
+  conditional_launches: number;
+  anchor_launches: number;
+  capacity_today: number;
+  capacity_proposed: number;
+  load_proposed: number | null;
 }
 
 /** One row of v_q2_launch_gap: planned launches against the demand visible in flight data. */
@@ -319,6 +362,8 @@ interface RawSnapshot {
   expansion_fields: ExpansionField[];
   q2Expansion: ExpansionYear[];
   q2LaunchGap: LaunchGap[];
+  site_nodes: SiteNode[];
+  q3SiteLoad: SiteLoad[];
 }
 
 const snapshot = raw as unknown as RawSnapshot;
@@ -343,6 +388,8 @@ export const manifest = snapshot.manifest;
 export const expansionFields = snapshot.expansion_fields ?? [];
 export const sqlExpansion = snapshot.q2Expansion ?? [];
 export const launchGap = snapshot.q2LaunchGap ?? [];
+export const siteNodes = snapshot.site_nodes ?? [];
+export const sqlSiteLoad = snapshot.q3SiteLoad ?? [];
 export const sqlFunnel = snapshot.q1Funnel;
 export const sqlSamLaunchers = snapshot.samLaunchers;
 

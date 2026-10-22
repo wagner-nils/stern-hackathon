@@ -21,7 +21,7 @@ HERE = pathlib.Path(__file__).parent
 SEED = HERE / "seed"
 # Parents before children, so foreign keys hold while inserting.
 TABLES = ["sources", "metrics", "facts", "assumptions", "launch_sites", "vehicles", "launch_site_vehicles",
-          "manifest", "satellites", "launches", "expansion_fields"]
+          "manifest", "satellites", "launches", "expansion_fields", "site_nodes"]
 ARRAY_COLUMNS = {"source_ids", "gcat_codes", "gcat_names", "orbits"}
 # Columns where an empty field means "none" rather than "unknown".
 EMPTY_TEXT_COLUMNS = {"entity"}
@@ -61,6 +61,8 @@ def main():
              "select count(*) from assumptions a, unnest(a.source_ids) sid where sid not in (select id from sources)", True),
             ("expansion fields with unknown source",
              "select count(*) from expansion_fields e, unnest(e.source_ids) sid where sid not in (select id from sources)", True),
+            ("site nodes with unknown source",
+             "select count(*) from site_nodes n, unnest(n.source_ids) sid where sid not in (select id from sources)", True),
             ("launch sites with unknown source",
              "select count(*) from launch_sites l, unnest(l.source_ids) sid where sid not in (select id from sources)", True),
             # The RQ2 load size is derived; it must stay equal to Spectrum's SSO payload times the fill rate.

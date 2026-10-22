@@ -31,6 +31,7 @@ CURATED = {
     "launch_site_vehicles": "site_id, vehicle_id",
     "manifest": "id",
     "expansion_fields": "category, id",
+    "site_nodes": "kind, id",
 }
 # Satellites go to the dashboard column by column, with repeated strings stored once.
 SATELLITE_TEXT = ["customer_type", "customer_group", "orbit_class", "launch_vehicle", "launcher_class", "operator", "mission"]
@@ -97,6 +98,7 @@ def main():
         _, snapshot["launchesByCountry"] = fetch(conn, "select * from v_launches_by_country order by year, launches desc")
         _, snapshot["q2LaunchGap"] = fetch(conn, "select * from v_q2_launch_gap")
         _, snapshot["q2Expansion"] = fetch(conn, "select * from v_q2_expansion_fields")
+        _, snapshot["q3SiteLoad"] = fetch(conn, "select * from v_q3_site_load")
         _, snapshot["penetrationEvidence"] = fetch(conn, "select * from v_penetration_evidence")
         _, snapshot["winShareEvidence"] = fetch(conn, "select * from v_win_share_evidence")
         print("views         Q1 funnel, SAM launchers, site overview and activity, vehicle activity, launches by provider and country -> snapshot")

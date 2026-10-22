@@ -6,8 +6,8 @@
 
 drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity,
   v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap, v_penetration_evidence, v_win_share_evidence,
-  v_q2_expansion_fields;
-drop table if exists expansion_fields, launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
+  v_q2_expansion_fields, v_q3_site_load;
+drop table if exists site_nodes, expansion_fields, launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
   assumptions, facts, metrics, sources cascade;
 
 create table if not exists sources (
@@ -204,6 +204,7 @@ create table if not exists expansion_fields (
   category text not null check (category in ('core', 'site', 'product', 'adjacent')),
   recommendation text not null check (recommendation in ('pursue', 'conditional', 'not')),
   sites text,
+  launch_site_id text references launch_sites (id),
   start_year int not null,
   end_year int,
   market_2025_eur numeric not null,
@@ -225,6 +226,38 @@ comment on table expansion_fields is 'RQ2 expansion fields as a small model: mar
 comment on column expansion_fields.isar_share is 'Share of the field''s market Isar can win: reachable part × win share, explained in share_basis.';
 comment on column expansion_fields.fixed_cost_eur is 'Yearly fixed cost the field adds (e.g. a site fee), charged from start_year.';
 comment on column expansion_fields.capex_eur is 'Capital the field ties up; charged at the WACC assumption from 2027 on.';
+comment on column expansion_fields.launch_site_id is 'Where the field''s Spectrum launches fly from; empty for services or a different rocket.';
+
+create table if not exists site_nodes (
+  id text primary key,
+  name text not null,
+  kind text not null check (kind in ('hq', 'production', 'test', 'launch')),
+  location text not null,
+  country_code text not null,
+  launch_site_id text references launch_sites (id),
+  status_today text not null,
+  role_today text not null,
+  role_proposed text not null,
+  decision text not null check (decision in ('keep', 'expand', 'option', 'hold')),
+  pads_today numeric,
+  pads_proposed numeric,
+  pad_share numeric,
+  capacity_today numeric,
+  capacity_proposed numeric,
+  capacity_unit text,
+  capacity_basis text,
+  fixed_cost_eur numeric not null default 0,
+  isar_capex_eur numeric not null default 0,
+  funded_by text,
+  trigger text,
+  transport text,
+  source_ids text[] not null default '{}',
+  confidence text not null check (confidence in ('high', 'medium', 'low')),
+  note text
+);
+comment on table site_nodes is 'RQ3: Isar''s production, test and launch sites today and as proposed, with capacity, cost, who pays and the trigger for each step.';
+comment on column site_nodes.pad_share is 'Share of a pad Isar can use: 1 for an own pad, less for a shared complex.';
+comment on column site_nodes.capacity_today is 'Production nodes: rockets a year. Launch nodes: computed in v_q3_site_load from pads × q3_pad_cadence.';
 
 -- Views are recreated on every load, so their columns can change.
 
@@ -578,12 +611,64 @@ select f.id, f.name, f.category, f.recommendation, f.sites, f.year,
 from f, p
 order by f.year, eva_proxy_eur desc;
 
+-- RQ3: launches each site has to carry (from the RQ2 expansion fields: Isar revenue ÷ price per launch) against
+-- its capacity (pads × launches per pad, Isar's share of shared pads), and all Spectrum launches against the factory.
+create or replace view v_q3_site_load as
+with p as (
+  select max(value) filter (where id = 'q3_pad_cadence') as cadence,
+         max(value) filter (where id = 'q3_ns_anchor_launches') as ns_anchor,
+         max(value) filter (where id = 'fixed_price_per_launch_eur') as price
+  from assumptions
+),
+demand as (
+  select e.launch_site_id as site_id, x.year,
+         coalesce(sum(x.isar_revenue_eur) filter (where e.recommendation = 'pursue'), 0) / p.price as pursue_launches,
+         coalesce(sum(x.isar_revenue_eur) filter (where e.recommendation <> 'pursue'), 0) / p.price as conditional_launches
+  from v_q2_expansion_fields x
+  join expansion_fields e on e.id = x.id
+  cross join p
+  where e.launch_site_id is not null
+  group by e.launch_site_id, x.year, p.price
+),
+cap as (
+  select launch_site_id as site_id,
+         sum(coalesce(pads_today, 0) * coalesce(pad_share, 1)) as pads_today,
+         sum(coalesce(pads_proposed, 0) * coalesce(pad_share, 1)) as pads_proposed
+  from site_nodes where kind = 'launch' group by launch_site_id
+),
+sites as (
+  select d.year, d.site_id, d.pursue_launches, d.conditional_launches,
+         -- Anchor launches start with the first launch from Nova Scotia (start year of its expansion field).
+         case when d.site_id = 'nova-scotia'
+                   and d.year >= (select start_year from expansion_fields where id = 'site_nova_scotia')
+              then p.ns_anchor else 0 end as anchor_launches,
+         c.pads_today * p.cadence as capacity_today, c.pads_proposed * p.cadence as capacity_proposed
+  from demand d join cap c on c.site_id = d.site_id cross join p
+),
+factory as (
+  select s.year, 'factory-parsdorf'::text as site_id,
+         sum(s.pursue_launches) as pursue_launches, sum(s.conditional_launches) as conditional_launches,
+         sum(s.anchor_launches) as anchor_launches,
+         (select sum(capacity_today) from site_nodes where kind = 'production') as capacity_today,
+         (select sum(capacity_proposed) from site_nodes where kind = 'production') as capacity_proposed
+  from sites s group by s.year
+)
+select year, site_id,
+       round(pursue_launches, 2) as pursue_launches,
+       round(conditional_launches, 2) as conditional_launches,
+       anchor_launches,
+       round(capacity_today, 1) as capacity_today,
+       round(capacity_proposed, 1) as capacity_proposed,
+       round((pursue_launches + conditional_launches + anchor_launches) / nullif(capacity_proposed, 0), 2) as load_proposed
+from (select * from sites union all select * from factory) t
+order by year, site_id;
+
 -- Read-only access for a future anon key; the service role and the database owner bypass RLS.
 do $$
 declare t text;
 begin
   foreach t in array array['sources', 'metrics', 'facts', 'assumptions', 'launch_sites', 'vehicles', 'launch_site_vehicles',
-                            'manifest', 'satellites', 'launches', 'expansion_fields'] loop
+                            'manifest', 'satellites', 'launches', 'expansion_fields', 'site_nodes'] loop
     execute format('alter table %I enable row level security', t);
     if not exists (select 1 from pg_policies where tablename = t and policyname = 'read_all') then
       execute format('create policy read_all on %I for select using (true)', t);

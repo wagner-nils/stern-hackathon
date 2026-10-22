@@ -75,6 +75,56 @@ Was RQ3 daraus mitnimmt:
 - **Startstandorte begründen sich über Bahnen und Redundanz, nicht über Volumen:** Ein Fehlstart sperrt ein Pad über ein Jahr; bezahlte Bereitschaft braucht ein zweites Pad oder garantierte Slots.
 - **Weiter in [Q3: Standortportfolio](q3-site-portfolio.md).**
 
+## Expansionsfelder in Zahlen
+
+Die Betreuer wollen pro Markt Größe, Wachstum, Marge und den Ausblick auf 5, 10 und 15 Jahre. Deshalb ist jedes Feld als kleines Modell im Warehouse hinterlegt: Tabelle `expansion_fields`, nachrechenbar in der View `v_q2_expansion_fields`.
+
+**Rechenregel pro Feld und Jahr:**
+- Umsatz Isar = Markt 2025 × (1 + Wachstum)^(Jahr − 2025) × Isar-Anteil
+- Bruttogewinn = Umsatz × Branchen-Bruttomarge
+- **EVA-Näherung** = Bruttogewinn − Fixkosten − 12 % Kapitalkosten × gebundenes Kapital
+
+Der Bruttogewinn ersetzt hier den Betriebsgewinn nach Steuern. Die Näherung ordnet die Felder, sie ist keine Bewertung.
+
+| Feld | Markt 2025 | Isar-Umsatz 2030 | 2035 | 2040 | EVA-Näherung 2035 | Empfehlung |
+| --- | --- | --- | --- | --- | --- | --- |
+| Kern: dedizierte Starts polar/SSO (Andøya) | 21,5 Mio. € | 14,9 | 22,9 | 35,2 | +9,3 | verfolgen |
+| Kern: mehr Kunden mit eigenem Start (Rideshare-Engpass ab 2029) | 15,3 Mio. € | 10,6 | 16,3 | 25,1 | +6,7 | verfolgen |
+| Europäische Institutionen (ESA Launcher Challenge, bis 2030) | 180 Mio. € / Jahr | 39,5 | 0 | 0 | 0 | verfolgen |
+| Bezahlte Startbereitschaft für Staaten | 26,8 Mio. € (US-Vergleich) | 21,6 | 43,4 | 87,3 | +10,3 | verfolgen |
+| Extras bei jedem Start | 2,1 Mio. € | 1,5 | 2,3 | 3,5 | +1,4 | verfolgen |
+| Hyperschall-Testflüge | 10,6 Mio. € | 8,5 | 13,8 | 22,1 | +4,4 | mit Auslöser |
+| Nova Scotia (45–90°) | 6,0 Mio. € | 4,1 | 6,4 | 9,8 | **−10,8** | mit Auslöser |
+| Kourou (5–45°, GTO) | 3,5 Mio. € | 1,1 | 1,7 | 2,5 | −4,3 | mit Auslöser |
+| Mittelklasse-Rakete (ab 2032) | 1,1 Mrd. € | 0 | 131,1 | 201,6 | +5,5 (2030: **−48**) | mit Auslöser |
+| Satelliten bauen | 18,2 Mrd. € | 23,2 | 29,7 | 37,9 | +3,3 | bewusst nicht |
+| Eigenes Transfer-Fahrzeug | 1,7 Mrd. € | 15,7 | 29,0 | 53,8 | +1,5 | bewusst nicht |
+| Eigene Konstellation, Daten | 5,2 Mrd. € | 14,5 | 20,3 | 28,5 | −6,6 | bewusst nicht |
+| Triebwerke an Dritte | 7,3 Mrd. € | 5,3 | 7,8 | 11,3 | −0,1 | bewusst nicht |
+
+Umsätze in Mio. €. Die Annahmen pro Feld (Anteil, Marge, Kosten) stehen mit Begründung und Quelle in `expansion_fields`.
+
+**Branchenmargen (Bruttomarge, wo nicht anders genannt):**
+
+| Geschäft | Marge | Quelle |
+| --- | --- | --- |
+| Startgeschäft (Rocket Lab) | 40,8 % | Rocket Lab 10-K 2025 |
+| Satellitenbau (Rocket Lab) | 31,3 % | Rocket Lab 10-K 2025 |
+| Satellitenbau (OHB) | 9,2 % EBITDA-Marge | OHB 2025 |
+| Erdbeobachtungsdaten (Planet) | 56 % | Planet GJ 2026 |
+| Radar-Daten (ICEYE) | ca. 40 % EBITDA-Marge | ICEYE 2025 |
+| Startplatz-Betrieb (Andøya Space) | 23,8 % EBITDA-Marge | Geschäftsbericht 2025 |
+
+**Was die Zahlen sagen:**
+
+1. **Das heutige Geschäft wächst, aber klein.** Andøya mit Rideshare-Engpass bringt ca. 26 Mio. € (2030), 39 Mio. € (2035) und 60 Mio. € (2040).
+2. **Bis 2030 tragen Institutionen und Verteidigung.** Das Verfolgen-Portfolio liegt 2030 bei ca. 88 Mio. € Umsatz, also ca. 7 Starts zu 12 Mio. €. Isar plant 12 Starts (144 Mio. €). Die Lücke schließt nur, wer Verträge holt.
+3. **2035 droht eine Delle.** Die ESA Launcher Challenge endet 2030. Ohne Nachfolgeprogramm muss die Startbereitschaft das Loch füllen (2035: 43 Mio. €; bei 10–25 % Wachstum 28–100 Mio. €). Das ist das Diversifikationsrisiko, vor dem Schingler warnt.
+4. **Nova Scotia trägt sich nur mit Ankerkunden.** Die Gebühr von 13,4 Mio. € pro Jahr verdient Isar erst mit 32,8 Mio. € Umsatz (13,4 ÷ 40,8 % Marge), also ca. 2,7 zusätzlichen Starts pro Jahr. Die sichtbare Nachfrage liefert ca. 0,3. Kanadas Verteidigungsministerium least am selben Spaceport ein eigenes Pad (20 Mio. CAD pro Jahr): ein Ankerkandidat. Für RQ3: Nova Scotia als souveräner Standort für Kanada und die NATO, nicht als kommerzieller.
+5. **Kourou lohnt sich nicht ohne europäischen Anker** (−4 Mio. € pro Jahr).
+6. **Eine Mittelklasse-Rakete kostet bis zum Erstflug ca. 48 Mio. € Kapitalkosten pro Jahr** und ist 2035 gerade positiv. Deshalb erst nach den Auslösern (10 Starts pro Jahr, 90 % Erfolg).
+7. **Die Nicht-Liste hält auch rechnerisch.** Satellitenbau sieht leicht positiv aus, aber nur ohne den Verlust von Ankerkunden wie Planet. Eigene Daten kosten Geld (−7 Mio. € 2035). Das Transfer-Fahrzeug ist knapp, und es gibt starke Spezialisten.
+
 ## Portfolio
 
 ### Verfolgen jetzt (bis 2030)

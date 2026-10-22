@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 07:25**: Warehouse auf `main` und `phase/q3` gemergt. In Arbeit: globales Startplatz-Register (Schema für `launch_sites`, `vehicles`, `launch_site_vehicles`, neue GCAT-Tabelle `launches` mit 838 Starts seit 2024, Views pro Standort und Rakete) und Dashboard-Tab „Spaceports“ mit Weltkarte; die Recherche-Daten folgen, bis dahin ist das Register leer und Supabase unverändert. 15 Tests grün.
+
 - **22.10. 07:05** (Branch `feature/fact-warehouse`): RQ1 neu aufgebaut auf dem **Fact-Warehouse in Supabase** (Quellen, Metriken, 63 Fakten mit ✓-Vorzugsquelle, 14 Annahmen, Startplätze, Raketen, Manifest, 7.361 GCAT-Satelliten; SQL-View `v_q1_funnel` = Tool, per Test). Q1 heute (Basis 2025): SAM 422 Satelliten / 17,9 t / 120–319 Mio. €, SOM ca. 30 Satelliten / 1,25 t / 36 Mio. €; Penetration 7 % gemessen, **Engpass ist die Nachfrage, nicht die Kapazität**. Dashboard: klickbare TAM/SAM/SOM-Karten mit Drill-down (Eindämmungsfaktoren als Treppe, Quellenvergleich, Wettbewerber, drei Penetrationspunkte, Buchungshorizont gegen Andøyas 30 Slots), max. 3 Hebel pro Stufe, Fact-base-Tab. Stil: „Von 1.000“-Raster, Erreichbarkeitsband im Inklinationschart, Szenario-Hinweis mit Basiswerten, Quellen-Kurzlabels mit Verlässlichkeitslegende. Notion „Antwort“ → „Claude-Überarbeitung“ ergänzt; Wiki Q1 und Annahmen-Register nachgezogen.
 
 - **21.10. 18:58**: Modell um Erfolgsquote pro Start (80 % 2027 bis 92 % 2030) und Premium-Hochlauf (12,5 % 2027 bis 22,5 % 2030) erweitert, beide an das Planungsjahr gekoppelt (nach Expertengespräch). Neuer Basisfall 2027: SOM 32 Satelliten, 1,3 t, 38 Mio. € (3,2 von 4 Starts erfolgreich); 2030: 109 Satelliten, 133 Mio. €. 23 Tests grün; Wiki nachgezogen.

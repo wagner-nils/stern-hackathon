@@ -53,11 +53,15 @@ export interface Q1Result {
 
 const SITE_ORDER = ["andoya", "nova-scotia", "kourou"];
 
-export function sitesInScope(scope: number, sites: LaunchSite[]): LaunchSite[] {
+/** A site the model can use: one with a known inclination band. */
+export type ModelSite = LaunchSite & { inclination_min: number; inclination_max: number };
+
+export function sitesInScope(scope: number, sites: LaunchSite[]): ModelSite[] {
   return SITE_ORDER.slice(0, scope + 1).map((id) => {
     const site = sites.find((s) => s.id === id);
     if (!site) throw new Error(`Launch site ${id} is missing in the warehouse`);
-    return site;
+    if (site.inclination_min === null || site.inclination_max === null) throw new Error(`Launch site ${id} has no inclination band`);
+    return site as ModelSite;
   });
 }
 

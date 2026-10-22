@@ -21,7 +21,7 @@ SMALL_LAUNCHERS = ("Electron", "Alpha", "Kairos", "Spectrum", "SSLV", "LauncherO
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-COLUMNS = ["jcat", "name", "launch_year", "launch_date", "launch_vehicle", "launcher_class", "operator_code",
+COLUMNS = ["jcat", "name", "launch_year", "launch_date", "launch_tag", "launch_vehicle", "launcher_class", "operator_code",
            "operator", "country", "customer_group", "customer_type", "mission", "orbit_class", "inclination",
            "mass_kg", "mass_estimated"]
 
@@ -68,6 +68,7 @@ def main(argv=None):
                 "name": p["name"],
                 "launch_year": year,
                 "launch_date": iso_date(p["ldate"]),
+                "launch_tag": p["launchTag"],
                 "launch_vehicle": lv,
                 "launcher_class": "small" if lv.startswith(SMALL_LAUNCHERS) else "rideshare or large",
                 "operator_code": code,

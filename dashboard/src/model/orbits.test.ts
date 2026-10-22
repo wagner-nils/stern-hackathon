@@ -21,8 +21,8 @@ describe("Andøya in the warehouse", () => {
   it("matches the physics of its licensed headings 280–360° at 69.1° N", () => {
     const andoya = launchSites.find((s) => s.id === "andoya")!;
     const [lo, hi] = inclinationsFromCorridor(andoya.latitude, { from: 280, to: 360 });
-    expect(lo).toBeCloseTo(andoya.inclination_min, 0);
-    expect(hi).toBeCloseTo(andoya.inclination_max, 0);
+    expect(lo).toBeCloseTo(andoya.inclination_min!, 0);
+    expect(hi).toBeCloseTo(andoya.inclination_max!, 0);
   });
 });
 

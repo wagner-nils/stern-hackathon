@@ -20,8 +20,9 @@ import db  # noqa: E402
 HERE = pathlib.Path(__file__).parent
 SEED = HERE / "seed"
 # Parents before children, so foreign keys hold while inserting.
-TABLES = ["sources", "metrics", "facts", "assumptions", "launch_sites", "vehicles", "manifest", "satellites"]
-ARRAY_COLUMNS = {"source_ids"}
+TABLES = ["sources", "metrics", "facts", "assumptions", "launch_sites", "vehicles", "launch_site_vehicles",
+          "manifest", "satellites", "launches"]
+ARRAY_COLUMNS = {"source_ids", "gcat_codes", "gcat_names", "orbits"}
 # Columns where an empty field means "none" rather than "unknown".
 EMPTY_TEXT_COLUMNS = {"entity"}
 
@@ -44,7 +45,6 @@ def seed_rows(table):
 def main():
     with db.connect() as conn:
         conn.execute((HERE / "schema.sql").read_text())
-        conn.execute(f"truncate {', '.join(TABLES)} restart identity")
         for table in TABLES:
             columns, rows = seed_rows(table)
             cols = ", ".join(columns)
@@ -54,15 +54,24 @@ def main():
                 (json.dumps(rows),),
             )
             print(f"{table:13s} {len(rows):5d} rows")
-        conn.commit()
-        for label, sql in [
-            ("facts without source", "select count(*) from facts f left join sources s on s.id = f.source_id where s.id is null"),
-            ("assumptions with unknown source", "select count(*) from assumptions a, unnest(a.source_ids) sid where sid not in (select id from sources)"),
+        # Checks run before the commit, so a failed check leaves the database as it was.
+        for label, sql, blocking in [
+            ("facts without source", "select count(*) from facts f left join sources s on s.id = f.source_id where s.id is null", True),
+            ("assumptions with unknown source",
+             "select count(*) from assumptions a, unnest(a.source_ids) sid where sid not in (select id from sources)", True),
+            ("launch sites with unknown source",
+             "select count(*) from launch_sites l, unnest(l.source_ids) sid where sid not in (select id from sources)", True),
+            # A code without launches is fine for a quiet site; it is listed to catch typos.
+            ("GCAT site codes without launches since 2024",
+             "select count(*) from launch_sites l, unnest(l.gcat_codes) c where not exists (select 1 from launches where site_code = c)", False),
+            ("GCAT vehicle names without launches since 2024",
+             "select count(*) from vehicles v, unnest(v.gcat_names) n where not exists (select 1 from launches where vehicle = n)", False),
         ]:
             n = conn.execute(sql).fetchone()[0]
             print(f"check: {label}: {n}")
-            if n:
-                raise SystemExit("integrity check failed")
+            if n and blocking:
+                raise SystemExit("integrity check failed, nothing loaded")
+        conn.commit()
 
 
 if __name__ == "__main__":

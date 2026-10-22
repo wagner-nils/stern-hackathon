@@ -53,30 +53,110 @@ export interface Assumption {
   confidence: Confidence;
 }
 
+export type SiteStatus = "operational" | "under construction" | "planned" | "inactive";
+export type SiteAccess = "sovereign" | "national-commercial" | "international";
+
+/** A spaceport in the global register. The model only needs id, latitude and the inclination band. */
 export interface LaunchSite {
   id: string;
   name: string;
   country: string;
+  country_code: string | null;
+  operator: string | null;
+  ownership: string | null;
   latitude: number;
-  inclination_min: number;
-  inclination_max: number;
-  status: string;
-  isar_access: string;
+  longitude: number | null;
+  /** Direct-ascent inclination band; null where nobody has published one. */
+  inclination_min: number | null;
+  inclination_max: number | null;
+  launch_azimuth: string | null;
+  status: SiteStatus;
+  first_orbital_launch: number | null;
+  orbital_pads: number | null;
+  max_vehicle_class: string | null;
+  polar_sso: boolean | null;
+  access: SiteAccess | null;
   max_launches_per_year: number | null;
+  cap_basis: string | null;
+  expansion: string | null;
+  isar_access: string | null;
   note: string | null;
+  gcat_codes: string[];
   source_id: string;
+  source_ids: string[];
+  confidence: Confidence;
 }
 
 export interface Vehicle {
   id: string;
   name: string;
   operator: string;
+  country_code: string | null;
+  class: string;
   payload_leo_kg: number | null;
   payload_sso_kg: number | null;
+  payload_gto_kg: number | null;
+  payload_estimated: boolean;
+  reusable: boolean | null;
+  status: string | null;
+  first_flight: number | null;
   price_usd: number | null;
-  class: string;
+  gcat_names: string[];
   note: string | null;
   source_id: string;
+}
+
+/** Who launches what from where. */
+export interface SiteVehicle {
+  site_id: string;
+  vehicle_id: string;
+  status: "active" | "planned" | "contracted" | "retired";
+  orbits: string[];
+  pad: string | null;
+  since: number | null;
+  note: string | null;
+  source_id: string;
+}
+
+/** One row of the SQL view v_launch_site_overview. */
+export interface SiteOverview {
+  id: string;
+  launches_2024: number;
+  launches_2025: number;
+  launches_2026_ytd: number;
+  payload_t_2025: number | null;
+  satellites_2025: number | null;
+  cap_used_2025: number | null;
+  providers: string | null;
+  provider_countries: string | null;
+  orbits: string | null;
+  max_payload_leo_kg: number | null;
+  max_payload_sso_kg: number | null;
+  max_payload_gto_kg: number | null;
+}
+
+/** One row of v_launch_site_activity: a spaceport in one year, from GCAT. */
+export interface SiteActivity {
+  site_id: string;
+  year: number;
+  launches: number;
+  failures: number;
+  payload_t: number | null;
+  satellites: number | null;
+  to_leo: number;
+  to_sso: number;
+  to_geo: number;
+  to_other: number;
+  vehicles: string;
+  agencies: string;
+}
+
+export interface VehicleActivity {
+  vehicle_id: string;
+  year: number;
+  launches: number;
+  successes: number;
+  payload_t: number | null;
 }
 
 export interface ManifestEntry {
@@ -121,6 +201,7 @@ interface RawSnapshot {
   assumptions: Assumption[];
   launch_sites: LaunchSite[];
   vehicles: Vehicle[];
+  launch_site_vehicles: SiteVehicle[];
   manifest: ManifestEntry[];
   satellites: {
     count: number;
@@ -132,6 +213,9 @@ interface RawSnapshot {
   };
   q1Funnel: FunnelRow[];
   samLaunchers: { launch_vehicle: string; launcher_class: string; satellites: number; mass_kg: number }[];
+  siteOverview: SiteOverview[];
+  siteActivity: SiteActivity[];
+  vehicleActivity: VehicleActivity[];
 }
 
 const snapshot = raw as unknown as RawSnapshot;
@@ -143,6 +227,11 @@ export const facts = snapshot.facts;
 export const assumptions = snapshot.assumptions;
 export const launchSites = snapshot.launch_sites;
 export const vehicles = snapshot.vehicles;
+// The site register is newer than some snapshots; an older snapshot shows an empty register instead of failing.
+export const siteVehicles = snapshot.launch_site_vehicles ?? [];
+export const siteOverview = snapshot.siteOverview ?? [];
+export const siteActivity = snapshot.siteActivity ?? [];
+export const vehicleActivity = snapshot.vehicleActivity ?? [];
 export const manifest = snapshot.manifest;
 export const sqlFunnel = snapshot.q1Funnel;
 export const sqlSamLaunchers = snapshot.samLaunchers;

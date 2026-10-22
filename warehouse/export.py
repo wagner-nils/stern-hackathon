@@ -28,6 +28,7 @@ CURATED = {
     "assumptions": "question, tier, id",
     "launch_sites": "id",
     "vehicles": "id",
+    "launch_site_vehicles": "site_id, vehicle_id",
     "manifest": "id",
 }
 # Satellites go to the dashboard column by column, with repeated strings stored once.
@@ -88,7 +89,10 @@ def main():
 
         _, snapshot["q1Funnel"] = fetch(conn, "select * from v_q1_funnel")
         _, snapshot["samLaunchers"] = fetch(conn, "select * from v_sam_launchers")
-        print("views         v_q1_funnel, v_sam_launchers -> snapshot")
+        _, snapshot["siteOverview"] = fetch(conn, "select * from v_launch_site_overview")
+        _, snapshot["siteActivity"] = fetch(conn, "select * from v_launch_site_activity order by site_id, year")
+        _, snapshot["vehicleActivity"] = fetch(conn, "select * from v_vehicle_activity order by vehicle_id, year")
+        print("views         v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity -> snapshot")
 
     SNAPSHOT.write_text(json.dumps(snapshot, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"snapshot -> {SNAPSHOT.relative_to(HERE.parent)} ({SNAPSHOT.stat().st_size // 1024} kB)")

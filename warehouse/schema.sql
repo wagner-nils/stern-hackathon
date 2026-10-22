@@ -1,6 +1,12 @@
 -- Fact warehouse for the Isar Aerospace case.
 -- Rule: every number is either a fact (with a source) or an assumption (with a rationale, range and sources).
 -- Facts are stored in the unit of their metric, so values from different sources are directly comparable.
+-- load.py rebuilds the warehouse from warehouse/seed on every run (export first if you edited in Supabase),
+-- so tables are recreated from this file rather than migrated. Other tables in the database are not touched.
+
+drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity;
+drop table if exists launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
+  assumptions, facts, metrics, sources cascade;
 
 create table if not exists sources (
   id text primary key,
@@ -14,8 +20,6 @@ create table if not exists sources (
   note text,
   short text
 );
--- Added after the first load; the alter keeps existing databases in step.
-alter table sources add column if not exists short text;
 comment on table sources is 'Every source a number in the warehouse comes from.';
 comment on column sources.short is 'Citation label for the dashboard, e.g. GCAT or SIA 2026.';
 
@@ -68,28 +72,69 @@ create table if not exists launch_sites (
   id text primary key,
   name text not null,
   country text not null,
+  country_code text,
+  operator text,
+  ownership text check (ownership in ('government', 'military', 'commercial', 'public-private')),
   latitude numeric not null,
-  inclination_min numeric not null,
-  inclination_max numeric not null,
-  status text not null,
-  isar_access text not null,
+  longitude numeric,
+  inclination_min numeric,
+  inclination_max numeric,
+  launch_azimuth text,
+  status text not null check (status in ('operational', 'under construction', 'planned', 'inactive')),
+  first_orbital_launch int,
+  orbital_pads int,
+  max_vehicle_class text check (max_vehicle_class in ('small', 'medium', 'heavy', 'super-heavy')),
+  polar_sso boolean,
+  access text check (access in ('sovereign', 'national-commercial', 'international')),
   max_launches_per_year int,
+  cap_basis text,
+  expansion text,
+  isar_access text,
   note text,
-  source_id text not null references sources (id)
+  gcat_codes text[] not null default '{}',
+  source_id text not null references sources (id),
+  source_ids text[] not null default '{}',
+  confidence text not null default 'medium' check (confidence in ('high', 'medium', 'low'))
 );
-comment on table launch_sites is 'Launch sites as data: the orbit band a site reaches decides which satellites Isar can serve from it.';
+comment on table launch_sites is 'Global spaceport register. The orbit band a site reaches decides which satellites a launcher can serve from it.';
+comment on column launch_sites.inclination_min is 'Lowest inclination reachable by direct ascent within the allowed launch azimuths.';
+comment on column launch_sites.access is 'sovereign: only the state''s own launchers; national-commercial: domestic companies; international: open to foreign providers.';
+comment on column launch_sites.max_launches_per_year is 'Licensed or officially planned cap for the whole site; cap_basis says which.';
+comment on column launch_sites.gcat_codes is 'GCAT Launch_Site codes: joins the site to the launches table.';
 
 create table if not exists vehicles (
   id text primary key,
   name text not null,
   operator text not null,
+  country_code text,
+  class text not null check (class in ('small', 'medium', 'heavy', 'super-heavy')),
   payload_leo_kg numeric,
   payload_sso_kg numeric,
+  payload_gto_kg numeric,
+  payload_estimated boolean not null default false,
+  reusable boolean,
+  status text check (status in ('operational', 'development', 'retired')),
+  first_flight int,
   price_usd numeric,
-  class text not null check (class in ('small', 'medium', 'heavy')),
+  gcat_names text[] not null default '{}',
   note text,
   source_id text not null references sources (id)
 );
+comment on table vehicles is 'Launch vehicles with payload capability. Class by LEO payload: small < 2 t, medium 2–20 t, heavy 20–50 t, super-heavy > 50 t.';
+comment on column vehicles.gcat_names is 'LV_Type names in GCAT: joins the vehicle to the launches table.';
+
+create table if not exists launch_site_vehicles (
+  site_id text not null references launch_sites (id),
+  vehicle_id text not null references vehicles (id),
+  status text not null check (status in ('active', 'planned', 'contracted', 'retired')),
+  orbits text[] not null default '{}',
+  pad text,
+  since int,
+  note text,
+  source_id text not null references sources (id),
+  primary key (site_id, vehicle_id)
+);
+comment on table launch_site_vehicles is 'Who launches what from where: one row per spaceport and vehicle, with the orbits flown and the status.';
 
 create table if not exists manifest (
   id text primary key,
@@ -108,6 +153,7 @@ create table if not exists satellites (
   name text not null,
   launch_year int not null,
   launch_date date,
+  launch_tag text,
   launch_vehicle text,
   launcher_class text not null,
   operator_code text,
@@ -125,8 +171,31 @@ create table if not exists satellites (
 comment on table satellites is 'Every payload that reached orbit in 2024 and 2025 (McDowell GCAT), built by warehouse/build_satellites.py.';
 create index if not exists satellites_year on satellites (launch_year);
 
+create table if not exists launches (
+  launch_tag text primary key,
+  launch_date date not null,
+  launch_year int not null,
+  vehicle text,
+  variant text,
+  mission text,
+  site_code text,
+  pad text,
+  platform text,
+  agency_code text,
+  agency text,
+  success boolean not null,
+  launch_code text not null,
+  orbit text not null,
+  category text,
+  inclination numeric,
+  payload_t numeric,
+  source_id text not null default 'gcat' references sources (id)
+);
+comment on table launches is 'Every orbital and deep-space launch attempt since 2024 (McDowell GCAT), built by warehouse/build_launches.py.';
+comment on column launches.orbit is 'Target orbit: LEO (incl. space stations), SSO, GTO, MEO, GEO, HEO, escape.';
+comment on column launches.payload_t is 'Payload mass placed in orbit, tonnes (GCAT OrbPay).';
+
 -- Views are recreated on every load, so their columns can change.
-drop view if exists v_facts, v_q1_funnel, v_sam_launchers;
 
 -- Readable facts with metric and source.
 create or replace view v_facts as
@@ -227,11 +296,91 @@ where s.launch_year = p.base_year
 group by 1, 2
 order by satellites desc;
 
+-- Activity per spaceport and year from GCAT: launches, failures, payload mass and target orbits.
+-- Satellites per launch exist for 2024 and 2025 only (the satellites table), so that column is empty for 2026.
+create or replace view v_launch_site_activity as
+with sats as (
+  select launch_tag, count(*) as satellites, sum(mass_kg) as mass_kg from satellites group by launch_tag
+)
+select s.id as site_id, l.launch_year as year,
+       count(*) as launches,
+       count(*) filter (where not l.success) as failures,
+       round(sum(l.payload_t) filter (where l.success), 1) as payload_t,
+       sum(sa.satellites) as satellites,
+       count(*) filter (where l.orbit = 'LEO') as to_leo,
+       count(*) filter (where l.orbit = 'SSO') as to_sso,
+       count(*) filter (where l.orbit in ('GTO', 'GEO')) as to_geo,
+       count(*) filter (where l.orbit not in ('LEO', 'SSO', 'GTO', 'GEO')) as to_other,
+       string_agg(distinct l.vehicle, ', ' order by l.vehicle) as vehicles,
+       string_agg(distinct l.agency, ', ' order by l.agency) as agencies
+from launch_sites s
+join launches l on l.site_code = any (s.gcat_codes)
+left join sats sa on sa.launch_tag = l.launch_tag
+group by s.id, l.launch_year;
+
+-- One row per spaceport: register, who flies what from there, what it can lift, and how busy it is.
+create or replace view v_launch_site_overview as
+with fleet as (
+  select lsv.site_id,
+         string_agg(v.name || ' (' || v.operator || ')', ', ' order by v.name) filter (where lsv.status = 'active') as active_vehicles,
+         string_agg(v.name || ' (' || v.operator || ')', ', ' order by v.name)
+           filter (where lsv.status in ('planned', 'contracted')) as planned_vehicles,
+         string_agg(distinct v.operator, ', ' order by v.operator) filter (where lsv.status <> 'retired') as providers,
+         string_agg(distinct v.country_code, ', ' order by v.country_code) filter (where lsv.status <> 'retired') as provider_countries,
+         max(v.payload_leo_kg) filter (where lsv.status <> 'retired') as max_payload_leo_kg,
+         max(v.payload_sso_kg) filter (where lsv.status <> 'retired') as max_payload_sso_kg,
+         max(v.payload_gto_kg) filter (where lsv.status <> 'retired') as max_payload_gto_kg
+  from launch_site_vehicles lsv
+  join vehicles v on v.id = lsv.vehicle_id
+  group by lsv.site_id
+),
+served as (
+  select site_id, string_agg(distinct o, ', ' order by o) as orbits
+  from launch_site_vehicles, unnest(orbits) as o
+  where status <> 'retired'
+  group by site_id
+),
+act as (
+  select site_id,
+         sum(launches) filter (where year = 2024) as launches_2024,
+         sum(launches) filter (where year = 2025) as launches_2025,
+         sum(launches) filter (where year = 2026) as launches_2026_ytd,
+         sum(payload_t) filter (where year = 2025) as payload_t_2025,
+         sum(satellites) filter (where year = 2025) as satellites_2025
+  from v_launch_site_activity
+  group by site_id
+)
+select s.id, s.name, s.country, s.country_code, s.status, s.operator, s.ownership, s.access,
+       s.latitude, s.longitude, s.inclination_min, s.inclination_max, s.polar_sso, s.max_vehicle_class,
+       s.orbital_pads, s.max_launches_per_year,
+       f.active_vehicles, f.planned_vehicles, f.providers, f.provider_countries, served.orbits,
+       f.max_payload_leo_kg, f.max_payload_sso_kg, f.max_payload_gto_kg,
+       coalesce(a.launches_2024, 0) as launches_2024, coalesce(a.launches_2025, 0) as launches_2025,
+       coalesce(a.launches_2026_ytd, 0) as launches_2026_ytd, a.payload_t_2025, a.satellites_2025,
+       round(coalesce(a.launches_2025, 0)::numeric / nullif(s.max_launches_per_year, 0), 2) as cap_used_2025,
+       s.first_orbital_launch, s.expansion, s.isar_access, s.note, s.source_id, s.confidence
+from launch_sites s
+left join fleet f on f.site_id = s.id
+left join served on served.site_id = s.id
+left join act a on a.site_id = s.id
+order by coalesce(a.launches_2025, 0) desc, s.name;
+
+-- Launches per vehicle and year (through vehicles.gcat_names): cadence and reliability of every rocket.
+create or replace view v_vehicle_activity as
+select v.id as vehicle_id, v.name, v.operator, l.launch_year as year,
+       count(*) as launches,
+       count(*) filter (where l.success) as successes,
+       round(sum(l.payload_t) filter (where l.success), 1) as payload_t
+from vehicles v
+join launches l on l.vehicle = any (v.gcat_names)
+group by v.id, v.name, v.operator, l.launch_year;
+
 -- Read-only access for a future anon key; the service role and the database owner bypass RLS.
 do $$
 declare t text;
 begin
-  foreach t in array array['sources', 'metrics', 'facts', 'assumptions', 'launch_sites', 'vehicles', 'manifest', 'satellites'] loop
+  foreach t in array array['sources', 'metrics', 'facts', 'assumptions', 'launch_sites', 'vehicles', 'launch_site_vehicles',
+                            'manifest', 'satellites', 'launches'] loop
     execute format('alter table %I enable row level security', t);
     if not exists (select 1 from pg_policies where tablename = t and policyname = 'read_all') then
       execute format('create policy read_all on %I for select using (true)', t);

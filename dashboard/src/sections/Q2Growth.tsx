@@ -17,7 +17,7 @@ const categoryLabel: Record<ExpansionField["category"], string> = {
   adjacent: "Beyond launch",
 };
 
-const ASCENT = [
+export const ASCENT = [
   { letter: "A", move: "Anchor contracts first", what: "Frame contracts over several launches with deposits. The launch count follows contracts, not factory capacity.", pattern: "Subscription, Lock-in" },
   { letter: "S", move: "Sovereign readiness", what: "States pay for readiness: reserved slots, a rocket on stock, lost satellites replaced within days together with Planet.", pattern: "Guaranteed Availability" },
   { letter: "C", move: "Core polar launches", what: "Dedicated launches to polar and sun-synchronous orbits from Andøya for commercial, institutional and defence customers.", pattern: "Aikido: the opposite of rideshare" },

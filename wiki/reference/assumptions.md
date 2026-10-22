@@ -56,3 +56,18 @@ Robbie Schingler (Planet), 21.10.2026:
 - **Penetration:** Unerprobte Raketen bekommen nur Demo-Nutzlasten. Darum 7 % (gemessen) statt der 20–30 % aus dem ersten Entwurf.
 - **Zuverlässigkeit:** Als Erfolgsquote pro Start (75 %) im Modell.
 - **Preis:** Für Kunden erst Kriterium Nr. 3. Die 12 Mio. € bleiben plausibel.
+
+## Szenarien (Final, P&L 2027–2040)
+
+Kostenbasis der drei Szenarien Bear, ASCENT und Bull, alle in realen Euro von 2026. Die Szenario-Parameter selbst (Rahmenverträge, Anker, Bereitschaft, Erfolgsquote) stehen in der Tabelle `scenarios`. Details: [Szenarien](../analysis/scenarios.md).
+
+| Annahme | Wert | Spanne | Konfidenz | Owner | Quelle |
+| --- | --- | --- | --- | --- | --- |
+| Fixkosten pro Jahr (Entwicklung und Verwaltung) | 60 Mio. € | 40–90 Mio. € | niedrig | Nils | über 400 Mitarbeitende (Isar, Flug 2) × ca. 85 Tsd. € pro Kopf (OHB 2025, voll belastet) ≈ 35–45 Mio. €, davon ca. 40 % in der Produktion (stecken in den Kosten pro Flug); dazu Tests, Upgrades, Verwaltung. Vergleich: Rocket Lab 2020 43 Mio. USD bei 7 Starts (10-K 2021), Firefly 2024 196 Mio. USD inkl. Mondlander (S-1) |
+| Erstes volles Jahr der Nova-Scotia-Gebühr | 2030 | 2029–2030 | hoch | Luca | Isar: Übergabe 1.11.2026, 30 Monate keine Gebühr, also 3,75 Mio. USD pro Quartal ab Mai 2029 |
+| Marge auf die Bereitschaftsgebühr | 70 % | 50–80 % | niedrig | Benedikt | Team: Die Gebühr bezahlt reservierte Slots sowie Rakete und Team in Bereitschaft, keine Flugkosten |
+| Geflogener Anteil des Bereitschaftsumsatzes | 30 % | 20–50 % | niedrig | Benedikt | Team: Bereitschaft ist vor allem Verfügbarkeitsgebühr; nur abgerufene Starts fliegen |
+| Starts hinter Rocket Labs Kosten pro Start 2025 | 21 | 18–21 | hoch | Nils | Rocket Lab 10-K 2025: 4,8 Mio. USD pro Electron-Start bei 21 Missionen (18 orbital, 3 suborbital HASTE); McDowell 2025. Ab dieser Kadenz bleiben die Kosten pro Flug flach |
+| Kosten pro Spectrum-Start relativ zu Electron | 1,5× | 1,2–2,0× | niedrig | Nils | Team, Rocket Lab 10-K 2025: Spectrum trägt ca. 3× Electrons Nutzlast mit gleich vielen Triebwerken (9 + 1); Kosten wachsen langsamer als Nutzlast |
+
+Wiederverwendet: Preis pro Start (12 Mio. €), Wechselkurs (1,12 USD/€), Kosten pro Verdopplung der Kadenz (`q3_learning_rate`, 70 %), Gebühr Nova Scotia und Bereitschaftskosten aus `expansion_fields`, Rocket Labs 4,8 Mio. USD pro Start als Fakt (`cost_per_launch`).

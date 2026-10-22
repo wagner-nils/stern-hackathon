@@ -305,6 +305,8 @@ export interface SiteNode {
   source_ids: string[];
   confidence: Confidence;
   note: string | null;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 /** One row of v_q3_site_load: launches a site (or the factory) carries in a year against its capacity. */
@@ -330,6 +332,45 @@ export interface LaunchGap {
   launches_without_visible_demand: number;
   launches_filled_isar_share: number;
   share_filled_isar: number;
+}
+
+/** A named P&L scenario (table scenarios): which fields Isar earns from and how the strategy plays out. */
+export interface Scenario {
+  id: string;
+  name: string;
+  tagline: string;
+  sort: number;
+  fields: string[];
+  readiness_growth: number;
+  ns_anchor_launches: number;
+  contract_launches: number;
+  contract_start_year: number;
+  institutional_after_end: number;
+  success_2027: number;
+  success_2030: number;
+  rationale: string;
+  source_ids: string[];
+  confidence: Confidence;
+}
+
+/** One row of v_scenarios: a scenario's P&L in one year, real 2026 euros. */
+export interface ScenarioPnl {
+  scenario_id: string;
+  name: string;
+  sort: number;
+  year: number;
+  launches_sold: number;
+  launches_flown: number;
+  success_rate: number;
+  unit_cost_eur: number;
+  launch_revenue_eur: number;
+  readiness_revenue_eur: number;
+  extras_revenue_eur: number;
+  revenue_eur: number;
+  gross_profit_eur: number;
+  fixed_cost_eur: number;
+  ebit_eur: number;
+  cumulative_ebit_eur: number;
 }
 
 interface RawSnapshot {
@@ -364,6 +405,8 @@ interface RawSnapshot {
   q2LaunchGap: LaunchGap[];
   site_nodes: SiteNode[];
   q3SiteLoad: SiteLoad[];
+  scenarios: Scenario[];
+  scenarioPnl: ScenarioPnl[];
 }
 
 const snapshot = raw as unknown as RawSnapshot;
@@ -390,6 +433,8 @@ export const sqlExpansion = snapshot.q2Expansion ?? [];
 export const launchGap = snapshot.q2LaunchGap ?? [];
 export const siteNodes = snapshot.site_nodes ?? [];
 export const sqlSiteLoad = snapshot.q3SiteLoad ?? [];
+export const scenarios = [...(snapshot.scenarios ?? [])].sort((a, b) => a.sort - b.sort);
+export const sqlScenarioPnl = snapshot.scenarioPnl ?? [];
 export const sqlFunnel = snapshot.q1Funnel;
 export const sqlSamLaunchers = snapshot.samLaunchers;
 

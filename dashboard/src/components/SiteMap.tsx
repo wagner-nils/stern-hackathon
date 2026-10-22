@@ -8,12 +8,12 @@ const LAT_TOP = 75;
 const LAT_BOTTOM = -50;
 const H = (W * (LAT_TOP - LAT_BOTTOM)) / 360;
 
-const x = (lon: number) => ((lon + 180) / 360) * W;
-const y = (lat: number) => ((LAT_TOP - lat) / (LAT_TOP - LAT_BOTTOM)) * H;
+export const x = (lon: number) => ((lon + 180) / 360) * W;
+export const y = (lat: number) => ((LAT_TOP - lat) / (LAT_TOP - LAT_BOTTOM)) * H;
 
 // Land outline (Natural Earth 1:110m via world-atlas), drawn once in the same equirectangular frame.
 type Ring = [number, number][];
-const LAND = (() => {
+export const LAND = (() => {
   const topology = land110 as unknown as Parameters<typeof feature>[0];
   const land = feature(topology, topology.objects.land) as unknown as {
     features?: { geometry: { type: string; coordinates: Ring[] | Ring[][] } }[];

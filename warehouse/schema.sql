@@ -4,10 +4,10 @@
 -- load.py rebuilds the warehouse from warehouse/seed on every run (export first if you edited in Supabase),
 -- so tables are recreated from this file rather than migrated. Other tables in the database are not touched.
 
-drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity,
+drop view if exists v_scenarios, v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity,
   v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap, v_penetration_evidence, v_win_share_evidence,
   v_q2_expansion_fields, v_q3_site_load;
-drop table if exists site_nodes, expansion_fields, launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
+drop table if exists scenarios, site_nodes, expansion_fields, launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
   assumptions, facts, metrics, sources cascade;
 
 create table if not exists sources (
@@ -253,11 +253,36 @@ create table if not exists site_nodes (
   transport text,
   source_ids text[] not null default '{}',
   confidence text not null check (confidence in ('high', 'medium', 'low')),
-  note text
+  note text,
+  latitude numeric,
+  longitude numeric
 );
 comment on table site_nodes is 'RQ3: Isar''s production, test and launch sites today and as proposed, with capacity, cost, who pays and the trigger for each step.';
+comment on column site_nodes.latitude is 'WGS84 position for the footprint map (town centre for plant, HQ and test site; the spaceport for launch nodes).';
 comment on column site_nodes.pad_share is 'Share of a pad Isar can use: 1 for an own pad, less for a shared complex.';
 comment on column site_nodes.capacity_today is 'Production nodes: rockets a year. Launch nodes: computed in v_q3_site_load from pads × q3_pad_cadence.';
+
+create table if not exists scenarios (
+  id text primary key,
+  name text not null,
+  tagline text not null,
+  sort int not null,
+  fields text[] not null,
+  readiness_growth numeric not null,
+  ns_anchor_launches numeric not null default 0,
+  contract_launches numeric not null default 0,
+  contract_start_year int not null,
+  institutional_after_end numeric not null default 0,
+  success_2027 numeric not null,
+  success_2030 numeric not null,
+  rationale text not null,
+  source_ids text[] not null default '{}',
+  confidence text not null check (confidence in ('high', 'medium', 'low'))
+);
+comment on table scenarios is 'Final: three named P&L scenarios under the team''s assumptions (Bear, ASCENT as base, Bull). v_scenarios rolls each into revenue and EBIT per year.';
+comment on column scenarios.fields is 'expansion_fields this scenario earns from. sovereign_readiness is split into flown launches and an availability fee, mission_extras is a service; every other field is sold as Spectrum launches.';
+comment on column scenarios.contract_launches is 'Launches a year from frame contracts beyond the visible demand (the A in ASCENT), from contract_start_year.';
+comment on column scenarios.institutional_after_end is 'Share of the 2030 level of institutional_elc that a successor programme keeps after the field''s end_year.';
 
 -- Views are recreated on every load, so their columns can change.
 
@@ -663,12 +688,98 @@ select year, site_id,
 from (select * from sites union all select * from factory) t
 order by year, site_id;
 
+-- Final: three P&L scenarios, 2027–2040, in real 2026 euros. Revenue reuses the RQ2 expansion fields (same basis as
+-- v_q3_site_load); launch cost follows Rocket Lab's measured cost curve scaled to Spectrum; EBIT subtracts the fixed
+-- cost base and the fixed costs of every field the scenario uses. dashboard/src/model/scenarios.ts mirrors it (test).
+create or replace view v_scenarios as
+with p as (
+  select max(value) filter (where id = 'fixed_price_per_launch_eur') as price,
+         max(value) filter (where id = 'q3_learning_rate') as lr,
+         max(value) filter (where id = 'fixed_usd_per_eur') as usd_per_eur,
+         max(value) filter (where id = 'scen_size_factor') as size_factor,
+         max(value) filter (where id = 'scen_ref_cadence') as ref_cadence,
+         max(value) filter (where id = 'scen_fixed_opex_eur') as fixed_opex,
+         max(value) filter (where id = 'scen_readiness_launch_share') as rdy_launch_share,
+         max(value) filter (where id = 'scen_readiness_fee_margin') as rdy_fee_margin,
+         (select value from facts where metric_id = 'cost_per_launch' and entity = 'Rocket Lab' and year = 2025 and is_preferred) as ref_cost_usd
+  from assumptions
+),
+y as (select generate_series(2027, 2040) as year),
+fy as (
+  select sc.id as scenario_id, y.year, e.id as field_id, e.gross_margin, e.fixed_cost_eur,
+         (e.id not in ('sovereign_readiness', 'mission_extras')) as is_launch,
+         case
+           when y.year between e.start_year and coalesce(e.end_year, 9999)
+             then e.market_2025_eur * power(1 + case when e.id = 'sovereign_readiness' then sc.readiness_growth else e.growth end, y.year - 2025) * e.isar_share
+           when e.end_year is not null and y.year > e.end_year
+             then sc.institutional_after_end * e.market_2025_eur * power(1 + e.growth, e.end_year - 2025) * e.isar_share
+           else 0 end as revenue_eur,
+         (y.year between e.start_year and coalesce(e.end_year, 9999)) as active,
+         -- The Nova Scotia fee starts when the waiver ends, not with the first launch.
+         case when y.year between e.start_year and coalesce(e.end_year, 9999)
+                   and (e.id <> 'site_nova_scotia' or y.year >= (select value from assumptions where id = 'scen_ns_fee_start_year'))
+              then e.fixed_cost_eur else 0 end as fixed_cost_due_eur
+  from scenarios sc cross join y
+  join expansion_fields e on e.id = any (sc.fields)
+),
+agg as (
+  select sc.id as scenario_id, sc.name, sc.sort, y.year,
+         coalesce((select sum(revenue_eur) from fy where fy.scenario_id = sc.id and fy.year = y.year and fy.is_launch), 0)
+           + case when 'site_nova_scotia' = any (sc.fields)
+                       and y.year >= (select start_year from expansion_fields where id = 'site_nova_scotia')
+                  then sc.ns_anchor_launches * p.price else 0 end
+           + case when y.year >= sc.contract_start_year then sc.contract_launches * p.price else 0 end as launch_revenue_eur,
+         coalesce((select sum(revenue_eur) from fy where fy.scenario_id = sc.id and fy.year = y.year and fy.field_id = 'sovereign_readiness'), 0) as readiness_revenue_eur,
+         coalesce((select sum(revenue_eur) from fy where fy.scenario_id = sc.id and fy.year = y.year and fy.field_id = 'mission_extras'), 0) as extras_revenue_eur,
+         coalesce((select sum(revenue_eur * gross_margin) from fy where fy.scenario_id = sc.id and fy.year = y.year and fy.field_id = 'mission_extras'), 0) as extras_profit_eur,
+         coalesce((select sum(fixed_cost_due_eur) from fy where fy.scenario_id = sc.id and fy.year = y.year), 0) as field_fixed_cost_eur,
+         case when y.year <= 2027 then sc.success_2027
+              when y.year >= 2030 then sc.success_2030
+              else sc.success_2027 + (sc.success_2030 - sc.success_2027) * (y.year - 2027) / 3.0 end as success_rate,
+         p.*
+  from scenarios sc cross join y cross join p
+),
+l as (
+  select a.*,
+         a.launch_revenue_eur / a.price + a.readiness_revenue_eur * a.rdy_launch_share / a.price as launches_sold,
+         a.ref_cost_usd * a.size_factor / a.usd_per_eur as ref_cost_eur
+  from agg a
+),
+c as (
+  select l.*, l.launches_sold / l.success_rate as launches_flown,
+         -- No learning beyond the volume Rocket Lab has measured: at or above the reference cadence the cost stays flat.
+         l.ref_cost_eur * power(least(greatest(l.launches_sold / l.success_rate, 1), l.ref_cadence) / l.ref_cadence, ln(l.lr) / ln(2)) as unit_cost_eur
+  from l
+),
+r as (
+  select c.*,
+         c.launch_revenue_eur + c.readiness_revenue_eur + c.extras_revenue_eur as revenue_eur,
+         c.launch_revenue_eur + c.readiness_revenue_eur * c.rdy_launch_share - c.launches_flown * c.unit_cost_eur
+           + c.readiness_revenue_eur * (1 - c.rdy_launch_share) * c.rdy_fee_margin + c.extras_profit_eur as gross_profit_eur
+  from c
+)
+select scenario_id, name, sort, year,
+       round(launches_sold, 2) as launches_sold,
+       round(launches_flown, 2) as launches_flown,
+       round(success_rate, 3) as success_rate,
+       round(unit_cost_eur) as unit_cost_eur,
+       round(launch_revenue_eur) as launch_revenue_eur,
+       round(readiness_revenue_eur) as readiness_revenue_eur,
+       round(extras_revenue_eur) as extras_revenue_eur,
+       round(revenue_eur) as revenue_eur,
+       round(gross_profit_eur) as gross_profit_eur,
+       round(fixed_opex + field_fixed_cost_eur) as fixed_cost_eur,
+       round(gross_profit_eur - fixed_opex - field_fixed_cost_eur) as ebit_eur,
+       round(sum(gross_profit_eur - fixed_opex - field_fixed_cost_eur) over (partition by scenario_id order by year)) as cumulative_ebit_eur
+from r
+order by sort, year;
+
 -- Read-only access for a future anon key; the service role and the database owner bypass RLS.
 do $$
 declare t text;
 begin
   foreach t in array array['sources', 'metrics', 'facts', 'assumptions', 'launch_sites', 'vehicles', 'launch_site_vehicles',
-                            'manifest', 'satellites', 'launches', 'expansion_fields', 'site_nodes'] loop
+                            'manifest', 'satellites', 'launches', 'expansion_fields', 'site_nodes', 'scenarios'] loop
     execute format('alter table %I enable row level security', t);
     if not exists (select 1 from pg_policies where tablename = t and policyname = 'read_all') then
       execute format('create policy read_all on %I for select using (true)', t);

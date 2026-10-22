@@ -21,8 +21,8 @@ HERE = pathlib.Path(__file__).parent
 SEED = HERE / "seed"
 # Parents before children, so foreign keys hold while inserting.
 TABLES = ["sources", "metrics", "facts", "assumptions", "launch_sites", "vehicles", "launch_site_vehicles",
-          "manifest", "satellites", "launches", "expansion_fields", "site_nodes"]
-ARRAY_COLUMNS = {"source_ids", "gcat_codes", "gcat_names", "orbits"}
+          "manifest", "satellites", "launches", "expansion_fields", "site_nodes", "scenarios"]
+ARRAY_COLUMNS = {"source_ids", "gcat_codes", "gcat_names", "orbits", "fields"}
 # Columns where an empty field means "none" rather than "unknown".
 EMPTY_TEXT_COLUMNS = {"entity"}
 

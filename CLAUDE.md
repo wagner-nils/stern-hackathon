@@ -30,12 +30,14 @@ Wissensbasis: [wiki/](wiki/README.md) im Repo (konsolidiert, mit Quellen). Notio
 
 ## Repo-Konventionen
 
+- `warehouse/`: **Fact-Warehouse in Supabase, Quelle der Wahrheit für jede Zahl** ([README](warehouse/README.md)). Fakten mit Quelle (mehrere Quellen pro Metrik, eine bevorzugt), Annahmen getrennt davon mit Spanne, Begründung und Owner, dazu Startplätze, Raketen, Manifest und alle GCAT-Satelliten. `seed/*.csv` ist der git-Spiegel. Nach jeder Änderung `uv run warehouse/export.py` (Supabase → CSV + Dashboard-Snapshot). Keine Zahl im Frontend-Code hart codieren.
 - `dashboard/`: das Tool (Vite + React + TypeScript, Build zu einer einzigen `index.html`, die offline läuft und als Claude-Artifact veröffentlicht werden kann).
-  - `src/data/`: **jede Zahl** liegt hier mit Quelle (`sources.ts`), Konfidenz und Owner. Platzhalter sind `confidence: "placeholder"` und werden im UI markiert.
-  - `src/model/`: reine Funktionen (Orbit-Erreichbarkeit, Funnel) mit Vitest-Tests. Keine UI-Logik.
-  - `src/sections/`: ein Kapitel pro Frage (Tool = Präsentation).
-- Standorte, Rakete und Nachfrage sind Daten, nicht hart codiert: Q2 (neue Standorte) = Standort in `sites.ts` ergänzen.
-- `wiki/`: Wissens-Wiki in Markdown (Case, Unternehmen, Technik, Markt, Analyse je Frage, Experte, Referenz). Neue Erkenntnisse kommen auf die passende Themenseite, jede Zahl mit Quelle. Modellwerte bleiben in `dashboard/src/data/`, das Wiki erklärt und belegt sie (`wiki/reference/assumptions.md` synchron halten).
-- `pipeline/`: reproduzierbare Datenaufbereitung (GCAT → `dashboard/src/data/generated/`).
+  - `src/data/warehouse.json` + `warehouse.ts`: Snapshot des Warehouse und typisierter Zugriff (`assumption()`, `preferred()`, `factsFor()`). Nicht von Hand editieren.
+  - `src/model/`: reine Funktionen (Orbit-Erreichbarkeit, Q1-Funnel) mit Vitest-Tests. Keine UI-Logik. `q1.ts` muss mit der SQL-View `v_q1_funnel` übereinstimmen (Test).
+  - `src/state/levers.ts`: die Hebel, höchstens drei pro Stufe, jeder an eine Zeile in `assumptions` gebunden.
+  - `src/sections/`: ein Kapitel pro Frage (Tool = Präsentation), dazu „Fact base“ zum Durchsuchen des Warehouse.
+- Standorte, Rakete und Nachfrage sind Daten, nicht hart codiert: neue Standorte = Zeile in `launch_sites`. Für spätere Fragen merken: Andøyas Lizenz (30 Starts/Jahr) gilt für den ganzen Standort, weitere Betreiber wollen ab 2027/28 kommen; Kapazitätsgrenzen dort simulieren.
+- `wiki/`: Wissens-Wiki in Markdown (Case, Unternehmen, Technik, Markt, Analyse je Frage, Experte, Referenz). Neue Erkenntnisse kommen auf die passende Themenseite, jede Zahl mit Quelle. Modellwerte stehen im Warehouse, das Wiki erklärt sie (`wiki/reference/assumptions.md` synchron halten).
+- `pipeline/`: GCAT-Klassifikation (Kundengruppe, Mission, Orbit), genutzt von `warehouse/build_satellites.py`.
 - `progress/`: Fortschrittsverzeichnis, bei jedem Checkpoint aktualisieren.
 - Branches: eine pro Phase (`phase/q1-andoya`, `phase/q2`, `phase/q3`, `phase/q4`, `phase/final`). `scripts/checkpoint.sh` committet, wechselt bei Phasenwechsel automatisch auf den neuen Branch und pusht Phasen-Branch und `main` (fast-forward).

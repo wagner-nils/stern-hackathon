@@ -11,9 +11,13 @@ create table if not exists sources (
   accessed date not null default current_date,
   kind text not null check (kind in ('dataset', 'report', 'filing', 'press', 'article', 'price-list', 'interview', 'regulator', 'team')),
   reliability text not null check (reliability in ('high', 'medium', 'low')),
-  note text
+  note text,
+  short text
 );
+-- Added after the first load; the alter keeps existing databases in step.
+alter table sources add column if not exists short text;
 comment on table sources is 'Every source a number in the warehouse comes from.';
+comment on column sources.short is 'Citation label for the dashboard, e.g. GCAT or SIA 2026.';
 
 create table if not exists metrics (
   id text primary key,

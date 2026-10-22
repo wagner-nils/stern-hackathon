@@ -4,8 +4,9 @@ Interactive decision tool for the SSCO AI Hackathon (Stern Stewart & Co., 21–2
 
 | Folder | Content |
 | --- | --- |
-| `dashboard/` | The tool (Vite, React, TypeScript), model and data |
-| `pipeline/` | Reproducible demand data from McDowell's GCAT |
+| `warehouse/` | Fact warehouse in Supabase: every number with its source, assumptions, GCAT satellites ([README](warehouse/README.md)) |
+| `dashboard/` | The tool (Vite, React, TypeScript) and model, reading a snapshot of the warehouse |
+| `pipeline/` | GCAT classification used to build the satellite table |
 | `wiki/` | Knowledge wiki: case, company, technology, market, analysis per question, sources |
 | `progress/` | Progress log per hackathon phase |
 
@@ -15,7 +16,7 @@ Interactive decision tool for the SSCO AI Hackathon (Stern Stewart & Co., 21–2
 cd dashboard && npm install && npm run dev
 ```
 
-- `npm test`: model unit tests (orbit reach, funnel)
+- `npm test`: model unit tests (orbit reach, Q1 funnel, parity with the SQL view, warehouse integrity)
 - `npm run build`: type-check and build `dist/index.html`, a single self-contained file that runs offline
 
 ## Checkpoint

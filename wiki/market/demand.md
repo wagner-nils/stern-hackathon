@@ -16,7 +16,7 @@
   - captive: Starlink inkl. Starshield, alle chinesischen und russischen Nutzlasten, Kuiper und OneWeb
   - US-Regierung, europäische Institutionen, andere Regierungen
   - kommerziell (offen): alles andere
-- **Segmente:** 2°-Inklinationsbänder × Massenklasse (≤50, 50–200, 200–700, 700–1.000, 1.000–2.000, >2.000 kg) × Kundengruppe. Das Dashboard liest die Segmente aus `dashboard/src/data/generated/`.
+- **Segmente:** 2°-Inklinationsbänder × Massenklasse (≤50, 50–200, 200–700, 700–1.000, 1.000–2.000, >2.000 kg) × Kundengruppe. Das Dashboard rechnet inzwischen Satellit für Satellit: Tabelle `satellites` im [Fact-Warehouse](../../warehouse/README.md) (7.361 Satelliten 2024/2025).
 
 ## Nach Kundengruppe
 

@@ -40,6 +40,6 @@ Das Wiki bündelt alles, was das Team zum Case weiß: Notion-Recherche (Insider,
 - **Sprache:** Wiki auf Deutsch, Fachbegriffe auf Englisch. Das Tool selbst ist auf Englisch.
 - **Belege:** Jede Zahl hat eine Quelle (Link auf der Seite oder in [Quellen](reference/sources.md)). Eigene Rechnungen sind als solche markiert.
 - **Konfidenz:** hoch / mittel / niedrig, wie im Dashboard.
-- **Single Source of Truth für Modellwerte** ist `dashboard/src/data/`. Das Wiki erklärt und belegt die Werte. Wer eine Annahme ändert, ändert sie dort und im [Annahmen-Register](reference/assumptions.md).
+- **Single Source of Truth für alle Zahlen** ist das [Fact-Warehouse](../warehouse/README.md) in Supabase (Fakten mit Quelle, Annahmen mit Begründung). Das Wiki erklärt und belegt die Werte. Wer eine Annahme ändert, ändert sie dort und im [Annahmen-Register](reference/assumptions.md).
 - **Neue Erkenntnisse** kommen auf die passende Themenseite, nicht in ein neues Sammeldokument. Jede Seite beginnt mit ihren Kernaussagen.
 - **Fortschritt** steht nicht hier, sondern in [progress/](../progress/README.md).

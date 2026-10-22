@@ -1,81 +1,96 @@
 # Q1: Welcher Anteil der globalen Launch-Nachfrage ist von Andøya aus bedienbar?
 
+Stand: 22.10.2026, Basis geflogene Nachfrage 2025. Alle Zahlen im [Fact-Warehouse](../../warehouse/README.md), im Dashboard (Kapitel Q1) live nachrechenbar und per Klick auf jede Stufe bis zur Quelle aufgeschlüsselt.
+
 ## Antwort
 
-- Von Andøya aus kann Isar **9,3 %** der weltweit gestarteten Satelliten bedienen, aber nur **0,7 %** der Masse (Basis 2025, hochgerechnet auf 2027).
-- 2027 plant Isar 4 Starts, bei 80 % Erfolgsquote gelingen im Schnitt 3,2. Damit fliegt Isar ca. 32 Satelliten (1,3 t, ca. 38 Mio. €), das sind 6 % des bedienbaren Markts. **Engpass ist Isars Kapazität.**
-- 2030 mit 12 geplanten Starts (92 % Erfolgsquote, also 11 erfolgreiche): 109 Satelliten und 133 Mio. €. Das sind ca. 75 % der dedizierten Nachfrage, die Andøya erreicht (ca. 15 Ladungen pro Jahr). **Kurz nach 2030 wird Andøyas Orbit-Band selbst zum Engpass.** Wachstum braucht dann neue Orbits.
+- Von Andøya aus kann Isar **422 von 4.521** im Jahr 2025 gestarteten Satelliten bedienen (**9,3 %**), aber nur **0,66 %** der Masse (17,9 t von 2.694 t). Bedienbar sind kleine Satelliten in polare und sonnensynchrone Bahnen; die Masse steckt in Starlink und anderen gebundenen Konstellationen.
+- Davon gewinnt Isar heute ca. **30 Satelliten pro Jahr (1,25 t, ca. 36 Mio. €)**, das sind ca. 3 Spectrum-Ladungen.
+- **Engpass ist heute die Nachfrage nach dedizierten Starts, nicht Isars Kapazität:** 4 Starts × 80 % Erfolg × 700 kg × 60 % Füllgrad = 1,34 t Kapazität, gewollt sind 1,25 t. Isars voller Manifest kommt also aus Nachfrage, die in den Flugdaten 2025 noch nicht sichtbar ist (Verteidigung, ESA-Programme, Demo-Flüge).
 
-## TAM, SAM, SOM im Basisfall
+## TAM, SAM, SOM
 
-| Stufe | Definition | 2027 | 2030 |
+| Stufe | Definition | Satelliten | Masse | Umsatz |
+| --- | --- | --- | --- | --- |
+| TAM | alle Satelliten, die 2025 den Orbit erreicht haben | 4.521 | 2.694 t | 11,1 Mrd. € (12,4 Mrd. USD, SIA) |
+| SAM | offen für Isar, passt auf Spectrum, Orbit von Andøya erreichbar | 422 | 17,9 t | 120–319 Mio. € |
+| SOM | zahlt für einen dedizierten Start, innerhalb von Isars Kapazität | 30 | 1,25 t | 36 Mio. € |
+
+## Rechenweg: drei Eindämmungsfaktoren zum SAM, zwei zum SOM
+
+Satellit für Satellit über die GCAT-Tabelle (`satellites`), identisch in SQL (`v_q1_funnel`) und im Tool.
+
+| Schritt | Regel | bleibt (Satelliten / Masse) | Quelle |
 | --- | --- | --- | --- |
-| TAM | alle weltweit gestarteten Satelliten | 5.371 Satelliten, 3.200 t, 13,2 Mrd. € | 6.956 Satelliten, 4.144 t, 17,0 Mrd. € |
-| SAM | offen für einen europäischen Launcher, passt auf Spectrum, Orbit von Andøya erreichbar | 501 Satelliten, 21 t, 142–379 Mio. € | 649 Satelliten, 28 t, 184–491 Mio. € |
-| SOM | zahlt für einen dedizierten Start, innerhalb von Isars erfolgreicher Kapazität | 32 Satelliten, 1,3 t, 38 Mio. € (3,2 von 4 Starts erfolgreich) | 109 Satelliten, 4,6 t, 133 Mio. € (11 von 12 Starts erfolgreich) |
-
-Alle Werte sind im Dashboard (Kapitel Q1) live nachrechenbar.
-
-## Rechenweg
-
-Filter in dieser Reihenfolge, jeweils je Nachfragesegment (Kundengruppe × Orbit × Inklinationsband × Massenklasse):
-
-1. **TAM:** alle Satelliten, die 2025 den Orbit erreicht haben ([Nachfrage](../market/demand.md)), gewachsen mit 9 % p.a. bis zum Planungsjahr.
-2. **Offen für einen europäischen Launcher:** ohne Starlink, China, Russland, Kuiper/OneWeb und US-Regierung (NSPM-17); andere Regierungen zu 20 %.
-3. **Passt auf Spectrum:** Durchschnittsmasse des Segments höchstens 700 kg (SSO/polar) bzw. 1.000 kg (LEO).
-4. **Von Andøya erreichbar (= SAM):** Anteil des Inklinationsbands innerhalb von 90–110,6° ([Orbitphysik](../technology/orbital-mechanics.md)).
-5. **Zahlt für einen dedizierten Start:** Anteil steigt von 12,5 % (2027) auf 22,5 % (2030), der Rest fliegt Rideshare. Neue Raketen bekommen erst Demo-Nutzlasten (Planet).
-6. **Isar kann fliegen (= SOM):** begrenzt durch erfolgreiche Starts × 700 kg × 60 % Füllgrad. Erfolgreiche Starts = geplante Starts × Erfolgsquote (80 % 2027 bis 92 % 2030). Ein Fehlstart liefert nichts und bringt konservativ keinen Umsatz.
+| Start: TAM | alle 2025 gestarteten Satelliten | 4.521 / 2.694 t | GCAT; Gegenprobe McDowell 4.526, BryceTech 4.542, SIA 4.434 |
+| 1 Zugang | ohne Starlink, China, Russland, Kuiper/OneWeb, US-Regierung (NSPM-17); andere Regierungen zu 20 % | 506 / 124 t | GCAT, NSPM-17, Team |
+| 2 Nutzlast | Satellit höchstens 700 kg (SSO-Grenze von Spectrum) | 483 / 24 t | Isar, European Spaceflight |
+| 3 Orbit (= SAM) | Inklination 90–110,6° (Andøya, Flugrichtungen 280–360°) | 422 / 17,9 t | CAA Norway, Andøya Space |
+| 4 Penetration | 7 % des SAM zahlen für einen eigenen Start statt Rideshare | 29,5 / 1,25 t | GCAT, BryceTech 2026, Schingler |
+| 5 Kapazität (= SOM) | 4 Starts × 80 % Erfolg × 700 kg × 60 % Füllgrad = 1,34 t; greift heute nicht | 29,5 / 1,25 t | Payload, Schingler, Team |
 
 Umsatz:
 
-- **TAM:** SIA-Launch-Umsatz (12,4 Mrd. USD 2025), gewachsen wie die Nachfrage.
-- **SAM:** SAM-Masse × Preis pro kg, als Spanne von Rideshare (7.500 USD/kg) bis dediziert (20.000 USD/kg).
-- **SOM:** erfolgreiche Starts × 12 Mio. €.
+- **TAM:** SIA-Launch-Umsatz 2025, umgerechnet mit 1,12 USD/€.
+- **SAM:** SAM-Masse × Preis pro kg, als Spanne von Rideshare (7.500 USD/kg, SpaceX-Liste) bis dediziert (20.000 USD/kg).
+- **SOM:** Spectrum-Ladungen (SOM-Masse ÷ 700 kg × 60 %) × 12 Mio. €.
 
-Code: `dashboard/src/model/funnel.ts` (mit Tests).
+Wer im SAM steckt: Erdbeobachtung optisch 144, Tech-Demos 92, Kommunikation/IoT 80, Wissenschaft 28, Wetter 27, Radar 23. Größte Betreiber Planet 77, Spire 26, ASI 22, OroraTech und Kinéis je 10.
 
-## Annahmen
+## Penetration in drei Punkten (warum 7 %)
 
-Alle Annahmen mit Spanne und Quelle: [Annahmen-Register](../reference/assumptions.md). Die wichtigsten Änderungen gegenüber Benedikts erstem Entwurf:
+1. **Gemessen:** Heute fliegen ca. 87 % des SAM auf Falcon 9 (Rideshare). Nur 6,7 % der Satelliten (4,2 % der Masse) nehmen einen Kleinträger, fast alle Electron (GCAT).
+2. **Vergleich:** Weltweit flogen 2025 17 % der Nicht-Breitband-Kleinsatelliten mit Kleinträgern, im Westen ca. 10–14 % (BryceTech 2026).
+3. **Neue Raketen bekommen erst Demo-Nutzlasten:** Versicherung für Isars nächste Mission ca. 25 % (Schingler). Aufwärts wirken der Rideshare-Stopp nach 2028 (unbestätigt) und Verteidigung.
 
-| Annahme | Entwurf | Jetzt | Grund |
-| --- | --- | --- | --- |
-| TAM-Umsatz | 7,5 Mrd. USD (2024, „ohne Starlink“) | 12,4 Mrd. USD (2025, Starlink enthalten) | SIA-Report 2026; 7,5 war veraltet und falsch abgegrenzt |
-| Anteil polar/SSO | 70 % (geschätzt) | gemessen je Segment (offener Markt 56 % 2024, 76 % 2025) | GCAT-Auswertung |
-| Premium-Anteil | 20–30 % | Hochlauf 12,5 % (2027) bis 22,5 % (2030) | heute 17–23 %, im Westen 10–14 %; laut Planet bekommen neue Raketen erst Demo-Nutzlasten |
-| Erfolgsquote | – | 80 % (2027) bis 92 % (2030) | Versicherung für Isars nächste Mission ca. 25 %; Branchenschnitt 5–8 % Fehlstarts |
-| Wachstum | 7 % | 9 % | Novaspace-implizit |
-| Kadenz 2027–30 | 3 / 6 / 10 / 15 | 4 / 7 / 10 / 12 | Isar: 4 in 2027, ca. doppelt 2028 |
-| Füllgrad | 70 % | 60 % | keine Daten; einzelne Kunden füllen weniger |
-| Rideshare-Preis | 6.500 USD/kg | 7.500 USD/kg | SpaceX-Liste 2027 |
-| Dedizierter Preis | 15.000 USD/kg | 20.000 USD/kg | passt zu 12 Mio. € für 700 kg |
+## Hebel und feste Parameter
+
+Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahmen-Register](../reference/assumptions.md).
+
+- **TAM:** Basisjahr (2024 / 2025)
+- **SAM:** Startplätze (Andøya, + Nova Scotia, + Kourou), Nutzlastgrenze (700–1.000 kg), Anteil anderer Regierungen (0–100 %)
+- **SOM:** Penetration (4–15 %), Starts pro Jahr (1–8), Erfolgsquote (75–92 %)
+- **Fest:** Füllgrad 60 %, Preis 12 Mio. € pro Start, Rideshare 7.500 USD/kg, dediziert 20.000 USD/kg, 1,12 USD/€, US-Regierung 0 %
 
 ## Sensitivitäten
 
-- **Basisjahr:** Mit Nachfrage 2024 statt 2025 fällt der SAM deutlich (Andøya-Band im offenen Markt 56 % statt 76 %). Im Dashboard umschaltbar.
-- **Kadenz und Erfolgsquote** bestimmen den SOM bis 2030, weil die dedizierte Nachfrage die erfolgreichen Starts übersteigt. Jeder Prozentpunkt Erfolgsquote ist 2027 ca. 0,5 Mio. € Umsatz wert.
-- **Premium-Anteil** wirkt erst, wenn die Kapazität aufholt (nach 2030), oder bei mehr Starts.
-- **Spectrum-Preis** skaliert den SOM-Umsatz linear (10–15 Mio. € ergeben 32–48 Mio. € 2027).
+| Szenario | SAM | SOM | Engpass |
+| --- | --- | --- | --- |
+| Basis | 422 Sat. / 17,9 t | 30 Sat. / 1,25 t / 36 Mio. € | Nachfrage |
+| Basisjahr 2024 | 187 / 8,7 t | 13 / 0,61 t / 17 Mio. € | Nachfrage |
+| + Nova Scotia | 468 / 21,6 t | 29 / 1,34 t / 38 Mio. € | Kapazität |
+| + Nova Scotia + Kourou | 483 / 24,2 t | 27 / 1,34 t / 38 Mio. € | Kapazität |
+| Penetration 4 % | 422 / 17,9 t | 17 / 0,72 t / 20 Mio. € | Nachfrage |
+| Penetration 15 % | 422 / 17,9 t | 32 / 1,34 t / 38 Mio. € | Kapazität |
+| 15 % Penetration, 8 Starts, 92 % Erfolg | 422 / 17,9 t | 63 / 2,68 t / 77 Mio. € | Nachfrage |
 
-## Challenge-Punkte
+- Das Basisjahr wirkt am stärksten: 2024 war der offene Markt im Andøya-Band nur halb so groß. Die Nachfrage schwankt stark von Jahr zu Jahr.
+- Mehr Starts allein bringen nichts, solange die Penetration bei 7 % liegt. Wachstum kommt über Penetration (Zuverlässigkeit, Rideshare-Stopp, Verteidigung) und neue Orbits.
+- Die Nutzlastgrenze (700 → 1.000 kg) vergrößert den SAM kaum (+0,1 t), senkt aber den SOM-Umsatz, weil dieselbe Masse in weniger Ladungen passt.
 
-- **„Nachfrage für ca. 200 Fahrzeuge 2028“ (Isars CCO)** passt nicht zu den Flugdaten. Im ganzen Andøya-SAM stecken ca. 50–66 Spectrum-Ladungen, davon ca. 10–13 dediziert. Wie definiert Isar Nachfrage?
+## Ausblick für spätere Fragen
+
+- Isar plant 4 Starts 2027 und ca. 8 2028 (Payload); der Manifest gilt bis 2028 als ausgebucht (Munich Startup). Bekannte Verträge: Planet, ElevationSpace, Astroscale (2), Norwegian Space Agency, SEOPS (6), ESA/EU (3), R-Space.
+- **Andøyas Lizenz von 30 Starts pro Jahr gilt für den ganzen Standort.** Ein zweites Pad steht in Norwegens Budget 2027, weitere Betreiber wollen ab 2027/28 kommen. Bei 8 Starts nutzt Isar schon ein Viertel der Slots: in Q3/Q4 die Kapazitätsgrenze mit Wettbewerbern am Standort simulieren.
+- Marktwachstum 9 % p.a. ist nur als Ausblick hinterlegt, nicht im heutigen SOM.
+
+## Challenge-Punkte fürs Management
+
+- **„Nachfrage für ca. 200 Fahrzeuge 2028“ (Isars CCO)** passt nicht zu den Flugdaten: Der ganze Andøya-SAM 2025 füllt ca. 43 Spectrum-Ladungen, davon ca. 3 dediziert. Wie definiert Isar Nachfrage?
 - **60 % Verteidigung:** Welche Orbits braucht dieser Kunde? Radar-Satelliten fliegen oft auf 37–45°, das geht von Andøya nicht.
-- **Rideshare-Stopp nach 2028** ist unbestätigt. Wenn er kommt, steigt der Premium-Anteil und die SOM-Grenze verschiebt sich.
-- **Ab ca. 2030 reicht Andøya nicht mehr.** Neue Standorte müssen neue Orbits bringen, nicht nur mehr Pads.
+- **Woher kommt der volle Manifest,** wenn die geflogene dedizierte Nachfrage im Band nur ca. 3 Ladungen pro Jahr trägt? Welcher Anteil ist Demo, ESA-Förderung, Verteidigung?
+- **Rideshare-Stopp nach 2028** ist unbestätigt. Wenn er kommt, steigt die Penetration und Kapazität wird zum Engpass.
 
 ## Validierung durch den Experten
 
 Robbie Schingler (Planet), 21.10.2026, Details auf der [Expertenseite](../expert/robbie-schingler.md):
 
 - **Bestätigt:** Kunden wählen nach Orbit, Vorlaufzeit, Preis und Zuverlässigkeit, in dieser Reihenfolge. Die Erreichbarkeit als harter Filter im SAM ist richtig. Erdbeobachtung bleibt im SSO.
-- **Umgesetzt:** Unerprobte Raketen bekommen nur Demo-Nutzlasten. Der Premium-Anteil läuft deshalb von 12,5 % (2027) auf 22,5 % (2030) hoch.
-- **Jetzt im Modell:** Zuverlässigkeit als Erfolgsquote pro Start (80 % 2027 bis 92 % 2030). Die Versicherung für Isars nächste Mission kostet ca. 25 %, der Branchenschnitt liegt bei 5–8 % Fehlstarts. Nicht modelliert ist, dass ein Fehlstart das Pad zusätzlich für mehr als ein Jahr blockiert.
-- **Preis:** Er ist erst Kriterium Nr. 3, und der Markt ist wegen SpaceX' Fast-Monopol wieder teuer. Die 12 Mio. € pro Start bleiben plausibel.
+- **Umgesetzt:** Unerprobte Raketen bekommen nur Demo-Nutzlasten (Penetration konservativ 7 %); Zuverlässigkeit als Erfolgsquote pro Start (80 %).
+- **Preis:** erst Kriterium Nr. 3, Markt wegen SpaceX' Fast-Monopol wieder teuer. 12 Mio. € pro Start bleiben plausibel.
 
 ## Offene Punkte
 
 - Flug 2 unabhängig bestätigen ([Spectrum](../company/spectrum.md))
 - Spectrum-Preis beim Management erfragen
-- Premium-Anteil mit dem Experten validieren ([Fragen](../expert/robbie-schingler.md))
+- Quelle für „weitere Betreiber ab 2027/28 in Andøya“ nachtragen (bisher Teamrecherche)

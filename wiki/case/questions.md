@@ -5,7 +5,7 @@ Die Fragen bauen bewusst aufeinander auf und werden einzeln ausgegeben.
 | Nr. | Frage | Zeitfenster | Status | Antwort |
 | --- | --- | --- | --- | --- |
 | RQ1 | Today, Andøya is Isar's only operational launch site. What share of global launch demand can Isar serve from there? | 21.10. 13:45–15:45 | beantwortet | [Q1: Reichweite Andøya](../analysis/q1-andoya-reach.md) |
-| RQ2 | Which business areas should Isar pursue in the future, and which should it deliberately not pursue? | 21.10. 16:15–19:45 | in Arbeit | [Q2: Geschäftsfelder](../analysis/q2-business-areas.md) |
+| RQ2 | Which business areas should Isar pursue in the future, and which should it deliberately not pursue? | 21.10. 16:15–19:45 | beantwortet (Strategie ASCENT) | [Q2: Geschäftsfelder](../analysis/q2-business-areas.md) |
 | RQ3 | noch nicht ausgegeben | 22.10. 09:30–12:00 | offen | – |
 | RQ4 | noch nicht ausgegeben | 22.10. 12:45–14:45 | offen | – |
 

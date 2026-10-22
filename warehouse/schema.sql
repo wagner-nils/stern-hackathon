@@ -5,7 +5,7 @@
 -- so tables are recreated from this file rather than migrated. Other tables in the database are not touched.
 
 drop view if exists v_facts, v_q1_funnel, v_sam_launchers, v_launch_site_overview, v_launch_site_activity, v_vehicle_activity,
-  v_launches_by_provider, v_launches_by_country, v_launches;
+  v_launches_by_provider, v_launches_by_country, v_launches, v_q2_launch_gap;
 drop table if exists launch_site_vehicles, launches, satellites, manifest, vehicles, launch_sites,
   assumptions, facts, metrics, sources cascade;
 
@@ -56,7 +56,7 @@ create table if not exists assumptions (
   id text primary key,
   name text not null,
   question text not null,
-  tier text not null check (tier in ('TAM', 'SAM', 'SOM', 'fixed', 'outlook')),
+  tier text not null check (tier in ('TAM', 'SAM', 'SOM', 'fixed', 'outlook', 'trigger')),
   value numeric not null,
   low numeric,
   high numeric,
@@ -411,6 +411,45 @@ select provider_country as country_code, launch_year as year,
        string_agg(distinct provider, ', ' order by provider) as provider_names
 from v_launches
 group by provider_country, launch_year;
+
+-- RQ2: how many of Isar's planned launches the demand visible in flight data fills. The 2028 plan is a sourced
+-- fact, the 2030 plan a team assumption; everything else comes from the Q1 funnel and the Q2 assumptions.
+create or replace view v_q2_launch_gap as
+with p as (
+  select
+    max(value) filter (where id = 'tam_base_year') as base_year,
+    max(value) filter (where id = 'som_penetration') as penetration,
+    max(value) filter (where id = 'outlook_market_growth') as growth,
+    max(value) filter (where id = 'q2_load_kg') as load_kg,
+    max(value) filter (where id = 'q2_success_rate_2028') as success_2028,
+    max(value) filter (where id = 'q2_success_rate_2030') as success_2030,
+    max(value) filter (where id = 'q2_launches_planned_2030') as planned_2030
+  from assumptions
+),
+sam as (select mass_kg from v_q1_funnel where step = 4),
+plan as (
+  select 2028 as year,
+         (select value from facts
+          where metric_id = 'launches_planned' and year = 2028 and entity = 'Isar Aerospace' and is_preferred) as planned,
+         'fact (Payload)' as planned_basis,
+         p.success_2028 as success
+  from p
+  union all
+  select 2030, p.planned_2030, 'team assumption', p.success_2030 from p
+),
+calc as (
+  select plan.*, sam.mass_kg * power(1 + p.growth, plan.year - p.base_year) * p.penetration / p.load_kg as loads,
+         sam.mass_kg * power(1 + p.growth, plan.year - p.base_year) as market_kg
+  from plan, p, sam
+)
+select year, planned, planned_basis,
+       round(market_kg / 1000, 1) as market_t,
+       round(loads, 2) as loads,
+       round(loads / success, 1) as launches_filled,
+       round(loads / success / planned, 2) as share_filled,
+       round(planned - loads / success, 1) as launches_without_visible_demand
+from calc
+order by year;
 
 -- Read-only access for a future anon key; the service role and the database owner bypass RLS.
 do $$

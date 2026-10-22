@@ -77,7 +77,7 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 ## Challenge-Punkte fürs Management
 
 - **„Nachfrage für ca. 200 Fahrzeuge 2028“ (Isars CCO)** passt nicht zu den Flugdaten: Der ganze Andøya-SAM 2025 füllt ca. 43 Spectrum-Ladungen, davon ca. 3 dediziert. Wie definiert Isar Nachfrage?
-- **60 % Verteidigung:** Welche Orbits braucht dieser Kunde? Radar-Satelliten fliegen oft auf 37–45°, das geht von Andøya nicht.
+- **60 % Verteidigung:** Laut Isar (Juli 2026) sind das Anfragen, kein Umsatz. Welche Orbits braucht dieser Kunde? Europäische Verteidigungs-Radarsatelliten flogen 2025 in Andøyas Band (alle per Rideshare); 37–45° nutzen vor allem asiatische Betreiber. Offen ist die Kommunikationsschicht (SATCOMBw 4, IRIS²).
 - **Woher kommt der volle Manifest,** wenn die geflogene dedizierte Nachfrage im Band nur ca. 3 Ladungen pro Jahr trägt? Welcher Anteil ist Demo, ESA-Förderung, Verteidigung?
 - **Rideshare-Stopp nach 2028** ist unbestätigt. Wenn er kommt, steigt die Penetration und Kapazität wird zum Engpass.
 

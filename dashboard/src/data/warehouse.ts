@@ -41,7 +41,7 @@ export interface Assumption {
   id: string;
   name: string;
   question: string;
-  tier: Tier | "fixed" | "outlook";
+  tier: Tier | "fixed" | "outlook" | "trigger";
   value: number;
   low: number | null;
   high: number | null;

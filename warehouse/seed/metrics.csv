@@ -1,8 +1,11 @@
 id,name,unit,definition
 backlog,Order backlog,USD,Contracted but not yet recognised revenue at year end
+data_contract_value,Value of a satellite data contract,EUR,Contract value of a government contract for data or services delivered from satellites
 defence_share_of_demand,Defence share of demand,share,Share of a company's demand that comes from defence customers
 factory_capacity,Factory capacity target,vehicles per year,Vehicles a factory is designed to build per year
 funding_round,Funding round,EUR,Size of a funding round
+launch_contract_flights,Launches in a multi-launch contract,launches,Number of launches in a block buy
+launch_contract_value,Value of a multi-launch contract,USD,Total value of a block buy of launches
 launch_failure_rate,Launch failure rate,share,Share of launches that fail
 launch_insurance_rate,Launch insurance rate,share,Insurance premium as share of the insured value
 launch_revenue,Launch services revenue,USD,Revenue of commercially procured launch services in a calendar year
@@ -26,6 +29,7 @@ site_lease_cost,Site lease cost,USD,Total contracted payments for a launch site
 site_night_launch_cap,Night launch cap,launches per year,Maximum launches between 23:00 and 07:00 per year
 smallsat_small_launcher_share,Smallsats on small launchers,share,Share of smallsats launched on micro or small launchers instead of rideshare or large rockets
 smallsats_non_broadband,Smallsats outside broadband constellations,satellites,Smallsats launched excluding LEO broadband constellations
+space_security_budget,Planned public spending on space security,EUR,Cumulative public budget announced for space projects and security in space up to the year given
 sso_launches,Launches to sun-synchronous orbit,launches,Launches whose primary orbit is sun-synchronous
 sso_launches_company,SSO launches of a launcher,launches,One company's launches to sun-synchronous orbit in a calendar year
 successful_flights,Successful orbital flights,flights,Cumulative flights that reached orbit

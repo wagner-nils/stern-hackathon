@@ -94,6 +94,7 @@ def main():
         _, snapshot["vehicleActivity"] = fetch(conn, "select * from v_vehicle_activity order by vehicle_id, year")
         _, snapshot["launchesByProvider"] = fetch(conn, "select * from v_launches_by_provider order by year, launches desc")
         _, snapshot["launchesByCountry"] = fetch(conn, "select * from v_launches_by_country order by year, launches desc")
+        _, snapshot["q2LaunchGap"] = fetch(conn, "select * from v_q2_launch_gap")
         print("views         Q1 funnel, SAM launchers, site overview and activity, vehicle activity, launches by provider and country -> snapshot")
 
     SNAPSHOT.write_text(json.dumps(snapshot, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

@@ -23,7 +23,7 @@
 | **MEO** | Mittlerer Erdorbit (2.000 km bis GEO), z. B. Navigationssatelliten. |
 | **NSPM-17** | US-Richtlinie (2026): US-Regierungsnutzlasten fliegen grundsätzlich mit US-Raketen. |
 | **Rideshare** | Mitflug vieler Satelliten auf einer großen Rakete (z. B. SpaceX Transporter), billig pro kg, aber ohne Wahl von Orbit und Termin. |
-| **SAR** | Synthetic Aperture Radar, Radar-Erdbeobachtung; fliegt oft auf 37–45° Inklination. |
+| **SAR** | Synthetic Aperture Radar, Radar-Erdbeobachtung; asiatische Betreiber oft auf 37–45°, europäische Verteidigungs-SAR meist sonnensynchron. |
 | **Smallsat** | Kleinsatellit; BryceTech zählt bis 1.200 kg, Novaspace bis 500 kg. |
 | **SSO** | Sonnensynchroner Orbit, ca. 97–99° Inklination; der Satellit überfliegt jeden Ort zur gleichen Ortszeit. Standard für Erdbeobachtung. |
 | **TAM / SAM / SOM** | Total / Serviceable / Obtainable Market: Gesamtmarkt, für uns bedienbarer Markt, realistisch gewinnbarer Anteil. |

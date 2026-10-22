@@ -11,7 +11,7 @@
 - Isar: 60 % der Nachfrage aus Verteidigung (Juni 2026), laut CEO später bis zu 70 % (Sekundärquelle).
 - Deutschland: 35 Mrd. € für Weltraumsicherheit bis 2030, inklusive schnell abrufbarer Starts (Verteidigungsminister, 25.09.2025). Die Bundeswehr prüft einen eigenen Startplatz.
 - Novaspace: Verteidigung macht 48 % des Werts im Satellitenbau und -start bis 2034 aus.
-- Offene Frage: Welche Orbits braucht Verteidigung? Radar-Aufklärung fliegt oft auf 37–45°, das ist von Andøya nicht erreichbar.
+- Welche Orbits braucht Verteidigung? Europäische Radar-Aufklärung flog 2025 in Andøyas Band (sonnensynchron, per Rideshare); 37–45° nutzen vor allem asiatische Betreiber (iQPS, Synspective). Offen ist die Kommunikationsschicht (SATCOMBw 4, IRIS²), siehe [Q2](../analysis/q2-business-areas.md).
 - Expertengespräch (Robbie Schingler, Planet, 21.10.2026):
   - Planet und Isar bieten der Bundesregierung gemeinsam schnelle Wiederherstellung an: 10 Satelliten an einem Tag bauen, am nächsten starten, einen Verlust binnen 2 Tagen ersetzen.
   - Seine Vision sind souveräne Netze statt US-Hegemonie, etwa baltische Staaten mit je 10 Satelliten über der Arktis.

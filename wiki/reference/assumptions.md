@@ -32,6 +32,21 @@ Höchstens drei pro Stufe, konservativ gewählt.
 | Annahme | Wert | Spanne | Konfidenz | Owner | Quelle |
 | --- | --- | --- | --- | --- | --- |
 | Marktwachstum p.a. | 9 % | 5–14 % | mittel | Benedikt | Novaspace 2025, BryceTech 2026 |
+| Spectrum-Starts 2030 (Q2) | 12 | 8–15 | niedrig | Luca | Team; Isar veröffentlicht nur 4 (2027) und ca. 8 (2028) |
+| Erfolgsquote 2028 / 2030 (Q2) | 85 % / 92 % | 80–92 % / 85–95 % | mittel | Nils | Schingler, Team |
+| Nutzlast pro Ladung (Q2) | 420 kg | 280–560 kg | niedrig | Nils | 700 kg SSO × 60 % Füllgrad, von `load.py` geprüft |
+
+## Auslöser (Q2, Strategie ASCENT)
+
+Schwellen, ab denen ein „später“-Feld in Frage kommt. Details: [Q2](../analysis/q2-business-areas.md).
+
+| Auslöser | Wert | Konfidenz | Owner | Quelle |
+| --- | --- | --- | --- | --- |
+| Starts pro Jahr vor einer Mittelklasse-Rakete | 10 | niedrig | Nils | Team |
+| Erfolgsquote vor einer Mittelklasse-Rakete | 90 % | niedrig | Nils | Team, Schingler |
+| Jährliche Gebühr Nova Scotia, die Ankerkunden decken müssen | 13,4 Mio. € | mittel | Luca | Isar (3,75 Mio. USD pro Quartal), EZB |
+| Entscheidungsjahr Nova Scotia | 2030 | mittel | Luca | Isar (30 Monate Gebührenbefreiung ab Ende des ersten Vertragsjahres) |
+| Mindest-Blockkauf Hyperschall-Tests | 20 Flüge | niedrig | Benedikt | Rocket Lab HASTE (März 2026), Team |
 
 ## Prüfung durch den Experten
 

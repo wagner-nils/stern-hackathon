@@ -61,6 +61,10 @@ def main():
              "select count(*) from assumptions a, unnest(a.source_ids) sid where sid not in (select id from sources)", True),
             ("launch sites with unknown source",
              "select count(*) from launch_sites l, unnest(l.source_ids) sid where sid not in (select id from sources)", True),
+            # The RQ2 load size is derived; it must stay equal to Spectrum's SSO payload times the fill rate.
+            ("Q2 load size out of step with payload × fill rate",
+             "select count(*) from assumptions a, assumptions f, vehicles v where a.id = 'q2_load_kg' and f.id = 'fixed_fill_rate'"
+             " and v.id = 'spectrum' and abs(a.value - v.payload_sso_kg * f.value) > 0.5", True),
             # A code without launches is fine for a quiet site; it is listed to catch typos.
             ("GCAT site codes without launches since 2024",
              "select count(*) from launch_sites l, unnest(l.gcat_codes) c where not exists (select 1 from launches where site_code = c)", False),

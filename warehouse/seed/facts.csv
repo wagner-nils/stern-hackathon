@@ -1,8 +1,12 @@
 metric_id,year,scope,entity,value,source_id,is_preferred,confidence,note
 backlog,2025,company,Rocket Lab,1847000000,rocketlab-10k-2025,true,high,Of which launch 475.6 M USD
-defence_share_of_demand,2026,company,Isar Aerospace,0.6,isar-series-d,true,high,Was mostly civil a year earlier
+data_contract_value,2025,company,Rheinmetall ICEYE,1700000000,iceye-spock1,true,high,"SPOCK 1: SAR data as a service for BAAINBw, end 2025 to end 2030 with options; satellites owned by the joint venture, so the launcher choice lies with the operator"
+defence_share_of_demand,2026,company,Isar Aerospace,0.6,isar-series-d,true,high,"Was mostly civil a year earlier. The July 2026 release (isar-pistorius-visit) states it as share of inbound requests, not revenue"
+defence_share_of_demand,2026,company,Isar Aerospace,0.5,isar-pistorius-visit,false,high,"'More than half of all inbound requests' in the past twelve months: a share of requests, not of revenue; lower bound"
 factory_capacity,2030,company,Isar Aerospace,40,isar-mission-updates,true,medium,Design capacity of the Parsdorf factory; not yet reached
 funding_round,2026,company,Isar Aerospace,270000000,isar-series-d,true,high,Series D; plus a 150 M EUR convertible in 2025
+launch_contract_flights,2026,company,Rocket Lab,20,rocketlab-haste-2026,true,high,Over four years
+launch_contract_value,2026,company,Rocket Lab,190000000,rocketlab-haste-2026,true,high,"HASTE hypersonic test flights, about 9.5 M USD per flight; largest launch contract in Rocket Lab's history"
 launch_failure_rate,2026,global,,0.07,expert-schingler,true,medium,Industry 5–8%; Planet 3 of 44 launches
 launch_insurance_rate,2026,company,Isar Aerospace,0.25,expert-schingler,true,medium,For Isar's next mission; market reads it as 1-in-4 failure odds
 launch_revenue,2025,global,,12400000000,sia-2026,true,high,Commercially procured launches incl. captive Starlink launches; +33%
@@ -53,6 +57,7 @@ smallsat_small_launcher_share,2023,non-broadband smallsats,,0.18,brycetech-2026,
 smallsats_non_broadband,2025,global,,955,brycetech-2026,true,medium,
 smallsats_non_broadband,2024,global,,729,brycetech-2026,true,medium,
 smallsats_non_broadband,2023,global,,746,brycetech-2026,true,medium,
+space_security_budget,2030,country,Germany,35000000000,esut-space-security,true,medium,"Cumulative to 2030, announced Sep 2025 by Defence Minister Pistorius; the share for launches is not specified"
 sso_launches,2025,global,,72,mcdowell-2025,true,high,Of 321 launches that reached orbit
 sso_launches,2024,global,,59,mcdowell-2024,true,high,Of 258 launches that reached orbit
 sso_launches_company,2025,company,Rocket Lab,6,mcdowell-2025,true,high,Customers moving to 37–45° radar orbits

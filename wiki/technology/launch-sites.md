@@ -7,6 +7,25 @@
 - Neue Standorte lohnen sich durch **neue Orbits** (Nova Scotia, Kourou, Azoren). Weitere nördliche Standorte (SaxaVord, Esrange, Sutherland, GOSA) bringen nur Kapazität oder Redundanz.
 - US-Standorte sind für Isar praktisch keine Option.
 
+## Globales Startplatz-Register
+
+Seit 22.10.2026 im [Fact-Warehouse](../../warehouse/README.md): 56 Startplätze weltweit (31 operativ, 7 im Bau, 10 geplant, 8 inaktiv), 104 Raketen, 147 Zeilen „wer startet was von wo“, 201 Quellen. Im Tool: Kapitel „Spaceports“ (Weltkarte, Detailkarte pro Standort, Filter „offen für ausländische Anbieter“). In Supabase: `v_launch_site_overview` (eine Zeile pro Standort), `launch_site_vehicles`, `launches`.
+
+- **Spalten:** Betreiber, Eigentum, Koordinaten, erreichbares Inklinationsband, Flugrichtungen, Status, erster Orbitalstart, Pads, größte Raketenklasse, Polar/SSO direkt, Zugang (nur staatlich, nationale Firmen, international offen), Startgrenze pro Jahr mit Grundlage, Ausbaupläne, Bezug zu Isar, Konfidenz, Quellen.
+- **Aktivität aus GCAT, nicht aus Recherche:** Starts, Fehlstarts, Nutzlast und Zielorbit pro Standort und Jahr (838 Starts seit 2024). 2025: 330 Orbitalstarts, davon Cape Canaveral 82, Vandenberg 66, Jiuquan 34, Kennedy 27.
+- **Offen für ausländische Anbieter** sind 15 Standorte, operativ davon nur Andøya, Kourou, SaxaVord (noch ohne Orbitalstart) und Alcântara; im Bau oder geplant u. a. Nova Scotia, Esrange, Hokkaido, Santa Maria, Etlaq (Oman).
+- **Startgrenzen** sind selten veröffentlicht: Andøya 30 (ganzer Standort), SaxaVord 30, Nova Scotia 40 (Ziel 2029), Vandenberg 100 (nur SpaceX), Mahia 120, Hainan Commercial über 60, Starbase 25.
+- **Inklinationsbänder** sind teils berechnet (Azimut und Breite) oder aus geflogenen Bahnen abgeleitet; die Notiz jeder Zeile sagt, wie. Die drei Q1-Standorte behalten ihre kuratierten Bänder.
+
+Neu aus der Recherche (22.10.2026), relevant für spätere Fragen:
+
+- **Andøya:** Spectrum-Flug 2 hat am 5.9.2026 den Orbit erreicht (Flug 1 scheiterte am 30.3.2025). Das einzige Orbital-Pad ist Isar-exklusiv; öffentlich hat kein weiterer Orbital-Anbieter unterschrieben (RFA-Vertrag von 2020 ruht, Astrobotic Xodiac ist nicht orbital). Die Team-Info „weitere Betreiber ab 2027/28“ ist damit öffentlich nicht belegt.
+- **Kourou, Diamant:** CNES hat im Juni 2026 Sirius Space statt MaiaSpace ausgewählt; Preisträger sind jetzt Isar, Latitude, PLD, RFA und Sirius, ausgelegt auf 40 Starts pro Jahr gemeinsam. MaiaSpace zieht auf das frühere Soyuz-Pad (erster Start H2 2027). Für Isars Pad gibt es kein Baudatum.
+- **Esrange:** noch kein Orbitalstart; Firefly Alpha ist Ankermieter (2 Starts ab frühestens 2028). SSO braucht eine Flugbahn Richtung Tromsø, also Norwegens Zustimmung. Isar hat dort seit Feb. 2026 einen zweiten Teststandort.
+- **SaxaVord:** Lizenz für 30 Starts pro Jahr, RFA One für 10; RFA One ist nach einem Problem Ende Juli 2026 weiterhin nicht geflogen.
+- **Sutherland:** Orbex hat im Feb. 2026 aufgegeben, die Agentur HIE hat die Anlagen übernommen.
+- **USA:** Pro-Pad-Grenzen statt Standortgrenzen (Cape Canaveral SLC-40: 120 Falcon 9 pro Jahr; Kennedy LC-39A: 44 Starship pro Jahr).
+
 ## Was ein Startplatz braucht
 
 | Kriterium | Warum es zählt | Andøya |

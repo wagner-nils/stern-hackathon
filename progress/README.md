@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 07:45**: Globales Startplatz-Register im Warehouse und als Tool-Kapitel „Spaceports“: 56 Standorte, 104 Raketen, 147 Zeilen „wer startet was von wo“, 201 Quellen, Aktivität aus 838 GCAT-Starts; Recherche in vier Regionen parallel. Neu belegt: Spectrum-Flug 2 im Orbit (5.9.2026), Kourou-Diamant mit Sirius statt MaiaSpace, in Andøya öffentlich kein weiterer Orbital-Anbieter. 15 Tests grün.
+
 - **22.10. 07:32**: Payload-Regler entfernt: Spectrum-Nutzlast (700 kg SSO, 1.000 kg LEO) ist jetzt ein fester Fahrzeugfakt aus `vehicles`, Tool und SQL-View lesen ihn dort; Basiszahlen unverändert (SAM 422 / 17,9 t, SOM 30 / 1,25 t / 36 Mio. €), 15 Tests grün. Spaceports-Tab stürzt mit älterem Snapshot nicht mehr ab.
 
 - **22.10. 07:25**: Warehouse auf `main` und `phase/q3` gemergt. In Arbeit: globales Startplatz-Register (Schema für `launch_sites`, `vehicles`, `launch_site_vehicles`, neue GCAT-Tabelle `launches` mit 838 Starts seit 2024, Views pro Standort und Rakete) und Dashboard-Tab „Spaceports“ mit Weltkarte; die Recherche-Daten folgen, bis dahin ist das Register leer und Supabase unverändert. 15 Tests grün.

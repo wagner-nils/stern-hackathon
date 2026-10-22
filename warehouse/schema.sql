@@ -75,7 +75,7 @@ create table if not exists launch_sites (
   country_code text,
   operator text,
   ownership text check (ownership in ('government', 'military', 'commercial', 'public-private')),
-  latitude numeric not null,
+  latitude numeric,
   longitude numeric,
   inclination_min numeric,
   inclination_max numeric,
@@ -97,6 +97,7 @@ create table if not exists launch_sites (
   confidence text not null default 'medium' check (confidence in ('high', 'medium', 'low'))
 );
 comment on table launch_sites is 'Global spaceport register. The orbit band a site reaches decides which satellites a launcher can serve from it.';
+comment on column launch_sites.latitude is 'Main orbital pad; empty for planned sites without published coordinates.';
 comment on column launch_sites.inclination_min is 'Lowest inclination reachable by direct ascent within the allowed launch azimuths.';
 comment on column launch_sites.access is 'sovereign: only the state''s own launchers; national-commercial: domestic companies; international: open to foreign providers.';
 comment on column launch_sites.max_launches_per_year is 'Licensed or officially planned cap for the whole site; cap_basis says which.';

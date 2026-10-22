@@ -32,9 +32,13 @@ export type MapSite = LaunchSite & { activity: SiteOverview | undefined };
  * inclination a site reaches directly. Dot area follows launches in 2025; hollow dots are not operational yet.
  */
 export function SiteMap({ sites, selected, onSelect }: { sites: MapSite[]; selected: string; onSelect: (id: string) => void }) {
-  const placed = sites.filter((s) => s.longitude != null);
+  const placed = sites.filter((s) => s.longitude != null && s.latitude != null);
   const radius = (s: MapSite) => 4 + Math.sqrt(s.activity?.launches_2025 ?? 0) * 1.7;
-  const labelled = (s: MapSite) => s.id === selected || (s.activity?.launches_2025 ?? 0) >= 15;
+  const launches = (s: MapSite) => s.activity?.launches_2025 ?? 0;
+  // Busy sites get a name, unless a busier one sits within a few degrees (Cape Canaveral and Kennedy share a coast).
+  const near = (a: MapSite, b: MapSite) => Math.abs(a.latitude! - b.latitude!) < 4 && Math.abs(a.longitude! - b.longitude!) < 4;
+  const labelled = (s: MapSite) =>
+    s.id === selected || (launches(s) >= 15 && !placed.some((o) => o !== s && near(o, s) && launches(o) > launches(s) && o.id !== selected));
   // Draw the busiest first so small sites stay clickable on top.
   const order = [...placed].sort((a, b) => radius(b) - radius(a));
 
@@ -59,7 +63,7 @@ export function SiteMap({ sites, selected, onSelect }: { sites: MapSite[]; selec
             className={`sitemap__site sitemap__site--${s.access ?? "unknown"}${s.status === "operational" ? "" : " is-coming"}${
               s.id === selected ? " is-selected" : ""
             }`}
-            transform={`translate(${x(s.longitude!)} ${y(s.latitude)})`}
+            transform={`translate(${x(s.longitude!)} ${y(s.latitude!)})`}
             onClick={() => onSelect(s.id)}
           >
             <title>{`${s.name}: ${fmtInt(s.activity?.launches_2025 ?? 0)} orbital launches in 2025 · ${s.status}`}</title>
@@ -67,8 +71,15 @@ export function SiteMap({ sites, selected, onSelect }: { sites: MapSite[]; selec
           </g>
         ))}
         {placed.filter(labelled).map((s) => (
-          <text key={s.id} x={x(s.longitude!) + radius(s) + 4} y={y(s.latitude) + 4} className="sitemap__label">
-            {s.name.replace(/ (Space Force Station|Space Force Base|Space Center|Satellite Launch Center|Cosmodrome)$/, "")}
+          // Labels near the right edge go to the left of their dot.
+          <text
+            key={s.id}
+            x={x(s.longitude!) > W * 0.82 ? x(s.longitude!) - radius(s) - 4 : x(s.longitude!) + radius(s) + 4}
+            y={y(s.latitude!) + 4}
+            textAnchor={x(s.longitude!) > W * 0.82 ? "end" : "start"}
+            className="sitemap__label"
+          >
+            {s.name.replace(/ \(.*\)$/, "").replace(/ (Space Force Station|Space Force Base|Space Center|Satellite Launch Center|Cosmodrome)$/, "")}
           </text>
         ))}
       </svg>

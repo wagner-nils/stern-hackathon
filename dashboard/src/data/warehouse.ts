@@ -64,7 +64,8 @@ export interface LaunchSite {
   country_code: string | null;
   operator: string | null;
   ownership: string | null;
-  latitude: number;
+  /** Empty for planned sites without published coordinates. */
+  latitude: number | null;
   longitude: number | null;
   /** Direct-ascent inclination band; null where nobody has published one. */
   inclination_min: number | null;

@@ -1,1 +1,148 @@
 site_id,vehicle_id,status,orbits,pad,since,note,source_id
+alcantara,hanbit-nano,active,LEO,,2025,Dec 2025 maiden flight failed; return to flight planned Nov 2026.,koreatimes-hanbit
+andoya,spectrum,active,SSO;polar,Orbital Launch Pad A (Isar exclusive),2025,F1 30 Mar 2025 failed; F2 5 Sep 2026 reached orbit.,wiki-andoya-space
+atlantic-spaceport-complex,tundra,planned,LEO,SLC-01,2028,Orbital launches NET 2028.,nordspace-phase2-2026
+baikonur,proton-m,active,GTO;GEO,Site 81/24; 200/39,2001,"Single launch since 2024 (Elektro-L 5, Feb 2026); nearing retirement.",wiki-proton-m
+baikonur,soyuz-2-1a,active,LEO,Site 31/6,2006,Soyuz MS crew and Progress cargo to ISS (51.6°); 14 launches 2024–26.,gcat
+baikonur,soyuz-2-1b,active,LEO;SSO,Site 31/6,2006,"ISS and SSO (Resurs-P, ~97°).",gcat
+baikonur,soyuz-5,planned,LEO,Site 45/1 (Baiterek),2026,Suborbital test 30 Apr 2026; orbital flights pending.,kt-kz-soyuz5-maiden
+bowen,eris,active,LEO,Orbital launch pad,2025,One failed flight (Jul 2025); TestFlight 2 targeted end-2026.,wiki-eris
+cape-canaveral,alpha,contracted,LEO,SLC-20,,Lease held but pad inactive; Firefly prioritises Wallops LP-0A for East Coast.,wiki-slc20
+cape-canaveral,atlas-v,active,LEO;GTO;GEO;escape,SLC-41,2002,Retiring; remaining vehicles reserved for Starliner.,wiki-atlas-v
+cape-canaveral,daytona,planned,LEO,SLC-13,,Pad allocated 2023 (shared with Vaya Space); no date.,payload-ussf-cape-pads
+cape-canaveral,delta-iv-heavy,retired,GEO,SLC-37B,2004,Last flight 9 Apr 2024 (NROL-70); pad being rebuilt for Starship.,wiki-delta-iv-heavy
+cape-canaveral,falcon-9,active,LEO;SSO;MEO;GTO;lunar,SLC-40,2010,Main Falcon 9 pad incl. all Dragon flights from 2026; up to 120 launches/yr approved; SSO via southern corridor.,faa-slc40-ea-fr
+cape-canaveral,new-glenn,active,LEO;GTO;escape,LC-36,2025,LC-36A heavily damaged by May 2026 static-fire explosion; LC-36B future.,wiki-new-glenn
+cape-canaveral,starship,planned,LEO,SLC-37,,Two Starship pads under construction at SLC-37.,wiki-starship
+cape-canaveral,stoke-nova,planned,LEO;escape,LC-14,2027,Pad all but finished; first flight (heliocentric demo) early 2027.,payload-stoke-series-e
+cape-canaveral,terran-r,planned,LEO;GTO,LC-16,2026,Official target late 2026; likely 2027.,wiki-terran-r
+cape-canaveral,vulcan-centaur,active,LEO;MEO;GTO;GEO;escape,SLC-41,2024,,wiki-vulcan
+cornwall,launcherone,retired,LEO,Runway (air launch),2023,"Single flight 'Start Me Up' 9 Jan 2023, failed to reach orbit.",wiki-newquay
+east-china-sea,gravity-1,active,SSO;polar,Sea platform (East China Sea),2026,Two launches 2026 (97.5° and 89°).,gcat
+esrange,alpha,contracted,SSO;polar,LC-3C,2028,Two launches NET 2028 for Swedish government and rideshare customers.,newspace-economy-firefly-esrange
+esrange,blue-whale-1,planned,SSO,LC-3A,,2024 agreement targeted 2025 after a Korean debut that has not happened; status unclear.,caa-norway-esrange-report
+etlaq,miura-5,planned,LEO;SSO,,2027,"PLD Space second global base; first Miura 5 flights from Oman as early as 2027. Orbits assumed from vehicle, to verify.",wiki-etlaq
+hainan-commercial,gravity-2,planned,LEO,,,Listed as future vehicle at the site (pad not specified).,wiki-wenchang-commercial
+hainan-commercial,kinetica-2,planned,LEO,,,Listed as future vehicle at the site (pad not specified).,wiki-wenchang-commercial
+hainan-commercial,long-march-10b,active,LEO,LC-2,2026,Maiden flight 10 Jul 2026 with first-stage recovery.,wiki-long-march-10
+hainan-commercial,long-march-12,active,LEO,LC-2,2024,"9 launches 2024–26, Guowang at 50°.",gcat
+hainan-commercial,long-march-8,active,LEO;polar,LC-1,2025,Qianfan at ~89°; 4 launches 2025–26.,gcat
+hainan-commercial,long-march-8a,active,LEO;polar,LC-1,2025,"10 launches 2025–26 (Guowang 50°, Qianfan 89°).",gcat
+hainan-commercial,nebula-1,planned,LEO,,,Listed as future vehicle at the site (pad not specified).,wiki-wenchang-commercial
+hainan-commercial,pallas-1,planned,LEO,,,Listed as future vehicle at the site (pad not specified).,wiki-wenchang-commercial
+hainan-commercial,tianlong-3,planned,LEO,,,Listed as future vehicle at the site (pad not specified).,wiki-wenchang-commercial
+haiyang-oriental,ceres-1,active,LEO;SSO,Sea platform (Ceres-1S),2023,"5 sea launches 2024–26, 45–98°.",gcat
+haiyang-oriental,gravity-1,active,SSO,Sea platform,2025,One launch Oct 2025.,gcat
+haiyang-oriental,jielong-3,active,LEO;SSO,Sea platform,2022,7 launches 2024–26.,gcat
+haiyang-oriental,long-march-11,active,LEO;SSO,Sea platform (Yellow Sea),2019,One sea launch since 2024 (Nov 2025).,gcat
+hokkaido-spaceport,zero,planned,LEO;SSO,LC-1 (LP11/LP12),2027,First flight 2027 per Wikipedia; LC-1 completed Oct 2026.,hospo-news
+jiuquan,ceres-1,active,SSO,"LC-43/95A, 95B",2020,7 launches 2024–26 (1 failure).,gcat
+jiuquan,ceres-2,active,LEO,,2026,Maiden flight failed 17 Jan 2026; pad not recorded in GCAT.,gcat
+jiuquan,hyperbola-1,active,SSO,LC-43/95A,2019,"Failed Jul 2024, success 2025.",gcat
+jiuquan,kinetica-1,active,SSO,LC-130,2022,14 launches 2024–26 (1 failure).,gcat
+jiuquan,kinetica-2,active,LEO,LC-140,2026,Maiden flight 30 Mar 2026.,gcat
+jiuquan,kuaizhou-11,active,LEO;SSO,LC-43/95,2020,5 launches 2024–26.,gcat
+jiuquan,kuaizhou-1a,active,SSO,LC-43/95A,2017,4 launches 2024–25.,gcat
+jiuquan,long-march-12a,active,LEO,CZ-12A pad,2025,"Maiden flight 23 Dec 2025, landing failed.",wiki-long-march-12a
+jiuquan,long-march-12b,active,LEO;polar,CZ-12A/12B pad,2026,"Maiden flight 1 Jun 2026, Qianfan to polar orbit.",wiki-long-march-12b
+jiuquan,long-march-2c,active,LEO;SSO,LC-43/94 (SLS-2),1982,6 launches 2024–26 (plus 2 with YZ-1S).,gcat
+jiuquan,long-march-2d,active,LEO;SSO,LC-43/94 (SLS-2),1992,9 launches 2024–26 (plus 2 with YZ-3).,gcat
+jiuquan,long-march-2f,active,LEO,LC-43/91 (SLS-1),1999,Shenzhou crew to Tiangong (41.5°).,gcat
+jiuquan,long-march-4b,active,LEO;SSO,LC-43/94 (SLS-2),2013,5 launches 2025–26.,gcat
+jiuquan,long-march-4c,active,SSO,LC-43/94 (SLS-2),2010,Weather/remote-sensing SSO.,gcat
+jiuquan,pallas-1,active,SSO,Pallas-1 pad (LC-P1),2026,First flight 1 Sep 2026.,gcat
+jiuquan,tianlong-3,active,LEO,LC-120B,2026,Maiden flight failed 3 Apr 2026.,gcat
+jiuquan,zhuque-2e,active,LEO;SSO;polar,LC-96A,2024,7 launches 2024–26 (1 failure).,gcat
+jiuquan,zhuque-3,active,LEO,LC-96B,2025,Dec 2025 and Aug 2026 flights; land booster landing Aug 2026.,wiki-zhuque-3
+kennedy-space-center,falcon-9,active,LEO;GTO;lunar,LC-39A,2017,No Falcon 9 from 39A since Dec 2025; Dragon moved to SLC-40.,sfn-39a-2026
+kennedy-space-center,falcon-heavy,active,LEO;GTO;GEO;escape,LC-39A,2018,,wiki-falcon-heavy
+kennedy-space-center,sls,active,lunar,LC-39B,2022,Artemis II launched 1 Apr 2026.,wiki-sls
+kennedy-space-center,starship,planned,LEO;lunar,LC-39A,2026,FAA ROD Jan 2026: up to 44 launches/yr; first Florida flight NET late 2026.,gulfnews-39a-starship
+kourou,ariane-6,active,LEO;SSO;MEO;GTO,ELA-4,2024,"A62 since Jul 2024, A64 since Feb 2026 (Amazon Leo); Galileo (MEO), MTG-I2 (GTO) 2025–26.",wiki-ariane-6
+kourou,maia,contracted,LEO;SSO,ELS / ELM2 (ex-Soyuz),2027,CNES selected MaiaSpace for ex-Soyuz pad Sep 2024; first attempt H2 2027.,esf-maia-2027
+kourou,miura-5,contracted,LEO;SSO,ELM-Diamant,2026,Diamant laureate; civil works under way; 2026 debut not yet flown (likely slips).,esf-sirius-diamant
+kourou,rfa-one,planned,LEO;SSO,ELM-Diamant,,RFA is a Diamant laureate; no date announced.,esf-sirius-diamant
+kourou,sirius-13,planned,LEO,ELM-Diamant,2028,Selected 23 Apr 2026 to replace MaiaSpace; first commercial flight late 2028.,esf-sirius-diamant
+kourou,soyuz-st,retired,LEO;SSO;MEO;GTO,ELS,2011,Last launch 10 Feb 2022; pad handed to MaiaSpace (ELM2).,wiki-soyuz-csg
+kourou,spectrum,planned,LEO;SSO,ELM-Diamant,,Isar is a Diamant laureate (term sheet 2022); no build or first-launch date announced.,esf-sirius-diamant
+kourou,vega,retired,SSO;LEO,ELV,2012,"Final flight VV24, 5 Sep 2024.",wiki-vega
+kourou,vega-c,active,SSO;LEO;HEO,ELV,2022,"Return to flight Dec 2024; 2026: SMILE (May), Sentinel-3C/FLEX (Sep).",wiki-vega-c
+kourou,zephyr,contracted,LEO;SSO,ELM-Diamant,2026,Latitude committed €8m to its Diamant section (Jun 2025); first-flight site may change (unverified).,esf-latitude-diamant
+kulasekarapattinam,sslv,planned,SSO;polar,SSLV Launch Pad,2027,First launch targeted Dec 2026; since=2027 is our estimate given FY2026-27 commissioning.,swarajya-kulasekarapattinam-fy27
+kwajalein,pegasus-xl,retired,LEO,Bucholz Army Airfield (air launch),,Final Pegasus flew 3 Jul 2026 (LINK to 20.6°); vehicle retired.,spacepolicyonline-link-pegasus
+mahia,electron,active,LEO;SSO;lunar,"LC-1A, LC-1B",2017,84 launches from the complex.,wiki-rocketlab-lc1
+naro,nuri,active,SSO,LC-2,2021,Launches 4 (Nov 2025) and 5 (Oct 2026) successful; 6th 2027.,wiki-nuri
+nova-scotia,aurora-8,contracted,LEO,Third pad (RDX exclusive),2028,"Pathfinder launch agreement, ~Q3 2028.",spaceq-rdx-mls
+nova-scotia,hanbit-nano,planned,LEO;SSO,,,"Innospace letter of intent for HANBIT (Mar 2026), variant unspecified, to be finalised by Dec 2026.",wiki-mls
+nova-scotia,spectrum,contracted,LEO;SSO;polar,Isar dedicated complex,2028,Facilities usage agreement 7 Jul 2026; up to 40 launches/yr by 2029 (target).,isar-nova-scotia
+palmachim,shavit-2,active,LEO,,,Retrograde LEO ~139-143 deg; Ofek-19 Sep 2025. Year Shavit-2 first used not confirmed.,gcat
+plesetsk,angara-1-2,active,LEO;SSO,Site 35/1,2022,"5 launches 2024–26, military payloads.",gcat
+plesetsk,angara-a5,active,GEO,Site 35/1,2014,Jun 2025 launch to GEO with Briz-M.,wiki-angara
+plesetsk,soyuz-2-1a,active,LEO;SSO;HEO,Site 43/4,2006,Military payloads incl. Molniya-orbit Meridian and SSO.,gcat
+plesetsk,soyuz-2-1b,active,LEO;SSO;MEO;HEO,Site 43/3; 43/4,2008,"GLONASS (MEO), SSO and military LEO; 11 launches 2024–26.",gcat
+plesetsk,soyuz-2-1v,retired,LEO;SSO,Site 43/4,2013,Launched 2024 and 2025; final flight 5 Feb 2025.,wiki-soyuz-2-1v
+puerto-belgrano,tronador-ii,planned,polar;SSO,,2030,"Target date, low confidence.",wiki-tronador
+santa-maria,hanbit-nano,contracted,SSO,Malbusca,2026,Site agreement signed Jan 2026 for the Hanbit family (variant not stated); 2026 launch not reported.,hjkc-innospace-azores
+saxavord,orbex-prime,retired,SSO,,,Planned first launch here (Nov 2024 decision); cancelled Feb 2026.,wiki-prime
+saxavord,rfa-one,contracted,SSO;polar,Pad Fredo (RFA exclusive),2026,"Licensed Jan 2025 (10/yr); vehicle on pad Jul 2026, issue found, launch postponed; no new date.",wiki-saxavord
+saxavord,skyrora-xl,planned,SSO;polar,,2027,Multi-launch agreement Oct 2021; no orbital licence or pad confirmed.,wiki-skyrora
+semnan,simorgh,active,LEO,Simorgh pad (IKSC),2016,Orbital successes 2024 at ~58.5 deg; complex damaged Mar 2026.,gcat
+semnan,zuljanah,active,LEO,Safir/Zoljanah pad,2021,18 Sep 2025 attempt failed; pad reportedly undamaged in Mar 2026 strikes.,wiki-imam-khomeini-spaceport
+shahroud,qaem-100,active,LEO,LP1,2022,Since = suborbital test 2022; orbital successes 2024. Site reportedly heavily damaged Mar 2026.,wiki-qaem-100
+sohae,chollima-1,active,SSO,LC2 (coastal pad),2023,"Last flight Nov 2023, i.e. not since 2024; kept active as Wikipedia lists the vehicle active.",wiki-chollima-1
+sohae,nk-kerolox-lv,active,SSO,LC2,2024,Failed debut 27 May 2024 (target 97 deg).,gcat
+spaceport-kii,kairos,active,SSO,LC1,2024,"Three failed attempts, all to 97.5 deg SSO (GCAT).",gcat
+sriharikota,agnibaan,planned,LEO,ALP-01 Dhanush,2024,Since = suborbital SOrTeD test (May 2024); orbital date not announced.,wiki-agnibaan
+sriharikota,gslv-mk2,active,GTO;SSO,SLP,2010,NISAR to SSO Jul 2025; GISAT-1A to GTO Sep 2026.,gcat
+sriharikota,lvm3,active,LEO;GTO;lunar,SLP,2014,GSAT-7R GTO Nov 2025; BlueBird Block 2 LEO Dec 2025; Chandrayaan-3 lunar.,gcat
+sriharikota,nglv,planned,LEO;GTO,Third Launch Pad (under construction),,"TLP approved Jan 2025 with ~4-year build; orbits assumed from role, to verify.",wiki-sdsc
+sriharikota,pslv,active,LEO;SSO;polar;GTO;HEO,"FLP, SLP",1993,"Workhorse incl. rideshare; HEO = PROBA-3 (Dec 2024). Failures May 2025, Jan 2026.",gcat
+sriharikota,sslv,active,LEO,FLP,2022,Last flight EOS-08 Aug 2024; SSO flights to move to Kulasekarapattinam.,wiki-sslv
+sriharikota,vikram-1,active,LEO,FLP,2026,"First private orbital launch from India, 18 Jul 2026, via IN-SPACe authorisation.",isro-vikram1-launch
+sriharikota,vikram-2,planned,LEO;SSO,,2027,Planned 2027 (Wikipedia); pad not stated.,wiki-vikram
+starbase,starship,active,LEO,OLP-2 (OLP-1 under rebuild),2023,Up to 25 launches/yr.,payload-starbase-25
+starbase-louisiana,starship,planned,LEO,,2029,"10 pads planned, first launch as soon as 2029.",eweek-starbase-louisiana
+sutherland,orbex-prime,retired,SSO;polar,,,"Anchor tenant; construction halted Dec 2024, Orbex ceased operations Feb 2026.",wiki-sutherland
+taiyuan,long-march-2c,active,SSO,LC-9,2004,One launch since 2024 (Aug 2026).,gcat
+taiyuan,long-march-2d,active,LEO;SSO,LC-9,2016,4 launches 2024–26.,gcat
+taiyuan,long-march-4b,active,SSO,LC-9,1999,3 launches 2024–25.,gcat
+taiyuan,long-march-6,active,LEO;SSO,LC-16,2015,4 launches 2024–26; 38–98° inclinations.,gcat
+taiyuan,long-march-6a,active,LEO;SSO;polar,LC-9A,2022,"23 launches 2024–26; incl. retrograde 142° (Yaogan-50, 2026).",gcat
+taiyuan,long-march-6c,active,SSO,LC-9A,2024,Maiden flight May 2024.,gcat
+tanegashima,h-iia,retired,SSO;GTO,LA-Y1,2001,Final flight F50 on 28 Jun 2025.,wiki-h2a
+tanegashima,h3,active,LEO;SSO;GTO;escape,LA-Y2,2023,MMX to Mars Oct 2026 (escape); HTV-X1 to ISS orbit Oct 2025. LA-Y1 to be adapted.,wiki-h3
+uchinoura,epsilon-s,planned,LEO;SSO,Epsilon (former Mu/M-V) pad,,Return to flight targeted FY2026-27; year not firm.,wiki-epsilon
+vandenberg,alpha,active,LEO;SSO,SLC-2W,2021,All Alpha flights so far; return to flight 12 Mar 2026.,wiki-alpha-launches
+vandenberg,daytona,planned,LEO;SSO,SLC-5,,Leased to Phantom Space.,wiki-vsfb-launch-facilities
+vandenberg,eclipse,planned,LEO;SSO,SLC-2W,,Listed as future vehicle at SLC-2W.,wiki-vsfb-launch-facilities
+vandenberg,falcon-9,active,LEO;SSO;polar,SLC-4E; SLC-6 (planned),2013,Up to 100 Falcon launches/yr across SLC-4E and SLC-6.,btb-vandenberg-100
+vandenberg,falcon-heavy,planned,LEO;SSO;polar,SLC-6,,Up to 5 Falcon Heavy/yr approved Oct 2025; pad conversion pending.,btb-vandenberg-100
+vandenberg,minotaur-iv,active,LEO;SSO,SLC-8,2010,NROL-174 (Apr 2025) and STP-S29A (Apr 2026).,wiki-minotaur-iv
+vandenberg,new-glenn,planned,LEO;SSO;polar,SLC-14,,Leased to Blue Origin.,wiki-vsfb-launch-facilities
+vandenberg,vulcan-centaur,planned,LEO;SSO;polar,SLC-3E,,"Pad leased, no date.",wiki-vulcan
+vostochny,angara-a5,active,GEO,Site 1A,2024,First Vostochny Angara A5 11 Apr 2024 (mass simulator); crewed A5P planned later.,wiki-angara
+vostochny,soyuz-2-1a,active,SSO,Site 1S,2016,One launch since 2024 (Nov 2024).,gcat
+vostochny,soyuz-2-1b,active,SSO,Site 1S,2017,SSO incl. Soyuz rideshares (2024).,gcat
+wallops,alpha,planned,LEO,LP-0A,2027,NASA INCUS mission.,wiki-alpha-launches
+wallops,antares-330,planned,LEO,LP-0A,2027,Cygnus NG-22 for NASA.,wiki-antares
+wallops,eclipse,planned,LEO,LP-0A,,First launch site per Firefly/Northrop; date open.,payload-eclipse
+wallops,electron,active,LEO,LC-2 (LP-0C),2023,Also HASTE suborbital flights.,wiki-mars
+wallops,neutron,planned,LEO,LC-3 (LP-0D),2027,Pad opened Aug 2025; first launch NET 2027.,wiki-neutron
+wenchang,long-march-10,planned,lunar,LC-301,2027,Uncrewed Mengzhou lunar test 2027; crewed landing 2028–29.,wiki-long-march-10
+wenchang,long-march-10a,planned,LEO,LC-301,2026,Suborbital test stage 11 Feb 2026 (Mengzhou abort); orbital debut late 2026/2027.,wiki-long-march-10
+wenchang,long-march-5,active,GTO;GEO;lunar,LC-101,2016,Comsats to GTO; Chang'e-6 (May 2024).,gcat
+wenchang,long-march-5b,active,LEO;polar,LC-101,2020,Guowang batches at 86.5° with YZ-2.,gcat
+wenchang,long-march-7,active,LEO,LC-201,2016,Tianzhou cargo to Tiangong (41.5°).,gcat
+wenchang,long-march-7a,active,GTO,LC-201,2020,12 launches 2024–26 (1 failure).,gcat
+wenchang,long-march-8,active,lunar,LC-201,2020,Queqiao-2 relay (Mar 2024); CZ-8 since moved to Hainan Commercial LC-1.,gcat
+wenchang,long-march-8a,active,LEO,LC-201,2025,Maiden flight Feb 2025.,gcat
+xichang,kuaizhou-1a,active,LEO,LC-4 (mobile),2022,3 launches 2024–25 (41–45°).,gcat
+xichang,long-march-2c,active,LEO;HEO,LC-3,2003,"4 launches 2024, incl. DRO-A/B lunar-vicinity mission.",gcat
+xichang,long-march-2d,active,LEO,LC-3,2020,6 launches 2024–26.,gcat
+xichang,long-march-3b,active,GTO;MEO;SSO;escape,LC-2; LC-3,1996,"22+ launches 2024–26: GEO comsats, BeiDou MEO, Tianwen-2 (2025).",gcat
+xichang,long-march-3c,active,GTO,LC-2; LC-3,2008,2 launches 2025.,gcat
+xichang,long-march-4b,active,LEO,LC-3,2024,2 launches 2024 (35°).,gcat
+xichang,long-march-4c,active,LEO,LC-3,2018,2 launches 2025 (28°).,gcat
+yangjiang-sea,gravity-1,active,LEO,Sea platform (South China Sea),2024,Gravity-1 maiden flight 11 Jan 2024.,gcat
+yangjiang-sea,jielong-3,active,SSO,Sea platform (South China Sea),2023,3 launches 2024–26.,gcat
+yasny,dnepr,retired,LEO;SSO,"Silos 370/11, 370/13",2006,10 orbital launches 2006–2015.,gcat

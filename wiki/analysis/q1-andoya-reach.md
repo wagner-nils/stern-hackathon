@@ -91,6 +91,6 @@ Robbie Schingler (Planet), 21.10.2026, Details auf der [Expertenseite](../expert
 
 ## Offene Punkte
 
-- Flug 2 unabhängig bestätigen ([Spectrum](../company/spectrum.md))
+- ~~Flug 2 unabhängig bestätigen~~: erledigt, Spectrum-Flug 2 erreichte am 5.9.2026 den Orbit (GCAT, Recherche 22.10.)
 - Spectrum-Preis beim Management erfragen
-- Quelle für „weitere Betreiber ab 2027/28 in Andøya“ nachtragen (bisher Teamrecherche)
+- „Weitere Betreiber ab 2027/28 in Andøya“: öffentlich kein weiterer Orbital-Anbieter unterschrieben (Recherche 22.10.); Quelle der Team-Info klären

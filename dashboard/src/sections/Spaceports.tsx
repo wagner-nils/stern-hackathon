@@ -14,10 +14,17 @@ const accessLabel: Record<string, string> = {
 };
 
 const band = (s: MapSite) => (s.inclination_min === null || s.inclination_max === null ? "–" : `${s.inclination_min}–${s.inclination_max}°`);
+const lat = (s: MapSite) => (s.latitude === null ? "–" : `${s.latitude.toFixed(1)}°`);
 const kg = (v: number | null) => (v === null ? "–" : fmtTonnes(v));
-const tonnes = (t: number | null | undefined) => (t === null || t === undefined ? "–" : fmtTonnes(t * 1000));
+// GCAT records 0 t where the payload mass is unknown, so 0 reads as not known.
+const tonnes = (t: number | null | undefined) => (!t ? "–" : fmtTonnes(t * 1000));
 
-const rows: MapSite[] = launchSites.map((s) => ({ ...s, activity: siteOverview.find((o) => o.id === s.id) }));
+const shortAccess: Record<string, string> = { international: "open", "national-commercial": "national", sovereign: "state only" };
+
+// Busiest first, then by name: the order a consultant scans the list in.
+const rows: MapSite[] = launchSites
+  .map((s) => ({ ...s, activity: siteOverview.find((o) => o.id === s.id) }))
+  .sort((a, b) => (b.activity?.launches_2025 ?? 0) - (a.activity?.launches_2025 ?? 0) || a.name.localeCompare(b.name));
 const byId = Object.fromEntries(vehicles.map((v) => [v.id, v]));
 
 function SiteDetail({ site }: { site: MapSite }) {
@@ -46,7 +53,7 @@ function SiteDetail({ site }: { site: MapSite }) {
         <li className="factline">
           <span>Latitude · reach</span>
           <strong>
-            {site.latitude}° · {band(site)}
+            {lat(site)} · {band(site)}
           </strong>
           <span className="caption">{site.polar_sso ? "Polar and SSO directly" : site.polar_sso === false ? "No direct polar/SSO" : "Polar access unknown"}</span>
         </li>
@@ -274,8 +281,8 @@ export function Spaceports() {
                 <td>
                   <span className={`pill pill--${s.status.replace(" ", "-")}`}>{s.status}</span>
                 </td>
-                <td>{s.access ? accessLabel[s.access] : "–"}</td>
-                <td className="num">{s.latitude}°</td>
+                <td>{s.access ? <span className={`pill pill--${s.access}`} title={accessLabel[s.access]}>{shortAccess[s.access]}</span> : "–"}</td>
+                <td className="num">{lat(s)}</td>
                 <td className="num">{band(s)}</td>
                 <td className="num">
                   {fmtInt(s.activity?.launches_2024 ?? 0)} / <strong>{fmtInt(s.activity?.launches_2025 ?? 0)}</strong> /{" "}

@@ -1,7 +1,7 @@
 import { Bar, CartesianGrid, ComposedChart, Line, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { expansionFields, launchGap, preferred } from "../data/warehouse";
 import { animation, tooltipProps } from "../lib/chartTheme";
-import { fmtInt, fmtOne, fmtPct } from "../lib/format";
+import { fmtInt, fmtOne } from "../lib/format";
 import { BASE_COST, BASE_SETTINGS, run } from "../state/scenario";
 
 const eurM = (v: number) => `€${fmtInt(Math.round(v / 1e6))} M`;
@@ -79,7 +79,7 @@ export function Present() {
           <h4>Why not now</h4>
           <ol>
             <li>
-              <strong>Revenue is not secured:</strong> {fmtPct(notSecured)} of the {eurM(y30.revenueEur)} in 2030 rests on contracts nobody has signed or on the ESA
+              <strong>Revenue is not secured:</strong> {Math.round(notSecured * 100)} % of the {eurM(y30.revenueEur)} in 2030 rests on contracts nobody has signed or on the ESA
               programme that ends in 2030. Today only {fmtOne(gap?.launches_filled_isar_share ?? 0)} of {gap?.planned} planned 2028 launches have a buyer.
             </li>
             <li>

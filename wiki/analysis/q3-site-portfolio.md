@@ -1,84 +1,105 @@
 # Q3: Wie soll Isar sein Portfolio aus Produktions- und Startstandorten aufstellen?
 
-> „How should Isar structure its portfolio of production and launch sites for the future?“ ([Question 3](https://launch.bitsolutions.tech/d/Nd488x8qkj8kik5oIlolu32kOMo3T-_B/content), „Site portfolio · Day 2“; das Dokument enthält nur die Frage)
+> „How should Isar structure its portfolio of production and launch sites for the future?“ ([Question 3](https://launch.bitsolutions.tech/d/Nd488x8qkj8kik5oIlolu32kOMo3T-_B/content), „Site portfolio · Day 2“)
 
-Stand: 22.10.2026, 10:40. Zeitfenster 09:30–12:00. Status: Frage aufgenommen, Antwort in Arbeit.
+Stand: 22.10.2026. Antwortseite fürs Team: Notion „Common Docs → RQ3 → Antwort: Ein Werk, ein Kernstandort, eine souveräne Option“. Im Tool: Kapitel „Q3 · Sites“. Zahlen im [Fact-Warehouse](../../warehouse/README.md): Tabelle `site_nodes`, View `v_q3_site_load`, Annahmen mit `question = 'Q3'`.
 
-## Hinweise der Betreuer (22.10., Q3-Session)
+## Antwort
 
-- **Startplatz und Produktion zusammen denken.** Nicht nur „wo starten“, sondern auch „wo bauen“.
-- **Kanada:** Ergibt eine Produktion in Kanada Sinn, oder schickt man Raketen über den Atlantik?
-- **Werkskapazität:** Reicht das neue Werk (Parsdorf) im Zweifel nicht? Hört der Ausbau dort auf oder geht er weiter?
-- **Ohne klares Geschäftsfeld keine Standortantwort:** Erst muss feststehen, welches Geschäftsfeld Isar bedienen will. Der Startplatz legt den Orbit fest, der Orbit die Kunden. Deshalb braucht RQ2 ein klares Commitment, bevor RQ3 beantwortet werden kann.
-- **Zeit:** Wir waren beim Start von Q3 hinterher, weil RQ2 noch keine finale Teamposition hatte.
+**Ein Werk in Bayern, ein Kernstartplatz mit zweitem Pad, ein souveräner Standort im Ausland.** Die Produktion bleibt zentral, die Startplätze folgen Kunden und Verträgen.
 
-## Commitment aus RQ2 (ASCENT)
+- **Produktion:** Parsdorf bleibt das einzige Serienwerk. 2030 braucht Isar ca. 11 Raketen; das Werk ist auf 40 ausgelegt (28 % Auslastung).
+- **Andøya:** Kern für polare und sonnensynchrone Bahnen. Pad A trägt das Volumen bis ca. 2040. Das zweite Pad bezahlt Norwegen (69 % der Tranche 2027 aus dem Verteidigungsetat); es dient Bereitschaft und Redundanz.
+- **Nova Scotia:** souveräner Standort für Kanada und die NATO, nur mit mindestens 3 Anker-Starts pro Jahr. Kein Werk in Kanada.
+- **Kourou:** Option nur mit europäischem Ankerkunden.
 
-Isar wird der **souveräne europäische Startanbieter für polare und sonnensynchrone Bahnen bis ca. 1 t**: Erdbeobachtung, Datenkonstellationen und Verteidigungsaufklärung, dazu bezahlte Startbereitschaft für europäische Staaten.
+## Hinweise der Betreuer (22.10.)
 
-- **Mittlere Bahnen (45–55°, Kommunikation):** nur mit Vertrag.
-- **Niedrige Bahnen und GTO:** nicht.
+- Startplatz und Produktion zusammen denken: nicht nur wo starten, sondern auch wo bauen.
+- Kanada: Produktion vor Ort, oder Raketen über den Atlantik schicken?
+- Reicht das Werk Parsdorf? Hört der Ausbau dort auf oder geht er weiter?
+- Ohne klares Geschäftsfeld keine Standortantwort; dafür steht das Commitment in [Q2](q2-business-areas.md).
+- Präsentation als eine Geschichte (investieren ja oder nein, mit welcher Strategie), nicht Frage für Frage; Umsatz, Gewinn und Zuverlässigkeit als Kern-KPIs; Risiko und Diversifikation mitdenken.
 
-Details: [Q2](q2-business-areas.md), Abschnitt „Commitment und Brücke zu RQ3“.
+## Ist-Zustand
 
-| Geschäftsfeld (RQ2) | Bahn | Standort | Folge für die Produktion | Status |
+| Standort | Art | Heute | Quelle |
+| --- | --- | --- | --- |
+| Ottobrunn | Zentrale, Entwicklung | über 400 Mitarbeitende | Isar |
+| Parsdorf (Vaterstetten) | Serienwerk | über 40.000 m², im Feb. 2026 fast fertig, ausgelegt auf bis zu 40 Raketen pro Jahr; Plan 2027: 4 Starts | Isar, Payload |
+| Esrange | Testgelände | seit 2020; zweiter Testplatz seit Feb. 2026: über 30 Triebwerkstests pro Monat, Abnahme ganzer Stufen | Isar |
+| Andøya, Pad A | Startplatz, exklusiv bis 2041 | einziges Pad; Flug 2 im Sep. 2026 im Orbit; Lizenz 30 Starts pro Jahr für den ganzen Standort | Isar, CAA Norway |
+| Nova Scotia | Startplatz, vertraglich | eigener Komplex: Übergabe 1.11.2026, erster Start 2028; 3,75 Mio. USD pro Quartal nach 30 Monaten Befreiung; Isar nennt bis zu 40 Starts pro Jahr ab 2029 | Isar, Maritime Launch |
+| Kourou, ELM-Diamant | Startplatz, Option | einer von fünf Preisträgern, kein Baudatum | CNES |
+
+## Was die Standorte tragen müssen
+
+Starts pro Jahr aus den RQ2-Feldern (Isar-Umsatz ÷ 12 Mio. € pro Start) plus 3 Anker-Starts in Nova Scotia ab 2028:
+
+| Standort | 2030 | 2035 | 2040 | Kapazität vorgeschlagen |
 | --- | --- | --- | --- | --- |
-| Konstellationen, Einzelmissionen, Institutionen, Verteidigungsaufklärung | polar und SSO (90–110°) | Andøya, Pad A exklusiv | Serienrakete aus Parsdorf, Transport nach Norwegen | jetzt |
-| Bezahlte Bereitschaft für Staaten | Bahn der Konstellation, meist polar/SSO | Andøya plus zweites Pad oder garantierte Slots; Redundanz in Europa | Raketen auf Lager nahe am Pad, Integrationshalle; das Werk liefert Puffer | Vertrag jetzt, Ausbau mit Vertrag |
-| Kommunikation in Verteidigung und Konstellationen | 45–55° | Nova Scotia (45–98°) | Transport über den Atlantik oder Endmontage vor Ort; ein eigenes Werk in Kanada nur bei kanadischem Ankerkunden mit Local-Content-Pflicht | nur mit Auslöser |
-| Niedrige Bahnen, GTO | < 45° / GTO | Kourou (Diamant-Komplex, geteilt mit 4 Anbietern) | nur Transport | nur mit EU- oder ESA-Anker |
-| Hyperschall-Tests | suborbital | Andøya | gleiche Rakete, kostet Slots | nur mit Blockkauf |
+| Andøya | 7,9 | 8,0 | 14,2 | 18 (Pad A 12 + halbes Pad 2) |
+| Nova Scotia (inkl. Anker) | 3,3 | 3,5 | 3,8 | 12 |
+| Kourou | 0,1 | 0,1 | 0,2 | 2,4 |
+| Werk Parsdorf (alle Raketen) | 11,4 | 11,7 | 18,2 | 40 |
 
-## Ausgangslage in Zahlen
+- **Kapazität:** Pads × 12 Starts pro Pad (Annahme `q3_pad_cadence`). Rocket Lab flog 2025 von zwei Pads in Neuseeland 17-mal (GCAT); die Lizenz erlaubt 120.
+- **Isars Plan von 12 Starts 2030** geht nur auf, wenn Bereitschaftsverträge in Europa **und** ein Anker in Nova Scotia kommen.
 
-| Größe | Wert | Quelle |
-| --- | --- | --- |
-| Sichtbare Nachfrage nach eigenen Starts 2028 / 2030 (ganzer Markt) | ca. 2,7 / 3 Starts (volle Ladung) | `v_q2_launch_gap` |
-| Davon für Isar realistisch (45 % Anteil gegen Rocket Lab) | ca. 1,2 / 1,3 Starts | `v_q2_launch_gap`, Annahme `som_win_share` |
-| Isars geplante Starts | 4 (2027), ca. 8 (2028), 12 (2030, Team-Annahme) | Payload, Team |
-| Werk Parsdorf | ausgelegt auf bis zu 40 Raketen pro Jahr, Ziel ab ca. 2030; heute im Hochlauf | Isar |
-| Andøya | Lizenz 30 Starts pro Jahr für den ganzen Standort; Isar hat 1 exklusives Pad bis 2041; 2. Pad im norwegischen Haushaltsentwurf 2027 (Mieter offen) | CAA Norway, Isar, Norwegens Haushalt |
-| Nova Scotia | eigener Spectrum-Komplex, Pad-Übergabe 1.11.2026, erster Start 2028; 3,75 Mio. USD pro Quartal, 30 Monate Gebührenbefreiung nach dem ersten Jahr; Betreiberziel bis 40 Starts pro Jahr ab 2029 | Isar, Maritime Launch |
-| Kourou | Isar einer von 5 Diamant-Preisträgern (mit Latitude, PLD, RFA, Sirius); kein Baudatum | CNES, European Spaceflight |
-| Esrange | Isar-Teststände seit 2020, zweiter Teststandort seit Feb. 2026 (30+ Triebwerke pro Monat, Stufenabnahme) | Recherche Register |
-| Fehlstart-Risiko | ein Fehlstart sperrt ein Pad über ein Jahr | Schingler |
+## Zielbild 2030
 
-## Erste Hypothesen (zur Diskussion im Team)
+| Standort | Entscheidung | Rolle | Auslöser | Wer zahlt |
+| --- | --- | --- | --- | --- |
+| Werk Parsdorf | ausbauen | einziges Serienwerk; Stufen verschiffen, Endmontage am Pad | zweites Werk erst ab ca. 30 Starts pro Jahr unter Vertrag | Isar (gebaut) |
+| Esrange | behalten | Abnahmetests | – | Isar, SSC |
+| Andøya, Pad A | behalten | Kern polar/SSO | – | Pacht bis 2041 |
+| Andøya, Pad 2 | ausbauen | Bereitschaft und Redundanz | Bereitschaftsvertrag oder mehr als 10 Starts pro Jahr | Norwegen (646 Mio. NOK) |
+| Nova Scotia | Option nutzen | souverän für Kanada und NATO, 45–98° | mindestens 3 Anker-Starts pro Jahr bis ca. 2030 | Isar (13,4 Mio. € pro Jahr) |
+| Kourou | Option | niedrige Bahnen, GTO | EU- oder ESA-Anker und Baudatum | CNES baut |
+| Werk in Kanada | nicht jetzt | – | nur bei nicht anders erfüllbarer lokaler Wertschöpfung und über 10 Raketen pro Jahr | – |
 
-1. **Die Produktion ist nicht der Engpass.** Parsdorf ist auf 40 Raketen pro Jahr ausgelegt. Sichtbar sind 2030 ca. 3 Starts im ganzen Markt, davon für Isar realistisch ca. 1,3; geplant sind 12. Ein zweites Werk lohnt erst, wenn Verträge deutlich über ca. 20 Starts pro Jahr liegen. **Ein Werk, viele Pads.**
-2. **Neue Startstandorte begründen sich über Bahnen und Redundanz, nicht über Volumen.** Andøya reicht vom Volumen her (30 Starts pro Jahr für den Standort). Es braucht aber ein **zweites Pad** gegen das Fehlstart-Risiko und für bezahlte Bereitschaft.
-3. **Nova Scotia als Option, nicht als Ausbau.** Es öffnet 45–55° für Kommunikation. Ausbau nur, wenn bis ca. 2030 Ankerkunden die ca. 13,4 Mio. € Gebühr pro Jahr decken. Produktion in Kanada nur, wenn ein kanadischer Ankerkunde lokale Wertschöpfung verlangt. Sonst Transport plus Endmontage vor Ort.
-4. **Kourou nur mit europäischem Anker.** Der Diamant-Komplex wird mit vier Wettbewerbern geteilt; für eine 1-t-Rakete ist GTO kaum relevant.
-5. **Nähe von Werk und Pad ist ein Bereitschaftsthema.** Für „Start binnen Tagen“ zählen Raketen auf Lager und eine Integrationshalle am Pad mehr als ein neues Werk.
+## Warum so
 
-## Bewertungsraster (Vorschlag)
+1. **Produktion zentral:** Rocket Labs Kosten pro Start sanken von 7,0 auf 4,8 Mio. USD bei 10 → 21 Starts (2023–2025), also auf ca. 70 % pro Verdopplung (Annahme `q3_learning_rate`). Eine kanadische Linie mit 3 von 11 Raketen kostet ca. 2× pro Rakete. MaiaSpace macht es genauso (Werk Vernon, Endmontage Kourou).
+2. **Andøya bleibt Kern:** 87 % der passenden Satelliten; Norwegen investiert selbst in das zweite Pad.
+3. **Zweites Pad wegen Risiko, nicht Volumen:** Ein Fehlstart sperrt ein Pad über ein Jahr; Bereitschaft braucht freie Slots.
+4. **Nova Scotia nur mit Anker:**
+   - Gebühr 13,4 Mio. € pro Jahr, Break-even ca. 2,7 Starts, sichtbar 0,3.
+   - Kanadas DND least dort selbst ein Pad (200 Mio. CAD über 10 Jahre); Budget 2025 hält 182,6 Mio. CAD für souveränen Start.
+   - Das Technologieschutzabkommen mit den USA ist nicht unterschrieben (Okt. 2026), US-gebaute Satelliten dürfen also noch nicht aus Kanada starten.
+   - Isars Ziel von bis zu 40 Starts pro Jahr liegt rund zehnmal über dem, was die Zahlen tragen.
+5. **Lokale Wertschöpfung ohne Werk:** Kanadische Verteidigungsaufträge über 100 Mio. CAD verlangen 100 % Gegenwert in Kanada (ITB). Endmontage, Startbetrieb und Zulieferer zählen dazu.
+6. **Kourou nur als Option:** geteilt mit vier Anbietern, ca. 0,1 Starts pro Jahr.
 
-Wie bei RQ2 über die EVA-Logik:
+## Finanzen und Risiko
 
-| Kriterium | Frage |
-| --- | --- |
-| Neue Bahnen | Welche Kunden erschließt der Standort, die Andøya nicht erreicht? |
-| Kapazität und Redundanz | Wie viele Starts pro Jahr, und was passiert nach einem Fehlstart? |
-| Kosten und Kapital | Pacht, Bau, Betrieb pro Jahr; wer zahlt (Staat, Kunde, Isar)? |
-| Logistik | Weg vom Werk zum Pad (Straße, Schiff, Atlantik), Zeit bis zum Start |
-| Souveränität und Regulierung | Weltraumgesetz, Lizenz, Exportkontrolle, Zugang für US-Satelliten (Technologieschutzabkommen) |
-| Wettbewerb am Standort | Teilt Isar Slots mit RFA, PLD, Latitude, Firefly, RDX? |
+- **Umsatzpotenzial 2030:** ca. 11,4 Starts × 12 Mio. € ≈ 137 Mio. €, davon 36 Mio. € aus den Anker-Starts in Nova Scotia.
+- **Standortkosten:** Nova Scotia 13,4 Mio. € pro Jahr (ab ca. 2030), Kourou ca. 5 Mio. € (Team-Schätzung), Andøya-Pacht nicht öffentlich.
+- **Kapital:** Neue Pads bauen Norwegen, Maritime Launch und CNES; Isar bindet kaum eigenes Kapital für Standorte.
+- **Risiken:**
+  - ein einziges Pad als Klumpenrisiko
+  - das ESA-Programm endet 2030
+  - der Anker in Kanada ist offen
+  - die Andøya-Lizenz wird geteilt
+- **KPIs fürs Monitoring:** Starts pro Pad, Erfolgsquote (heute ca. 25 % Versicherungsprämie), Werksauslastung, Anteil der Starts mit Vertrag und Anzahlung, Gebührendeckung in Nova Scotia.
 
-## Werkzeuge im Repo
+## Fragen ans Management
 
-- **Tool, Kapitel „Spaceports“:** Weltkarte aller 56 Standorte. Der Filter „Open to foreign launchers“ und die Hervorhebung „Same rockets as Andøya“ zeigen, wo Spectrum fliegt oder fliegen könnte.
-- **Supabase:**
-  - `v_launch_site_overview`: eine Zeile pro Standort mit Bahnen, Startgrenze, Anbietern und Auslastung.
-  - `launch_site_vehicles`: wer startet was von wo.
-  - `v_q2_launch_gap`: Nachfrage gegen geplante Starts.
-- **Wiki:** [Startplätze](../technology/launch-sites.md) (Kriterien, Shortlist, Register-Erkenntnisse), [Orbitphysik](../technology/orbital-mechanics.md).
+1. Wer ist der Ankerkunde in Nova Scotia, und wann unterschreibt er?
+2. Woher kommen bis zu 40 Starts pro Jahr in Nova Scotia, solange US-Satelliten dort nicht starten dürfen?
+3. Wer nutzt das zweite Andøya-Pad, und bekommt Isar reservierte Slots für Bereitschaft?
+4. Produktion oder nur Endmontage in Kanada, und was verlangt der Kunde an lokaler Wertschöpfung?
+5. Ab welcher gesicherten Kadenz würde Isar ein zweites Werk bauen?
 
-## Offene Recherche
+## Storyline für die Abschlusspräsentation
 
-| Thema | Owner |
-| --- | --- |
-| Werk Parsdorf: heutige Kadenz, Ausbaustufen, Investition; weitere Werke geplant? | Luca |
-| Kosten pro Standort und Jahr: Andøya-Pacht, zweites Pad, Nova Scotia, Kourou | Luca, Benedikt |
-| Logistik: Transportweg und -dauer Parsdorf → Andøya, → Nova Scotia, → Kourou; Endmontage vor Ort möglich? | Nils |
-| Kanada: Local-Content-Vorgaben, kanadische Verteidigungsnachfrage, Technologieschutzabkommen mit den USA | Benedikt |
-| Zweites Andøya-Pad: Mieter, Zeitplan, Exklusivität für Isar? | Luca |
+**Kernsatz:** Isar kann Europas souveräner Startanbieter werden, wenn es Verträge vor Raketen setzt und Standorte nach Kunden wählt. SSVE trägt diese Strategie (ASCENT) mit, gekoppelt an drei Meilensteine.
+
+1. **Situation (Q1 · Reach):** Der Standort bestimmt den Markt. Von Andøya aus sind 422 Satelliten erreichbar, gewinnbar sind heute ca. 13 pro Jahr.
+2. **Komplikation (Q2 · Growth):** Die sichtbare Nachfrage füllt nur 2,7 von 8 geplanten Starts 2028. Standortverträge binden 15–20 Jahre.
+3. **Lösung (Q2, Q3):** ASCENT; ein Werk, Andøya mit zweitem Pad, Nova Scotia mit Anker. Live im Tool: Anker-Starts auf 0, dann kippt Nova Scotia ins Minus.
+4. **Entscheidung:** Investieren ja, mit Meilensteinen:
+   - Kadenz und Erfolgsquote (mindestens 4 Starts 2027)
+   - Ankervertrag Nova Scotia bis 2029
+   - erster Bereitschaftsvertrag mit einem europäischen Staat
+5. **Rückfragen:** „Spaceports“, „Rockets“ und „Fact base“ als Expertenbasis.

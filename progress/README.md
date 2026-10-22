@@ -5,13 +5,15 @@
 | Setup | `main` | 21.10. bis 13:45 | erledigt | Team, Rollen, Notion-Wissensbasis |
 | Q1 – Reichweite Andøya | `phase/q1-andoya` | 21.10. 13:45–16:15 | erledigt | SAM 9,3 % der Satelliten / 0,7 % der Masse; [q1-andoya.md](q1-andoya.md) |
 | Q2 | `phase/q2` | 21.10. 16:15–19:45 | erledigt | Strategie ASCENT: erst der Vertrag, dann die Rakete; [Q2](../wiki/analysis/q2-business-areas.md) |
-| Q3 | `phase/q3` | 22.10. 09:30–12:00 | läuft | – |
+| Q3 | `phase/q3` | 22.10. 09:30–12:00 | erledigt | Ein Werk, ein Kernstandort, eine souveräne Option; [Q3](../wiki/analysis/q3-site-portfolio.md) |
 | Q4 | `phase/q4` | 22.10. 12:45–14:45 | offen | – |
 | Final | `phase/final` | 22.10. ab 15:00 | offen | Präsentation |
 
 ## Log
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
+
+- **22.10. 11:47**: RQ3 beantwortet: „Ein Werk, ein Kernstandort, eine souveräne Option“. Notion-Antwortseite unter RQ3 (Ist-Zustand, Auslastung, Zielbild, Begründung, Finanzen, Managementfragen, Storyline für die Abschlusspräsentation), Wiki Q3 neu, Dashboard-Kapitel „Q3 · Sites“ mit Managementfragen. 15 neue belegte Fakten (u. a. Kanada–USA-Abkommen nicht unterschrieben, ITB 100 %, Verteidigungsanteil am zweiten Andøya-Pad). 22 Tests grün.
 
 - **22.10. 11:32**: Hebel-URL robuster: ein neu hinzugekommener Hebel (z. B. Isars Anteil) fällt nach einem Hot-Reload auf seinen Basiswert zurück, ungültige Werte landen nicht mehr als `winShare=undefined` im Link (Hinweis aus der RQ3-Session). 20 Tests grün.
 

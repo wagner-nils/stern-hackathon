@@ -113,7 +113,10 @@ export function Q3Sites() {
   const changed = padCadence !== BASE.padCadence || nsAnchor !== BASE.nsAnchor || (readinessField && readinessGrowth !== readinessField.growth);
 
   const order: SiteNode["kind"][] = ["production", "test", "launch", "hq"];
-  const nodes = [...siteNodes].sort((a, b) => order.indexOf(a.kind) - order.indexOf(b.kind));
+  // Along the flow plant → test → pads; what we advise against comes last.
+  const nodes = [...siteNodes].sort(
+    (a, b) => Number(a.decision === "hold") - Number(b.decision === "hold") || order.indexOf(a.kind) - order.indexOf(b.kind),
+  );
 
   return (
     <section className="chapter">
@@ -215,6 +218,17 @@ export function Q3Sites() {
           A Canadian plant only makes sense if a Canadian anchor contract demands local value that integration, launch operations and
           Canadian suppliers cannot deliver, and volume exceeds about 10 rockets a year.
         </p>
+      </div>
+
+      <div className="card questions">
+        <h4>Questions for Isar's management</h4>
+        <ol>
+          <li>Who is the anchor customer at Nova Scotia, and when does it sign?</li>
+          <li>Where should up to 40 launches a year at Nova Scotia come from while US-built satellites cannot launch from Canada?</li>
+          <li>Who uses Andøya's second pad, and does Isar get reserved slots for readiness contracts?</li>
+          <li>Production or only final integration in Canada, and how much local value does the customer require?</li>
+          <li>From which contracted cadence would Isar build a second plant?</li>
+        </ol>
       </div>
 
       <div className="toolbar">

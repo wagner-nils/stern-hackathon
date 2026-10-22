@@ -13,7 +13,9 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
-- **22.10. 08:05**: Neues Tool-Kapitel „Rockets“: Starts nach Land und Unternehmen (2024/2025/2026, aus GCAT über `v_launches_by_provider` und `v_launches_by_country`) und Katalog aller 107 Raketen (neu: Ariane 5, New Shepard, Vega E; Anbieternamen vereinheitlicht). Spaceports-Karte hebt hervor, wo dieselben Raketen wie am gewählten Standort fliegen (Spectrum: Andøya, Nova Scotia, Kourou) oder dieselbe Klasse. 15 Tests grün.
+- **22.10. 07:49**: Nur Log-Korrektur: Zeitstempel des Rockets-Eintrags berichtigt (07:48 statt 08:05). 15 Tests grün.
+
+- **22.10. 07:48**: Neues Tool-Kapitel „Rockets“: Starts nach Land und Unternehmen (2024/2025/2026, aus GCAT über `v_launches_by_provider` und `v_launches_by_country`) und Katalog aller 107 Raketen (neu: Ariane 5, New Shepard, Vega E; Anbieternamen vereinheitlicht). Spaceports-Karte hebt hervor, wo dieselben Raketen wie am gewählten Standort fliegen (Spectrum: Andøya, Nova Scotia, Kourou) oder dieselbe Klasse. 15 Tests grün.
 
 - **22.10. 07:45**: Globales Startplatz-Register im Warehouse und als Tool-Kapitel „Spaceports“: 56 Standorte, 104 Raketen, 147 Zeilen „wer startet was von wo“, 201 Quellen, Aktivität aus 838 GCAT-Starts; Recherche in vier Regionen parallel. Neu belegt: Spectrum-Flug 2 im Orbit (5.9.2026), Kourou-Diamant mit Sirius statt MaiaSpace, in Andøya öffentlich kein weiterer Orbital-Anbieter. 15 Tests grün.
 

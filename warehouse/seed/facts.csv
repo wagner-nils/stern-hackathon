@@ -1,0 +1,64 @@
+metric_id,year,scope,entity,value,source_id,is_preferred,confidence,note
+backlog,2025,company,Rocket Lab,1847000000,rocketlab-10k-2025,true,high,Of which launch 475.6 M USD
+defence_share_of_demand,2026,company,Isar Aerospace,0.6,isar-series-d,true,high,Was mostly civil a year earlier
+factory_capacity,2030,company,Isar Aerospace,40,isar-mission-updates,true,medium,Design capacity of the Parsdorf factory; not yet reached
+funding_round,2026,company,Isar Aerospace,270000000,isar-series-d,true,high,Series D; plus a 150 M EUR convertible in 2025
+launch_failure_rate,2026,global,,0.07,expert-schingler,true,medium,Industry 5–8%; Planet 3 of 44 launches
+launch_insurance_rate,2026,company,Isar Aerospace,0.25,expert-schingler,true,medium,For Isar's next mission; market reads it as 1-in-4 failure odds
+launch_revenue,2025,global,,12400000000,sia-2026,true,high,Commercially procured launches incl. captive Starlink launches; +33%
+launch_revenue,2024,global,,9300000000,sia-2025,true,high,+30% on 2023
+launch_revenue_company,2025,company,Rocket Lab,199000000,rocketlab-10k-2025,true,high,Incl. HASTE; total revenue 601.8 M USD
+launch_revenue_company,2024,company,Rocket Lab,125400000,rocketlab-10k-2025,true,high,
+launches_planned,2028,company,Isar Aerospace,8,payload-seops,true,low,Source says double the 2027 cadence; 8 is our reading
+launches_planned,2027,company,Isar Aerospace,4,payload-seops,true,medium,Four flights in 2027
+manifest_booked_through,2026,company,Isar Aerospace,2028,munich-startup-2028,true,medium,2028 reported fully or nearly fully booked
+orbital_launches,2025,global,,321,mcdowell-2025,true,high,329 attempts
+orbital_launches,2025,global,,325,sia-2026,false,high,Different counting rules
+orbital_launches,2024,global,,258,mcdowell-2024,true,high,263 attempts
+orbital_launches,2024,global,,259,sia-2025,false,high,
+orbital_launches_company,2025,company,Rocket Lab,18,mcdowell-2025,true,high,Electron orbital launches; 21 missions incl. suborbital HASTE
+orbital_launches_company,2024,company,Rocket Lab,14,mcdowell-2024,true,high,Electron orbital launches
+pad_budget,2027,site,Andøya,646000000,norway-budget-pad2,true,medium,Second pad in Norway's budget proposal; tenant not named
+pad_lease_years,2021,site,Andøya,20,isar-andoya-pad,true,high,Exclusive pad up to 20 years from April 2021
+payload_mass_launched,2025,global,,2693652,gcat,true,high,Payload mass (GCAT column Mass) of payloads that reached orbit
+payload_mass_launched,2025,global,,2711000,brycetech-2026,false,high,Spacecraft upmass
+payload_mass_launched,2024,global,,2026013,gcat,true,high,Payload mass of payloads that reached orbit
+payload_mass_launched,2024,global,,2172000,sia-2025,false,high,Upmass by SIA's counting
+public_funding_award,2026,company,Isar Aerospace,197800000,isar-esa-elc,true,high,ESA European Launcher Challenge
+revenue_per_launch,2025,company,Rocket Lab,8500000,rocketlab-10k-2025,true,high,Electron; about 28000 USD/kg at about 300 kg
+revenue_per_launch,2024,company,Rocket Lab,7800000,rocketlab-10k-2025,true,high,Electron
+revenue_per_launch,2023,company,Rocket Lab,7100000,rocketlab-10k-2025,true,high,Electron
+rideshare_price,2027,company,SpaceX,7500,spacex-rideshare-api,true,high,50 kg minimum; about 10000 USD/kg with a separation system
+rideshare_price,2026,company,SpaceX,7000,spacex-rideshare-api,true,high,50 kg minimum
+rideshare_price,2025,company,SpaceX,6500,spacex-rideshare-api,true,high,50 kg minimum
+satellites_forecast,2034,global,,43000,novaspace-2025,true,medium,More than 43000 satellites to launch by 2035; 66% of 2025–2034 launches from five megaconstellations
+satellites_launched,2025,global,,4521,gcat,true,high,Payloads that reached orbit; our GCAT count
+satellites_launched,2025,global,,4542,brycetech-2026,false,high,Spacecraft launched by BryceTech's counting
+satellites_launched,2025,global,,4526,mcdowell-2025,false,high,Includes 5 payloads of failed or test launches
+satellites_launched,2025,global,,4434,sia-2026,false,high,Satellites launched by SIA's counting
+satellites_launched,2024,global,,2840,gcat,true,high,Payloads that reached orbit; our GCAT count
+satellites_launched,2024,global,,2864,mcdowell-2024,false,high,Includes 20 Starlinks of failed launch 2024-129 and 4 Starship tests
+satellites_launched,2024,global,,2695,sia-2025,false,high,Satellites launched by SIA's counting
+site_inclination_max,2026,site,Andøya,110.6,andoya-space,true,high,
+site_inclination_max,2026,site,Andøya,108,isar-launch,false,medium,Isar's own statement
+site_inclination_min,2026,site,Andøya,90,andoya-space,true,high,Licensed headings 280–360° at 69.1° N
+site_inclination_min,2026,site,Andøya,87.4,isar-launch,false,medium,Isar's own statement
+site_launch_cap,2024,site,Andøya,30,caa-norway-andoya,true,high,For the whole spaceport; Isar has one exclusive pad
+site_lease_cost,2026,site,Nova Scotia,112500000,isar-nova-scotia,true,high,3.75 M USD per quarter over 10 years; first launch 2028
+site_night_launch_cap,2024,site,Andøya,4,caa-norway-andoya,true,high,23:00–07:00
+smallsat_small_launcher_share,2025,all smallsats,,0.04,brycetech-2026,true,high,The landing page figure; includes broadband constellations
+smallsat_small_launcher_share,2025,non-broadband smallsats,,0.17,brycetech-2026,true,medium,Read from chart p. 29; includes Chinese small launchers
+smallsat_small_launcher_share,2024,non-broadband smallsats,,0.23,brycetech-2026,true,medium,Read from chart p. 29
+smallsat_small_launcher_share,2023,non-broadband smallsats,,0.18,brycetech-2026,true,medium,Read from chart p. 29
+smallsats_non_broadband,2025,global,,955,brycetech-2026,true,medium,
+smallsats_non_broadband,2024,global,,729,brycetech-2026,true,medium,
+smallsats_non_broadband,2023,global,,746,brycetech-2026,true,medium,
+sso_launches,2025,global,,72,mcdowell-2025,true,high,Of 321 launches that reached orbit
+sso_launches,2024,global,,59,mcdowell-2024,true,high,Of 258 launches that reached orbit
+sso_launches_company,2025,company,Rocket Lab,6,mcdowell-2025,true,high,Customers moving to 37–45° radar orbits
+sso_launches_company,2024,company,Rocket Lab,11,mcdowell-2024,true,high,
+successful_flights,2026,company,Isar Aerospace,1,isar-mission-updates,true,high,Flight 2 on 5 Sep 2026; flight 1 failed on 30 Mar 2025
+us_defense_payloads,2025,global,,150,mcdowell-2025,true,high,
+us_defense_payloads,2024,global,,122,mcdowell-2024,true,high,
+usd_per_eur,2026,global,,1.12,ecb-fx,true,high,October 2026 average to 21 Oct (1.122); 21 Oct 1.1234
+usd_per_eur,2025,global,,1.13,ecb-fx,true,high,Annual average

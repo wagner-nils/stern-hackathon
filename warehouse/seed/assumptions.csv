@@ -1,0 +1,15 @@
+id,name,question,tier,value,low,high,unit,is_lever,rationale,source_ids,owner,confidence
+fixed_dedicated_usd_per_kg,Dedicated small-launch price per kg,Q1,fixed,20000,15000,28000,USD per kg,false,12 M EUR for 700 kg is about 19000 USD/kg; Electron earns about 28000 USD/kg,rocketlab-10k-2025,Benedikt,medium
+fixed_fill_rate,Payload fill rate per launch,Q1,fixed,0.6,0.4,0.8,share,false,No public data; a single 200 kg customer fills only about 30% of a launch,team,Benedikt,low
+fixed_price_per_launch_eur,Price per Spectrum launch,Q1,fixed,12000000,10000000,15000000,EUR,false,Not published; estimates 10–15 M EUR; NewSpace Index about 10 M USD; Electron earns 8.5 M USD for a third of the capacity,newspace-index-isar;rocketlab-10k-2025,Luca,low
+fixed_rideshare_usd_per_kg,Rideshare price per kg,Q1,fixed,7500,7000,10000,USD per kg,false,SpaceX list price 2027; about 10000 USD/kg with separation system,spacex-rideshare-api,Benedikt,high
+fixed_usd_per_eur,Exchange rate,Q1,fixed,1.12,1.08,1.17,USD per EUR,false,ECB October 2026 average,ecb-fx,Nils,high
+sam_us_gov_open,US government demand open to Isar,Q1,fixed,0,0,0,share,false,NSPM-17 sends US government payloads to US-built launchers,nspm17,Nils,high
+sam_other_gov_open,Other governments' demand open to Isar,Q1,SAM,0.2,0,1,share,true,"Japan, India, Korea and others mostly fly their own launchers",team,Benedikt,low
+sam_payload_limit_kg,Heaviest satellite Spectrum can carry to SSO,Q1,SAM,700,700,1000,kg,true,Spectrum carries 700 kg to SSO; 1000 kg is its LEO figure and a possible upgrade under ESA Launcher Challenge component B,isar-spectrum;europeanspaceflight-elc,Nils,high
+sam_site_scope,Launch sites,Q1,SAM,0,0,2,option,true,0 = Andøya only (Q1 today); 1 = plus Nova Scotia (45–98° from 2028); 2 = plus Kourou (low inclinations and GTO),caa-norway-andoya;isar-nova-scotia;cnes-diamant,Nils,high
+som_launches_per_year,Spectrum launches per year,Q1,SOM,4,1,8,launches,true,Isar's plan for 2027 as its first full operating year; one launch in 2026; production is the bottleneck,payload-seops,Luca,medium
+som_penetration,Share of the serviceable market that buys a dedicated launch,Q1,SOM,0.07,0.04,0.15,share,true,"Measured 2025: 6.7% of SAM satellites (4.2% of mass) flew on a small launcher, all on Rocket Lab's Electron; the rest rode SpaceX rideshare. BryceTech: 10–14% in the West. Planet: new rockets get demo payloads first",gcat;brycetech-2026;expert-schingler,Benedikt,medium
+som_success_rate,Launch success rate,Q1,SOM,0.8,0.75,0.92,share,true,Insurance of about 25% on Isar's next mission implies 75%; mature launchers reach 92–95%,expert-schingler,Nils,medium
+tam_base_year,Base year of flown demand,Q1,TAM,2025,2024,2025,year,true,Latest full year; 2024 as comparison shows how much a single year swings,gcat,Nils,high
+outlook_market_growth,Market growth outside megaconstellations,Q2+,outlook,0.09,0.05,0.14,share per year,false,Novaspace forecast implies about 9% a year; BryceTech history 13–17%,novaspace-2025;brycetech-2026,Benedikt,medium

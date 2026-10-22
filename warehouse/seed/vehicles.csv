@@ -1,0 +1,5 @@
+id,name,operator,payload_leo_kg,payload_sso_kg,price_usd,class,note,source_id
+alpha,Alpha,Firefly Aerospace,1030,630,15000000,small,List price from secondary sources; returned to flight March 2026,firefly-alpha
+electron,Electron,Rocket Lab,300,,8500000,small,Average revenue per launch 2025; the only small launcher in Andøya's market in 2025,rocketlab-10k-2025
+falcon9-transporter,Falcon 9 (Transporter rideshare),SpaceX,,,,heavy,"Rideshare at 7500 USD/kg (2027 list), 50 kg minimum; carried 87% of Andøya's market in 2025",spacex-rideshare-api
+spectrum,Spectrum,Isar Aerospace,1000,700,,small,Price not published; one successful flight of two,isar-spectrum

@@ -48,9 +48,9 @@ Wer im SAM steckt: Erdbeobachtung optisch 144, Tech-Demos 92, Kommunikation/IoT 
 Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahmen-Register](../reference/assumptions.md).
 
 - **TAM:** Basisjahr (2024 / 2025)
-- **SAM:** Startplätze (Andøya, + Nova Scotia, + Kourou), Nutzlastgrenze (700–1.000 kg), Anteil anderer Regierungen (0–100 %)
+- **SAM:** Startplätze (Andøya, + Nova Scotia, + Kourou), Anteil anderer Regierungen (0–100 %)
 - **SOM:** Penetration (4–15 %), Starts pro Jahr (1–8), Erfolgsquote (75–92 %)
-- **Fest:** Füllgrad 60 %, Preis 12 Mio. € pro Start, Rideshare 7.500 USD/kg, dediziert 20.000 USD/kg, 1,12 USD/€, US-Regierung 0 %
+- **Fest:** Spectrum-Nutzlast 700 kg SSO / 1.000 kg LEO (Fahrzeugfakt von Isar), Füllgrad 60 %, Preis 12 Mio. € pro Start, Rideshare 7.500 USD/kg, dediziert 20.000 USD/kg, 1,12 USD/€, US-Regierung 0 %
 
 ## Sensitivitäten
 
@@ -66,7 +66,7 @@ Höchstens drei Hebel pro Stufe, konservativ und mit Spanne; Details im [Annahme
 
 - Das Basisjahr wirkt am stärksten: 2024 war der offene Markt im Andøya-Band nur halb so groß. Die Nachfrage schwankt stark von Jahr zu Jahr.
 - Mehr Starts allein bringen nichts, solange die Penetration bei 7 % liegt. Wachstum kommt über Penetration (Zuverlässigkeit, Rideshare-Stopp, Verteidigung) und neue Orbits.
-- Die Nutzlastgrenze (700 → 1.000 kg) vergrößert den SAM kaum (+0,1 t), senkt aber den SOM-Umsatz, weil dieselbe Masse in weniger Ladungen passt.
+- Die Nutzlast ist bewusst kein Regler: 1.000 statt 700 kg in SSO vergrößerte den SAM kaum (+0,1 t), und weil Preis (12 Mio. €) und Kilopreis auf 700 kg kalibriert sind, sänke der SOM-Umsatz rechnerisch. Eine stärkere Spectrum-Version gehört in ein späteres Szenario mit eigenem Preis.
 
 ## Ausblick für spätere Fragen
 

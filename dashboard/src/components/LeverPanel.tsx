@@ -1,6 +1,6 @@
 import { type Tier, assumption } from "../data/warehouse";
 import { fmtUnit } from "../lib/format";
-import { FIXED_IDS, LEVERS } from "../state/levers";
+import { FIXED_IDS, LEVERS, spectrum } from "../state/levers";
 import type { LeverState } from "../state/useLevers";
 import { ConfidenceBadge } from "./ConfidenceBadge";
 import { SourceChips } from "./SourceChip";
@@ -86,6 +86,13 @@ export function LeverPanel({ state, selected }: { state: LeverState; selected: T
       <section className="lever-group lever-group--fixed">
         <div className="overline">Fixed parameters · no slider</div>
         <ul className="fixed">
+          <li title="Isar's published figures; no reference altitude is given for the SSO figure.">
+            <span>Spectrum payload (vehicle fact)</span>
+            <strong>
+              {fmtUnit(spectrum.payload_sso_kg, "kg")} SSO · {fmtUnit(spectrum.payload_leo_kg, "kg")} LEO
+            </strong>
+            <SourceChips ids={[spectrum.source_id]} />
+          </li>
           {FIXED_IDS.map((id) => {
             const a = assumption(id);
             return (

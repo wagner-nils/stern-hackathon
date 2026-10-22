@@ -7,7 +7,6 @@ export interface Q1Levers {
   baseYear: number;
   /** 0 = Andøya, 1 = plus Nova Scotia, 2 = plus Kourou. */
   siteScope: number;
-  payloadLimitKg: number;
   otherGovOpen: number;
   penetration: number;
   launchesPerYear: number;
@@ -15,6 +14,9 @@ export interface Q1Levers {
 }
 
 export interface Q1Fixed {
+  /** Spectrum's published payload: the SSO figure for polar and sun-synchronous orbits, the LEO figure for the rest. */
+  payloadSsoKg: number;
+  payloadLeoKg: number;
   fillRate: number;
   pricePerLaunchEur: number;
   rideshareUsdPerKg: number;
@@ -72,9 +74,8 @@ function openWeight(customerType: string, l: Q1Levers, f: Q1Fixed): number {
   return 0;
 }
 
-/** Spectrum's limit is quoted for SSO; low-inclination LEO from other sites gets the LEO figure, scaled alike. */
-const payloadLimit = (orbitClass: string, l: Q1Levers) =>
-  orbitClass === "SSO" ? l.payloadLimitKg : (l.payloadLimitKg * 1000) / 700;
+/** Heaviest satellite Spectrum can lift into the satellite's orbit class. */
+const payloadLimit = (orbitClass: string, f: Q1Fixed) => (orbitClass === "SSO" ? f.payloadSsoKg : f.payloadLeoKg);
 
 export function computeQ1(
   sats: Satellite[],
@@ -95,7 +96,7 @@ export function computeQ1(
   for (const s of sats) {
     if (s.year !== l.baseYear) continue;
     const open = openWeight(s.customerType, l, f);
-    const fits = open * (s.massKg <= payloadLimit(s.orbitClass, l) ? 1 : 0);
+    const fits = open * (s.massKg <= payloadLimit(s.orbitClass, f) ? 1 : 0);
     const reached = fits * (inReach(s.inclination) ? 1 : 0);
     for (const [key, w] of [["tam", 1], ["access", open], ["payload", fits], ["orbit", reached]] as const) {
       flows[key].sats += w;
@@ -105,7 +106,8 @@ export function computeQ1(
 
   const sam = flows.orbit;
   const want: Flow = { sats: sam.sats * l.penetration, massKg: sam.massKg * l.penetration };
-  const perLaunchKg = l.payloadLimitKg * f.fillRate;
+  // Andøya flies polar and SSO, so a load is priced and sized on the SSO figure.
+  const perLaunchKg = f.payloadSsoKg * f.fillRate;
   const capacityKg = l.launchesPerYear * l.successRate * perLaunchKg;
   const somKg = Math.min(want.massKg, capacityKg);
   const som: Flow = { sats: want.massKg > 0 ? want.sats * (somKg / want.massKg) : 0, massKg: somKg };
@@ -163,7 +165,7 @@ export function samWeight(l: Q1Levers, f: Q1Fixed, reach: Interval[]) {
   return (s: Satellite) => {
     if (s.year !== l.baseYear) return 0;
     const open = openWeight(s.customerType, l, f);
-    const fits = s.massKg <= payloadLimit(s.orbitClass, l) ? 1 : 0;
+    const fits = s.massKg <= payloadLimit(s.orbitClass, f) ? 1 : 0;
     const reached = reach.some(([lo, hi]) => s.inclination >= lo && s.inclination <= hi) ? 1 : 0;
     return open * fits * reached;
   };

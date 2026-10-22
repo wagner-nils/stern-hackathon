@@ -1,5 +1,5 @@
-import { type Tier, assumption, preferred } from "../data/warehouse";
-import { fmtInt, fmtPct } from "../lib/format";
+import { type Tier, assumption, preferred, vehicles } from "../data/warehouse";
+import { fmtPct } from "../lib/format";
 import type { Q1Fixed, Q1Levers } from "../model/q1";
 
 // The Q1 levers: at most three per tier, each backed by an assumption row in the warehouse.
@@ -37,7 +37,6 @@ export const LEVERS: LeverDef[] = [
     ],
     format: (v) => ["Andøya", "Andøya + Nova Scotia", "Andøya + Nova Scotia + Kourou"][v],
   },
-  { key: "payloadLimitKg", assumptionId: "sam_payload_limit_kg", tier: "SAM", step: 50, format: (v) => `${fmtInt(v)} kg` },
   { key: "otherGovOpen", assumptionId: "sam_other_gov_open", tier: "SAM", step: 0.05, format: fmtPct },
   { key: "penetration", assumptionId: "som_penetration", tier: "SOM", step: 0.01, format: fmtPct },
   { key: "launchesPerYear", assumptionId: "som_launches_per_year", tier: "SOM", step: 1, format: (v) => `${v} / yr` },
@@ -57,7 +56,16 @@ export const baseLevers = Object.fromEntries(
   LEVERS.map((l) => [l.key, assumption(l.assumptionId).value]),
 ) as unknown as Q1Levers;
 
+/** Isar's own payload figures, a sourced vehicle fact rather than an assumption. */
+export const spectrum = (() => {
+  const v = vehicles.find((x) => x.id === "spectrum");
+  if (!v || v.payload_sso_kg === null || v.payload_leo_kg === null) throw new Error("Spectrum payload is missing in the warehouse");
+  return { ...v, payload_sso_kg: v.payload_sso_kg, payload_leo_kg: v.payload_leo_kg };
+})();
+
 export const baseFixed: Q1Fixed = {
+  payloadSsoKg: spectrum.payload_sso_kg,
+  payloadLeoKg: spectrum.payload_leo_kg,
   fillRate: assumption("fixed_fill_rate").value,
   pricePerLaunchEur: assumption("fixed_price_per_launch_eur").value,
   rideshareUsdPerKg: assumption("fixed_rideshare_usd_per_kg").value,

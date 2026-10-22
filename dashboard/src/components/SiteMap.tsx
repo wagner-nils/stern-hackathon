@@ -32,7 +32,7 @@ export type MapSite = LaunchSite & { activity: SiteOverview | undefined };
  * inclination a site reaches directly. Dot area follows launches in 2025; hollow dots are not operational yet.
  */
 export function SiteMap({ sites, selected, onSelect }: { sites: MapSite[]; selected: string; onSelect: (id: string) => void }) {
-  const placed = sites.filter((s) => s.longitude !== null);
+  const placed = sites.filter((s) => s.longitude != null);
   const radius = (s: MapSite) => 4 + Math.sqrt(s.activity?.launches_2025 ?? 0) * 1.7;
   const labelled = (s: MapSite) => s.id === selected || (s.activity?.launches_2025 ?? 0) >= 15;
   // Draw the busiest first so small sites stay clickable on top.

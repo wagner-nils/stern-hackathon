@@ -205,13 +205,16 @@ from facts f
 join metrics m on m.id = f.metric_id
 join sources s on s.id = f.source_id;
 
--- Q1 base case (Andøya only), computed from satellites, facts and assumptions: every funnel number is reproducible in SQL.
+-- Q1 base case (Andøya only), computed from satellites, facts, assumptions and Spectrum's payload in vehicles:
+-- every funnel number is reproducible in SQL.
 -- Revenue: TAM from the preferred launch revenue fact; SAM as a range from rideshare to dedicated price per kg.
 create or replace view v_q1_funnel as
 with p as (
   select
     max(value) filter (where id = 'tam_base_year') as base_year,
-    max(value) filter (where id = 'sam_payload_limit_kg') as payload_kg,
+    -- Spectrum's payload is a sourced vehicle fact, not an assumption.
+    (select payload_sso_kg from vehicles where id = 'spectrum') as payload_sso,
+    (select payload_leo_kg from vehicles where id = 'spectrum') as payload_leo,
     max(value) filter (where id = 'sam_other_gov_open') as other_gov,
     max(value) filter (where id = 'som_penetration') as penetration,
     max(value) filter (where id = 'som_launches_per_year') as launches,
@@ -234,7 +237,7 @@ s as (
     case sat.customer_type
       when 'open-commercial' then 1 when 'institutional-eu' then 1
       when 'institutional-other' then p.other_gov else 0 end as open_w,
-    case when sat.mass_kg <= case when sat.orbit_class = 'SSO' then p.payload_kg else p.payload_kg * 1000.0 / 700 end
+    case when sat.mass_kg <= case when sat.orbit_class = 'SSO' then p.payload_sso else p.payload_leo end
       then 1 else 0 end as fits_w,
     case when sat.inclination between site.inclination_min and site.inclination_max then 1 else 0 end as reach_w
   from satellites sat, p, site
@@ -254,8 +257,8 @@ sam as (select satellites, mass_kg from steps where step = 4),
 som as (
   select sam.satellites * p.penetration as want_sats,
          sam.mass_kg * p.penetration as want_kg,
-         p.launches * p.success * p.payload_kg * p.fill as can_kg,
-         p.payload_kg * p.fill as per_launch_kg,
+         p.launches * p.success * p.payload_sso * p.fill as can_kg,
+         p.payload_sso * p.fill as per_launch_kg,
          p.price_eur
   from sam, p
 )
@@ -283,7 +286,8 @@ order by step;
 create or replace view v_sam_launchers as
 with p as (
   select max(value) filter (where id = 'tam_base_year') as base_year,
-         max(value) filter (where id = 'sam_payload_limit_kg') as payload_kg
+         (select payload_sso_kg from vehicles where id = 'spectrum') as payload_sso,
+         (select payload_leo_kg from vehicles where id = 'spectrum') as payload_leo
   from assumptions
 ),
 site as (select inclination_min, inclination_max from launch_sites where id = 'andoya')
@@ -291,7 +295,7 @@ select s.launch_vehicle, s.launcher_class, count(*) as satellites, sum(s.mass_kg
 from satellites s, p, site
 where s.launch_year = p.base_year
   and s.customer_type in ('open-commercial', 'institutional-eu')
-  and s.mass_kg <= p.payload_kg
+  and s.mass_kg <= case when s.orbit_class = 'SSO' then p.payload_sso else p.payload_leo end
   and s.inclination between site.inclination_min and site.inclination_max
 group by 1, 2
 order by satellites desc;

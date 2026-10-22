@@ -187,7 +187,7 @@ function SiteDetail({ site }: { site: MapSite }) {
         )}
         <dt>Sources</dt>
         <dd>
-          <SourceChips ids={[...site.source_ids, ...(years.length ? ["gcat"] : [])]} />
+          <SourceChips ids={[...(site.source_ids ?? [site.source_id]), ...(years.length ? ["gcat"] : [])]} />
         </dd>
       </dl>
     </div>

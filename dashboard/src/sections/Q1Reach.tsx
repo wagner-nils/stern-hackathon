@@ -9,7 +9,7 @@ import { Waffle } from "../components/Waffle";
 import { type Tier, assumption, launchSites, preferred, satellites } from "../data/warehouse";
 import { fmtEur, fmtInt, fmtPct, fmtTonnes, fmtUnit, share } from "../lib/format";
 import { type Flow, computeQ1, sitesInScope } from "../model/q1";
-import { LEVERS, baseFixed, baseLevers, tamRevenueUsd } from "../state/levers";
+import { LEVERS, baseFixed, baseLevers, spectrum, tamRevenueUsd } from "../state/levers";
 import type { LeverState } from "../state/useLevers";
 
 const metrics: { id: Metric; label: string }[] = [
@@ -56,10 +56,10 @@ export function Q1Reach({ state }: { state: LeverState }) {
       {
         id: "payload",
         factor: "Payload: fits on Spectrum",
-        rule: `Satellite weighs at most ${fmtInt(l.payloadLimitKg)} kg to SSO`,
+        rule: `Satellite weighs at most ${fmtInt(f.payloadSsoKg)} kg in SSO or ${fmtInt(f.payloadLeoKg)} kg in other low orbits (Spectrum's published payload)`,
         from: access,
         to: payload,
-        sources: assumption("sam_payload_limit_kg").source_ids,
+        sources: [spectrum.source_id],
       },
       {
         id: "orbit",
@@ -82,7 +82,7 @@ export function Q1Reach({ state }: { state: LeverState }) {
       {
         id: "capacity",
         factor: "Capacity: Isar can fly it",
-        rule: `${l.launchesPerYear} launches × ${fmtPct(l.successRate)} success × ${fmtInt(l.payloadLimitKg)} kg × ${fmtPct(f.fillRate)} fill = ${fmtTonnes(r.capacityKg)}`,
+        rule: `${l.launchesPerYear} launches × ${fmtPct(l.successRate)} success × ${fmtInt(f.payloadSsoKg)} kg × ${fmtPct(f.fillRate)} fill = ${fmtTonnes(r.capacityKg)}`,
         from: penetration,
         to: capacity,
         sources: [

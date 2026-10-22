@@ -10,7 +10,6 @@ Höchstens drei pro Stufe, konservativ gewählt.
 | --- | --- | --- | --- | --- | --- | --- |
 | TAM | Basisjahr der geflogenen Nachfrage | 2025 | 2024–2025 | hoch | Nils | GCAT; jüngstes vollständiges Jahr |
 | SAM | Startplätze | Andøya | Andøya, + Nova Scotia, + Kourou | hoch | Nils | CAA Norway (90–110,6°), Isar/Maritime Launch, CNES |
-| SAM | Schwerster Satellit, den Spectrum in SSO bringt | 700 kg | 700–1.000 kg | hoch | Nils | Isar (1.000 kg LEO / 700 kg SSO), European Spaceflight |
 | SAM | Nachfrage anderer Regierungen offen für Isar | 20 % | 0–100 % | niedrig | Benedikt | Teamschätzung: Japan, Indien, Korea fliegen meist mit eigenen Raketen |
 | SOM | Anteil des SAM, der einen dedizierten Start kauft | 7 % | 4–15 % | mittel | Benedikt | GCAT: 6,7 % des SAM flogen 2025 auf Kleinträgern; BryceTech 17 % weltweit, 10–14 % im Westen; Schingler: neue Raketen erst Demo |
 | SOM | Spectrum-Starts pro Jahr | 4 | 1–8 | mittel | Luca | Payload: 4 Flüge 2027 |
@@ -20,6 +19,7 @@ Höchstens drei pro Stufe, konservativ gewählt.
 
 | Annahme | Wert | Spanne | Konfidenz | Owner | Quelle |
 | --- | --- | --- | --- | --- | --- |
+| Spectrum-Nutzlast | 700 kg SSO, 1.000 kg LEO | – | hoch | Nils | Fahrzeugfakt in `vehicles` (Isar); keine Bahnhöhe angegeben. Kein Regler mehr: 1.000 kg in SSO brächte nur +0,1 t SAM, und bei festem Preis pro Start sänke der SOM-Umsatz rechnerisch |
 | Füllgrad pro Start | 60 % | 40–80 % | niedrig | Benedikt | Teamschätzung; ein einzelner 200-kg-Kunde füllt nur ca. 30 % |
 | Preis pro Spectrum-Start | 12 Mio. € | 10–15 Mio. € | niedrig | Luca | NewSpace Index (FT); Electron 8,5 Mio. USD (Rocket Lab 10-K) |
 | Rideshare-Preis | 7.500 USD/kg | 7.000–10.000 | hoch | Benedikt | SpaceX-Preisliste 2027 |

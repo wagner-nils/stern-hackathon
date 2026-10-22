@@ -13,6 +13,8 @@
 
 Neueste Einträge oben. Ein Eintrag pro Checkpoint (ca. alle 30 Minuten).
 
+- **22.10. 07:32**: Payload-Regler entfernt: Spectrum-Nutzlast (700 kg SSO, 1.000 kg LEO) ist jetzt ein fester Fahrzeugfakt aus `vehicles`, Tool und SQL-View lesen ihn dort; Basiszahlen unverändert (SAM 422 / 17,9 t, SOM 30 / 1,25 t / 36 Mio. €), 15 Tests grün. Spaceports-Tab stürzt mit älterem Snapshot nicht mehr ab.
+
 - **22.10. 07:25**: Warehouse auf `main` und `phase/q3` gemergt. In Arbeit: globales Startplatz-Register (Schema für `launch_sites`, `vehicles`, `launch_site_vehicles`, neue GCAT-Tabelle `launches` mit 838 Starts seit 2024, Views pro Standort und Rakete) und Dashboard-Tab „Spaceports“ mit Weltkarte; die Recherche-Daten folgen, bis dahin ist das Register leer und Supabase unverändert. 15 Tests grün.
 
 - **22.10. 07:05** (Branch `feature/fact-warehouse`): RQ1 neu aufgebaut auf dem **Fact-Warehouse in Supabase** (Quellen, Metriken, 63 Fakten mit ✓-Vorzugsquelle, 14 Annahmen, Startplätze, Raketen, Manifest, 7.361 GCAT-Satelliten; SQL-View `v_q1_funnel` = Tool, per Test). Q1 heute (Basis 2025): SAM 422 Satelliten / 17,9 t / 120–319 Mio. €, SOM ca. 30 Satelliten / 1,25 t / 36 Mio. €; Penetration 7 % gemessen, **Engpass ist die Nachfrage, nicht die Kapazität**. Dashboard: klickbare TAM/SAM/SOM-Karten mit Drill-down (Eindämmungsfaktoren als Treppe, Quellenvergleich, Wettbewerber, drei Penetrationspunkte, Buchungshorizont gegen Andøyas 30 Slots), max. 3 Hebel pro Stufe, Fact-base-Tab. Stil: „Von 1.000“-Raster, Erreichbarkeitsband im Inklinationschart, Szenario-Hinweis mit Basiswerten, Quellen-Kurzlabels mit Verlässlichkeitslegende. Notion „Antwort“ → „Claude-Überarbeitung“ ergänzt; Wiki Q1 und Annahmen-Register nachgezogen.

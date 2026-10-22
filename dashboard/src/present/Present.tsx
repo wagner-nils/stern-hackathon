@@ -1,260 +1,104 @@
-import { ScenarioChart, scenarioColor } from "../components/ScenarioChart";
-import { assumption, expansionFields, scenarios } from "../data/warehouse";
+import { Bar, CartesianGrid, ComposedChart, Line, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { expansionFields, launchGap, preferred } from "../data/warehouse";
+import { animation, tooltipProps } from "../lib/chartTheme";
 import { fmtInt, fmtOne, fmtPct } from "../lib/format";
-import { fieldYear } from "../model/q2";
-import { type ScenarioSettings, BASE_COST, BASE_SETTINGS, KOUROU_FEE, KOUROU_LAUNCHES, isEdited, run } from "../state/scenario";
+import { BASE_COST, BASE_SETTINGS, run } from "../state/scenario";
 
 const eurM = (v: number) => `€${fmtInt(Math.round(v / 1e6))} M`;
 const signedM = (v: number) => `${v < 0 ? "−" : "+"}€${fmtInt(Math.abs(Math.round(v / 1e6)))} M`;
-const SHOCK_YEAR = 2030;
-const WACC = assumption("q2_wacc").value;
 
-// Short labels for the RQ2 fields; the full names live in expansion_fields and the Q2 chapter.
-const shortName: Record<string, string> = {
-  institutional_elc: "European institutional launches (ESA)",
-  sovereign_readiness: "Paid launch readiness for states",
-  core_polar: "Dedicated polar and SSO launches",
-  core_dedicated_shift: "Customers leaving rideshare",
-  mission_extras: "Extras on every launch",
-  site_nova_scotia: "Nova Scotia",
-  site_kourou: "Kourou",
-  hypersonic_tests: "Hypersonic test flights",
-  mid_class_rocket: "Mid-class rocket",
-  satellite_manufacturing: "Satellites",
-  satellite_data: "Own data",
-  orbital_transfer: "Transfer vehicle",
-  engines: "Engines for others",
-};
+/** The presentation: the base case (ASCENT) only, every number live from the warehouse. */
+export function Present() {
+  const a = run("ascent", BASE_SETTINGS);
+  const y30 = a.at(2030);
+  const y35 = a.at(2035);
+  const gap = launchGap.find((g) => g.year === 2028);
+  const funding = preferred("funding_round", { year: 2026, scope: "company", entity: "Isar Aerospace" });
 
-function Slider({
-  label,
-  value,
-  shown,
-  base,
-  min,
-  max,
-  step,
-  onChange,
-}: {
-  label: string;
-  value: number;
-  shown: string;
-  base: string;
-  min: number;
-  max: number;
-  step: number;
-  onChange: (v: number) => void;
-}) {
-  return (
-    <label className="present__slider">
-      <span>
-        {label} <strong>{shown}</strong> <small>base {base}</small>
-      </span>
-      <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} />
-    </label>
-  );
-}
+  // Revenue 2030 that rests on unsigned contracts or the ESA programme ending in 2030.
+  const elc = expansionFields.find((f) => f.id === "institutional_elc");
+  const elc2030 = elc ? elc.market_2025_eur * Math.pow(1 + elc.growth, 2030 - 2025) * elc.isar_share : 0;
+  const contracted = (a.scenario.contract_launches + a.scenario.ns_anchor_launches) * BASE_COST.pricePerLaunchEur + y30.readinessRevenueEur;
+  const notSecured = (contracted + elc2030) / y30.revenueEur;
 
-/** The presentation: the investment case on one page, every number live from the warehouse and the five levers. */
-export function Present({ settings, setSettings }: { settings: ScenarioSettings; setSettings: (s: ScenarioSettings) => void }) {
-  const runs = Object.fromEntries(scenarios.map((s) => [s.id, run(s.id, settings)]));
-  const sel = runs[settings.scenarioId];
-  const base = scenarios.find((s) => s.id === settings.scenarioId)!;
-  const a = runs.ascent;
-  const by2035 = a.contractsFor(2035);
-  const ns = a.nsBreakEven(2030);
-  const nsNet = a.nsNet(2031);
-  const sh = sel.shock(SHOCK_YEAR);
-  const set = (patch: Partial<ScenarioSettings>) => setSettings({ ...settings, ...patch });
+  // Margin of one sold launch after the cost of the flight and of re-flying failures; launches needed to carry the fixed cost.
+  const margin = BASE_COST.pricePerLaunchEur - y30.unitCostEur / y30.successRate;
+  const launchesNeeded = BASE_COST.fixedOpexEur / margin;
 
-  const fields = (rec: "pursue" | "conditional" | "not") =>
-    expansionFields
-      .filter((f) => f.recommendation === rec)
-      .map((f) => ({ f, revenue: fieldYear(f, 2030, { wacc: WACC }).revenueEur }))
-      .sort((x, y) => y.revenue - x.revenue);
+  const data = a.years.map((y) => ({ year: y.year, revenue: Math.round(y.revenueEur / 1e6), ebit: Math.round(y.ebitEur / 1e6) }));
 
   return (
     <section className="present">
       <header className="present__head">
         <div>
-          <div className="overline">Our recommendation to SSVE</div>
+          <div className="overline">Our recommendation to SSVE · base case ASCENT</div>
           <h1>
             <em>Do not invest now:</em> even if ASCENT works, Isar makes losses until {a.kpi.sustainedBreakEven ? a.kpi.sustainedBreakEven - 1 : 2040}.
           </h1>
-          <small className="present__revisit">
-            Revisit when 3 of 4 flights reach orbit in 2027, a European state pays for readiness and frame contracts are signed.
-          </small>
         </div>
-        {isEdited(settings) && (
-          <button className="text-button" onClick={() => setSettings({ ...BASE_SETTINGS, scenarioId: settings.scenarioId })}>
-            edited · back to base
-          </button>
-        )}
       </header>
 
-      <div className="present__scenarios">
-        {scenarios.map((s) => {
-          const r = runs[s.id];
-          return (
-            <button
-              key={s.id}
-              className={`present__scenario${s.id === settings.scenarioId ? " is-active" : ""}`}
-              style={{ borderTopColor: scenarioColor[s.id] }}
-              onClick={() => set({ scenarioId: s.id, contractLaunches: null, readinessGrowth: null, success2030: null })}
-            >
-              <span className="present__scenario-name">
-                {s.id === "ascent" ? "ASCENT · base" : s.id === "bear" ? "Bear · ASCENT fails" : "Bull · Europe buys at scale"}
-              </span>
-              <span className="present__nums">
-                <span>
-                  <strong>{eurM(r.at(2030).revenueEur)}</strong>
-                  <small>revenue 2030</small>
-                </span>
-                <span>
-                  <strong>{eurM(r.at(2035).revenueEur)}</strong>
-                  <small>revenue 2035</small>
-                </span>
-                <span>
-                  <strong className={r.at(2035).ebitEur < 0 ? "is-neg" : "is-pos"}>{signedM(r.at(2035).ebitEur)}</strong>
-                  <small>EBIT 2035</small>
-                </span>
-                <span>
-                  <strong>{r.kpi.sustainedBreakEven ?? "–"}</strong>
-                  <small>{r.kpi.sustainedBreakEven ? "profitable from" : "no profit by 2040"}</small>
-                </span>
-              </span>
-            </button>
-          );
-        })}
+      <div className="present__kpis">
+        <div className="card">
+          <strong>{eurM(y30.revenueEur)}</strong>
+          <span>revenue 2030</span>
+          <small>{eurM(y35.revenueEur)} in 2035</small>
+        </div>
+        <div className="card">
+          <strong className="is-neg">{signedM(y30.ebitEur)}</strong>
+          <span>operating profit 2030</span>
+          <small>{signedM(y35.ebitEur)} in 2035</small>
+        </div>
+        <div className="card">
+          <strong>{a.kpi.sustainedBreakEven ?? "after 2040"}</strong>
+          <span>first profitable year</span>
+        </div>
+        <div className="card">
+          <strong className="is-neg">{eurM(-a.kpi.peakCumulativeLossEur)}</strong>
+          <span>cumulative loss until then</span>
+          <small>Isar's Series D: {eurM(funding.value)}</small>
+        </div>
       </div>
 
       <div className="present__middle">
         <div className="card present__chart">
-          <ScenarioChart runs={Object.fromEntries(scenarios.map((s) => [s.id, runs[s.id].years]))} selected={settings.scenarioId} height={118} />
-          <p className="caption">
-            Real 2026 euros, EBIT proxy before depreciation. Peak cumulative loss of {base.name}: {eurM(-sel.kpi.peakCumulativeLossEur)} ({sel.kpi.peakLossYear}).
-            {sel.overCapacityFrom ? ` Needs more pads at Andøya from ${sel.overCapacityFrom}; their cost is not included.` : ""}
-          </p>
+          <div className="overline">Revenue (bars) and operating profit (line), € M</div>
+          <ResponsiveContainer width="100%" height={260}>
+            <ComposedChart data={data} margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
+              <CartesianGrid stroke="#eceef2" vertical={false} />
+              <XAxis dataKey="year" tick={{ fontSize: 12, fill: "#7a8399" }} tickLine={false} axisLine={{ stroke: "#e5e7eb" }} />
+              <YAxis tick={{ fontSize: 12, fill: "#7a8399" }} tickLine={false} axisLine={false} width={48} />
+              <ReferenceLine y={0} stroke="#000b27" />
+              <Tooltip {...tooltipProps} formatter={(v: number, k: string) => [`€${v} M`, k === "revenue" ? "Revenue" : "Operating profit"]} />
+              <Bar dataKey="revenue" fill="#c9d9f5" {...animation} />
+              <Line dataKey="ebit" stroke="#095edd" strokeWidth={3} dot={false} {...animation} />
+            </ComposedChart>
+          </ResponsiveContainer>
         </div>
-        <div className="card present__levers">
-          <div className="overline">Five assumptions to test · {base.name}</div>
-          <Slider
-            label="Frame-contract launches a year"
-            value={settings.contractLaunches ?? base.contract_launches}
-            shown={fmtOne(settings.contractLaunches ?? base.contract_launches)}
-            base={String(base.contract_launches)}
-            min={0}
-            max={8}
-            step={1}
-            onChange={(v) => set({ contractLaunches: v })}
-          />
-          <Slider
-            label="Paid readiness grows"
-            value={settings.readinessGrowth ?? base.readiness_growth}
-            shown={`${fmtPct(settings.readinessGrowth ?? base.readiness_growth)} a year`}
-            base={base.fields.includes("sovereign_readiness") ? fmtPct(base.readiness_growth) : "no contract in Bear"}
-            min={0.1}
-            max={0.25}
-            step={0.01}
-            onChange={(v) => set({ readinessGrowth: v })}
-          />
-          <Slider
-            label="Success rate from 2030"
-            value={settings.success2030 ?? base.success_2030}
-            shown={fmtPct(settings.success2030 ?? base.success_2030)}
-            base={fmtPct(base.success_2030)}
-            min={0.75}
-            max={0.97}
-            step={0.01}
-            onChange={(v) => set({ success2030: v })}
-          />
-          <Slider
-            label="Fixed cost base (all scenarios)"
-            value={settings.fixedOpexEur}
-            shown={`${eurM(settings.fixedOpexEur)} a year`}
-            base={eurM(BASE_COST.fixedOpexEur)}
-            min={40e6}
-            max={90e6}
-            step={5e6}
-            onChange={(v) => set({ fixedOpexEur: v })}
-          />
-          <Slider
-            label={`Q4 shock: Andøya closed in ${SHOCK_YEAR}`}
-            value={settings.shockMonths}
-            shown={`${settings.shockMonths} months`}
-            base="0"
-            min={0}
-            max={12}
-            step={1}
-            onChange={(v) => set({ shockMonths: v })}
-          />
+        <div className="card present__list">
+          <h4>Why not now</h4>
+          <ol>
+            <li>
+              <strong>Revenue is not secured:</strong> {fmtPct(notSecured)} of the {eurM(y30.revenueEur)} in 2030 rests on contracts nobody has signed or on the ESA
+              programme that ends in 2030. Today only {fmtOne(gap?.launches_filled_isar_share ?? 0)} of {gap?.planned} planned 2028 launches have a buyer.
+            </li>
+            <li>
+              <strong>Too little margin per launch:</strong> about {eurM(margin)} per launch after flight cost and re-flights, against {eurM(BASE_COST.fixedOpexEur)}{" "}
+              fixed cost a year. Isar needs about {Math.round(launchesNeeded)} launches a year; in 2030 it sells {fmtOne(y30.launchesSold)}.
+            </li>
+            <li>
+              <strong>Long loss phase:</strong> profit only from {a.kpi.sustainedBreakEven ?? "after 2040"}, {eurM(-a.kpi.peakCumulativeLossEur)} of losses until then,
+              before any capex.
+            </li>
+          </ol>
+          <p className="caption">Revisit when 3 of 4 flights reach orbit in 2027, a European state pays for readiness and frame contracts are signed.</p>
         </div>
       </div>
 
-      <div className="present__bottom">
-        <div className="card present__list">
-          <h4>What it would take to make money</h4>
-          <ul>
-            <li>
-              <strong>Contracts first:</strong>{" "}
-              {by2035 !== null ? `about ${Math.ceil(by2035)} frame-contract launches a year make it profitable by 2035 (with ${a.scenario.contract_launches}: ${a.kpi.sustainedBreakEven ? `from ${a.kpi.sustainedBreakEven}` : "not by 2040"}).` : "with these settings no number of contracts that fits Andøya gets there by 2035."}
-            </li>
-            <li>
-              <strong>Paid readiness:</strong> {eurM(a.at(2030).readinessRevenueEur)} in 2030, mostly a fee at {fmtPct(BASE_COST.readinessFeeMargin)} margin.
-            </li>
-            <li>
-              <strong>Reliability:</strong> every failed flight is a rocket re-flown at Isar's cost; {fmtPct(a.at(2030).successRate)} success by 2030.
-            </li>
-            <li>
-              <strong>Nova Scotia only with an anchor:</strong> about {ns ? Math.ceil(ns) : "–"} launches a year cover the fee; at {a.scenario.ns_anchor_launches} the site
-              costs {nsNet !== null ? eurM(-nsNet) : "–"} a year.
-            </li>
-            <li>
-              <strong>No-go list:</strong> no satellites, own data, transfer vehicle or engines for others; capital stays in launch.
-            </li>
-          </ul>
-        </div>
-        <div className="card present__list">
-          <h4>Growth fields (Q2) · Isar revenue 2030</h4>
-          <ul className="present__fields">
-            {fields("pursue").map(({ f, revenue }) => (
-              <li key={f.id}>
-                <span>{shortName[f.id] ?? f.name}</span>
-                <strong>{eurM(revenue)}</strong>
-              </li>
-            ))}
-          </ul>
-          <p className="present__more">
-            <strong>With a trigger:</strong> {fields("conditional").map(({ f }) => shortName[f.id] ?? f.name).join(", ")}.<br />
-            <strong>Not:</strong> {fields("not").map(({ f }) => shortName[f.id] ?? f.name).join(", ")}.
-          </p>
-        </div>
-        <div className="card present__list present__shock">
-          <h4>Q4 shock · Andøya closed, Nova Scotia only Canadian</h4>
-          {settings.shockMonths === 0 ? (
-            <p className="caption">Move the last slider: months Andøya is closed in {SHOCK_YEAR}.</p>
-          ) : (
-            <div className="present__nums">
-              <span>
-                <strong>{fmtPct(sh.without.revenueKept)}</strong>
-                <small>revenue kept, Andøya and Nova Scotia only</small>
-              </span>
-              <span>
-                <strong>{fmtPct(sh.withKourou.revenueKept)}</strong>
-                <small>with a Kourou pad share</small>
-              </span>
-              <span>
-                <strong className={sh.withKourou.ebitEur < 0 ? "is-neg" : "is-pos"}>{signedM(sh.withKourou.ebitEur)}</strong>
-                <small>EBIT {SHOCK_YEAR} (base {signedM(sel.at(SHOCK_YEAR).ebitEur)})</small>
-              </span>
-            </div>
-          )}
-          <p>
-            <strong>Second ocean:</strong> production is not hit, the launch site is. Hold a Kourou pad share as insurance ({fmtOne(KOUROU_LAUNCHES)} launches, about{" "}
-            {eurM(KOUROU_FEE)} a year), let Nova Scotia fly Canadian payloads, and keep a fallback site in every readiness contract.
-          </p>
-        </div>
-      </div>
+      <p className="caption">
+        Base case ASCENT, real 2026 euros. Revenue from the RQ2 fields plus {a.scenario.contract_launches} frame-contract and {a.scenario.ns_anchor_launches} Nova Scotia anchor launches a year; launch cost from Rocket Lab's
+        measured cost curve scaled to Spectrum; fixed cost {eurM(BASE_COST.fixedOpexEur)} a year; EBIT proxy before depreciation. SQL: v_scenarios.
+      </p>
     </section>
   );
 }

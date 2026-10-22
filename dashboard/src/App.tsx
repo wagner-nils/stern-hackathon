@@ -81,7 +81,7 @@ export function App() {
 
       {presenting ? (
         <main className="content content--present">
-          <Present settings={scenario} setSettings={setScenario} />
+          <Present />
         </main>
       ) : (
         <main className="content" key={chapter}>

@@ -5,3 +5,9 @@ dist/
 .env*
 __pycache__/
 *.pyc
+
+# Confidential case material, kept locally and not published: participant-only handouts and their summary
+# (wiki/case), notes from the closed expert Q&A (wiki/expert), meeting transcripts (wiki/transcript).
+wiki/case/
+wiki/expert/
+wiki/transcript/

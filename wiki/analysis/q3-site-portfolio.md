@@ -1,6 +1,6 @@
 # Q3: Wie soll Isar sein Portfolio aus Produktions- und Startstandorten aufstellen?
 
-> „How should Isar structure its portfolio of production and launch sites for the future?“ ([Question 3](https://launch.bitsolutions.tech/d/Nd488x8qkj8kik5oIlolu32kOMo3T-_B/content), „Site portfolio · Day 2“)
+> „How should Isar structure its portfolio of production and launch sites for the future?“ (Question 3, „Site portfolio · Day 2“)
 
 Stand: 22.10.2026. Antwortseite fürs Team: Notion „Common Docs → RQ3 → Antwort: Ein Werk, ein Kernstandort, eine souveräne Option“. Im Tool: Kapitel „Q3 · Sites“. Zahlen im [Fact-Warehouse](../../warehouse/README.md): Tabelle `site_nodes`, View `v_q3_site_load`, Annahmen mit `question = 'Q3'`.
 

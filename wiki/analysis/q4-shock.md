@@ -1,6 +1,6 @@
 # Q4: Wie widerstandsfähig ist das empfohlene Portfolio aus Produktion und Startplätzen?
 
-> „How resilient is the site portfolio you recommend for production and launch?“ ([Question 4](https://launch.bitsolutions.tech/d/6_UNXtif5kW8wUCJgfRrnuNdiUXVPlXO/content), „Question 4 · The shock“, Day 2)
+> „How resilient is the site portfolio you recommend for production and launch?“ (Question 4, „Question 4 · The shock“, Day 2)
 
 Stand: 22.10.2026, 13:03. Zeitfenster 12:45–14:45. Status: Frage aufgenommen, Antwort in Arbeit.
 

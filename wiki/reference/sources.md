@@ -4,7 +4,7 @@ Alle Quellen, die in Wiki und Dashboard verwendet werden, nach Thema. Abgerufen 
 
 ## Case
 
-- [Participant handout](https://launch.bitsolutions.tech/d/v7SAIrfqaYWBBwQf9SaopT7OEOF5Fk49/content), [Question 1](https://launch.bitsolutions.tech/d/1cYEpc446abxrXxU7ZTm6F0WcDD9Qv_0/content), [Question 2](https://launch.bitsolutions.tech/d/g4ZmNuIf4Rv1xJmbI0NXLbYvQjZJEg3F/content) (vertraulich)
+- Participant handout, Question 1, Question 2 (vertraulich)
 
 ## Nachfrage und Marktgröße
 

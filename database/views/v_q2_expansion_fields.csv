@@ -1,0 +1,53 @@
+id,name,category,recommendation,sites,year,market_eur,isar_revenue_eur,gross_profit_eur,fixed_cost_eur,capital_charge_eur,eva_proxy_eur,confidence
+core_dedicated_shift,More customers buy their own launch (rideshare bottleneck after 2028),core,pursue,Andøya,2025,15331046,0,0,0,0,0,low
+core_dedicated_shift,More customers buy their own launch (rideshare bottleneck after 2028),core,pursue,Andøya,2035,36294161,16332373,6663608,0,0,6663608,low
+core_dedicated_shift,More customers buy their own launch (rideshare bottleneck after 2028),core,pursue,Andøya,2030,23588715,10614922,4330888,0,0,4330888,low
+core_dedicated_shift,More customers buy their own launch (rideshare bottleneck after 2028),core,pursue,Andøya,2040,55843066,25129380,10252787,0,0,10252787,low
+core_polar,Dedicated launches to polar and sun-synchronous orbits (Andøya),core,pursue,Andøya,2035,50811825,22865321,9329051,0,0,9329051,medium
+core_polar,Dedicated launches to polar and sun-synchronous orbits (Andøya),core,pursue,Andøya,2025,21463464,0,0,0,0,0,medium
+core_polar,Dedicated launches to polar and sun-synchronous orbits (Andøya),core,pursue,Andøya,2030,33024200,14860890,6063243,0,0,6063243,medium
+core_polar,Dedicated launches to polar and sun-synchronous orbits (Andøya),core,pursue,Andøya,2040,78180291,35181131,14353901,0,0,14353901,medium
+engines,Selling engines to other launchers,adjacent,not,Parsdorf,2030,10658341567,5329171,1598751,0,2400000,-801249,low
+engines,Selling engines to other launchers,adjacent,not,Parsdorf,2035,15516131021,7758066,2327420,0,2400000,-72580,low
+engines,Selling engines to other launchers,adjacent,not,Parsdorf,2040,22587972090,11293986,3388196,0,2400000,988196,low
+engines,Selling engines to other launchers,adjacent,not,Parsdorf,2025,7321428571,0,0,0,0,0,low
+hypersonic_tests,Suborbital hypersonic test flights,product,conditional,Andøya,2040,44290021,22145011,9035164,0,1200000,7835164,low
+hypersonic_tests,Suborbital hypersonic test flights,product,conditional,Andøya,2035,27500619,13750309,5610126,0,1200000,4410126,low
+hypersonic_tests,Suborbital hypersonic test flights,product,conditional,Andøya,2030,17075721,8537860,3483447,0,1200000,2283447,low
+hypersonic_tests,Suborbital hypersonic test flights,product,conditional,Andøya,2025,10602679,0,0,0,0,0,low
+institutional_elc,European institutional launches (ESA European Launcher Challenge),core,pursue,Andøya,2025,180432000,0,0,0,0,0,medium
+institutional_elc,European institutional launches (ESA European Launcher Challenge),core,pursue,Andøya,2030,180432000,39514608,16121960,0,0,16121960,medium
+institutional_elc,European institutional launches (ESA European Launcher Challenge),core,pursue,Andøya,2035,180432000,0,0,0,0,0,medium
+institutional_elc,European institutional launches (ESA European Launcher Challenge),core,pursue,Andøya,2040,180432000,0,0,0,0,0,medium
+mid_class_rocket,"Medium-lift rocket (2–20 t, partly reusable)",product,conditional,Kourou or a new site,2040,4032748437,201637422,82268068,0,48000000,34268068,low
+mid_class_rocket,"Medium-lift rocket (2–20 t, partly reusable)",product,conditional,Kourou or a new site,2035,2621009782,131050489,53468600,0,48000000,5468600,low
+mid_class_rocket,"Medium-lift rocket (2–20 t, partly reusable)",product,conditional,Kourou or a new site,2025,1107142857,0,0,0,0,0,low
+mid_class_rocket,"Medium-lift rocket (2–20 t, partly reusable)",product,conditional,Kourou or a new site,2030,1703476521,0,0,0,48000000,-48000000,low
+mission_extras,"Extras on every launch (integration, insurance brokerage, multi-orbit drop-off)",product,pursue,all,2035,5081182,2286532,1371919,0,0,1371919,low
+mission_extras,"Extras on every launch (integration, insurance brokerage, multi-orbit drop-off)",product,pursue,all,2025,2146346,0,0,0,0,0,low
+mission_extras,"Extras on every launch (integration, insurance brokerage, multi-orbit drop-off)",product,pursue,all,2040,7818028,3518112,2110867,0,0,2110867,low
+mission_extras,"Extras on every launch (integration, insurance brokerage, multi-orbit drop-off)",product,pursue,all,2030,3302419,1486089,891653,0,0,891653,low
+orbital_transfer,Own orbital transfer vehicle,adjacent,not,Parsdorf,2035,5809805956,29049030,8714709,0,7200000,1514709,low
+orbital_transfer,Own orbital transfer vehicle,adjacent,not,Parsdorf,2025,1696428571,0,0,0,0,0,low
+orbital_transfer,Own orbital transfer vehicle,adjacent,not,Parsdorf,2030,3139414088,15697070,4709121,0,7200000,-2490879,low
+orbital_transfer,Own orbital transfer vehicle,adjacent,not,Parsdorf,2040,10751638458,53758192,16127458,0,7200000,8927458,low
+satellite_data,Own constellation and data services,adjacent,not,–,2040,14233646644,28467293,15941684,0,18000000,-2058316,low
+satellite_data,Own constellation and data services,adjacent,not,–,2035,10148393341,20296787,11366201,0,18000000,-6633799,low
+satellite_data,Own constellation and data services,adjacent,not,–,2030,7235664196,14471328,8103944,0,18000000,-9896056,low
+satellite_data,Own constellation and data services,adjacent,not,–,2025,5158928571,0,0,0,0,0,low
+satellite_manufacturing,Building satellites (Rocket Lab model),adjacent,not,Parsdorf,2030,23246557031,23246557,7276172,0,6000000,1276172,low
+satellite_manufacturing,Building satellites (Rocket Lab model),adjacent,not,Parsdorf,2025,18214285714,0,0,0,0,0,low
+satellite_manufacturing,Building satellites (Rocket Lab model),adjacent,not,Parsdorf,2040,37866191839,37866192,11852118,0,6000000,5852118,low
+satellite_manufacturing,Building satellites (Rocket Lab model),adjacent,not,Parsdorf,2035,29669152130,29669152,9286445,0,6000000,3286445,low
+site_kourou,Low inclinations and GTO from Kourou,site,conditional,Kourou,2030,5382107,1076421,439180,5000000,0,-4560820,low
+site_kourou,Low inclinations and GTO from Kourou,site,conditional,Kourou,2035,8281038,1656208,675733,5000000,0,-4324267,low
+site_kourou,Low inclinations and GTO from Kourou,site,conditional,Kourou,2040,12741404,2548281,1039699,5000000,0,-3960301,low
+site_kourou,Low inclinations and GTO from Kourou,site,conditional,Kourou,2025,3498000,0,0,0,0,0,low
+site_nova_scotia,Mid-inclination orbits 45–90° from Nova Scotia,site,conditional,Nova Scotia,2025,5964000,0,0,0,0,0,medium
+site_nova_scotia,Mid-inclination orbits 45–90° from Nova Scotia,site,conditional,Nova Scotia,2030,9176353,4129359,1684778,13400000,0,-11715222,medium
+site_nova_scotia,Mid-inclination orbits 45–90° from Nova Scotia,site,conditional,Nova Scotia,2035,14118957,6353531,2592240,13400000,0,-10807760,medium
+site_nova_scotia,Mid-inclination orbits 45–90° from Nova Scotia,site,conditional,Nova Scotia,2040,21723765,9775694,3988483,13400000,0,-9411517,medium
+sovereign_readiness,Paid launch readiness for European states,product,pursue,Andøya (second pad or reserved slots),2025,26830357,0,0,0,0,0,low
+sovereign_readiness,Paid launch readiness for European states,product,pursue,Andøya (second pad or reserved slots),2035,108543758,43417503,17714341,5000000,2400000,10314341,low
+sovereign_readiness,Paid launch readiness for European states,product,pursue,Andøya (second pad or reserved slots),2030,53965431,21586173,8807158,5000000,2400000,1407158,low
+sovereign_readiness,Paid launch readiness for European states,product,pursue,Andøya (second pad or reserved slots),2040,218320268,87328107,35629868,5000000,2400000,28229868,low

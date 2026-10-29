@@ -1,0 +1,48 @@
+id,name,unit,definition
+agreement_signed,"Agreement signed (1 yes, 0 no)",flag,Whether an intergovernmental agreement is in force
+backlog,Order backlog,USD,Contracted but not yet recognised revenue at year end
+cost_per_launch,Cost per launch,USD,Cost of revenue per launch of a launcher
+data_contract_value,Value of a satellite data contract,EUR,Contract value of a government contract for data or services delivered from satellites
+defence_share_of_demand,Defence share of demand,share,Share of a company's demand that comes from defence customers
+engine_tests_per_month,Engine acceptance tests per month,tests per month,Capacity of an engine test site
+factory_capacity,Factory capacity target,vehicles per year,Vehicles a factory is designed to build per year
+funding_round,Funding round,EUR,Size of a funding round
+government_pad_lease,Government lease of a launch pad,CAD,Total value of a state's lease of its own pad
+launch_contract_flights,Launches in a multi-launch contract,launches,Number of launches in a block buy
+launch_contract_value,Value of a multi-launch contract,USD,Total value of a block buy of launches
+launch_failure_rate,Launch failure rate,share,Share of launches that fail
+launch_insurance_rate,Launch insurance rate,share,Insurance premium as share of the insured value
+launch_revenue,Launch services revenue,USD,Revenue of commercially procured launch services in a calendar year
+launch_revenue_company,Launch revenue of a company,USD,One company's annual launch revenue
+launches_planned,Planned launches,launches,Launches a company plans for a calendar year
+local_content_share,Required local business activity,share,Share of a defence contract's value that must be spent in the buying country
+local_content_threshold,Contract value from which local content applies,CAD,Threshold above which the local-content rule applies
+manifest_booked_through,Manifest booked through,year,Last year for which a launcher reports a fully booked manifest
+orbital_launches,Orbital launches,launches,Launches that reached orbit in a calendar year
+orbital_launches_company,Orbital launches of a launcher,launches,Orbital launches of one company's vehicle in a calendar year
+pad_budget,Pad investment,NOK,Public budget for a new launch pad
+pad_budget_defence_share,Defence share of a pad budget,share,Share of a public launch-pad budget paid by the defence ministry
+pad_lease_years,Pad lease term,years,Length of an exclusive pad agreement
+payload_mass_launched,Payload mass launched,kg,Mass of the payloads launched in a calendar year
+plant_floor_area,Floor area of a production plant,m²,Built or planned floor area of a launcher production site
+public_funding_award,Public funding award,EUR,Size of a public programme award
+public_launch_budget,Public budget for sovereign launch,CAD,Government money committed to national launch capability
+revenue_per_launch,Revenue per launch,USD,Average launch revenue per mission
+rideshare_price,Rideshare list price,USD per kg,Published rideshare price per kilogram
+satellites_forecast,Satellites forecast,satellites,Satellites expected to launch over the forecast period
+satellites_launched,Satellites launched,satellites,Payloads launched in a calendar year; sources differ on failed launches and on what counts as a payload
+site_inclination_max,Highest reachable inclination,degrees,Highest orbital inclination reachable by direct ascent
+site_inclination_min,Lowest reachable inclination,degrees,Lowest orbital inclination reachable by direct ascent
+site_launch_cap,Launch licence cap,launches per year,Maximum launches a site's licence allows per year
+site_launch_target,Launches a year a company targets at a site,launches per year,Company's own ambition for one launch site
+site_lease_cost,Site lease cost,USD,Total contracted payments for a launch site
+site_night_launch_cap,Night launch cap,launches per year,Maximum launches between 23:00 and 07:00 per year
+smallsat_small_launcher_share,Smallsats on small launchers,share,Share of smallsats launched on micro or small launchers instead of rideshare or large rockets
+smallsats_non_broadband,Smallsats outside broadband constellations,satellites,Smallsats launched excluding LEO broadband constellations
+space_security_budget,Planned public spending on space security,EUR,Cumulative public budget announced for space projects and security in space up to the year given
+sso_launches,Launches to sun-synchronous orbit,launches,Launches whose primary orbit is sun-synchronous
+sso_launches_company,SSO launches of a launcher,launches,One company's launches to sun-synchronous orbit in a calendar year
+successful_flights,Successful orbital flights,flights,Cumulative flights that reached orbit
+transport_days,Transport time for rocket stages,days,Days to ship stages from the plant region to the launch site
+us_defense_payloads,US defence payloads,satellites,Payloads of US defence owners launched in a calendar year
+usd_per_eur,Exchange rate,USD per EUR,ECB reference rate

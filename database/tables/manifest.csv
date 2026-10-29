@@ -1,0 +1,12 @@
+id,customer,mission,planned,site,status,note,source_id
+astroscale-adras-j2,Astroscale,ADRAS-J2,2027–2028,Andøya,booked,,wikipedia-spectrum
+astroscale-elsa-m,Astroscale,ELSA-M,2028,Andøya,booked,,wikipedia-spectrum
+elevationspace-aoba,ElevationSpace,AOBA,2027,Andøya,booked,,wikipedia-spectrum
+esa-syndeo-3,ESA,ΣYNDEO-3,not public,Andøya,booked,,wikipedia-spectrum
+flight-3,R-Space,Flight 3,no date,Andøya,booked,,isar-mission-updates
+fti-cassini,ESA / EU,CASSINI (Flight Ticket Initiative),not public,Andøya,booked,,wikipedia-spectrum
+fti-tom-jerry,ESA / EU,Tom & Jerry (Flight Ticket Initiative),not public,Andøya,booked,,wikipedia-spectrum
+nosa-aos,Norwegian Space Agency,AOS-D/P,2028,Andøya,booked,,wikipedia-spectrum
+planet-pelican,Planet,Pelican on Isar's fourth launch,2026–2027,Andøya,booked,"Demo: first Planet satellite built in Germany, no paying customer yet (expert); Planet wants the next launch after the current manifest",satellitetoday-planet
+seops-1,SEOPS,Dedicated mission,2028,Andøya,booked,Booked November 2025,payload-seops
+seops-2-6,SEOPS,Five dedicated missions,2028–2030,Andøya and Nova Scotia,booked,,payload-seops

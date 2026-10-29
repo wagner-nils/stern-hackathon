@@ -24,6 +24,7 @@ Das Wiki bündelt alles, was das Team zum Case weiß: Notion-Recherche (Insider,
 | Referenz | [Annahmen-Register](reference/assumptions.md) | Alle Modellannahmen mit Spanne und Quelle |
 | | [Quellen](reference/sources.md) | Alle Quellen nach Thema |
 | | [Glossar](reference/glossary.md) | Begriffe von Azimut bis TSA |
+| Protokoll | [Hackathon-Transkript](transcript/README.md) | Granola-Mitschnitt 21.–22.10. in vier Teilen: Betreuer-Hinweise, Teamentscheidungen, Prompts, offene Punkte |
 
 ## Das Wichtigste in Kürze
 
@@ -35,6 +36,10 @@ Das Wiki bündelt alles, was das Team zum Case weiß: Notion-Recherche (Insider,
   - Planet und Isar bieten der Bundesregierung gemeinsam schnelle Wiederherstellung an.
   - Details: [Robbie Schingler](expert/robbie-schingler.md).
 - **Größte Unsicherheiten:** Spectrum-Preis (nicht veröffentlicht), Anteil der Kunden, die für einen dedizierten Start zahlen, unabhängige Bestätigung von Flug 2.
+
+## Vertrauliche Seiten
+
+Die Seiten unter `case/`, `expert/` und `transcript/` (Case-Unterlagen nur für Teilnehmende, Notizen aus der geschlossenen Expertenrunde, Gesprächsmitschnitt) liegen nur lokal und stehen in `.gitignore`. Links dorthin funktionieren in der öffentlichen Fassung nicht.
 
 ## Konventionen
 

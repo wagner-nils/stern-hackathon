@@ -1,0 +1,71 @@
+site_id,year,launches,failures,payload_t,satellites,to_leo,to_sso,to_geo,to_other,vehicles,agencies
+alcantara,2025,1,1,,,1,0,0,0,HANBIT-NANO,Innospace
+andoya,2025,1,1,,,0,1,0,0,Spectrum,Isar Aerospace
+andoya,2026,1,0,0,,0,1,0,0,Spectrum,Isar Aerospace
+baikonur,2024,8,0,56.4,8,6,2,0,0,"Soyuz-2-1A, Soyuz-2-1B",Roskosmos
+baikonur,2025,6,0,43.7,6,5,1,0,0,"Soyuz-2-1A, Soyuz-2-1B",Roskosmos
+baikonur,2026,5,0,32.3,,4,0,1,0,"Proton-M/DM-3, Soyuz-2-1A, Soyuz-2-1B","Khrunichev, Roskosmos"
+bowen,2025,1,1,,,1,0,0,0,Eris Block 1,Gilmour Space
+cape-canaveral,2024,67,0,885.7,1090,53,1,8,5,"Atlas V 551, Atlas V N22, Delta 4H, Falcon 9, Vulcan Centaur VC2S","SpaceX, ULA, ULA Decatur"
+cape-canaveral,2025,82,0,1167.3,1740,71,0,7,4,"Atlas V 551, Falcon 9, New Glenn 7x2, Vulcan Centaur VC4S","Blue Origin, SpaceX, ULA, ULA Decatur"
+cape-canaveral,2026,56,2,765.7,,49,0,4,3,"Atlas V 551, Falcon 9, New Glenn 7x2, Vulcan Centaur VC4S","Blue Origin, SpaceX, ULA, ULA Decatur"
+east-china-sea,2026,2,0,3.2,,1,1,0,0,Yinli-1,Dongfang Kongjian
+hainan-commercial,2024,1,0,2,2,1,0,0,0,Chang Zheng 12,SAST
+hainan-commercial,2025,9,0,40.4,90,8,0,1,0,"Chang Zheng 12, Chang Zheng 8, Chang Zheng 8A","CALT, CGWIC, SAST"
+hainan-commercial,2026,14,0,68,,14,0,0,0,"Chang Zheng 10B, Chang Zheng 12, Chang Zheng 8, Chang Zheng 8A","CACL, CALT, CGWIC, SAST"
+haiyang-oriental,2024,4,0,1.1,22,2,2,0,0,"Gushenxing 1, Jielong-3","Changzheng H., Galactic Energy"
+haiyang-oriental,2025,7,0,8.4,54,4,3,0,0,"Chang Zheng 11, Gushenxing 1, Jielong-3, Yinli-1","CALT, Changzheng H., Dongfang Kongjian, Galactic Energy"
+haiyang-oriental,2026,3,0,3.5,,1,2,0,0,"Gushenxing 1, Jielong-3","Changzheng H., Galactic Energy"
+jiuquan,2024,21,2,33.7,69,4,17,0,0,"Chang Zheng 2C, Chang Zheng 2D, Chang Zheng 2D/YZ-3, Chang Zheng 2F, Chang Zheng 4C, Gushenxing 1, Kuaizhou-11, Kuaizhou-1A, Lijian-1, Shuang Quxian 1, Zhuque-2E","CALT, CAS Space, CGWIC, ExPace, Galactic Energy, iSpace, LandSpace, SAST"
+jiuquan,2025,34,3,63.6,102,9,24,1,0,"Chang Zheng 12A, Chang Zheng 2C, Chang Zheng 2C/YZ-1S, Chang Zheng 2D, Chang Zheng 2F, Chang Zheng 4B, Chang Zheng 4C, Gushenxing 1, Kuaizhou-11, Kuaizhou-1A, Lijian-1, Shuang Quxian 1, Zhuque-2E, Zhuque-3","CACL, CALT, CAS Space, ExPace, Galactic Energy, iSpace, LandSpace, SAST"
+jiuquan,2026,27,2,59.3,,14,13,0,0,"Chang Zheng 12B, Chang Zheng 2C, Chang Zheng 2C/YZ-1S, Chang Zheng 2D, Chang Zheng 2F, Chang Zheng 4B, Chang Zheng 4C, Gushenxing-2, Kuaizhou-11, Lijian-1, Lijian-2, Tianlong-3, Zhishenxing-1, Zhuque-2E, Zhuque-3","CALT, CAS Space, ExPace, Galactic Energy, LandSpace, SAST, Space Pioneer"
+kennedy-space-center,2024,26,0,294.4,305,17,0,5,4,"Falcon 9, Falcon Heavy",SpaceX
+kennedy-space-center,2025,27,0,357.6,423,23,0,1,3,Falcon 9,SpaceX
+kennedy-space-center,2026,4,0,46.1,,0,0,2,2,"Falcon Heavy, SLS Block 1","NASA MSFC, SpaceX"
+kourou,2024,3,0,5.1,14,1,2,0,0,"Ariane 62, Vega, Vega C","Arianespace, ESA"
+kourou,2025,7,0,15.6,12,0,6,0,1,"Ariane 62, Vega C",Arianespace
+kourou,2026,6,0,59.6,,4,1,1,0,"Ariane 62, Ariane 64, Vega C","Arianespace, Avio"
+kwajalein,2026,1,0,0.4,,1,0,0,0,Pegasus XL,NGIS SSG
+mahia,2024,13,0,1.6,29,3,10,0,0,Electron,Rocket Lab
+mahia,2025,17,0,2.1,39,11,6,0,0,Electron,Rocket Lab
+mahia,2026,15,0,2.1,,11,4,0,0,Electron,Rocket Lab
+naro,2025,1,0,0.2,14,0,1,0,0,Nuri,KARI
+naro,2026,1,0,1,,0,1,0,0,Nuri,KARI
+palmachim,2025,1,0,0.3,1,1,0,0,0,Shavit 2,ISA
+plesetsk,2024,5,0,12,15,1,4,0,0,"Angara-1.2, Soyuz-2-1A, Soyuz-2-1B, Soyuz-2-1V","Khrunichev, VVKO"
+plesetsk,2025,9,0,16.1,20,4,2,1,2,"Angara A5, Angara-1.2, Soyuz-2-1A, Soyuz-2-1B, Soyuz-2-1V","Khrunichev, Roskosmos, VVKO"
+plesetsk,2026,8,0,36.7,,3,2,0,3,"Angara-1.2, Soyuz-2-1A, Soyuz-2-1B","Khrunichev, Roskosmos, VVKO"
+semnan,2024,2,0,0.4,5,2,0,0,0,Simorgh,IRSA
+semnan,2025,1,1,,,1,0,0,0,Zoljanah,IRGC
+shahroud,2024,2,0,0.1,2,2,0,0,0,Qaem-100,IRGC
+sohae,2024,1,1,,,0,1,0,0,NK Kerolox LV,KCST
+spaceport-kii,2024,2,2,,,0,2,0,0,Kairos,Space One
+spaceport-kii,2026,1,1,,,0,1,0,0,Kairos,Space One
+sriharikota,2024,5,0,4,10,3,0,2,0,"GSLV Mk II, PSLV, PSLV-DL, PSLV-XL, SSLV",ISRO
+sriharikota,2025,5,1,14.8,4,2,1,2,0,"GSLV Mk II, LVM3, PSLV-XL","ISRO, New Space India"
+sriharikota,2026,3,1,2.4,,1,1,1,0,"GSLV Mk II, PSLV-DL, Vikram-1","ISRO, Skyroot"
+starbase,2024,3,0,360,,3,0,0,0,Starship V1.0,SpaceX
+starbase,2025,5,2,360,,5,0,0,0,Starship V2,SpaceX
+starbase,2026,3,0,360,,3,0,0,0,Starship V3,SpaceX
+taiyuan,2024,13,0,28.8,90,2,11,0,0,"Chang Zheng 2D, Chang Zheng 4B, Chang Zheng 6, Chang Zheng 6A, Chang Zheng 6C","CGWIC, SAST"
+taiyuan,2025,12,0,40,75,3,9,0,0,"Chang Zheng 4B, Chang Zheng 6, Chang Zheng 6A","CGWIC, SAST"
+taiyuan,2026,12,0,37.9,,8,4,0,0,"Chang Zheng 2C, Chang Zheng 2D, Chang Zheng 6, Chang Zheng 6A, Chang Zheng 6C","CACL, CALT, CGWIC, SAST"
+tanegashima,2024,5,0,14,7,2,2,1,0,"H-IIA 202, H3-22S","JAXA, MHI"
+tanegashima,2025,4,1,23.7,10,1,1,2,0,"H-IIA 202, H3-22S, H3-24W","JAXA, MHI"
+tanegashima,2026,2,0,6.4,,0,1,1,0,"H3-22S, H3-30S",JAXA
+vandenberg,2024,47,1,607.5,1002,41,5,0,1,"Falcon 9, Firefly Alpha","Firefly, SpaceX"
+vandenberg,2025,66,1,892.5,1796,50,16,0,0,"Falcon 9, Firefly Alpha, Minotaur IV","Firefly, NG, SpaceX"
+vandenberg,2026,67,0,884.8,,21,46,0,0,"Falcon 9, Firefly Alpha, Minotaur IV","Firefly, NG, SpaceX"
+vostochny,2024,4,0,28,79,0,3,1,0,"Angara A5/Orion, Soyuz-2-1A, Soyuz-2-1B","Khrunichev, Roskosmos"
+vostochny,2025,2,0,4.1,72,0,2,0,0,Soyuz-2-1B,Roskosmos
+wallops,2024,1,0,0.1,4,1,0,0,0,Electron,Rocket Lab
+wallops,2025,1,0,0,4,1,0,0,0,Electron,Rocket Lab
+wallops,2026,1,0,0,,1,0,0,0,HASTE,Rocket Lab
+wenchang,2024,8,0,77.3,23,3,0,3,2,"Chang Zheng 5, Chang Zheng 5B/YZ-2, Chang Zheng 7, Chang Zheng 7A, Chang Zheng 8",CALT
+wenchang,2025,12,0,95,39,4,0,7,1,"Chang Zheng 5, Chang Zheng 5B/YZ-2, Chang Zheng 7, Chang Zheng 7A, Chang Zheng 8A",CALT
+wenchang,2026,6,1,44,,1,0,5,0,"Chang Zheng 5, Chang Zheng 7, Chang Zheng 7A",CALT
+xichang,2024,19,0,45.6,51,10,0,5,4,"Chang Zheng 2C, Chang Zheng 2C/YZ-1S, Chang Zheng 2D, Chang Zheng 3B, Chang Zheng 3B/YZ-1, Chang Zheng 4B, Kuaizhou-1A","CALT, ExPace, SAST"
+xichang,2025,19,0,81.1,20,4,1,13,1,"Chang Zheng 2D, Chang Zheng 3B, Chang Zheng 3C, Chang Zheng 3C/YZ-1, Chang Zheng 4C, Kuaizhou-1A","CALT, ExPace, SAST"
+xichang,2026,6,1,15,,3,0,2,1,"Chang Zheng 2D, Chang Zheng 3B","CACL, CALT, SAST"
+yangjiang-sea,2024,2,0,2,13,1,1,0,0,"Jielong-3, Yinli-1","Changzheng H., Dongfang Kongjian"
+yangjiang-sea,2026,2,0,3.2,,0,2,0,0,Jielong-3,Changzheng H.

@@ -1,0 +1,7 @@
+segment,period,satellites,mass_t,dedicated_share_sats,dedicated_share_mass,not_falcon9_share_sats,not_falcon9_share_mass
+Andøya band (Q1 SAM),2024,187,8.7,0.151,0.128,0.181,0.156
+Andøya band (Q1 SAM),2024–2025,609,26.6,0.093,0.070,0.147,0.173
+Andøya band (Q1 SAM),2025,422,17.9,0.067,0.042,0.132,0.181
+"Western open market, all orbits",2024,279.4,17.6,0.112,0.084,0.198,0.150
+"Western open market, all orbits",2024–2025,762.2,41.8,0.091,0.084,0.173,0.210
+"Western open market, all orbits",2025,482.8,24.2,0.079,0.084,0.158,0.254

@@ -1,0 +1,17 @@
+year,site_id,pursue_launches,conditional_launches,anchor_launches,capacity_today,capacity_proposed,load_proposed
+2025,andoya,0,0,0,12,18,0
+2025,factory-parsdorf,0,0,0,4,40,0
+2025,kourou,0,0,0,0,2.4,0
+2025,nova-scotia,0,0,0,0,12,0
+2030,andoya,7.21,0.71,0,12,18,0.44
+2030,factory-parsdorf,7.21,1.15,3,4,40,0.28
+2030,kourou,0,0.09,0,0,2.4,0.04
+2030,nova-scotia,0,0.34,3,0,12,0.28
+2035,andoya,6.88,1.15,0,12,18,0.45
+2035,factory-parsdorf,6.88,1.81,3,4,40,0.29
+2035,kourou,0,0.14,0,0,2.4,0.06
+2035,nova-scotia,0,0.53,3,0,12,0.29
+2040,andoya,12.30,1.85,0,12,18,0.79
+2040,factory-parsdorf,12.30,2.87,3,4,40,0.45
+2040,kourou,0,0.21,0,0,2.4,0.09
+2040,nova-scotia,0,0.81,3,0,12,0.32

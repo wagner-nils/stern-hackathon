@@ -1,0 +1,52 @@
+{
+ "name": "SSCO-AI-Hackathon_Isar-Aerospace_Screenshot-Journey_Team-Benedikt-Luca-Nils",
+ "pages": 29,
+ "pdfMB": 6.92,
+ "links": {
+  "internal": 357,
+  "external": [
+   "https://github.com/wagner-nils/stern-hackathon"
+  ]
+ },
+ "bookmarks": 29,
+ "stats": {
+  "sources": 242,
+  "facts": 83,
+  "metrics": 47,
+  "assumptions": 33,
+  "launchSites": 56,
+  "vehicles": 107,
+  "launches": 838,
+  "satellites": 7361,
+  "expansionFields": 13,
+  "scenarios": 3,
+  "views": 15,
+  "tables": 13,
+  "vReact": "18.3",
+  "vVite": "5.4",
+  "vRecharts": "2.13",
+  "vTypeScript": "5.6",
+  "vVitest": "2.1",
+  "commits": 48,
+  "hours": 24,
+  "chapters": 8,
+  "ownersNils": 15,
+  "ownersBenedikt": 11,
+  "ownersLuca": 7,
+  "testsPassed": 31
+ },
+ "builds": {
+  "final": {
+   "path": "/private/tmp/claude-501/-Users-nilswagner-Entwicklung-stern-hackathon/0e468f1b-ade9-43b7-a997-d0622ab67644/scratchpad/repro/final/index.html",
+   "commit": "b1fc283",
+   "sha256": "00612789700ae2e48f3316531d2b2b33c802233ef6a112ddb680682b6a35b98e"
+  },
+  "v1404": {
+   "path": "/private/tmp/claude-501/-Users-nilswagner-Entwicklung-stern-hackathon/0e468f1b-ade9-43b7-a997-d0622ab67644/scratchpad/repro/b1404/index.html",
+   "commit": "a8e11d2",
+   "sha256": "7a70ebd36ca9810ef89fad24e60f2fcf9374fd6668e06062beae0e67f37a93d1"
+  }
+ },
+ "errors": [],
+ "warnings": []
+}

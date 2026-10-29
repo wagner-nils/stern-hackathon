@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Commit everything, move to the branch of the current hackathon phase, push that branch and main.
 # Usage: scripts/checkpoint.sh "commit message"
+# On a feature branch it only commits and pushes that branch.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
@@ -12,10 +13,20 @@ elif [ "$now" -lt 202610221500 ]; then target=phase/q4
 else target=phase/final
 fi
 
+current=$(git symbolic-ref --short HEAD)
+
 git add -A
 git diff --cached --quiet || git commit -q -m "${1:-checkpoint $(date '+%a %H:%M')}"
 
-current=$(git symbolic-ref --short HEAD)
+# Feature branches are pushed on their own; only phase branches feed main.
+case "$current" in
+  phase/* | main) ;;
+  *)
+    git push -q -u origin "$current"
+    echo "checkpoint: $(git log -1 --format='%h %s') -> $current (feature branch, main untouched)"
+    exit 0
+    ;;
+esac
 if [ "$current" != "$target" ]; then
   if git show-ref --verify --quiet "refs/heads/$target"; then
     git merge-base --is-ancestor "$target" HEAD \

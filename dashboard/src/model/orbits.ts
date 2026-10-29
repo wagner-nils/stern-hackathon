@@ -1,6 +1,10 @@
-import type { AzimuthCorridor, LaunchSite } from "../data/types";
-
 export type Interval = [number, number];
+
+/** Degrees clockwise from north. A corridor may wrap through north, e.g. from 335 to 5. */
+export interface AzimuthCorridor {
+  from: number;
+  to: number;
+}
 
 const rad = (d: number) => (d * Math.PI) / 180;
 const deg = (r: number) => (r * 180) / Math.PI;
@@ -16,12 +20,10 @@ function sampleCorridor({ from, to }: AzimuthCorridor, stepDeg = 0.25): number[]
   return Array.from({ length: n + 1 }, (_, k) => from + (span * k) / n);
 }
 
-/** Inclination intervals a site reaches by direct ascent, one per azimuth corridor (no doglegs). */
-export function reachableInclinations(site: LaunchSite): Interval[] {
-  return site.azimuths.map((corridor) => {
-    const inclinations = sampleCorridor(corridor).map((az) => inclinationFromAzimuth(site.lat, az));
-    return [Math.min(...inclinations), Math.max(...inclinations)];
-  });
+/** Inclination interval a site at `latDeg` reaches through one licensed azimuth corridor (no doglegs). */
+export function inclinationsFromCorridor(latDeg: number, corridor: AzimuthCorridor): Interval {
+  const inclinations = sampleCorridor(corridor).map((az) => inclinationFromAzimuth(latDeg, az));
+  return [Math.min(...inclinations), Math.max(...inclinations)];
 }
 
 export function mergeIntervals(intervals: Interval[]): Interval[] {
@@ -35,7 +37,7 @@ export function mergeIntervals(intervals: Interval[]): Interval[] {
   return merged;
 }
 
-/** Share of the band [lo, hi] covered by the intervals, with demand spread evenly over the band. */
+/** Share of the band [lo, hi] covered by the intervals. */
 export function coveredShare([lo, hi]: Interval, intervals: Interval[]): number {
   if (hi <= lo) return intervals.some(([a, b]) => lo >= a && lo <= b) ? 1 : 0;
   const clipped = intervals

@@ -1,0 +1,154 @@
+vehicle_id,name,operator,year,launches,successes,payload_t
+alpha,Alpha,Firefly Aerospace,2024,1,1,0.1
+alpha,Alpha,Firefly Aerospace,2026,1,1,1
+alpha,Alpha,Firefly Aerospace,2025,1,0,
+angara-1-2,Angara-1.2,Khrunichev,2025,3,3,2.3
+angara-1-2,Angara-1.2,Khrunichev,2026,1,1,1
+angara-1-2,Angara-1.2,Khrunichev,2024,1,1,0.5
+angara-a5,Angara A5,Khrunichev,2025,1,1,3
+angara-a5,Angara A5,Khrunichev,2024,1,1,20
+ariane-6,Ariane 6 (62/64),Arianespace,2026,4,4,55.8
+ariane-6,Ariane 6 (62/64),Arianespace,2024,1,1,1.8
+ariane-6,Ariane 6 (62/64),Arianespace,2025,4,4,11.4
+atlas-v,Atlas V,United Launch Alliance,2024,2,2,17
+atlas-v,Atlas V,United Launch Alliance,2026,4,4,68
+atlas-v,Atlas V,United Launch Alliance,2025,5,5,74.4
+ceres-1,Ceres-1,Galactic Energy,2024,5,5,1.2
+ceres-1,Ceres-1,Galactic Energy,2025,6,5,1.2
+ceres-1,Ceres-1,Galactic Energy,2026,1,1,0.3
+ceres-2,Ceres-2,Galactic Energy,2026,1,0,
+delta-iv-heavy,Delta IV Heavy,United Launch Alliance,2024,1,1,5
+electron,Electron,Rocket Lab,2026,16,16,2.1
+electron,Electron,Rocket Lab,2025,18,18,2.1
+electron,Electron,Rocket Lab,2024,14,14,1.7
+eris,Eris (Block 1),Gilmour Space Technologies,2025,1,0,
+falcon-9,Falcon 9 (Block 5),SpaceX,2026,114,114,1579.5
+falcon-9,Falcon 9 (Block 5),SpaceX,2024,132,131,1752.6
+falcon-9,Falcon 9 (Block 5),SpaceX,2025,165,165,2329.5
+falcon-heavy,Falcon Heavy,SpaceX,2026,3,3,20.3
+falcon-heavy,Falcon Heavy,SpaceX,2024,2,2,10.7
+gravity-1,Gravity-1 (Yinli-1),Orienspace,2025,1,1,1.5
+gravity-1,Gravity-1 (Yinli-1),Orienspace,2024,1,1,1.5
+gravity-1,Gravity-1 (Yinli-1),Orienspace,2026,2,2,3.2
+gslv-mk2,GSLV Mk II,ISRO,2024,1,1,2.3
+gslv-mk2,GSLV Mk II,ISRO,2025,2,2,4.5
+gslv-mk2,GSLV Mk II,ISRO,2026,1,1,2.4
+h-iia,H-IIA,Mitsubishi Heavy Industries,2024,2,2,3
+h-iia,H-IIA,Mitsubishi Heavy Industries,2025,1,1,2.9
+h3,H3,Mitsubishi Heavy Industries,2026,2,2,6.4
+h3,H3,Mitsubishi Heavy Industries,2024,3,3,11
+h3,H3,Mitsubishi Heavy Industries,2025,3,2,20.8
+hanbit-nano,HANBIT-Nano,Innospace,2025,1,0,
+hyperbola-1,Hyperbola-1,iSpace,2025,1,1,0.3
+hyperbola-1,Hyperbola-1,iSpace,2024,1,0,
+jielong-3,Jielong-3 (Smart Dragon-3),CASC,2024,2,2,1
+jielong-3,Jielong-3 (Smart Dragon-3),CASC,2026,4,4,6.4
+jielong-3,Jielong-3 (Smart Dragon-3),CASC,2025,4,4,6.4
+kairos,KAIROS,Space One,2026,1,0,
+kairos,KAIROS,Space One,2024,2,0,
+kinetica-1,Kinetica-1 (Lijian-1),CAS Space,2025,5,5,4.3
+kinetica-1,Kinetica-1 (Lijian-1),CAS Space,2026,5,5,5.1
+kinetica-1,Kinetica-1 (Lijian-1),CAS Space,2024,4,3,2.6
+kinetica-2,Kinetica-2 (Lijian-2),CAS Space,2026,1,1,5
+kuaizhou-11,Kuaizhou-11,ExPace (CASIC),2024,1,1,0.6
+kuaizhou-11,Kuaizhou-11,ExPace (CASIC),2026,3,3,1.5
+kuaizhou-11,Kuaizhou-11,ExPace (CASIC),2025,1,1,0.5
+kuaizhou-1a,Kuaizhou-1A,ExPace (CASIC),2024,4,4,1
+kuaizhou-1a,Kuaizhou-1A,ExPace (CASIC),2025,3,2,0.7
+long-march-10b,Long March 10B,CASC,2026,1,1,10
+long-march-11,Long March 11,CASC,2025,1,1,0.2
+long-march-12,Long March 12,CASC,2025,3,3,6
+long-march-12,Long March 12,CASC,2024,1,1,2
+long-march-12,Long March 12,CASC,2026,5,5,10
+long-march-12a,Long March 12A,CASC,2025,1,1,2
+long-march-12b,Long March 12B,CASC,2026,1,1,2
+long-march-2c,Long March 2C,CASC,2024,7,7,8.8
+long-march-2c,Long March 2C,CASC,2026,4,4,9.5
+long-march-2c,Long March 2C,CASC,2025,3,3,8
+long-march-2d,Long March 2D,CASC,2025,7,7,8.5
+long-march-2d,Long March 2D,CASC,2024,9,9,9.6
+long-march-2d,Long March 2D,CASC,2026,5,5,9.2
+long-march-2f,Long March 2F,CASC,2026,2,2,17.9
+long-march-2f,Long March 2F,CASC,2025,3,3,29.8
+long-march-2f,Long March 2F,CASC,2024,2,2,19.9
+long-march-3b,Long March 3B/E,CASC,2024,8,8,31.4
+long-march-3b,Long March 3B/E,CASC,2026,3,2,9
+long-march-3b,Long March 3B/E,CASC,2025,13,13,60.7
+long-march-3c,Long March 3C/E,CASC,2025,2,2,7
+long-march-4b,Long March 4B,CASC,2026,2,2,3.5
+long-march-4b,Long March 4B,CASC,2025,4,4,10.4
+long-march-4b,Long March 4B,CASC,2024,4,4,8
+long-march-4c,Long March 4C,CASC,2025,3,3,13.3
+long-march-4c,Long March 4C,CASC,2024,2,2,4
+long-march-4c,Long March 4C,CASC,2026,1,1,2.6
+long-march-5,Long March 5,CASC,2024,2,2,18.3
+long-march-5,Long March 5,CASC,2026,1,1,10
+long-march-5,Long March 5,CASC,2025,2,2,20
+long-march-5b,Long March 5B,CASC,2025,2,2,20
+long-march-5b,Long March 5B,CASC,2024,1,1,10
+long-march-6,Long March 6,CASC,2024,2,2,2.3
+long-march-6,Long March 6,CASC,2025,1,1,1
+long-march-6,Long March 6,CASC,2026,1,1,2
+long-march-6a,Long March 6A,CASC,2024,5,5,19.2
+long-march-6a,Long March 6A,CASC,2026,8,8,31.7
+long-march-6a,Long March 6A,CASC,2025,10,10,36.6
+long-march-6c,Long March 6C,CASC,2024,1,1,0.2
+long-march-6c,Long March 6C,CASC,2026,1,1,0.2
+long-march-7,Long March 7,CASC,2024,2,2,37.7
+long-march-7,Long March 7,CASC,2025,1,1,19
+long-march-7,Long March 7,CASC,2026,1,1,19
+long-march-7a,Long March 7A,CASC,2025,6,6,30
+long-march-7a,Long March 7A,CASC,2024,2,2,10
+long-march-7a,Long March 7A,CASC,2026,4,3,15
+long-march-8,Long March 8,CASC,2026,3,3,18
+long-march-8,Long March 8,CASC,2025,1,1,5.4
+long-march-8,Long March 8,CASC,2024,1,1,1.3
+long-march-8a,Long March 8A,CASC,2025,6,6,35
+long-march-8a,Long March 8A,CASC,2026,5,5,30
+lvm3,LVM3,ISRO,2025,2,2,10.3
+minotaur-iv,Minotaur IV,Northrop Grumman,2025,1,1,0.5
+minotaur-iv,Minotaur IV,Northrop Grumman,2026,1,1,0.5
+new-glenn,New Glenn,Blue Origin,2025,2,2,11
+new-glenn,New Glenn,Blue Origin,2026,2,0,
+nk-kerolox-lv,North Korean kerosene/LOX launcher (unnamed),NATA,2024,1,0,
+nuri,Nuri (KSLV-II),KARI,2025,1,1,0.2
+nuri,Nuri (KSLV-II),KARI,2026,1,1,1
+pallas-1,Pallas-1,Galactic Energy,2026,1,1,1
+pegasus-xl,Pegasus XL,Northrop Grumman,2026,1,1,0.4
+proton-m,Proton-M,Khrunichev,2026,1,1,2.3
+pslv,PSLV,ISRO,2024,3,3,1.6
+pslv,PSLV,ISRO,2026,1,0,
+pslv,PSLV,ISRO,2025,1,0,
+qaem-100,Qaem 100,IRGC Aerospace Force,2024,2,2,0.1
+shavit-2,Shavit-2,Israel Aerospace Industries,2025,1,1,0.3
+simorgh,Simorgh,Iranian Space Agency,2024,2,2,0.4
+sls,Space Launch System (Block 1),NASA,2026,1,1,25.8
+soyuz-2-1a,Soyuz-2.1a,Roscosmos,2024,8,8,49.2
+soyuz-2-1a,Soyuz-2.1a,Roscosmos,2025,6,6,41.2
+soyuz-2-1a,Soyuz-2.1a,Roscosmos,2026,4,4,24.5
+soyuz-2-1b,Soyuz-2.1b,Roscosmos,2025,6,6,15.3
+soyuz-2-1b,Soyuz-2.1b,Roscosmos,2026,7,7,41.2
+soyuz-2-1b,Soyuz-2.1b,Roscosmos,2024,6,6,26.2
+soyuz-2-1v,Soyuz-2.1v,Roscosmos,2024,1,1,0.5
+soyuz-2-1v,Soyuz-2.1v,Roscosmos,2025,1,1,2
+spectrum,Spectrum,Isar Aerospace,2026,1,1,0
+spectrum,Spectrum,Isar Aerospace,2025,1,0,
+sslv,SSLV,ISRO,2024,1,1,0.2
+starship,Starship / Super Heavy,SpaceX,2025,5,3,360
+starship,Starship / Super Heavy,SpaceX,2026,3,3,360
+starship,Starship / Super Heavy,SpaceX,2024,3,3,360
+tianlong-3,Tianlong-3,Space Pioneer,2026,1,0,
+vega,Vega,Arianespace,2024,1,1,1.1
+vega-c,Vega C,Avio,2025,3,3,4.3
+vega-c,Vega C,Avio,2024,1,1,2.2
+vega-c,Vega C,Avio,2026,2,2,3.8
+vikram-1,Vikram-1,Skyroot Aerospace,2026,1,1,0
+vulcan-centaur,Vulcan Centaur,United Launch Alliance,2025,1,1,2
+vulcan-centaur,Vulcan Centaur,United Launch Alliance,2026,1,1,1.5
+vulcan-centaur,Vulcan Centaur,United Launch Alliance,2024,2,2,2.3
+zhuque-2e,Zhuque-2E,LandSpace,2026,4,4,11.5
+zhuque-2e,Zhuque-2E,LandSpace,2024,1,1,0.2
+zhuque-2e,Zhuque-2E,LandSpace,2025,2,1,0.2
+zhuque-3,Zhuque-3,LandSpace,2025,1,1,0.5
+zhuque-3,Zhuque-3,LandSpace,2026,1,1,0.5
+zuljanah,Zuljanah,Iran Ministry of Defence,2025,1,0,

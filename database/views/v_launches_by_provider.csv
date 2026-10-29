@@ -1,0 +1,72 @@
+provider,provider_country,year,launches,successes,payload_t,vehicles
+Arianespace,FR,2024,1,1,1.8,Ariane 6 (62/64)
+Arianespace,FR,2025,4,4,11.4,Ariane 6 (62/64)
+Arianespace,FR,2026,4,4,55.8,Ariane 6 (62/64)
+Arianespace,IT,2024,1,1,1.1,Vega
+Avio,IT,2024,1,1,2.2,Vega C
+Avio,IT,2025,3,3,4.3,Vega C
+Avio,IT,2026,2,2,3.8,Vega C
+Blue Origin,US,2025,2,2,11,New Glenn
+Blue Origin,US,2026,2,0,,New Glenn
+CAS Space,CN,2024,4,3,2.6,Kinetica-1 (Lijian-1)
+CAS Space,CN,2025,5,5,4.3,Kinetica-1 (Lijian-1)
+CAS Space,CN,2026,6,6,10.1,"Kinetica-1 (Lijian-1), Kinetica-2 (Lijian-2)"
+CASC,CN,2024,51,51,183.6,"Jielong-3 (Smart Dragon-3), Long March 12, Long March 2C, Long March 2D, Long March 2F, Long March 3B/E, Long March 4B, Long March 4C, Long March 5, Long March 5B, Long March 6, Long March 6A, Long March 6C, Long March 7, Long March 7A, Long March 8"
+CASC,CN,2025,73,73,319.3,"Jielong-3 (Smart Dragon-3), Long March 11, Long March 12, Long March 12A, Long March 2C, Long March 2D, Long March 2F, Long March 3B/E, Long March 3C/E, Long March 4B, Long March 4C, Long March 5, Long March 5B, Long March 6, Long March 6A, Long March 7, Long March 7A, Long March 8, Long March 8A"
+CASC,CN,2026,52,50,206,"Jielong-3 (Smart Dragon-3), Long March 10B, Long March 12, Long March 12B, Long March 2C, Long March 2D, Long March 2F, Long March 3B/E, Long March 4B, Long March 4C, Long March 5, Long March 6, Long March 6A, Long March 6C, Long March 7, Long March 7A, Long March 8, Long March 8A"
+ExPace (CASIC),CN,2024,5,5,1.5,"Kuaizhou-11, Kuaizhou-1A"
+ExPace (CASIC),CN,2025,4,3,1.2,"Kuaizhou-11, Kuaizhou-1A"
+ExPace (CASIC),CN,2026,3,3,1.5,Kuaizhou-11
+Firefly Aerospace,US,2024,1,1,0.1,Alpha
+Firefly Aerospace,US,2025,1,0,,Alpha
+Firefly Aerospace,US,2026,1,1,1,Alpha
+Galactic Energy,CN,2024,5,5,1.2,Ceres-1
+Galactic Energy,CN,2025,6,5,1.2,Ceres-1
+Galactic Energy,CN,2026,3,2,1.3,"Ceres-1, Ceres-2, Pallas-1"
+Gilmour Space Technologies,AU,2025,1,0,,Eris (Block 1)
+Innospace,KR,2025,1,0,,HANBIT-Nano
+Iran Ministry of Defence,IR,2025,1,0,,Zuljanah
+Iranian Space Agency,IR,2024,2,2,0.4,Simorgh
+IRGC Aerospace Force,IR,2024,2,2,0.1,Qaem 100
+Isar Aerospace,DE,2025,1,0,,Spectrum
+Isar Aerospace,DE,2026,1,1,0,Spectrum
+iSpace,CN,2024,1,0,,Hyperbola-1
+iSpace,CN,2025,1,1,0.3,Hyperbola-1
+Israel Aerospace Industries,IL,2025,1,1,0.3,Shavit-2
+ISRO,IN,2024,5,5,4,"GSLV Mk II, PSLV, SSLV"
+ISRO,IN,2025,5,4,14.8,"GSLV Mk II, LVM3, PSLV"
+ISRO,IN,2026,2,1,2.4,"GSLV Mk II, PSLV"
+KARI,KR,2025,1,1,0.2,Nuri (KSLV-II)
+KARI,KR,2026,1,1,1,Nuri (KSLV-II)
+Khrunichev,RU,2024,2,2,20.5,"Angara A5, Angara-1.2"
+Khrunichev,RU,2025,4,4,5.3,"Angara A5, Angara-1.2"
+Khrunichev,RU,2026,2,2,3.3,"Angara-1.2, Proton-M"
+LandSpace,CN,2024,1,1,0.2,Zhuque-2E
+LandSpace,CN,2025,3,2,0.7,"Zhuque-2E, Zhuque-3"
+LandSpace,CN,2026,5,5,12,"Zhuque-2E, Zhuque-3"
+Mitsubishi Heavy Industries,JP,2024,5,5,14,"H-IIA, H3"
+Mitsubishi Heavy Industries,JP,2025,4,3,23.7,"H-IIA, H3"
+Mitsubishi Heavy Industries,JP,2026,2,2,6.4,H3
+NASA,US,2026,1,1,25.8,Space Launch System (Block 1)
+NATA,KP,2024,1,0,,North Korean kerosene/LOX launcher (unnamed)
+Northrop Grumman,US,2025,1,1,0.5,Minotaur IV
+Northrop Grumman,US,2026,2,2,0.9,"Minotaur IV, Pegasus XL"
+Orienspace,CN,2024,1,1,1.5,Gravity-1 (Yinli-1)
+Orienspace,CN,2025,1,1,1.5,Gravity-1 (Yinli-1)
+Orienspace,CN,2026,2,2,3.2,Gravity-1 (Yinli-1)
+Rocket Lab,US,2024,14,14,1.7,Electron
+Rocket Lab,US,2025,18,18,2.1,Electron
+Rocket Lab,US,2026,16,16,2.1,Electron
+Roscosmos,RU,2024,15,15,75.9,"Soyuz-2.1a, Soyuz-2.1b, Soyuz-2.1v"
+Roscosmos,RU,2025,13,13,58.5,"Soyuz-2.1a, Soyuz-2.1b, Soyuz-2.1v"
+Roscosmos,RU,2026,11,11,65.7,"Soyuz-2.1a, Soyuz-2.1b"
+Skyroot Aerospace,IN,2026,1,1,0,Vikram-1
+Space One,JP,2024,2,0,,KAIROS
+Space One,JP,2026,1,0,,KAIROS
+Space Pioneer,CN,2026,1,0,,Tianlong-3
+SpaceX,US,2024,137,136,2123.3,"Falcon 9 (Block 5), Falcon Heavy, Starship / Super Heavy"
+SpaceX,US,2025,170,168,2689.5,"Falcon 9 (Block 5), Starship / Super Heavy"
+SpaceX,US,2026,120,120,1959.7,"Falcon 9 (Block 5), Falcon Heavy, Starship / Super Heavy"
+United Launch Alliance,US,2024,5,5,24.3,"Atlas V, Delta IV Heavy, Vulcan Centaur"
+United Launch Alliance,US,2025,6,6,76.4,"Atlas V, Vulcan Centaur"
+United Launch Alliance,US,2026,5,5,69.5,"Atlas V, Vulcan Centaur"

@@ -1,0 +1,154 @@
+{
+ "revenue2030M": 152.2,
+ "grossProfit2030M": 43,
+ "fixedCost2030M": 78.4,
+ "ebit2030M": -35,
+ "unsecuredPct": 80,
+ "unsecuredWithoutEsaPct": 54,
+ "ebit2031M": -44,
+ "launchesSold2030": 11.3,
+ "launchOnlyBreakEven": [
+  15,
+  17
+ ],
+ "levers": [
+  {
+   "launches": 2,
+   "profitableFrom": 2038,
+   "peakLossM": 392,
+   "revenue2030M": 152
+  },
+  {
+   "launches": 3,
+   "profitableFrom": 2037,
+   "peakLossM": 324,
+   "revenue2030M": 164
+  },
+  {
+   "launches": 4,
+   "profitableFrom": 2036,
+   "peakLossM": 263,
+   "revenue2030M": 176
+  },
+  {
+   "launches": 5,
+   "profitableFrom": 2035,
+   "peakLossM": 209,
+   "revenue2030M": 188
+  },
+  {
+   "launches": 6,
+   "profitableFrom": 2034,
+   "peakLossM": 163,
+   "revenue2030M": 200
+  }
+ ],
+ "fixedCost": [
+  {
+   "fixedM": 40,
+   "profitableFrom": 2036,
+   "peakLossM": 189
+  },
+  {
+   "fixedM": 60,
+   "profitableFrom": 2038,
+   "peakLossM": 392
+  },
+  {
+   "fixedM": 90,
+   "profitableFrom": null,
+   "peakLossM": 773
+  }
+ ],
+ "shock": [
+  {
+   "months": 3,
+   "keptPct": 81.2,
+   "keptWithKourouPct": 86.6,
+   "ebitM": -44,
+   "ebitWithKourouM": -46
+  },
+  {
+   "months": 6,
+   "keptPct": 62.3,
+   "keptWithKourouPct": 73.3,
+   "ebitM": -52,
+   "ebitWithKourouM": -52
+  },
+  {
+   "months": 12,
+   "keptPct": 24.6,
+   "keptWithKourouPct": 46.5,
+   "ebitM": -69,
+   "ebitWithKourouM": -64
+  }
+ ],
+ "kourouFeeM": 5,
+ "baseBreakEven": 2038,
+ "bullOverCapacityFrom": 2036,
+ "tornado": [
+  {
+   "lever": "Frame-contract launches a year",
+   "base": 2,
+   "low": 0,
+   "high": 6,
+   "lowYear": 2040,
+   "highYear": 2034
+  },
+  {
+   "lever": "Fixed cost base a year (€ M)",
+   "base": 60,
+   "low": 90,
+   "high": 40,
+   "lowYear": null,
+   "highYear": 2036
+  },
+  {
+   "lever": "Spectrum cost vs Electron (×)",
+   "base": 1.5,
+   "low": 2,
+   "high": 1.2,
+   "lowYear": null,
+   "highYear": 2036
+  },
+  {
+   "lever": "Paid readiness growth a year (%)",
+   "base": 15,
+   "low": 10,
+   "high": 25,
+   "lowYear": null,
+   "highYear": 2035
+  },
+  {
+   "lever": "Success rate from 2030 (%)",
+   "base": 92,
+   "low": 85,
+   "high": 95,
+   "lowYear": 2039,
+   "highYear": 2038
+  }
+ ],
+ "withKourouFee": [
+  {
+   "launches": 2,
+   "profitableFrom": 2039,
+   "peakLossM": 445
+  },
+  {
+   "launches": 6,
+   "profitableFrom": 2035,
+   "peakLossM": 196
+  }
+ ],
+ "plantLoad2030Pct": 30.7,
+ "novaScotiaNet": {
+  "y2030M": -4,
+  "y2031M": -6
+ },
+ "bridge2030M": {
+  "pursuedFieldsM": 88.1,
+  "frameContractsM": 24,
+  "novaScotiaAnchorsM": 36,
+  "novaScotiaCommercialM": 4.1
+ }
+}

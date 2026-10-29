@@ -1,0 +1,7 @@
+launch_vehicle,launcher_class,satellites,mass_kg
+Electron,small,28,729
+Falcon 9,rideshare or large,363,14489.3
+Lijian-1,rideshare or large,4,251.2
+Nuri,rideshare or large,10,563.5
+Soyuz-2-1B,rideshare or large,6,38.5
+Vega C,rideshare or large,5,1320

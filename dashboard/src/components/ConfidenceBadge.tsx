@@ -1,10 +1,9 @@
-import type { Confidence } from "../data/types";
+import type { Confidence } from "../data/warehouse";
 
 const labels: Record<Confidence, string> = {
   high: "High confidence",
   medium: "Medium confidence",
   low: "Low confidence",
-  placeholder: "Placeholder",
 };
 
 export function ConfidenceBadge({ level }: { level: Confidence }) {

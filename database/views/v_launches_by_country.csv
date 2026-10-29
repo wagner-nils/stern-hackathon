@@ -1,0 +1,31 @@
+country_code,year,launches,successes,payload_t,providers,provider_names
+AU,2025,1,0,,1,Gilmour Space Technologies
+CN,2024,68,66,190.5,7,"CAS Space, CASC, ExPace (CASIC), Galactic Energy, iSpace, LandSpace, Orienspace"
+CN,2025,93,90,328.4,7,"CAS Space, CASC, ExPace (CASIC), Galactic Energy, iSpace, LandSpace, Orienspace"
+CN,2026,72,68,234.1,7,"CAS Space, CASC, ExPace (CASIC), Galactic Energy, LandSpace, Orienspace, Space Pioneer"
+DE,2025,1,0,,1,Isar Aerospace
+DE,2026,1,1,0,1,Isar Aerospace
+FR,2024,1,1,1.8,1,Arianespace
+FR,2025,4,4,11.4,1,Arianespace
+FR,2026,4,4,55.8,1,Arianespace
+IL,2025,1,1,0.3,1,Israel Aerospace Industries
+IN,2024,5,5,4,1,ISRO
+IN,2025,5,4,14.8,1,ISRO
+IN,2026,3,2,2.4,2,"ISRO, Skyroot Aerospace"
+IR,2024,4,4,0.6,2,"Iranian Space Agency, IRGC Aerospace Force"
+IR,2025,1,0,,1,Iran Ministry of Defence
+IT,2024,2,2,3.3,2,"Arianespace, Avio"
+IT,2025,3,3,4.3,1,Avio
+IT,2026,2,2,3.8,1,Avio
+JP,2024,7,5,14,2,"Mitsubishi Heavy Industries, Space One"
+JP,2025,4,3,23.7,1,Mitsubishi Heavy Industries
+JP,2026,3,2,6.4,2,"Mitsubishi Heavy Industries, Space One"
+KP,2024,1,0,,1,NATA
+KR,2025,2,1,0.2,2,"Innospace, KARI"
+KR,2026,1,1,1,1,KARI
+RU,2024,17,17,96.4,2,"Khrunichev, Roscosmos"
+RU,2025,17,17,63.8,2,"Khrunichev, Roscosmos"
+RU,2026,13,13,69,2,"Khrunichev, Roscosmos"
+US,2024,157,156,2149.3,4,"Firefly Aerospace, Rocket Lab, SpaceX, United Launch Alliance"
+US,2025,198,195,2779.6,6,"Blue Origin, Firefly Aerospace, Northrop Grumman, Rocket Lab, SpaceX, United Launch Alliance"
+US,2026,147,145,2059.1,7,"Blue Origin, Firefly Aerospace, NASA, Northrop Grumman, Rocket Lab, SpaceX, United Launch Alliance"

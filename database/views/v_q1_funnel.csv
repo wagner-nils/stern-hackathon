@@ -1,0 +1,8 @@
+step,tier,label,satellites,mass_kg,revenue_eur,revenue_eur_high
+1,TAM,All satellites that reached orbit,4521,2693652.6,11071428571.42857143,11071428571.42857143
+2,SAM,Open to a European launcher,505.6,124130.22,,
+3,SAM,Fits on Spectrum,482.8,24235.22,,
+4,SAM,Orbit reachable from Andøya,422,17886.22,119773794.642857142857,319396785.71428571
+5,SOM,Wants a dedicated launch (penetration),29.540,1252.0354,,
+6,SOM,Chooses Isar (win share against Rocket Lab and others),13.29300,563.415930,,
+7,SOM,Isar can fly (capacity × success),13.29300,563.415930,9658558.80000000000000000000,9658558.80000000000000000000
